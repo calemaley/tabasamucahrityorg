@@ -65,14 +65,14 @@ const Navigation = () => {
                   {item.subItems ? (
                     <>
                       <button
-                        className="flex items-center space-x-2 text-charity-neutral-700 hover:text-charity-orange-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-charity-orange-50 group"
+                        className="flex items-center space-x-1.5 text-white hover:text-charity-orange-200 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg hover:bg-white/10 group"
                         onClick={() => toggleDropdown(item.label)}
                       >
-                        <IconComponent className="h-4 w-4 group-hover:scale-110 transition-transform duration-200" />
-                        <span className="group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
+                        <IconComponent className="h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
+                        <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">{item.label}</span>
                         <ChevronDown className={cn(
-                          "h-4 w-4 transition-all duration-200",
-                          activeDropdown === item.label ? "rotate-180 text-charity-orange-600" : "group-hover:rotate-12"
+                          "h-3.5 w-3.5 transition-all duration-200",
+                          activeDropdown === item.label ? "rotate-180 text-charity-orange-200" : "group-hover:rotate-12"
                         )} />
                       </button>
                       {activeDropdown === item.label && (
