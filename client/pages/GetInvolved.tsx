@@ -490,7 +490,7 @@ const GetInvolved = () => {
                     <MapPin className="h-6 w-6" />
                   </div>
                   <p className="font-medium">Visit Us</p>
-                  <p className="text-sm opacity-90">Dar es Salaam, Tanzania</p>
+                  <p className="text-sm opacity-90">Nairobi, Kenya</p>
                 </div>
               </div>
 

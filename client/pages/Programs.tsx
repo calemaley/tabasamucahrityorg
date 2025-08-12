@@ -139,22 +139,55 @@ const Programs = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-0 bg-gradient-to-br from-charity-green-500 to-charity-orange-500 relative">
-        <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <AnimatedSection animation="slideUp">
-            <div className="text-center text-white">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Our Programs
-              </h1>
-              <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-                Comprehensive initiatives designed to create lasting positive
-                change in education, healthcare, and community development
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <section className="pt-0 relative overflow-hidden">
+  {/* Animated Gradient Background */}
+  <div className="absolute inset-0 bg-gradient-to-br from-green-500 via-orange-400 to-orange-600 animate-gradient"></div>
+
+  {/* Pattern Overlay */}
+  <div
+    className="absolute inset-0 opacity-20"
+    style={{
+      backgroundImage:
+        "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"2\" fill=\"white\"/></svg>')",
+      backgroundSize: "40px 40px",
+    }}
+  ></div>
+
+  <Navigation />
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <AnimatedSection animation="slideUp">
+      <div className="text-center text-white">
+        <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          Our Programs
+        </h1>
+        <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+          Comprehensive initiatives designed to create lasting positive change
+          in education, healthcare, and community development
+        </p>
+      </div>
+    </AnimatedSection>
+  </div>
+
+  {/* Gradient Animation Keyframes */}
+  <style jsx>{`
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 8s ease infinite;
+    }
+  `}</style>
+</section>
+
 
       {/* Main Programs */}
       <section className="py-20 bg-white">

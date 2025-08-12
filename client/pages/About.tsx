@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Users,
@@ -13,6 +14,20 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const About = () => {
+  useEffect(() => {
+    // Enable sound after any click (once)
+    const enableSound = () => {
+      const iframe = document.getElementById("bgVideo") as HTMLIFrameElement;
+      if (iframe && iframe.src.includes("mute=1")) {
+        iframe.src = iframe.src.replace("mute=1", "mute=0");
+      }
+    };
+    document.addEventListener("click", enableSound, { once: true });
+    return () => {
+      document.removeEventListener("click", enableSound);
+    };
+  }, []);
+
   const teamMembers = [
     {
       name: "Sarah Johnson",
@@ -103,14 +118,42 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-0 bg-gradient-to-br from-charity-orange-500 to-charity-green-600 relative">
+      <section className="pt-0 relative overflow-hidden">
+        {/* YouTube Background - full width & height */}
+        <div className="absolute inset-0 overflow-hidden">
+          <iframe
+            id="bgVideo"
+            className="absolute top-1/2 left-1/2 w-[200vw] h-[200vh] -translate-x-1/2 -translate-y-1/2"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&modestbranding=1"
+            title="YouTube video background"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+          ></iframe>
+        </div>
+
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+        {/* Content */}
         <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                About Tabasamu Charity
-              </h1>
+              <h1
+  style={{
+    fontFamily: "'Verdana', 'Courier New', monospace",
+    fontWeight: "bold",
+    fontSize: "3rem", // ~48px (you can adjust for md screens)
+    marginBottom: "1.5rem",
+    color: "black",
+  }}
+>
+  
+</h1>
+
+
+
+
               <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
                 Building brighter futures through education, healthcare, and
                 community development since 2015
@@ -119,6 +162,9 @@ const About = () => {
           </AnimatedSection>
         </div>
       </section>
+
+
+
 
       {/* Mission & Vision */}
       <section className="py-20 bg-white">
