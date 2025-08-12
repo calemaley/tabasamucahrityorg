@@ -57,43 +57,51 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <div key={item.label} className="relative group">
-                {item.subItems ? (
-                  <>
-                    <button
-                      className="flex items-center space-x-1 text-charity-neutral-700 hover:text-charity-orange-600 transition-colors duration-200 font-medium"
-                      onClick={() => toggleDropdown(item.label)}
+          <div className="hidden md:flex items-center space-x-6">
+            {menuItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={item.label} className="relative group">
+                  {item.subItems ? (
+                    <>
+                      <button
+                        className="flex items-center space-x-2 text-charity-neutral-700 hover:text-charity-orange-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-charity-orange-50 group"
+                        onClick={() => toggleDropdown(item.label)}
+                      >
+                        <IconComponent className="h-4 w-4 group-hover:scale-110 transition-transform duration-200" />
+                        <span className="group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
+                        <ChevronDown className={cn(
+                          "h-4 w-4 transition-all duration-200",
+                          activeDropdown === item.label ? "rotate-180 text-charity-orange-600" : "group-hover:rotate-12"
+                        )} />
+                      </button>
+                      {activeDropdown === item.label && (
+                        <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-in slide-in-from-top-2 duration-200">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.label}
+                              to={subItem.href}
+                              className="block px-4 py-3 text-charity-neutral-600 hover:text-charity-orange-600 hover:bg-charity-orange-50 hover:translate-x-1 transition-all duration-200 mx-2 rounded-lg"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="flex items-center space-x-2 text-charity-neutral-700 hover:text-charity-orange-600 transition-all duration-300 font-medium px-3 py-2 rounded-lg hover:bg-charity-orange-50 group"
                     >
-                      <span>{item.label}</span>
-                      <ChevronDown className="h-4 w-4" />
-                    </button>
-                    {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
-                        {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.label}
-                            to={subItem.href}
-                            className="block px-4 py-2 text-charity-neutral-600 hover:text-charity-orange-600 hover:bg-gray-50 transition-colors duration-200"
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    to={item.href}
-                    className="text-charity-neutral-700 hover:text-charity-orange-600 transition-colors duration-200 font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
+                      <IconComponent className="h-4 w-4 group-hover:scale-110 transition-transform duration-200" />
+                      <span className="group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Mobile menu button */}
