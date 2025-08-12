@@ -459,12 +459,17 @@ const Index = () => {
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center text-white">
-                <div className="text-5xl font-bold mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-lg opacity-90">
-                  {stat.label}
+              <div key={index} className="text-center text-white group cursor-pointer">
+                <div className="bg-white/10 rounded-xl p-6 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 border border-white/20 group-hover:border-white/40">
+                  <div className="text-5xl font-bold mb-2 group-hover:text-yellow-100 group-hover:scale-110 transition-all duration-300">
+                    {stat.number}
+                  </div>
+                  <div className="text-lg opacity-90 group-hover:opacity-100 group-hover:text-green-100 transition-all duration-300">
+                    {stat.label}
+                  </div>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="w-12 h-1 bg-yellow-200 mx-auto rounded-full"></div>
+                  </div>
                 </div>
               </div>
             ))}
