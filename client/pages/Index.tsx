@@ -22,19 +22,19 @@ const Index = () => {
 
   const heroImages = [
     {
-      src: '/placeholder.svg',
+      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F0417d8d5fa4c4c179a585018273842e1?format=webp&width=800',
       quote: "Every child deserves a chance to shine",
     },
     {
-      src: '/placeholder.svg',
+      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fe188b6ea2bc94b82ae48a0f7509dc12a?format=webp&width=800',
       quote: "Together, we can build a brighter future",
     },
     {
-      src: '/placeholder.svg',
+      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F26d9b79fb301411bb6a581aed3db1493?format=webp&width=800',
       quote: "Hope is the light that guides us forward",
     },
     {
-      src: '/placeholder.svg',
+      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fde0dc405e48c4e8a96b2550349dbee45?format=webp&width=800',
       quote: "Small acts of kindness create lasting change",
     },
   ];
