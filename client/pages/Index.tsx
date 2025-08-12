@@ -1,62 +1,527 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { 
+  ArrowRight, 
+  Heart, 
+  Users, 
+  GraduationCap, 
+  Droplets, 
+  Utensils,
+  TrendingUp,
+  Calendar,
+  User,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
-export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
+const Index = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroImages = [
+    {
+      src: '/placeholder.svg',
+      quote: "Every child deserves a chance to shine",
+    },
+    {
+      src: '/placeholder.svg',
+      quote: "Together, we can build a brighter future",
+    },
+    {
+      src: '/placeholder.svg',
+      quote: "Hope is the light that guides us forward",
+    },
+    {
+      src: '/placeholder.svg',
+      quote: "Small acts of kindness create lasting change",
+    },
+  ];
+
+  const popularProjects = [
+    {
+      icon: Heart,
+      title: "Make a Donation",
+      description: "Your contribution helps us provide essential resources to children in need.",
+      color: "charity-orange-500",
+    },
+    {
+      icon: Users,
+      title: "Sponsor a Child",
+      description: "Create a lasting impact by sponsoring a child's education and development.",
+      color: "charity-green-500",
+    },
+    {
+      icon: GraduationCap,
+      title: "Become a Volunteer",
+      description: "Join our team and make a direct difference in children's lives.",
+      color: "charity-orange-600",
+    },
+  ];
+
+  const helpItems = [
+    {
+      icon: TrendingUp,
+      title: "Start investing in our volunteer group",
+      description: "Join our growing community of dedicated volunteers making real change."
+    },
+    {
+      icon: Droplets,
+      title: "Because Everyone Deserves Clean Water",
+      description: "Help us provide access to clean, safe drinking water for all."
+    },
+    {
+      icon: GraduationCap,
+      title: "Childhood Education development support",
+      description: "Support educational programs that give children the tools for success."
+    },
+    {
+      icon: Utensils,
+      title: "Child Deserves Better Healthy Foods",
+      description: "Ensure children have access to nutritious meals for healthy growth."
+    },
+  ];
+
+  const recentPrograms = [
+    {
+      image: '/placeholder.svg',
+      title: "School Supply Drive 2024",
+      description: "Providing essential school supplies to over 500 children across 12 schools.",
+      date: "March 2024"
+    },
+    {
+      image: '/placeholder.svg',
+      title: "Healthcare Initiative",
+      description: "Mobile clinics bringing healthcare services to remote communities.",
+      date: "February 2024"
+    },
+    {
+      image: '/placeholder.svg',
+      title: "Clean Water Project",
+      description: "Installing water wells in 5 villages to provide clean drinking water.",
+      date: "January 2024"
+    },
+  ];
+
+  const stats = [
+    { number: "72+", label: "Total Campaigns" },
+    { number: "96+", label: "Become Volunteer" },
+    { number: "8K+", label: "Quick Fundraise" },
+    { number: "87+", label: "Happy Volunteers" },
+  ];
+
+  const recentBlogs = [
+    {
+      image: '/placeholder.svg',
+      category: "Education",
+      date: "March 15, 2024",
+      title: "Transforming Lives Through Education",
+      snippet: "See how our education programs are creating lasting change in rural communities.",
+      author: "Sarah Johnson"
+    },
+    {
+      image: '/placeholder.svg',
+      category: "Healthcare",
+      date: "March 10, 2024",
+      title: "Mobile Clinics Reach Remote Areas",
+      snippet: "Our healthcare initiative brings medical services to underserved populations.",
+      author: "Dr. Michael Brown"
+    },
+    {
+      image: '/placeholder.svg',
+      category: "Community",
+      date: "March 5, 2024",
+      title: "Building Stronger Communities Together",
+      snippet: "Community-led initiatives are creating sustainable solutions for local challenges.",
+      author: "Emma Wilson"
+    },
+  ];
+
   useEffect(() => {
-    fetchDemo();
-  }, []);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
+    <>
+      <Navigation />
+      
+      {/* Hero Carousel */}
+      <section className="relative h-screen overflow-hidden">
+        <div className="absolute inset-0">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={cn(
+                "absolute inset-0 transition-opacity duration-1000",
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              )}
+            >
+              <img
+                src={image.src}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+          ))}
+        </div>
+        
+        <div className="relative h-full flex items-center justify-center text-center text-white px-4">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              {heroImages[currentSlide].quote}
+            </h1>
+            <div className="flex justify-center gap-4 mt-8">
+              <Link
+                to="/get-involved/volunteer"
+                className="px-8 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium"
+              >
+                Join Us Today
+              </Link>
+              <Link
+                to="/get-involved/donate"
+                className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-charity-neutral-800 rounded-lg transition-colors duration-200 font-medium"
+              >
+                Donate Now
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Carousel Controls */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/20 hover:bg-white/30 text-white rounded-full transition-colors duration-200"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/20 hover:bg-white/30 text-white rounded-full transition-colors duration-200"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={cn(
+                "w-3 h-3 rounded-full transition-colors duration-200",
+                index === currentSlide ? "bg-white" : "bg-white/50"
+              )}
             />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
+          ))}
+        </div>
+      </section>
+
+      {/* About Us Snippet */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                <img
+                  src="/placeholder.svg"
+                  alt="About Us"
+                  className="w-full h-96 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charity-orange-500/20 to-transparent" />
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-charity-neutral-800">
+                About Tabasamu Charity
+              </h2>
+              <p className="text-lg text-charity-neutral-600 leading-relaxed">
+                Tabasamu Charity is dedicated to transforming lives and building stronger communities 
+                through education, healthcare, and sustainable development. Since our founding, we've 
+                been committed to creating lasting positive change for children and families across Tanzania.
+              </p>
+              <p className="text-charity-neutral-600">
+                Our comprehensive programs focus on providing quality education, essential healthcare 
+                services, and opportunities for community development. Together with our volunteers 
+                and supporters, we're building a brighter future for the next generation.
+              </p>
+              <Link
+                to="/about"
+                className="inline-flex items-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium"
+              >
+                Learn More
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call-to-Action Section */}
+      <section className="py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Volunteer Section */}
+          <div className="relative h-80 lg:h-96 bg-charity-orange-600 flex items-center justify-center overflow-hidden">
+            <img
+              src="/placeholder.svg"
+              alt="Volunteer"
+              className="absolute inset-0 w-full h-full object-cover opacity-20"
             />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
-    </div>
+            <div className="relative text-center text-white px-8">
+              <h3 className="text-3xl font-bold mb-4">Become A Volunteer</h3>
+              <p className="text-xl mb-6 opacity-90">
+                Join our mission to make a difference
+              </p>
+              <Link
+                to="/get-involved/volunteer"
+                className="inline-block px-8 py-3 bg-white text-charity-orange-600 hover:bg-charity-neutral-100 rounded-lg font-bold transition-colors duration-200"
+              >
+                JOIN
+              </Link>
+            </div>
+          </div>
+
+          {/* Donate Section */}
+          <div className="relative h-80 lg:h-96 bg-charity-green-700 flex items-center justify-center overflow-hidden">
+            <img
+              src="/placeholder.svg"
+              alt="Donate"
+              className="absolute inset-0 w-full h-full object-cover opacity-20"
+            />
+            <div className="relative text-center text-white px-8">
+              <h3 className="text-3xl font-bold mb-4">Support Our Cause</h3>
+              <p className="text-xl mb-6 opacity-90">
+                Every donation creates lasting impact
+              </p>
+              <Link
+                to="/get-involved/donate"
+                className="inline-block px-8 py-3 bg-white text-charity-green-700 hover:bg-charity-neutral-100 rounded-lg font-bold transition-colors duration-200"
+              >
+                DONATE NOW
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Projects */}
+      <section className="py-20 bg-charity-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-sm uppercase tracking-wide text-charity-orange-600 font-semibold mb-2">
+              OUR BEST FEATURES
+            </h2>
+            <h3 className="text-4xl font-bold text-charity-neutral-800">
+              We're Popular To Provide Best Projects
+            </h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {popularProjects.map((project, index) => {
+              const IconComponent = project.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center cursor-pointer group"
+                >
+                  <div className={cn(
+                    "w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center",
+                    `bg-${project.color}/10`
+                  )}>
+                    <IconComponent className={cn("h-8 w-8", `text-${project.color}`)} />
+                  </div>
+                  <h4 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                    {project.title}
+                  </h4>
+                  <p className="text-charity-neutral-600">
+                    {project.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* How You Can Help Us */}
+      <section className="py-20 bg-charity-orange-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              How You Can Help Us?
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {helpItems.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={index} className="text-center text-white">
+                  <div className="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
+                    <IconComponent className="h-10 w-10" />
+                  </div>
+                  <h4 className="text-lg font-bold mb-3">
+                    {item.title}
+                  </h4>
+                  <p className="text-white/90 text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Programs */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-4xl font-bold text-charity-neutral-800">
+              Recent Programs
+            </h2>
+            <Link
+              to="/programs"
+              className="flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium group"
+            >
+              View All Programs
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentPrograms.map((program, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm">
+                    {program.date}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
+                    {program.title}
+                  </h4>
+                  <p className="text-charity-neutral-600">
+                    {program.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Statistics */}
+      <section className="py-20 bg-charity-green-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              LET'S SUPPORT US TO HELP THEM
+            </h2>
+            <p className="text-xl text-white/90">
+              Join your hands with us for a better life and future
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center text-white">
+                <div className="text-5xl font-bold mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-lg opacity-90">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <Link
+              to="/about"
+              className="inline-block px-8 py-3 bg-white text-charity-green-700 hover:bg-charity-neutral-100 rounded-lg font-bold transition-colors duration-200"
+            >
+              Read More
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Blogs */}
+      <section className="py-20 bg-charity-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-4xl font-bold text-charity-neutral-800">
+              Recent Blogs
+            </h2>
+            <Link
+              to="/blog"
+              className="flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium group"
+            >
+              View All Posts
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentBlogs.map((blog, index) => (
+              <article
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm">
+                    {blog.category}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-charity-neutral-500 mb-3">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span className="mr-4">{blog.date}</span>
+                    <User className="h-4 w-4 mr-1" />
+                    <span>{blog.author}</span>
+                  </div>
+                  <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
+                    {blog.title}
+                  </h4>
+                  <p className="text-charity-neutral-600">
+                    {blog.snippet}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
   );
-}
+};
+
+export default Index;
