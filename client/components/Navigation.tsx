@@ -1,7 +1,17 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronDown, Menu, X, Home, Users, GraduationCap, Heart, BookOpen, Phone } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  Home,
+  Users,
+  GraduationCap,
+  Heart,
+  BookOpen,
+  Phone,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,33 +22,33 @@ const Navigation = () => {
   };
 
   const menuItems = [
-    { label: 'Home', href: '/', icon: Home },
+    { label: "Home", href: "/", icon: Home },
     {
-      label: 'About',
-      href: '/about',
+      label: "About",
+      href: "/about",
       icon: Users,
     },
     {
-      label: 'Programs',
-      href: '/programs',
+      label: "Programs",
+      href: "/programs",
       icon: GraduationCap,
       subItems: [
-        { label: 'Volunteering in Schools', href: '/programs/schools' },
-        { label: 'Internship in Hospitals', href: '/programs/hospitals' },
+        { label: "Volunteering in Schools", href: "/programs/schools" },
+        { label: "Internship in Hospitals", href: "/programs/hospitals" },
       ],
     },
     {
-      label: 'Get Involved',
-      href: '/get-involved',
+      label: "Get Involved",
+      href: "/get-involved",
       icon: Heart,
       subItems: [
-        { label: 'Sponsor a Child', href: '/get-involved/sponsor' },
-        { label: 'Donate Now', href: '/get-involved/donate' },
-        { label: 'Volunteer', href: '/get-involved/volunteer' },
+        { label: "Sponsor a Child", href: "/get-involved/sponsor" },
+        { label: "Donate Now", href: "/get-involved/donate" },
+        { label: "Volunteer", href: "/get-involved/volunteer" },
       ],
     },
-    { label: 'Blog', href: '/blog', icon: BookOpen },
-    { label: 'Contact Us', href: '/contact', icon: Phone },
+    { label: "Blog", href: "/blog", icon: BookOpen },
+    { label: "Contact Us", href: "/contact", icon: Phone },
   ];
 
   return (
@@ -69,11 +79,17 @@ const Navigation = () => {
                         onClick={() => toggleDropdown(item.label)}
                       >
                         <IconComponent className="h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
-                        <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">{item.label}</span>
-                        <ChevronDown className={cn(
-                          "h-3.5 w-3.5 transition-all duration-200",
-                          activeDropdown === item.label ? "rotate-180 text-charity-orange-200" : "group-hover:rotate-12"
-                        )} />
+                        <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">
+                          {item.label}
+                        </span>
+                        <ChevronDown
+                          className={cn(
+                            "h-3.5 w-3.5 transition-all duration-200",
+                            activeDropdown === item.label
+                              ? "rotate-180 text-charity-orange-200"
+                              : "group-hover:rotate-12",
+                          )}
+                        />
                       </button>
                       {activeDropdown === item.label && (
                         <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-in slide-in-from-top-2 duration-200">
@@ -96,7 +112,9 @@ const Navigation = () => {
                       className="flex items-center space-x-1.5 text-white hover:text-charity-orange-200 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg hover:bg-white/10 group"
                     >
                       <IconComponent className="h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
-                      <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">{item.label}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">
+                        {item.label}
+                      </span>
                     </Link>
                   )}
                 </div>
@@ -140,7 +158,7 @@ const Navigation = () => {
                           <ChevronDown
                             className={cn(
                               "h-4 w-4 transition-transform duration-200",
-                              activeDropdown === item.label && "rotate-180"
+                              activeDropdown === item.label && "rotate-180",
                             )}
                           />
                         </button>

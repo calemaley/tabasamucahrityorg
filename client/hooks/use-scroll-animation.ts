@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface UseScrollAnimationOptions {
   threshold?: number;
@@ -25,7 +25,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
           setIsVisible(false);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);

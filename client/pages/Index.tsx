@@ -1,40 +1,40 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  Heart, 
-  Users, 
-  GraduationCap, 
-  Droplets, 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  Heart,
+  Users,
+  GraduationCap,
+  Droplets,
   Utensils,
   TrendingUp,
   Calendar,
   User,
   ChevronLeft,
-  ChevronRight
-} from 'lucide-react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import { cn } from '@/lib/utils';
+  ChevronRight,
+} from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroImages = [
     {
-      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F0417d8d5fa4c4c179a585018273842e1?format=webp&width=800',
+      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F0417d8d5fa4c4c179a585018273842e1?format=webp&width=800",
       quote: "Every child deserves a chance to shine",
     },
     {
-      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fe188b6ea2bc94b82ae48a0f7509dc12a?format=webp&width=800',
+      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fe188b6ea2bc94b82ae48a0f7509dc12a?format=webp&width=800",
       quote: "Together, we can build a brighter future",
     },
     {
-      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F26d9b79fb301411bb6a581aed3db1493?format=webp&width=800',
+      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F26d9b79fb301411bb6a581aed3db1493?format=webp&width=800",
       quote: "Hope is the light that guides us forward",
     },
     {
-      src: 'https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fde0dc405e48c4e8a96b2550349dbee45?format=webp&width=800',
+      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fde0dc405e48c4e8a96b2550349dbee45?format=webp&width=800",
       quote: "Small acts of kindness create lasting change",
     },
   ];
@@ -43,19 +43,22 @@ const Index = () => {
     {
       icon: Heart,
       title: "Make a Donation",
-      description: "Your contribution helps us provide essential resources to children in need.",
+      description:
+        "Your contribution helps us provide essential resources to children in need.",
       color: "charity-orange-500",
     },
     {
       icon: Users,
       title: "Sponsor a Child",
-      description: "Create a lasting impact by sponsoring a child's education and development.",
+      description:
+        "Create a lasting impact by sponsoring a child's education and development.",
       color: "charity-green-500",
     },
     {
       icon: GraduationCap,
       title: "Become a Volunteer",
-      description: "Join our team and make a direct difference in children's lives.",
+      description:
+        "Join our team and make a direct difference in children's lives.",
       color: "charity-orange-600",
     },
   ];
@@ -64,43 +67,50 @@ const Index = () => {
     {
       icon: TrendingUp,
       title: "Start investing in our volunteer group",
-      description: "Join our growing community of dedicated volunteers making real change."
+      description:
+        "Join our growing community of dedicated volunteers making real change.",
     },
     {
       icon: Droplets,
       title: "Because Everyone Deserves Clean Water",
-      description: "Help us provide access to clean, safe drinking water for all."
+      description:
+        "Help us provide access to clean, safe drinking water for all.",
     },
     {
       icon: GraduationCap,
       title: "Childhood Education development support",
-      description: "Support educational programs that give children the tools for success."
+      description:
+        "Support educational programs that give children the tools for success.",
     },
     {
       icon: Utensils,
       title: "Child Deserves Better Healthy Foods",
-      description: "Ensure children have access to nutritious meals for healthy growth."
+      description:
+        "Ensure children have access to nutritious meals for healthy growth.",
     },
   ];
 
   const recentPrograms = [
     {
-      image: '/placeholder.svg',
+      image: "/placeholder.svg",
       title: "School Supply Drive 2024",
-      description: "Providing essential school supplies to over 500 children across 12 schools.",
-      date: "March 2024"
+      description:
+        "Providing essential school supplies to over 500 children across 12 schools.",
+      date: "March 2024",
     },
     {
-      image: '/placeholder.svg',
+      image: "/placeholder.svg",
       title: "Healthcare Initiative",
-      description: "Mobile clinics bringing healthcare services to remote communities.",
-      date: "February 2024"
+      description:
+        "Mobile clinics bringing healthcare services to remote communities.",
+      date: "February 2024",
     },
     {
-      image: '/placeholder.svg',
+      image: "/placeholder.svg",
       title: "Clean Water Project",
-      description: "Installing water wells in 5 villages to provide clean drinking water.",
-      date: "January 2024"
+      description:
+        "Installing water wells in 5 villages to provide clean drinking water.",
+      date: "January 2024",
     },
   ];
 
@@ -113,28 +123,31 @@ const Index = () => {
 
   const recentBlogs = [
     {
-      image: '/placeholder.svg',
+      image: "/placeholder.svg",
       category: "Education",
       date: "March 15, 2024",
       title: "Transforming Lives Through Education",
-      snippet: "See how our education programs are creating lasting change in rural communities.",
-      author: "Sarah Johnson"
+      snippet:
+        "See how our education programs are creating lasting change in rural communities.",
+      author: "Sarah Johnson",
     },
     {
-      image: '/placeholder.svg',
+      image: "/placeholder.svg",
       category: "Healthcare",
       date: "March 10, 2024",
       title: "Mobile Clinics Reach Remote Areas",
-      snippet: "Our healthcare initiative brings medical services to underserved populations.",
-      author: "Dr. Michael Brown"
+      snippet:
+        "Our healthcare initiative brings medical services to underserved populations.",
+      author: "Dr. Michael Brown",
     },
     {
-      image: '/placeholder.svg',
+      image: "/placeholder.svg",
       category: "Community",
       date: "March 5, 2024",
       title: "Building Stronger Communities Together",
-      snippet: "Community-led initiatives are creating sustainable solutions for local challenges.",
-      author: "Emma Wilson"
+      snippet:
+        "Community-led initiatives are creating sustainable solutions for local challenges.",
+      author: "Emma Wilson",
     },
   ];
 
@@ -150,7 +163,9 @@ const Index = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length,
+    );
   };
 
   return (
@@ -164,7 +179,7 @@ const Index = () => {
               key={index}
               className={cn(
                 "absolute inset-0 transition-opacity duration-1000",
-                index === currentSlide ? "opacity-100" : "opacity-0"
+                index === currentSlide ? "opacity-100" : "opacity-0",
               )}
             >
               <img
@@ -176,7 +191,7 @@ const Index = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="relative h-full flex items-center justify-center text-center text-white px-4">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -221,7 +236,7 @@ const Index = () => {
               onClick={() => setCurrentSlide(index)}
               className={cn(
                 "w-3 h-3 rounded-full transition-colors duration-200",
-                index === currentSlide ? "bg-white" : "bg-white/50"
+                index === currentSlide ? "bg-white" : "bg-white/50",
               )}
             />
           ))}
@@ -247,14 +262,17 @@ const Index = () => {
                 About Tabasamu Charity
               </h2>
               <p className="text-lg text-charity-neutral-600 leading-relaxed">
-                Tabasamu Charity is dedicated to transforming lives and building stronger communities 
-                through education, healthcare, and sustainable development. Since our founding, we've 
-                been committed to creating lasting positive change for children and families across Tanzania.
+                Tabasamu Charity is dedicated to transforming lives and building
+                stronger communities through education, healthcare, and
+                sustainable development. Since our founding, we've been
+                committed to creating lasting positive change for children and
+                families across Tanzania.
               </p>
               <p className="text-charity-neutral-600">
-                Our comprehensive programs focus on providing quality education, essential healthcare 
-                services, and opportunities for community development. Together with our volunteers 
-                and supporters, we're building a brighter future for the next generation.
+                Our comprehensive programs focus on providing quality education,
+                essential healthcare services, and opportunities for community
+                development. Together with our volunteers and supporters, we're
+                building a brighter future for the next generation.
               </p>
               <Link
                 to="/about"
@@ -281,7 +299,9 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-600/80 to-charity-orange-500/80 group-hover:from-charity-orange-700/90 group-hover:to-charity-orange-600/90 transition-all duration-500" />
             <div className="relative text-center text-white px-8 group-hover:scale-105 transition-transform duration-500">
               <Users className="h-16 w-16 mx-auto mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
-              <h3 className="text-3xl font-bold mb-4 group-hover:text-yellow-100 transition-colors duration-300">Become A Volunteer</h3>
+              <h3 className="text-3xl font-bold mb-4 group-hover:text-yellow-100 transition-colors duration-300">
+                Become A Volunteer
+              </h3>
               <p className="text-xl mb-6 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                 Join our mission to make a difference
               </p>
@@ -305,7 +325,9 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-charity-green-700/80 to-charity-green-600/80 group-hover:from-charity-green-800/90 group-hover:to-charity-green-700/90 transition-all duration-500" />
             <div className="relative text-center text-white px-8 group-hover:scale-105 transition-transform duration-500">
               <Heart className="h-16 w-16 mx-auto mb-4 group-hover:scale-110 group-hover:text-pink-200 transition-all duration-500 fill-current" />
-              <h3 className="text-3xl font-bold mb-4 group-hover:text-green-100 transition-colors duration-300">Support Our Cause</h3>
+              <h3 className="text-3xl font-bold mb-4 group-hover:text-green-100 transition-colors duration-300">
+                Support Our Cause
+              </h3>
               <p className="text-xl mb-6 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                 Every donation creates lasting impact
               </p>
@@ -332,7 +354,7 @@ const Index = () => {
               We're Popular To Provide Best Projects
             </h3>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {popularProjects.map((project, index) => {
               const IconComponent = project.icon;
@@ -341,11 +363,18 @@ const Index = () => {
                   key={index}
                   className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 text-center cursor-pointer group border-2 border-transparent hover:border-charity-orange-200"
                 >
-                  <div className={cn(
-                    "w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500",
-                    `bg-${project.color}/10 group-hover:bg-${project.color}/20`
-                  )}>
-                    <IconComponent className={cn("h-8 w-8 group-hover:scale-125 transition-transform duration-300", `text-${project.color}`)} />
+                  <div
+                    className={cn(
+                      "w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500",
+                      `bg-${project.color}/10 group-hover:bg-${project.color}/20`,
+                    )}
+                  >
+                    <IconComponent
+                      className={cn(
+                        "h-8 w-8 group-hover:scale-125 transition-transform duration-300",
+                        `text-${project.color}`,
+                      )}
+                    />
                   </div>
                   <h4 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 group-hover:scale-105 transition-all duration-300">
                     {project.title}
@@ -373,12 +402,15 @@ const Index = () => {
               How You Can Help Us?
             </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {helpItems.map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div key={index} className="text-center text-white group cursor-pointer">
+                <div
+                  key={index}
+                  className="text-center text-white group cursor-pointer"
+                >
                   <div className="w-20 h-20 mx-auto mb-6 bg-white/20 group-hover:bg-white/30 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:shadow-xl">
                     <IconComponent className="h-10 w-10 group-hover:scale-125 group-hover:text-yellow-200 transition-all duration-300" />
                   </div>
@@ -413,7 +445,7 @@ const Index = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentPrograms.map((program, index) => (
               <div
@@ -455,10 +487,13 @@ const Index = () => {
               Join your hands with us for a better life and future
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center text-white group cursor-pointer">
+              <div
+                key={index}
+                className="text-center text-white group cursor-pointer"
+              >
                 <div className="bg-white/10 rounded-xl p-6 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 border border-white/20 group-hover:border-white/40">
                   <div className="text-5xl font-bold mb-2 group-hover:text-yellow-100 group-hover:scale-110 transition-all duration-300">
                     {stat.number}
@@ -473,7 +508,7 @@ const Index = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center">
             <Link
               to="/about"
@@ -500,7 +535,7 @@ const Index = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentBlogs.map((blog, index) => (
               <article
@@ -527,9 +562,7 @@ const Index = () => {
                   <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
                     {blog.title}
                   </h4>
-                  <p className="text-charity-neutral-600">
-                    {blog.snippet}
-                  </p>
+                  <p className="text-charity-neutral-600">{blog.snippet}</p>
                 </div>
               </article>
             ))}

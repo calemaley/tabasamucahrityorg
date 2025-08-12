@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Construction } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { ArrowLeft, Construction } from "lucide-react";
 
 interface PlaceholderPageProps {
   title: string;
@@ -16,10 +16,11 @@ const PlaceholderPage = ({ title, description }: PlaceholderPageProps) => {
             {title}
           </h1>
           <p className="text-charity-neutral-600 mb-6">
-            {description || 'This page is currently under development. Please check back soon for updates on our latest content and features.'}
+            {description ||
+              "This page is currently under development. Please check back soon for updates on our latest content and features."}
           </p>
         </div>
-        
+
         <div className="space-y-4">
           <Link
             to="/"
@@ -28,9 +29,10 @@ const PlaceholderPage = ({ title, description }: PlaceholderPageProps) => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Link>
-          
+
           <p className="text-sm text-charity-neutral-500">
-            Want to see this page completed? Let us know what content would be most helpful to you.
+            Want to see this page completed? Let us know what content would be
+            most helpful to you.
           </p>
         </div>
       </div>

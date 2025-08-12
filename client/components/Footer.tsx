@@ -1,5 +1,12 @@
-import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from "react-router-dom";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -14,8 +21,9 @@ const Footer = () => {
               className="h-12 w-auto"
             />
             <p className="text-charity-neutral-300 text-sm leading-relaxed">
-              Tabasamu Charity is dedicated to improving the lives of children and communities 
-              through education, healthcare, and sustainable development programs.
+              Tabasamu Charity is dedicated to improving the lives of children
+              and communities through education, healthcare, and sustainable
+              development programs.
             </p>
             <div className="flex space-x-4">
               <a
@@ -47,40 +55,40 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  to="/about" 
+                <Link
+                  to="/about"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/programs" 
+                <Link
+                  to="/programs"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   Our Programs
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/get-involved/volunteer" 
+                <Link
+                  to="/get-involved/volunteer"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   Volunteer
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/get-involved/donate" 
+                <Link
+                  to="/get-involved/donate"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   Donate
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/blog" 
+                <Link
+                  to="/blog"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   Blog
@@ -94,24 +102,24 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Our Programs</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  to="/programs/schools" 
+                <Link
+                  to="/programs/schools"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   School Volunteering
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/programs/hospitals" 
+                <Link
+                  to="/programs/hospitals"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   Hospital Internships
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/get-involved/sponsor" 
+                <Link
+                  to="/get-involved/sponsor"
                   className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
                 >
                   Child Sponsorship
@@ -127,23 +135,30 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-charity-orange-400 mt-0.5 flex-shrink-0" />
                 <p className="text-charity-neutral-300 text-sm">
-                  123 Charity Street<br />
+                  123 Charity Street
+                  <br />
                   Dar es Salaam, Tanzania
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-charity-orange-400 flex-shrink-0" />
-                <p className="text-charity-neutral-300 text-sm">+255 123 456 789</p>
+                <p className="text-charity-neutral-300 text-sm">
+                  +255 123 456 789
+                </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-charity-orange-400 flex-shrink-0" />
-                <p className="text-charity-neutral-300 text-sm">info@tabasamu.org</p>
+                <p className="text-charity-neutral-300 text-sm">
+                  info@tabasamu.org
+                </p>
               </div>
             </div>
 
             {/* Interactive Mini Map */}
             <div className="relative group">
-              <h4 className="text-sm font-semibold text-charity-neutral-200 mb-2">Find Us</h4>
+              <h4 className="text-sm font-semibold text-charity-neutral-200 mb-2">
+                Find Us
+              </h4>
               <div className="w-full h-32 bg-charity-neutral-700 rounded-lg overflow-hidden cursor-pointer group-hover:shadow-lg transition-shadow duration-300 border border-charity-neutral-600">
                 <div className="relative w-full h-full bg-gradient-to-br from-charity-green-400/20 to-charity-orange-400/20 flex items-center justify-center">
                   {/* Simulated map with landmarks */}
@@ -180,7 +195,9 @@ const Footer = () => {
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-charity-orange-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-xs text-white font-medium">Click to view larger map</p>
+                  <p className="text-xs text-white font-medium">
+                    Click to view larger map
+                  </p>
                 </div>
               </div>
             </div>
@@ -192,7 +209,8 @@ const Footer = () => {
           <div className="text-center">
             <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
             <p className="text-charity-neutral-300 mb-4">
-              Subscribe to our newsletter to receive the latest updates about our programs and impact.
+              Subscribe to our newsletter to receive the latest updates about
+              our programs and impact.
             </p>
             <div className="max-w-md mx-auto flex space-x-3">
               <input

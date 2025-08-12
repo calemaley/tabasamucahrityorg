@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   GraduationCap,
   Stethoscope,
@@ -9,11 +9,11 @@ import {
   ArrowRight,
   Calendar,
   MapPin,
-  Clock
-} from 'lucide-react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import AnimatedSection from '@/components/AnimatedSection';
+  Clock,
+} from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Programs = () => {
   const mainPrograms = [
@@ -21,27 +21,45 @@ const Programs = () => {
       icon: GraduationCap,
       title: "Education Support",
       subtitle: "Building foundations for success",
-      description: "Our education programs provide children with access to quality learning opportunities, school supplies, and educational resources that set them up for success.",
+      description:
+        "Our education programs provide children with access to quality learning opportunities, school supplies, and educational resources that set them up for success.",
       image: "/placeholder.svg",
-      features: ["School supply distribution", "Scholarship programs", "After-school tutoring", "Library development"],
+      features: [
+        "School supply distribution",
+        "Scholarship programs",
+        "After-school tutoring",
+        "Library development",
+      ],
       color: "charity-orange-500",
     },
     {
       icon: Stethoscope,
       title: "Healthcare Services",
       subtitle: "Ensuring healthy communities",
-      description: "We provide essential healthcare services through mobile clinics, health education programs, and partnerships with local medical facilities.",
+      description:
+        "We provide essential healthcare services through mobile clinics, health education programs, and partnerships with local medical facilities.",
       image: "/placeholder.svg",
-      features: ["Mobile health clinics", "Preventive care programs", "Health education", "Emergency medical support"],
+      features: [
+        "Mobile health clinics",
+        "Preventive care programs",
+        "Health education",
+        "Emergency medical support",
+      ],
       color: "charity-green-500",
     },
     {
       icon: Users,
       title: "Community Development",
       subtitle: "Empowering sustainable growth",
-      description: "Our community development initiatives focus on building local capacity and creating sustainable solutions for long-term prosperity.",
+      description:
+        "Our community development initiatives focus on building local capacity and creating sustainable solutions for long-term prosperity.",
       image: "/placeholder.svg",
-      features: ["Skills training workshops", "Microfinance programs", "Leadership development", "Infrastructure projects"],
+      features: [
+        "Skills training workshops",
+        "Microfinance programs",
+        "Leadership development",
+        "Infrastructure projects",
+      ],
       color: "charity-orange-600",
     },
   ];
@@ -50,7 +68,8 @@ const Programs = () => {
     {
       icon: GraduationCap,
       title: "School Volunteering",
-      description: "Volunteers work directly with children in schools, providing educational support and mentorship.",
+      description:
+        "Volunteers work directly with children in schools, providing educational support and mentorship.",
       duration: "3-6 months",
       location: "Rural schools across Tanzania",
       participants: "50+ volunteers annually",
@@ -58,7 +77,8 @@ const Programs = () => {
     {
       icon: Stethoscope,
       title: "Hospital Internships",
-      description: "Medical students and professionals gain experience while providing essential healthcare services.",
+      description:
+        "Medical students and professionals gain experience while providing essential healthcare services.",
       duration: "6-12 months",
       location: "Partner hospitals",
       participants: "20+ interns annually",
@@ -66,7 +86,8 @@ const Programs = () => {
     {
       icon: Droplets,
       title: "Clean Water Initiative",
-      description: "Installing wells and water purification systems in communities lacking clean water access.",
+      description:
+        "Installing wells and water purification systems in communities lacking clean water access.",
       duration: "Ongoing",
       location: "Remote villages",
       participants: "Community-led projects",
@@ -74,7 +95,8 @@ const Programs = () => {
     {
       icon: Utensils,
       title: "Nutrition Program",
-      description: "Providing nutritious meals and education about healthy eating habits for children and families.",
+      description:
+        "Providing nutritious meals and education about healthy eating habits for children and families.",
       duration: "Year-round",
       location: "Schools and community centers",
       participants: "500+ children served daily",
@@ -82,7 +104,8 @@ const Programs = () => {
     {
       icon: Home,
       title: "Housing Support",
-      description: "Building and renovating homes for families in need of safe, secure shelter.",
+      description:
+        "Building and renovating homes for families in need of safe, secure shelter.",
       duration: "Seasonal projects",
       location: "Various communities",
       participants: "100+ families helped",
@@ -94,19 +117,22 @@ const Programs = () => {
       title: "Annual School Supply Drive",
       date: "June 15, 2024",
       location: "Dar es Salaam Community Center",
-      description: "Join us for our biggest school supply collection event of the year.",
+      description:
+        "Join us for our biggest school supply collection event of the year.",
     },
     {
       title: "Mobile Clinic Outreach",
       date: "July 2-5, 2024",
       location: "Mwanza Region",
-      description: "Free health screenings and medical care for rural communities.",
+      description:
+        "Free health screenings and medical care for rural communities.",
     },
     {
       title: "Volunteer Training Workshop",
       date: "August 10, 2024",
       location: "Tabasamu Training Center",
-      description: "Comprehensive training for new volunteers joining our programs.",
+      description:
+        "Comprehensive training for new volunteers joining our programs.",
     },
   ];
 
@@ -122,7 +148,8 @@ const Programs = () => {
                 Our Programs
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-                Comprehensive initiatives designed to create lasting positive change in education, healthcare, and community development
+                Comprehensive initiatives designed to create lasting positive
+                change in education, healthcare, and community development
               </p>
             </div>
           </AnimatedSection>
@@ -134,9 +161,12 @@ const Programs = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">Core Programs</h2>
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                Core Programs
+              </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Our three main program areas work together to address the fundamental needs of communities and create sustainable impact.
+                Our three main program areas work together to address the
+                fundamental needs of communities and create sustainable impact.
               </p>
             </div>
           </AnimatedSection>
@@ -145,9 +175,15 @@ const Programs = () => {
             {mainPrograms.map((program, index) => {
               const IconComponent = program.icon;
               return (
-                <AnimatedSection key={index} animation={index % 2 === 0 ? "slideRight" : "slideLeft"} delay={index * 200}>
-                  <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                    <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                <AnimatedSection
+                  key={index}
+                  animation={index % 2 === 0 ? "slideRight" : "slideLeft"}
+                  delay={index * 200}
+                >
+                  <div
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                  >
+                    <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                       <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                         <img
                           src={program.image}
@@ -156,26 +192,43 @@ const Programs = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <div className="absolute bottom-6 left-6">
-                          <div className={`w-12 h-12 bg-${program.color} rounded-full flex items-center justify-center mb-3`}>
+                          <div
+                            className={`w-12 h-12 bg-${program.color} rounded-full flex items-center justify-center mb-3`}
+                          >
                             <IconComponent className="h-6 w-6 text-white" />
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                    <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                       <div className="space-y-6">
                         <div>
-                          <p className={`text-${program.color} font-semibold mb-2`}>{program.subtitle}</p>
-                          <h3 className="text-4xl font-bold text-charity-neutral-800 mb-4">{program.title}</h3>
-                          <p className="text-lg text-charity-neutral-600 leading-relaxed">{program.description}</p>
+                          <p
+                            className={`text-${program.color} font-semibold mb-2`}
+                          >
+                            {program.subtitle}
+                          </p>
+                          <h3 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                            {program.title}
+                          </h3>
+                          <p className="text-lg text-charity-neutral-600 leading-relaxed">
+                            {program.description}
+                          </p>
                         </div>
 
                         <div className="space-y-3">
                           {program.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-center space-x-3">
-                              <div className={`w-2 h-2 bg-${program.color} rounded-full`}></div>
-                              <span className="text-charity-neutral-700">{feature}</span>
+                            <div
+                              key={featureIndex}
+                              className="flex items-center space-x-3"
+                            >
+                              <div
+                                className={`w-2 h-2 bg-${program.color} rounded-full`}
+                              ></div>
+                              <span className="text-charity-neutral-700">
+                                {feature}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -202,9 +255,12 @@ const Programs = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">Specialized Initiatives</h2>
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                Specialized Initiatives
+              </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Targeted programs addressing specific community needs and providing specialized support.
+                Targeted programs addressing specific community needs and
+                providing specialized support.
               </p>
             </div>
           </AnimatedSection>
@@ -213,14 +269,22 @@ const Programs = () => {
             {specialPrograms.map((program, index) => {
               const IconComponent = program.icon;
               return (
-                <AnimatedSection key={index} animation="scaleIn" delay={index * 100}>
+                <AnimatedSection
+                  key={index}
+                  animation="scaleIn"
+                  delay={index * 100}
+                >
                   <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group">
                     <div className="w-12 h-12 bg-charity-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-charity-orange-200 transition-colors duration-300">
                       <IconComponent className="h-6 w-6 text-charity-orange-600 group-hover:scale-110 transition-transform duration-300" />
                     </div>
 
-                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-3">{program.title}</h3>
-                    <p className="text-charity-neutral-600 mb-4 text-sm leading-relaxed">{program.description}</p>
+                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-3">
+                      {program.title}
+                    </h3>
+                    <p className="text-charity-neutral-600 mb-4 text-sm leading-relaxed">
+                      {program.description}
+                    </p>
 
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center text-charity-neutral-500">
@@ -249,7 +313,9 @@ const Programs = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">Upcoming Events</h2>
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                Upcoming Events
+              </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
                 Join us at our upcoming events and see our programs in action.
               </p>
@@ -258,21 +324,33 @@ const Programs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {upcomingEvents.map((event, index) => (
-              <AnimatedSection key={index} animation="slideUp" delay={index * 100}>
+              <AnimatedSection
+                key={index}
+                animation="slideUp"
+                delay={index * 100}
+              >
                 <div className="bg-charity-orange-50 p-6 rounded-xl border-l-4 border-charity-orange-500 hover:shadow-lg transition-shadow duration-300">
                   <div className="flex items-center mb-4">
                     <Calendar className="h-5 w-5 text-charity-orange-600 mr-2" />
-                    <span className="text-charity-orange-600 font-semibold">{event.date}</span>
+                    <span className="text-charity-orange-600 font-semibold">
+                      {event.date}
+                    </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-charity-neutral-800 mb-2">{event.title}</h3>
+                  <h3 className="text-xl font-bold text-charity-neutral-800 mb-2">
+                    {event.title}
+                  </h3>
 
                   <div className="flex items-center mb-3">
                     <MapPin className="h-4 w-4 text-charity-neutral-500 mr-2" />
-                    <span className="text-charity-neutral-600 text-sm">{event.location}</span>
+                    <span className="text-charity-neutral-600 text-sm">
+                      {event.location}
+                    </span>
                   </div>
 
-                  <p className="text-charity-neutral-600 text-sm mb-4">{event.description}</p>
+                  <p className="text-charity-neutral-600 text-sm mb-4">
+                    {event.description}
+                  </p>
 
                   <button className="text-charity-orange-600 hover:text-charity-orange-700 font-medium text-sm flex items-center group">
                     Learn More
@@ -290,9 +368,12 @@ const Programs = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">Ready to Join Our Programs?</h2>
+              <h2 className="text-4xl font-bold mb-6">
+                Ready to Join Our Programs?
+              </h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Whether you want to volunteer, donate, or partner with us, there's a place for you in our mission.
+                Whether you want to volunteer, donate, or partner with us,
+                there's a place for you in our mission.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

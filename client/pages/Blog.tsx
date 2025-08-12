@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Calendar,
   User,
@@ -9,31 +9,33 @@ import {
   Heart,
   MessageCircle,
   Share2,
-  Filter
-} from 'lucide-react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import AnimatedSection from '@/components/AnimatedSection';
+  Filter,
+} from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Blog = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
-    { id: 'all', label: 'All Posts', count: 24 },
-    { id: 'education', label: 'Education', count: 8 },
-    { id: 'healthcare', label: 'Healthcare', count: 6 },
-    { id: 'community', label: 'Community', count: 5 },
-    { id: 'volunteers', label: 'Volunteers', count: 3 },
-    { id: 'success-stories', label: 'Success Stories', count: 2 },
+    { id: "all", label: "All Posts", count: 24 },
+    { id: "education", label: "Education", count: 8 },
+    { id: "healthcare", label: "Healthcare", count: 6 },
+    { id: "community", label: "Community", count: 5 },
+    { id: "volunteers", label: "Volunteers", count: 3 },
+    { id: "success-stories", label: "Success Stories", count: 2 },
   ];
 
   const blogPosts = [
     {
       id: 1,
       title: "Transforming Lives Through Education: Maria's Journey",
-      excerpt: "Follow Maria's incredible transformation from a struggling student to a community leader, made possible through our education support program.",
-      content: "In the heart of rural Tanzania, Maria's story represents hope and determination...",
+      excerpt:
+        "Follow Maria's incredible transformation from a struggling student to a community leader, made possible through our education support program.",
+      content:
+        "In the heart of rural Tanzania, Maria's story represents hope and determination...",
       image: "/placeholder.svg",
       category: "education",
       author: "Sarah Johnson",
@@ -46,7 +48,8 @@ const Blog = () => {
     {
       id: 2,
       title: "Mobile Clinics Reach Remote Communities",
-      excerpt: "Our healthcare initiative brings essential medical services to underserved populations across Tanzania.",
+      excerpt:
+        "Our healthcare initiative brings essential medical services to underserved populations across Tanzania.",
       content: "Breaking down barriers to healthcare access...",
       image: "/placeholder.svg",
       category: "healthcare",
@@ -60,7 +63,8 @@ const Blog = () => {
     {
       id: 3,
       title: "Building Stronger Communities Together",
-      excerpt: "Community-led initiatives are creating sustainable solutions for local challenges and fostering independence.",
+      excerpt:
+        "Community-led initiatives are creating sustainable solutions for local challenges and fostering independence.",
       content: "When communities come together...",
       image: "/placeholder.svg",
       category: "community",
@@ -74,8 +78,10 @@ const Blog = () => {
     {
       id: 4,
       title: "Volunteer Spotlight: John's Impact in Tanzania",
-      excerpt: "Meet John, a volunteer teacher who has dedicated two years to improving literacy rates in rural schools.",
-      content: "John's journey began with a simple desire to make a difference...",
+      excerpt:
+        "Meet John, a volunteer teacher who has dedicated two years to improving literacy rates in rural schools.",
+      content:
+        "John's journey began with a simple desire to make a difference...",
       image: "/placeholder.svg",
       category: "volunteers",
       author: "Community Team",
@@ -88,7 +94,8 @@ const Blog = () => {
     {
       id: 5,
       title: "Clean Water Initiative: 500 Families Now Have Access",
-      excerpt: "Our latest clean water project has successfully provided safe drinking water to 500 families in the Mwanza region.",
+      excerpt:
+        "Our latest clean water project has successfully provided safe drinking water to 500 families in the Mwanza region.",
       content: "Access to clean water is a fundamental human right...",
       image: "/placeholder.svg",
       category: "community",
@@ -102,7 +109,8 @@ const Blog = () => {
     {
       id: 6,
       title: "Success Story: From Patient to Healer",
-      excerpt: "How one young woman's medical treatment led her to become a community health worker in her village.",
+      excerpt:
+        "How one young woman's medical treatment led her to become a community health worker in her village.",
       content: "Amina's story is one of resilience and giving back...",
       image: "/placeholder.svg",
       category: "success-stories",
@@ -115,15 +123,17 @@ const Blog = () => {
     },
   ];
 
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesCategory =
+      selectedCategory === "all" || post.category === selectedCategory;
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
-  const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPost = blogPosts.find((post) => post.featured);
+  const regularPosts = filteredPosts.filter((post) => !post.featured);
 
   return (
     <>
@@ -133,11 +143,10 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Our Blog
-              </h1>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Blog</h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-                Stories from the field, insights from our work, and updates on the impact we're making together
+                Stories from the field, insights from our work, and updates on
+                the impact we're making together
               </p>
             </div>
           </AnimatedSection>
@@ -168,8 +177,8 @@ const Blog = () => {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     selectedCategory === category.id
-                      ? 'bg-charity-orange-600 text-white'
-                      : 'bg-charity-neutral-100 text-charity-neutral-700 hover:bg-charity-orange-100'
+                      ? "bg-charity-orange-600 text-white"
+                      : "bg-charity-neutral-100 text-charity-neutral-700 hover:bg-charity-orange-100"
                   }`}
                 >
                   {category.label} ({category.count})
@@ -181,16 +190,20 @@ const Blog = () => {
       </section>
 
       {/* Featured Post */}
-      {featuredPost && selectedCategory === 'all' && (
+      {featuredPost && selectedCategory === "all" && (
         <section className="py-16 bg-charity-neutral-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="slideUp">
               <div className="mb-8">
                 <div className="flex items-center gap-2 mb-4">
                   <Tag className="h-5 w-5 text-charity-orange-600" />
-                  <span className="text-charity-orange-600 font-semibold">Featured Story</span>
+                  <span className="text-charity-orange-600 font-semibold">
+                    Featured Story
+                  </span>
                 </div>
-                <h2 className="text-3xl font-bold text-charity-neutral-800">Editor's Pick</h2>
+                <h2 className="text-3xl font-bold text-charity-neutral-800">
+                  Editor's Pick
+                </h2>
               </div>
             </AnimatedSection>
 
@@ -238,7 +251,9 @@ const Blog = () => {
                         </div>
                         <div className="flex items-center gap-1">
                           <MessageCircle className="h-4 w-4" />
-                          <span className="text-sm">{featuredPost.comments}</span>
+                          <span className="text-sm">
+                            {featuredPost.comments}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -256,18 +271,26 @@ const Blog = () => {
           <AnimatedSection animation="slideUp">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-bold text-charity-neutral-800">
-                {selectedCategory === 'all' ? 'Latest Articles' : `${categories.find(c => c.id === selectedCategory)?.label} Articles`}
+                {selectedCategory === "all"
+                  ? "Latest Articles"
+                  : `${categories.find((c) => c.id === selectedCategory)?.label} Articles`}
               </h2>
               <div className="flex items-center gap-2 text-charity-neutral-500">
                 <Filter className="h-4 w-4" />
-                <span className="text-sm">{filteredPosts.length} articles found</span>
+                <span className="text-sm">
+                  {filteredPosts.length} articles found
+                </span>
               </div>
             </div>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post, index) => (
-              <AnimatedSection key={post.id} animation="scaleIn" delay={index * 100}>
+              <AnimatedSection
+                key={post.id}
+                animation="scaleIn"
+                delay={index * 100}
+              >
                 <article className="bg-white border border-charity-neutral-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group">
                   <div className="relative overflow-hidden">
                     <img
@@ -339,7 +362,8 @@ const Blog = () => {
             <div className="text-center text-white">
               <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
               <p className="text-xl mb-8 opacity-90">
-                Subscribe to our newsletter and never miss a story from the field
+                Subscribe to our newsletter and never miss a story from the
+                field
               </p>
 
               <div className="max-w-md mx-auto">
