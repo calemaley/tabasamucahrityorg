@@ -12,14 +12,16 @@ const Navigation = () => {
   };
 
   const menuItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Home', href: '/', icon: Home },
     {
       label: 'About',
       href: '/about',
+      icon: Users,
     },
     {
       label: 'Programs',
       href: '/programs',
+      icon: GraduationCap,
       subItems: [
         { label: 'Volunteering in Schools', href: '/programs/schools' },
         { label: 'Internship in Hospitals', href: '/programs/hospitals' },
@@ -28,14 +30,15 @@ const Navigation = () => {
     {
       label: 'Get Involved',
       href: '/get-involved',
+      icon: Heart,
       subItems: [
         { label: 'Sponsor a Child', href: '/get-involved/sponsor' },
         { label: 'Donate Now', href: '/get-involved/donate' },
         { label: 'Volunteer', href: '/get-involved/volunteer' },
       ],
     },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Blog', href: '/blog', icon: BookOpen },
+    { label: 'Contact Us', href: '/contact', icon: Phone },
   ];
 
   return (
