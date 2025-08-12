@@ -379,16 +379,19 @@ const Index = () => {
             {helpItems.map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div key={index} className="text-center text-white">
-                  <div className="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-                    <IconComponent className="h-10 w-10" />
+                <div key={index} className="text-center text-white group cursor-pointer">
+                  <div className="w-20 h-20 mx-auto mb-6 bg-white/20 group-hover:bg-white/30 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:shadow-xl">
+                    <IconComponent className="h-10 w-10 group-hover:scale-125 group-hover:text-yellow-200 transition-all duration-300" />
                   </div>
-                  <h4 className="text-lg font-bold mb-3">
+                  <h4 className="text-lg font-bold mb-3 group-hover:text-yellow-100 group-hover:scale-105 transition-all duration-300">
                     {item.title}
                   </h4>
-                  <p className="text-white/90 text-sm">
+                  <p className="text-white/90 text-sm group-hover:text-white group-hover:scale-105 transition-all duration-300">
                     {item.description}
                   </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <div className="w-16 h-1 bg-white/50 mx-auto rounded-full group-hover:bg-yellow-200 transition-colors duration-300"></div>
+                  </div>
                 </div>
               );
             })}
