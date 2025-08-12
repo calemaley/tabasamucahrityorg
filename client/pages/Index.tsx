@@ -273,43 +273,49 @@ const Index = () => {
       <section className="py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Volunteer Section */}
-          <div className="relative h-80 lg:h-96 bg-charity-orange-600 flex items-center justify-center overflow-hidden">
+          <div className="relative h-80 lg:h-96 bg-charity-orange-600 flex items-center justify-center overflow-hidden group cursor-pointer">
             <img
               src="/placeholder.svg"
               alt="Volunteer"
-              className="absolute inset-0 w-full h-full object-cover opacity-20"
+              className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-500"
             />
-            <div className="relative text-center text-white px-8">
-              <h3 className="text-3xl font-bold mb-4">Become A Volunteer</h3>
-              <p className="text-xl mb-6 opacity-90">
+            <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-600/80 to-charity-orange-500/80 group-hover:from-charity-orange-700/90 group-hover:to-charity-orange-600/90 transition-all duration-500" />
+            <div className="relative text-center text-white px-8 group-hover:scale-105 transition-transform duration-500">
+              <Users className="h-16 w-16 mx-auto mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
+              <h3 className="text-3xl font-bold mb-4 group-hover:text-yellow-100 transition-colors duration-300">Become A Volunteer</h3>
+              <p className="text-xl mb-6 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                 Join our mission to make a difference
               </p>
               <Link
                 to="/get-involved/volunteer"
-                className="inline-block px-8 py-3 bg-white text-charity-orange-600 hover:bg-charity-neutral-100 rounded-lg font-bold transition-colors duration-200"
+                className="inline-block px-8 py-3 bg-white text-charity-orange-600 hover:bg-yellow-100 hover:scale-105 hover:shadow-lg rounded-lg font-bold transition-all duration-300 group-hover:animate-pulse"
               >
-                JOIN
+                JOIN NOW
+                <ArrowRight className="inline ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
           </div>
 
           {/* Donate Section */}
-          <div className="relative h-80 lg:h-96 bg-charity-green-700 flex items-center justify-center overflow-hidden">
+          <div className="relative h-80 lg:h-96 bg-charity-green-700 flex items-center justify-center overflow-hidden group cursor-pointer">
             <img
               src="/placeholder.svg"
               alt="Donate"
-              className="absolute inset-0 w-full h-full object-cover opacity-20"
+              className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-500"
             />
-            <div className="relative text-center text-white px-8">
-              <h3 className="text-3xl font-bold mb-4">Support Our Cause</h3>
-              <p className="text-xl mb-6 opacity-90">
+            <div className="absolute inset-0 bg-gradient-to-r from-charity-green-700/80 to-charity-green-600/80 group-hover:from-charity-green-800/90 group-hover:to-charity-green-700/90 transition-all duration-500" />
+            <div className="relative text-center text-white px-8 group-hover:scale-105 transition-transform duration-500">
+              <Heart className="h-16 w-16 mx-auto mb-4 group-hover:scale-110 group-hover:text-pink-200 transition-all duration-500 fill-current" />
+              <h3 className="text-3xl font-bold mb-4 group-hover:text-green-100 transition-colors duration-300">Support Our Cause</h3>
+              <p className="text-xl mb-6 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                 Every donation creates lasting impact
               </p>
               <Link
                 to="/get-involved/donate"
-                className="inline-block px-8 py-3 bg-white text-charity-green-700 hover:bg-charity-neutral-100 rounded-lg font-bold transition-colors duration-200"
+                className="inline-block px-8 py-3 bg-white text-charity-green-700 hover:bg-green-100 hover:scale-105 hover:shadow-lg rounded-lg font-bold transition-all duration-300 group-hover:animate-pulse"
               >
                 DONATE NOW
+                <ArrowRight className="inline ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
           </div>
