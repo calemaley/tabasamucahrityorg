@@ -93,7 +93,8 @@ const Contact = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 bg-gradient-to-br from-charity-green-500 to-charity-orange-500">
+      <section className="pt-0 bg-gradient-to-br from-charity-green-500 to-charity-orange-500 relative">
+        <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
