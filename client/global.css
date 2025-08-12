@@ -40,20 +40,47 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Tabasamu Charity Colors */
+    --charity-orange-50: 39 100% 97%;
+    --charity-orange-100: 37 100% 93%;
+    --charity-orange-200: 36 100% 87%;
+    --charity-orange-300: 33 100% 78%;
+    --charity-orange-400: 29 100% 67%;
+    --charity-orange-500: 25 95% 57%;
+    --charity-orange-600: 21 90% 48%;
+    --charity-orange-700: 17 88% 40%;
+    --charity-orange-800: 15 79% 34%;
+    --charity-orange-900: 15 75% 28%;
+
+    --charity-green-50: 120 60% 97%;
+    --charity-green-100: 120 60% 93%;
+    --charity-green-200: 122 55% 84%;
+    --charity-green-300: 124 52% 72%;
+    --charity-green-400: 125 48% 58%;
+    --charity-green-500: 125 44% 45%;
+    --charity-green-600: 125 43% 36%;
+    --charity-green-700: 125 45% 29%;
+    --charity-green-800: 125 44% 24%;
+    --charity-green-900: 125 43% 20%;
+
+    --charity-neutral-50: 60 9% 98%;
+    --charity-neutral-100: 30 9% 95%;
+    --charity-neutral-200: 24 6% 90%;
+    --charity-neutral-300: 24 5% 82%;
+    --charity-neutral-400: 24 5% 64%;
+    --charity-neutral-500: 25 5% 45%;
+    --charity-neutral-600: 33 5% 32%;
+    --charity-neutral-700: 30 6% 25%;
+    --charity-neutral-800: 12 6% 15%;
+    --charity-neutral-900: 24 10% 10%;
   }
 
   .dark {
