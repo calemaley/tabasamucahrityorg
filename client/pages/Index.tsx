@@ -157,6 +157,7 @@ const Index = () => {
     <>
       {/* Hero Carousel */}
       <section className="relative h-screen overflow-hidden">
+        <Navigation />
         <div className="absolute inset-0">
           {heroImages.map((image, index) => (
             <div
