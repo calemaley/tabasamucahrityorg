@@ -90,8 +90,6 @@ const Contact = () => {
 
   return (
     <>
-      <Navigation />
-
       {/* Hero Section */}
       <section className="pt-0 bg-gradient-to-br from-charity-green-500 to-charity-orange-500 relative">
         <Navigation />
