@@ -78,8 +78,6 @@ const GetInvolved = () => {
 
   return (
     <>
-      <Navigation />
-
       {/* Hero Section */}
       <section className="pt-0 bg-gradient-to-br from-charity-orange-500 to-charity-green-600 relative">
         <Navigation />
