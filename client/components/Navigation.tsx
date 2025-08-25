@@ -204,13 +204,14 @@ const Navigation = () => {
 
             {/* Sidebar */}
             <div className="md:hidden fixed top-20 left-0 h-[calc(100vh-5rem)] w-64 bg-white shadow-2xl z-50 transform transition-all duration-300 ease-out animate-in slide-in-from-left-full rounded-tr-2xl rounded-br-2xl border-r border-charity-neutral-200">
-              {/* Close button */}
-              <div className="flex justify-end p-4">
+              {/* Sidebar Header */}
+              <div className="flex items-center justify-between p-4 border-b border-charity-neutral-100 bg-charity-orange-50/30">
+                <h3 className="font-bold text-charity-neutral-800 text-lg">Menu</h3>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full"
+                  className="p-2 hover:bg-charity-orange-100 rounded-full transition-colors duration-200"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-5 w-5 text-charity-neutral-600" />
                 </button>
               </div>
 
