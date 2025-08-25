@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Star,
   Award,
+  ChevronDown,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
