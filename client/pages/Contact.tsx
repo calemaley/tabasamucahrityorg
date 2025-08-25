@@ -517,53 +517,68 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <div className="group">
-                      <label className="block text-sm font-semibold text-charity-neutral-700 mb-3">
+                    <div className="group relative">
+                      <label className="block text-sm font-semibold text-charity-neutral-700 mb-3 transition-colors duration-300 group-focus-within:text-charity-orange-600">
                         Inquiry Type
                       </label>
-                      <select
-                        name="type"
-                        value={formData.type}
-                        onChange={handleChange}
-                        className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300"
-                      >
-                        <option value="general">General Inquiry</option>
-                        <option value="volunteer">Volunteering</option>
-                        <option value="donation">Donations</option>
-                        <option value="sponsorship">Child Sponsorship</option>
-                        <option value="partnership">Partnerships</option>
-                        <option value="media">Media & Press</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="type"
+                          value={formData.type}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300 focus:scale-[1.02] bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
+                        >
+                          <option value="general">💬 General Inquiry</option>
+                          <option value="volunteer">👥 Volunteering</option>
+                          <option value="donation">💝 Donations</option>
+                          <option value="sponsorship">🧒 Child Sponsorship</option>
+                          <option value="partnership">🤝 Partnerships</option>
+                          <option value="media">📰 Media & Press</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                          <ChevronDown className="h-5 w-5 text-charity-neutral-500" />
+                        </div>
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-focus-within:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
+                      </div>
                     </div>
 
-                    <div className="group">
-                      <label className="block text-sm font-semibold text-charity-neutral-700 mb-3">
+                    <div className="group relative">
+                      <label className="block text-sm font-semibold text-charity-neutral-700 mb-3 transition-colors duration-300 group-focus-within:text-charity-orange-600">
                         Subject *
                       </label>
-                      <input
-                        type="text"
-                        name="subject"
-                        required
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300"
-                        placeholder="Brief subject of your message"
-                      />
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="subject"
+                          required
+                          value={formData.subject}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300 focus:scale-[1.02] bg-white/80 backdrop-blur-sm"
+                          placeholder="Brief subject of your message"
+                        />
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-focus-within:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
+                      </div>
                     </div>
 
-                    <div className="group">
-                      <label className="block text-sm font-semibold text-charity-neutral-700 mb-3">
+                    <div className="group relative">
+                      <label className="block text-sm font-semibold text-charity-neutral-700 mb-3 transition-colors duration-300 group-focus-within:text-charity-orange-600">
                         Message *
                       </label>
-                      <textarea
-                        name="message"
-                        required
-                        rows={6}
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300 resize-none"
-                        placeholder="Tell us more about your inquiry..."
-                      />
+                      <div className="relative">
+                        <textarea
+                          name="message"
+                          required
+                          rows={6}
+                          value={formData.message}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300 resize-none focus:scale-[1.02] bg-white/80 backdrop-blur-sm"
+                          placeholder="Tell us more about your inquiry..."
+                        />
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-focus-within:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
+                        <div className="absolute bottom-4 right-4 text-xs text-charity-neutral-400 pointer-events-none">
+                          {formData.message.length}/500
+                        </div>
+                      </div>
                     </div>
 
                     <button
