@@ -6,19 +6,19 @@ export interface PaymentConfig {
   volunteerUrl: string;
 }
 
-// Payment URLs - Update these with your actual payment processor URLs
+// Payment URLs - Using Zenlipa payment processor
 export const PAYMENT_URLS: PaymentConfig = {
   // Main donation page - for general donations
-  donationUrl: "https://donate.tabasamu.org/general",
-  
+  donationUrl: "https://zenlipa.co.ke/c/uKowYx",
+
   // Child sponsorship payments
-  sponsorshipUrl: "https://donate.tabasamu.org/sponsor",
-  
+  sponsorshipUrl: "https://zenlipa.co.ke/c/uKowYx",
+
   // General support payments
-  generalUrl: "https://donate.tabasamu.org/support",
-  
+  generalUrl: "https://zenlipa.co.ke/c/uKowYx",
+
   // Volunteer program support
-  volunteerUrl: "https://donate.tabasamu.org/volunteer-support"
+  volunteerUrl: "https://zenlipa.co.ke/c/uKowYx"
 };
 
 // Payment redirection function
