@@ -203,7 +203,7 @@ const Navigation = () => {
             />
 
             {/* Sidebar */}
-            <div className="md:hidden fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300">
+            <div className="md:hidden fixed top-20 left-0 h-[calc(100vh-5rem)] w-64 bg-white shadow-2xl z-50 transform transition-all duration-300 ease-out animate-in slide-in-from-left-full rounded-tr-2xl rounded-br-2xl border-r border-charity-neutral-200">
               {/* Close button */}
               <div className="flex justify-end p-4">
                 <button
