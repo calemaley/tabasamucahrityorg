@@ -67,6 +67,62 @@ const SectionReveal = ({ children, rootMargin = "-10% 0px -10% 0px", threshold =
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Featured children for homepage (first 4)
+  const featuredChildren = [
+    {
+      id: "maria-001",
+      name: "Maria Mwangi",
+      age: 8,
+      location: "Mwanza Region",
+      school: "Mwanza Primary School",
+      grade: "Standard 3",
+      story: "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 45,
+      interests: ["Mathematics", "Reading", "Farming"],
+      dreamJob: "Teacher"
+    },
+    {
+      id: "david-002",
+      name: "David Kimaro",
+      age: 12,
+      location: "Arusha Region",
+      school: "Arusha Community Secondary",
+      grade: "Form 1",
+      story: "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 65,
+      interests: ["Biology", "Chemistry", "Football"],
+      dreamJob: "Doctor"
+    },
+    {
+      id: "grace-003",
+      name: "Grace Mtema",
+      age: 15,
+      location: "Dodoma Region",
+      school: "Dodoma Girls Education Center",
+      grade: "Form 3",
+      story: "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
+      image: "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 75,
+      interests: ["Mathematics", "Physics", "Technology"],
+      dreamJob: "Engineer"
+    },
+    {
+      id: "john-004",
+      name: "John Massawe",
+      age: 10,
+      location: "Kilimanjaro Region",
+      school: "Kilimanjaro Primary School",
+      grade: "Standard 5",
+      story: "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 50,
+      interests: ["Reading", "Writing", "History"],
+      dreamJob: "Writer"
+    }
+  ];
+
   const heroImages = [
     {
       src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F0417d8d5fa4c4c179a585018273842e1?format=webp&width=800",
