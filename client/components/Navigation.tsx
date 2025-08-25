@@ -182,17 +182,34 @@ const Navigation = () => {
                         {activeDropdown === item.label && (
                           <div className="mt-2 pl-8 space-y-1 animate-in slide-in-from-top-1 duration-200">
                             {item.subItems.map((subItem) => (
-                              <Link
-                                key={subItem.label}
-                                to={subItem.href}
-                                className="block text-charity-neutral-600 hover:text-charity-orange-600 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-charity-orange-50"
-                                onClick={() => {
-                                  setIsMenuOpen(false);
-                                  setActiveDropdown(null);
-                                }}
-                              >
-                                {subItem.label}
-                              </Link>
+                              subItem.isPayment ? (
+                                <button
+                                  key={subItem.label}
+                                  onClick={() => {
+                                    redirectToPayment(subItem.paymentType, {
+                                      source: CAMPAIGN_SOURCES.navigation,
+                                      campaign: subItem.label.toLowerCase().replace(' ', '-')
+                                    });
+                                    setIsMenuOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
+                                  className="block w-full text-left text-charity-neutral-600 hover:text-charity-orange-600 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-charity-orange-50"
+                                >
+                                  {subItem.label}
+                                </button>
+                              ) : (
+                                <Link
+                                  key={subItem.label}
+                                  to={subItem.href}
+                                  className="block text-charity-neutral-600 hover:text-charity-orange-600 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-charity-orange-50"
+                                  onClick={() => {
+                                    setIsMenuOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
+                                >
+                                  {subItem.label}
+                                </Link>
+                              )
                             ))}
                           </div>
                         )}
