@@ -252,7 +252,7 @@ const Children = () => {
                   >
                     <option value="all">All Ages</option>
                     <option value="young">Young (≤10 years)</option>
-                    <option value="teen">Teen (>10 years)</option>
+                    <option value="teen">Teen (&gt;10 years)</option>
                   </select>
                 </div>
 
