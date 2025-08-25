@@ -154,7 +154,12 @@ const Navigation = () => {
                   ) : (
                     <Link
                       to={item.href}
-                      className="flex items-center space-x-1.5 text-white hover:text-charity-orange-200 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg hover:bg-white/10 group"
+                      className={cn(
+                        "flex items-center space-x-1.5 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg group",
+                        isScrolled || isMenuOpen
+                          ? "text-charity-neutral-800 hover:text-charity-orange-600 hover:bg-charity-orange-50"
+                          : "text-white hover:text-charity-orange-200 hover:bg-white/10"
+                      )}
                     >
                       <IconComponent className="h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
                       <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">
