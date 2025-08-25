@@ -118,46 +118,98 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-0 relative overflow-hidden">
-        {/* YouTube Background - full width & height */}
-        <div className="absolute inset-0 overflow-hidden">
-          <iframe
-            id="bgVideo"
-            className="absolute top-1/2 left-1/2 w-[200vw] h-[200vh] -translate-x-1/2 -translate-y-1/2"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&modestbranding=1"
-            title="YouTube video background"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-        {/* Content */}
+      <section className="pt-0 relative overflow-hidden bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
         <Navigation />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <AnimatedSection animation="slideUp">
-            <div className="text-center text-white">
-              <h1
-  style={{
-    fontFamily: "'Verdana', 'Courier New', monospace",
-    fontWeight: "bold",
-    fontSize: "3rem", // ~48px (you can adjust for md screens)
-    marginBottom: "1.5rem",
-    color: "black",
-  }}
->
-  
-</h1>
-
-
-
-
-              <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+            <div className="text-center mb-16">
+              <h1 className="text-5xl md:text-6xl font-bold text-charity-neutral-800 mb-6">
+                About Tabasamu
+              </h1>
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto text-charity-neutral-600">
                 Building brighter futures through education, healthcare, and
                 community development since 2015
               </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Founder's Message Section */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="slideRight">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Founder Photo - Stylized Card */}
+              <div className="relative">
+                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <div className="bg-gradient-to-br from-charity-orange-100 to-charity-green-100 p-8 rounded-3xl shadow-2xl">
+                    <div className="transform -rotate-2">
+                      <img
+                        src="https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F44c32d1cc5014f039d98cddadbcab10b?format=webp&width=800"
+                        alt="A.O.Suleiman Kagwe - Founder"
+                        className="w-full h-96 object-cover rounded-2xl shadow-lg"
+                      />
+                    </div>
+                    <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-full shadow-xl">
+                      <Heart className="h-8 w-8 text-charity-orange-600" />
+                    </div>
+                    <div className="absolute -top-4 -left-4 bg-charity-green-500 text-white px-4 py-2 rounded-full text-sm font-bold transform -rotate-12">
+                      Founder
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Founder's Message */}
+              <div className="space-y-8">
+                <div>
+                  <h2 className="text-4xl font-bold text-charity-neutral-800 mb-6">
+                    A Message from Our Founder
+                  </h2>
+                  <div className="text-lg text-charity-neutral-600 leading-relaxed space-y-4">
+                    <p className="italic text-charity-orange-700 text-xl">
+                      "Every child has a dream, and every smile holds a promise. As I journey through life, my story unfolds with a simple yet profound purpose: to ignite sparks of joy and fuel the dreams of those around me."
+                    </p>
+                    <p>
+                      In nurturing the needy and spreading love, I believe we embody the truest essence of humanity. Every act of kindness creates ripples that extend far beyond what we can see, touching lives and transforming communities in ways we may never fully comprehend.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Signature Section */}
+                <div className="border-t border-charity-neutral-200 pt-8">
+                  <div className="flex items-center space-x-6">
+                    <div>
+                      <img
+                        src="https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F7770cebdcca846749404ed197d79d32c?format=webp&width=800"
+                        alt="A.O.Suleiman Kagwe Signature"
+                        className="h-16 w-auto"
+                      />
+                      <div className="mt-2">
+                        <p className="font-bold text-charity-neutral-800">A.O.Suleiman Kagwe</p>
+                        <p className="text-charity-orange-600 font-medium">Founder & CEO</p>
+                        <p className="text-sm text-charity-neutral-500">Tabasamu Charity</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Call to Action */}
+                <div className="bg-charity-orange-50 p-6 rounded-xl border-l-4 border-charity-orange-500">
+                  <h3 className="font-bold text-charity-neutral-800 mb-2">Join Our Mission</h3>
+                  <p className="text-charity-neutral-600 mb-4">
+                    Together, we can create lasting change in the lives of children and communities.
+                  </p>
+                  <Link
+                    to="/get-involved"
+                    className="inline-flex items-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium group"
+                  >
+                    Get Involved Today
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>
