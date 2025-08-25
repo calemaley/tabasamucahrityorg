@@ -95,14 +95,30 @@ const Navigation = () => {
                       {activeDropdown === item.label && (
                         <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-in slide-in-from-top-2 duration-200">
                           {item.subItems.map((subItem) => (
-                            <Link
-                              key={subItem.label}
-                              to={subItem.href}
-                              className="block px-4 py-3 text-charity-neutral-600 hover:text-charity-orange-600 hover:bg-charity-orange-50 hover:translate-x-1 transition-all duration-200 mx-2 rounded-lg"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              {subItem.label}
-                            </Link>
+                            subItem.isPayment ? (
+                              <button
+                                key={subItem.label}
+                                onClick={() => {
+                                  redirectToPayment(subItem.paymentType, {
+                                    source: CAMPAIGN_SOURCES.navigation,
+                                    campaign: subItem.label.toLowerCase().replace(' ', '-')
+                                  });
+                                  setActiveDropdown(null);
+                                }}
+                                className="block w-full text-left px-4 py-3 text-charity-neutral-600 hover:text-charity-orange-600 hover:bg-charity-orange-50 hover:translate-x-1 transition-all duration-200 mx-2 rounded-lg"
+                              >
+                                {subItem.label}
+                              </button>
+                            ) : (
+                              <Link
+                                key={subItem.label}
+                                to={subItem.href}
+                                className="block px-4 py-3 text-charity-neutral-600 hover:text-charity-orange-600 hover:bg-charity-orange-50 hover:translate-x-1 transition-all duration-200 mx-2 rounded-lg"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {subItem.label}
+                              </Link>
+                            )
                           ))}
                         </div>
                       )}
