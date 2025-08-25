@@ -15,6 +15,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
 const About = () => {
   const [selectedMember, setSelectedMember] = useState<any>(null);
@@ -485,13 +486,16 @@ const About = () => {
                   Become a Volunteer
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-                <Link
-                  to="/get-involved/donate"
+                <button
+                  onClick={() => redirectToPayment('donationUrl', {
+                    source: CAMPAIGN_SOURCES.about,
+                    campaign: 'about-cta'
+                  })}
                   className="inline-flex items-center px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-charity-green-700 rounded-lg font-bold transition-colors duration-200"
                 >
                   Make a Donation
                   <Heart className="ml-2 h-4 w-4" />
-                </Link>
+                </button>
               </div>
             </div>
           </AnimatedSection>
