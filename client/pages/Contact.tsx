@@ -582,13 +582,33 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <button
-                      type="submit"
-                      className="w-full px-8 py-4 bg-gradient-to-r from-charity-orange-600 to-charity-orange-700 hover:from-charity-orange-700 hover:to-charity-orange-800 text-white rounded-xl font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center group"
-                    >
-                      <Send className="h-5 w-5 mr-3 group-hover:translate-x-1 transition-transform duration-200" />
-                      Submit Professional Inquiry
-                    </button>
+                    <div className="space-y-4">
+                      <button
+                        type="submit"
+                        className="w-full relative px-8 py-4 bg-gradient-to-r from-charity-orange-600 to-charity-orange-700 hover:from-charity-orange-700 hover:to-charity-orange-800 text-white rounded-xl font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center group overflow-hidden"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                        <Send className="h-5 w-5 mr-3 group-hover:translate-x-1 group-hover:rotate-12 transition-all duration-200 relative z-10" />
+                        <span className="relative z-10">Submit Professional Inquiry</span>
+                        <div className="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                      </button>
+
+                      <div className="text-center">
+                        <p className="text-sm text-charity-neutral-600 mb-3">
+                          Want to make an immediate impact?
+                        </p>
+                        <button
+                          onClick={() => redirectToPayment('donationUrl', {
+                            source: CAMPAIGN_SOURCES.contact,
+                            campaign: 'contact-form-cta'
+                          })}
+                          className="inline-flex items-center px-6 py-2 bg-charity-green-600 hover:bg-charity-green-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg"
+                        >
+                          <Heart className="h-4 w-4 mr-2" />
+                          Donate Now
+                        </button>
+                      </div>
+                    </div>
                   </form>
                 )}
               </div>
