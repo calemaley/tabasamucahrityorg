@@ -14,19 +14,6 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const About = () => {
-  useEffect(() => {
-    // Enable sound after any click (once)
-    const enableSound = () => {
-      const iframe = document.getElementById("bgVideo") as HTMLIFrameElement;
-      if (iframe && iframe.src.includes("mute=1")) {
-        iframe.src = iframe.src.replace("mute=1", "mute=0");
-      }
-    };
-    document.addEventListener("click", enableSound, { once: true });
-    return () => {
-      document.removeEventListener("click", enableSound);
-    };
-  }, []);
 
   const teamMembers = [
     {
