@@ -15,6 +15,7 @@ import GetInvolved from "./pages/GetInvolved";
 import Sponsor from "./pages/Sponsor";
 import Donate from "./pages/Donate";
 import Volunteer from "./pages/Volunteer";
+import Children from "./pages/Children";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/sponsor" element={<Sponsor />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/volunteer" element={<Volunteer />} />
+          <Route path="/children" element={<Children />} />
           <Route path="/get-involved/*" element={<GetInvolved />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
