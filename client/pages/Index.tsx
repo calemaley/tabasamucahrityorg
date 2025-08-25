@@ -652,12 +652,17 @@ const Index = () => {
                         </span>
                       </div>
 
-                      <Link
-                        to="/sponsor"
+                      <button
+                        onClick={() => redirectToPayment('sponsorshipUrl', {
+                          childId: child.id,
+                          amount: child.monthlyNeed,
+                          source: CAMPAIGN_SOURCES.children,
+                          campaign: `sponsor-${child.name.split(" ")[0].toLowerCase()}`
+                        })}
                         className="block w-full px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg text-center"
                       >
                         💝 Sponsor {child.name.split(" ")[0]}
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
