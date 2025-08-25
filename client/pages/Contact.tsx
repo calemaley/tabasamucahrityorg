@@ -478,36 +478,42 @@ const Contact = () => {
                     </div>
                   </AnimatedSection>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="group">
-                        <label className="block text-sm font-semibold text-charity-neutral-700 mb-3">
+                      <div className="group relative">
+                        <label className="block text-sm font-semibold text-charity-neutral-700 mb-3 transition-colors duration-300 group-focus-within:text-charity-orange-600">
                           Full Name *
                         </label>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300"
-                          placeholder="Your full name"
-                        />
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="name"
+                            required
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300 focus:scale-[1.02] bg-white/80 backdrop-blur-sm"
+                            placeholder="Your full name"
+                          />
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-focus-within:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
+                        </div>
                       </div>
 
-                      <div className="group">
-                        <label className="block text-sm font-semibold text-charity-neutral-700 mb-3">
+                      <div className="group relative">
+                        <label className="block text-sm font-semibold text-charity-neutral-700 mb-3 transition-colors duration-300 group-focus-within:text-charity-orange-600">
                           Email Address *
                         </label>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300"
-                          placeholder="your@email.com"
-                        />
+                        <div className="relative">
+                          <input
+                            type="email"
+                            name="email"
+                            required
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full px-4 py-4 border-2 border-charity-neutral-200 rounded-xl focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500 transition-all duration-300 group-hover:border-charity-orange-300 focus:scale-[1.02] bg-white/80 backdrop-blur-sm"
+                            placeholder="your@email.com"
+                          />
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-focus-within:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
+                        </div>
                       </div>
                     </div>
 
