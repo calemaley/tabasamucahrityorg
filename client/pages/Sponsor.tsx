@@ -153,8 +153,22 @@ const Sponsor = () => {
 
   const handleSponsorApplication = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would submit to an API
-    alert("Sponsorship application submitted successfully! Our team will contact you within 24 hours to complete the process.");
+
+    // Store the sponsorship data (in a real app, this would submit to an API)
+    const sponsorshipInfo = {
+      ...sponsorshipData,
+      childId: selectedChild,
+      timestamp: new Date().toISOString()
+    };
+
+    // Save to localStorage for tracking (temporary solution)
+    localStorage.setItem('sponsorshipApplication', JSON.stringify(sponsorshipInfo));
+
+    // Redirect to payment with sponsorship details
+    const paymentUrl = 'https://zenlipa.co.ke/c/uKowYx';
+    window.open(paymentUrl, '_blank');
+
+    // Reset form and close modal
     setSponsorshipData({
       name: "",
       email: "",
@@ -165,6 +179,9 @@ const Sponsor = () => {
       message: "",
     });
     setSelectedChild(null);
+
+    // Show success message
+    alert("Redirecting to secure payment portal. After payment, our team will contact you within 24 hours to complete the sponsorship setup.");
   };
 
   return (
