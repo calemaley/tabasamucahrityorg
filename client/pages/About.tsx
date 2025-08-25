@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Users,
@@ -8,12 +8,16 @@ import {
   Globe,
   Lightbulb,
   ArrowRight,
+  X,
+  Mail,
+  Phone,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const About = () => {
+  const [selectedMember, setSelectedMember] = useState<any>(null);
 
   const teamMembers = [
     {
@@ -21,24 +25,40 @@ const About = () => {
       role: "Executive Director",
       image: "/placeholder.svg",
       bio: "With over 15 years in nonprofit leadership, Sarah drives our mission forward.",
+      fullBio: "Sarah brings over 15 years of nonprofit leadership experience to Tabasamu Charity. She has previously worked with international development organizations across Africa, focusing on sustainable community development and educational initiatives. Her passion for empowering communities through education and healthcare has driven our organization's growth and impact. Sarah holds a Master's in International Development and speaks fluent Swahili and English.",
+      email: "sarah@tabasamu.org",
+      phone: "+254-700-123-456",
+      achievements: ["Led 50+ community development projects", "Secured over $2M in funding", "Established partnerships with 25+ local organizations"]
     },
     {
       name: "Dr. Michael Brown",
       role: "Medical Director",
       image: "/placeholder.svg",
       bio: "Leading our healthcare initiatives with expertise in community medicine.",
+      fullBio: "Dr. Michael Brown is a board-certified physician with extensive experience in community health and tropical medicine. He has spent over 12 years working in rural healthcare settings across East Africa, developing innovative approaches to healthcare delivery in resource-limited environments. His work has significantly improved health outcomes in the communities we serve.",
+      email: "michael@tabasamu.org",
+      phone: "+254-700-123-457",
+      achievements: ["Established 5 mobile health clinics", "Trained 100+ community health workers", "Reduced infant mortality by 40% in target areas"]
     },
     {
       name: "Emma Wilson",
       role: "Program Coordinator",
       image: "/placeholder.svg",
       bio: "Ensuring our programs reach those who need them most.",
+      fullBio: "Emma Wilson coordinates all our program activities with exceptional attention to detail and community engagement. With a background in social work and project management, she ensures that our initiatives are implemented effectively and reach the most vulnerable populations. Emma's dedication to measurable impact has helped us achieve our program goals consistently.",
+      email: "emma@tabasamu.org",
+      phone: "+254-700-123-458",
+      achievements: ["Coordinated programs reaching 5,000+ beneficiaries", "Achieved 95% program completion rate", "Developed community feedback systems"]
     },
     {
       name: "James Mwalimu",
       role: "Community Liaison",
       image: "/placeholder.svg",
       bio: "Connecting communities with sustainable development opportunities.",
+      fullBio: "James Mwalimu serves as our vital link to the communities we serve. Born and raised in rural Kenya, he brings deep cultural understanding and community trust to our work. His ability to build relationships and facilitate meaningful dialogue between our organization and local communities has been instrumental in our success and sustainability.",
+      email: "james@tabasamu.org",
+      phone: "+254-700-123-459",
+      achievements: ["Built partnerships with 30+ community leaders", "Facilitated 200+ community meetings", "Increased community participation by 70%"]
     },
   ];
 
@@ -373,14 +393,21 @@ const About = () => {
                 animation="scaleIn"
                 delay={index * 100}
               >
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+                <div
+                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer"
+                  onClick={() => setSelectedMember(member)}
+                >
                   <div className="relative overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <span className="text-sm font-medium">Click to learn more</span>
+                      </div>
+                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-charity-neutral-800 mb-1">
@@ -392,6 +419,9 @@ const About = () => {
                     <p className="text-charity-neutral-600 text-sm">
                       {member.bio}
                     </p>
+                    <div className="mt-4 text-charity-orange-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
+                      Read More <ArrowRight className="ml-1 h-4 w-4" />
+                    </div>
                   </div>
                 </div>
               </AnimatedSection>
@@ -432,6 +462,78 @@ const About = () => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Team Member Modal */}
+      {selectedMember && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="relative">
+              <button
+                onClick={() => setSelectedMember(null)}
+                className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="p-8">
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="md:w-1/3">
+                    <img
+                      src={selectedMember.image}
+                      alt={selectedMember.name}
+                      className="w-full h-64 md:h-48 object-cover rounded-xl shadow-lg"
+                    />
+                  </div>
+
+                  <div className="md:w-2/3 space-y-6">
+                    <div>
+                      <h2 className="text-3xl font-bold text-charity-neutral-800 mb-2">
+                        {selectedMember.name}
+                      </h2>
+                      <p className="text-xl text-charity-orange-600 font-medium mb-4">
+                        {selectedMember.role}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">About</h3>
+                      <p className="text-charity-neutral-600 leading-relaxed">
+                        {selectedMember.fullBio}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">Key Achievements</h3>
+                      <ul className="space-y-2">
+                        {selectedMember.achievements.map((achievement: string, index: number) => (
+                          <li key={index} className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-charity-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-charity-neutral-600">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="bg-charity-neutral-50 p-4 rounded-xl">
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">Contact Information</h3>
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-3">
+                          <Mail className="h-4 w-4 text-charity-orange-600" />
+                          <span className="text-charity-neutral-600">{selectedMember.email}</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <Phone className="h-4 w-4 text-charity-orange-600" />
+                          <span className="text-charity-neutral-600">{selectedMember.phone}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
