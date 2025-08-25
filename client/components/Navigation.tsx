@@ -194,7 +194,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100 animate-in slide-in-from-top-2 duration-300">
+          <div className="md:hidden py-4 border-t border-charity-neutral-200 bg-white/95 backdrop-blur-md animate-in slide-in-from-top-2 duration-300">
             <div className="space-y-2">
               {menuItems.map((item) => {
                 const IconComponent = item.icon;
