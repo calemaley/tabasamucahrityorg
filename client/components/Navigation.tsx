@@ -12,6 +12,7 @@ import {
   Phone,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,8 +43,8 @@ const Navigation = () => {
       href: "/get-involved",
       icon: Heart,
       subItems: [
-        { label: "Sponsor a Child", href: "/get-involved/sponsor" },
-        { label: "Donate Now", href: "/get-involved/donate" },
+        { label: "Sponsor a Child", href: "/get-involved/sponsor", isPayment: true, paymentType: "sponsorshipUrl" },
+        { label: "Donate Now", href: "/get-involved/donate", isPayment: true, paymentType: "donationUrl" },
         { label: "Volunteer", href: "/get-involved/volunteer" },
       ],
     },
