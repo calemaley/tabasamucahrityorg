@@ -198,7 +198,7 @@ const Navigation = () => {
           <>
             {/* Backdrop */}
             <div
-              className="md:hidden fixed inset-0 bg-black/50 z-40"
+              className="md:hidden fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-300"
               onClick={() => setIsMenuOpen(false)}
             />
 
