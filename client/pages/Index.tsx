@@ -26,7 +26,15 @@ import { cn } from "@/lib/utils";
  *
  * Usage: wrap each major <section> content with <SectionReveal>...</SectionReveal>
  */
-const SectionReveal = ({ children, rootMargin = "-10% 0px -10% 0px", threshold = 0.12 }: { children: ReactNode; rootMargin?: string; threshold?: number }) => {
+const SectionReveal = ({
+  children,
+  rootMargin = "-10% 0px -10% 0px",
+  threshold = 0.12,
+}: {
+  children: ReactNode;
+  rootMargin?: string;
+  threshold?: number;
+}) => {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -43,7 +51,7 @@ const SectionReveal = ({ children, rootMargin = "-10% 0px -10% 0px", threshold =
           }
         });
       },
-      { root: null, rootMargin, threshold }
+      { root: null, rootMargin, threshold },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -55,7 +63,7 @@ const SectionReveal = ({ children, rootMargin = "-10% 0px -10% 0px", threshold =
       className={cn(
         // initial hidden state
         "transition-all duration-700 ease-out will-change-transform",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
       )}
       aria-hidden={!visible}
     >
@@ -76,11 +84,13 @@ const Index = () => {
       location: "Mwanza Region",
       school: "Mwanza Primary School",
       grade: "Standard 3",
-      story: "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
+      image:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 45,
       interests: ["Mathematics", "Reading", "Farming"],
-      dreamJob: "Teacher"
+      dreamJob: "Teacher",
     },
     {
       id: "david-002",
@@ -89,11 +99,13 @@ const Index = () => {
       location: "Arusha Region",
       school: "Arusha Community Secondary",
       grade: "Form 1",
-      story: "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 65,
       interests: ["Biology", "Chemistry", "Football"],
-      dreamJob: "Doctor"
+      dreamJob: "Doctor",
     },
     {
       id: "grace-003",
@@ -102,11 +114,13 @@ const Index = () => {
       location: "Dodoma Region",
       school: "Dodoma Girls Education Center",
       grade: "Form 3",
-      story: "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
+      image:
+        "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 75,
       interests: ["Mathematics", "Physics", "Technology"],
-      dreamJob: "Engineer"
+      dreamJob: "Engineer",
     },
     {
       id: "john-004",
@@ -115,12 +129,14 @@ const Index = () => {
       location: "Kilimanjaro Region",
       school: "Kilimanjaro Primary School",
       grade: "Standard 5",
-      story: "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 50,
       interests: ["Reading", "Writing", "History"],
-      dreamJob: "Writer"
-    }
+      dreamJob: "Writer",
+    },
   ];
 
   const heroImages = [
@@ -195,21 +211,24 @@ const Index = () => {
 
   const recentPrograms = [
     {
-      image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+      image:
+        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       title: "School Supply Drive 2024",
       description:
         "Providing essential school supplies to over 500 children across 12 schools.",
       date: "March 2024",
     },
     {
-      image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+      image:
+        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       title: "Healthcare Initiative",
       description:
         "Mobile clinics bringing healthcare services to remote communities.",
       date: "February 2024",
     },
     {
-      image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+      image:
+        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       title: "Clean Water Project",
       description:
         "Installing water wells in 5 villages to provide clean drinking water.",
@@ -226,7 +245,8 @@ const Index = () => {
 
   const recentBlogs = [
     {
-      image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+      image:
+        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       category: "Education",
       date: "March 15, 2024",
       title: "Transforming Lives Through Education",
@@ -235,7 +255,8 @@ const Index = () => {
       author: "Sarah Johnson",
     },
     {
-      image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+      image:
+        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       category: "Healthcare",
       date: "March 10, 2024",
       title: "Mobile Clinics Reach Remote Areas",
@@ -244,7 +265,8 @@ const Index = () => {
       author: "Dr. Michael Brown",
     },
     {
-      image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+      image:
+        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       category: "Community",
       date: "March 5, 2024",
       title: "Building Stronger Communities Together",
@@ -368,17 +390,18 @@ const Index = () => {
                   About Tabasamu Charity
                 </h2>
                 <p className="text-lg text-charity-neutral-600 leading-relaxed">
-                  Tabasamu Charity is dedicated to transforming lives and building
-                  stronger communities through education, healthcare, and
-                  sustainable development. Since our founding, we've been
+                  Tabasamu Charity is dedicated to transforming lives and
+                  building stronger communities through education, healthcare,
+                  and sustainable development. Since our founding, we've been
                   committed to creating lasting positive change for children and
                   families across Kenya.
                 </p>
                 <p className="text-charity-neutral-600">
-                  Our comprehensive programs focus on providing quality education,
-                  essential healthcare services, and opportunities for community
-                  development. Together with our volunteers and supporters, we're
-                  building a brighter future for the next generation.
+                  Our comprehensive programs focus on providing quality
+                  education, essential healthcare services, and opportunities
+                  for community development. Together with our volunteers and
+                  supporters, we're building a brighter future for the next
+                  generation.
                 </p>
                 <Link
                   to="/about"
@@ -494,7 +517,13 @@ const Index = () => {
                     </p>
                     <div className="mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                       <Link
-                        to={project.title === "Make a Donation" ? "/get-involved/donate" : project.title === "Sponsor a Child" ? "/get-involved/sponsor" : "/get-involved/volunteer"}
+                        to={
+                          project.title === "Make a Donation"
+                            ? "/get-involved/donate"
+                            : project.title === "Sponsor a Child"
+                              ? "/get-involved/sponsor"
+                              : "/get-involved/volunteer"
+                        }
                         className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
                       >
                         Learn More
@@ -517,8 +546,9 @@ const Index = () => {
                 Meet Our Children
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Every child has a unique story and dreams waiting to be fulfilled.
-                Meet some of the amazing children who need your support to achieve their goals.
+                Every child has a unique story and dreams waiting to be
+                fulfilled. Meet some of the amazing children who need your
+                support to achieve their goals.
               </p>
             </div>
 
@@ -536,7 +566,9 @@ const Index = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 text-white">
-                        <p className="text-sm font-medium">Dreams of being a {child.dreamJob}</p>
+                        <p className="text-sm font-medium">
+                          Dreams of being a {child.dreamJob}
+                        </p>
                       </div>
                     </div>
                     <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
@@ -589,7 +621,9 @@ const Index = () => {
 
                     <div className="border-t border-charity-neutral-200 pt-4">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-charity-neutral-600">Monthly Need:</span>
+                        <span className="text-sm text-charity-neutral-600">
+                          Monthly Need:
+                        </span>
                         <span className="text-lg font-bold text-charity-orange-600">
                           ${child.monthlyNeed}
                         </span>
@@ -599,7 +633,7 @@ const Index = () => {
                         to="/sponsor"
                         className="block w-full px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg text-center"
                       >
-                        💝 Sponsor {child.name.split(' ')[0]}
+                        💝 Sponsor {child.name.split(" ")[0]}
                       </Link>
                     </div>
                   </div>
@@ -679,7 +713,7 @@ const Index = () => {
               {recentPrograms.map((program, index) => (
                 <Link
                   key={index}
-                  to={`/programs/${program.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  to={`/programs/${program.title.toLowerCase().replace(/\s+/g, "-")}`}
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
                 >
                   <div className="relative overflow-hidden">
@@ -774,7 +808,7 @@ const Index = () => {
               {recentBlogs.map((blog, index) => (
                 <Link
                   key={index}
-                  to={`/blog/${blog.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  to={`/blog/${blog.title.toLowerCase().replace(/\s+/g, "-")}`}
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
                 >
                   <div className="relative overflow-hidden">

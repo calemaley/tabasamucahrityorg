@@ -42,16 +42,16 @@ const Donate = () => {
       icon: GraduationCap,
       impact: "$50 provides school supplies for 5 children for one month",
       urgent: false,
-      color: "orange"
+      color: "orange",
     },
     {
       id: "healthcare",
-      name: "Healthcare Services", 
+      name: "Healthcare Services",
       description: "Fund mobile clinics and medical treatments",
       icon: Stethoscope,
       impact: "$75 covers medical care for 10 patients in rural areas",
       urgent: true,
-      color: "green"
+      color: "green",
     },
     {
       id: "water",
@@ -60,7 +60,7 @@ const Donate = () => {
       icon: Droplets,
       impact: "$200 provides clean water access to 25 families",
       urgent: false,
-      color: "blue"
+      color: "blue",
     },
     {
       id: "housing",
@@ -69,7 +69,7 @@ const Donate = () => {
       icon: Home,
       impact: "$500 helps build classroom infrastructure for 30 students",
       urgent: false,
-      color: "purple"
+      color: "purple",
     },
     {
       id: "emergency",
@@ -78,7 +78,7 @@ const Donate = () => {
       icon: Heart,
       impact: "$100 provides emergency aid package for family of 5",
       urgent: true,
-      color: "red"
+      color: "red",
     },
     {
       id: "general",
@@ -87,8 +87,8 @@ const Donate = () => {
       icon: Target,
       impact: "Your donation goes where it's needed most",
       urgent: false,
-      color: "gray"
-    }
+      color: "gray",
+    },
   ];
 
   const predefinedAmounts = [
@@ -97,7 +97,7 @@ const Donate = () => {
     { amount: "100", impact: "Funds a child's education for a month" },
     { amount: "250", impact: "Supports a mobile clinic visit to rural area" },
     { amount: "500", impact: "Provides water access to 10 families" },
-    { amount: "1000", impact: "Builds classroom furniture for 30 students" }
+    { amount: "1000", impact: "Builds classroom furniture for 30 students" },
   ];
 
   const impactStats = [
@@ -117,18 +117,20 @@ const Donate = () => {
       type: donationType,
       cause: donationCause,
       paymentMethod,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     // Save to localStorage for tracking (temporary solution)
-    localStorage.setItem('donationData', JSON.stringify(donationData));
+    localStorage.setItem("donationData", JSON.stringify(donationData));
 
     // Redirect to payment portal
-    const paymentUrl = 'https://zenlipa.co.ke/c/uKowYx';
-    window.open(paymentUrl, '_blank');
+    const paymentUrl = "https://zenlipa.co.ke/c/uKowYx";
+    window.open(paymentUrl, "_blank");
 
     // Show success message and reset form
-    alert(`Redirecting to secure payment portal for your ${donationType === 'monthly' ? 'monthly' : 'one-time'} donation of $${donationAmount}! Thank you for your generosity.`);
+    alert(
+      `Redirecting to secure payment portal for your ${donationType === "monthly" ? "monthly" : "one-time"} donation of $${donationAmount}! Thank you for your generosity.`,
+    );
 
     // Reset form
     setDonorInfo({
@@ -141,7 +143,9 @@ const Donate = () => {
     });
   };
 
-  const selectedCause = donationCauses.find(cause => cause.id === donationCause);
+  const selectedCause = donationCauses.find(
+    (cause) => cause.id === donationCause,
+  );
 
   return (
     <>
@@ -156,8 +160,8 @@ const Donate = () => {
                 Make a Donation
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-                Every donation, no matter the size, creates lasting change in the lives
-                of children and communities across Tanzania.
+                Every donation, no matter the size, creates lasting change in
+                the lives of children and communities across Tanzania.
               </p>
             </div>
           </AnimatedSection>
@@ -173,8 +177,8 @@ const Donate = () => {
                 Your Donations in Action
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                See how your generosity directly translates into real impact
-                in communities across Tanzania.
+                See how your generosity directly translates into real impact in
+                communities across Tanzania.
               </p>
             </div>
           </AnimatedSection>
@@ -210,7 +214,7 @@ const Donate = () => {
                 <h3 className="text-2xl font-bold text-charity-neutral-800 mb-6">
                   Make Your Donation
                 </h3>
-                
+
                 <form onSubmit={handleDonation} className="space-y-6">
                   {/* Donation Type */}
                   <div>
@@ -264,7 +268,7 @@ const Donate = () => {
                         </button>
                       ))}
                     </div>
-                    
+
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-charity-neutral-400" />
                       <input
@@ -301,7 +305,7 @@ const Donate = () => {
                     <h4 className="text-lg font-semibold text-charity-neutral-800">
                       Donor Information
                     </h4>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-charity-neutral-700 mb-2">
@@ -311,11 +315,16 @@ const Donate = () => {
                           type="text"
                           required
                           value={donorInfo.name}
-                          onChange={(e) => setDonorInfo(prev => ({...prev, name: e.target.value}))}
+                          onChange={(e) =>
+                            setDonorInfo((prev) => ({
+                              ...prev,
+                              name: e.target.value,
+                            }))
+                          }
                           className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-green-500 focus:border-transparent"
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium text-charity-neutral-700 mb-2">
                           Email *
@@ -324,12 +333,17 @@ const Donate = () => {
                           type="email"
                           required
                           value={donorInfo.email}
-                          onChange={(e) => setDonorInfo(prev => ({...prev, email: e.target.value}))}
+                          onChange={(e) =>
+                            setDonorInfo((prev) => ({
+                              ...prev,
+                              email: e.target.value,
+                            }))
+                          }
                           className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-green-500 focus:border-transparent"
                         />
                       </div>
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium text-charity-neutral-700 mb-2">
                         Phone Number
@@ -337,30 +351,49 @@ const Donate = () => {
                       <input
                         type="tel"
                         value={donorInfo.phone}
-                        onChange={(e) => setDonorInfo(prev => ({...prev, phone: e.target.value}))}
+                        onChange={(e) =>
+                          setDonorInfo((prev) => ({
+                            ...prev,
+                            phone: e.target.value,
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-green-500 focus:border-transparent"
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <label className="flex items-center space-x-2">
                         <input
                           type="checkbox"
                           checked={donorInfo.anonymous}
-                          onChange={(e) => setDonorInfo(prev => ({...prev, anonymous: e.target.checked}))}
+                          onChange={(e) =>
+                            setDonorInfo((prev) => ({
+                              ...prev,
+                              anonymous: e.target.checked,
+                            }))
+                          }
                           className="rounded border-charity-neutral-300 text-charity-green-600 focus:ring-charity-green-500"
                         />
-                        <span className="text-sm text-charity-neutral-700">Make this donation anonymous</span>
+                        <span className="text-sm text-charity-neutral-700">
+                          Make this donation anonymous
+                        </span>
                       </label>
-                      
+
                       <label className="flex items-center space-x-2">
                         <input
                           type="checkbox"
                           checked={donorInfo.newsletter}
-                          onChange={(e) => setDonorInfo(prev => ({...prev, newsletter: e.target.checked}))}
+                          onChange={(e) =>
+                            setDonorInfo((prev) => ({
+                              ...prev,
+                              newsletter: e.target.checked,
+                            }))
+                          }
                           className="rounded border-charity-neutral-300 text-charity-green-600 focus:ring-charity-green-500"
                         />
-                        <span className="text-sm text-charity-neutral-700">Subscribe to our newsletter for updates</span>
+                        <span className="text-sm text-charity-neutral-700">
+                          Subscribe to our newsletter for updates
+                        </span>
                       </label>
                     </div>
                   </div>
@@ -411,8 +444,9 @@ const Donate = () => {
                   <div className="bg-charity-green-50 p-4 rounded-lg flex items-start space-x-3">
                     <Shield className="h-5 w-5 text-charity-green-600 mt-0.5 flex-shrink-0" />
                     <div className="text-sm text-charity-green-800">
-                      <strong>Secure Payment:</strong> All transactions are encrypted and secure. 
-                      We never store your payment information.
+                      <strong>Secure Payment:</strong> All transactions are
+                      encrypted and secure. We never store your payment
+                      information.
                     </div>
                   </div>
 
@@ -420,7 +454,8 @@ const Donate = () => {
                     type="submit"
                     className="w-full px-6 py-4 bg-charity-green-600 hover:bg-charity-green-700 text-white rounded-lg transition-colors duration-200 font-bold text-lg"
                   >
-                    Donate ${donationAmount} {donationType === 'monthly' ? 'Monthly' : 'Now'}
+                    Donate ${donationAmount}{" "}
+                    {donationType === "monthly" ? "Monthly" : "Now"}
                   </button>
                 </form>
               </div>
@@ -433,7 +468,9 @@ const Donate = () => {
                 {selectedCause && (
                   <div className="bg-white p-8 rounded-2xl shadow-lg">
                     <div className="flex items-center mb-4">
-                      <selectedCause.icon className={`h-8 w-8 mr-3 text-charity-${selectedCause.color}-600`} />
+                      <selectedCause.icon
+                        className={`h-8 w-8 mr-3 text-charity-${selectedCause.color}-600`}
+                      />
                       <div>
                         <h3 className="text-xl font-bold text-charity-neutral-800">
                           {selectedCause.name}
@@ -445,11 +482,11 @@ const Donate = () => {
                         )}
                       </div>
                     </div>
-                    
+
                     <p className="text-charity-neutral-600 mb-4">
                       {selectedCause.description}
                     </p>
-                    
+
                     <div className="bg-charity-neutral-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-charity-neutral-800 mb-2">
                         Your Impact: ${donationAmount}
@@ -466,29 +503,29 @@ const Donate = () => {
                   <h3 className="text-xl font-bold text-charity-neutral-800 mb-6">
                     Why Donate With Us?
                   </h3>
-                  
+
                   <div className="space-y-4">
                     {[
                       {
                         icon: Award,
                         title: "Transparency",
-                        description: "98% of donations go directly to programs"
+                        description: "98% of donations go directly to programs",
                       },
                       {
                         icon: Users,
                         title: "Proven Impact",
-                        description: "15,000+ lives improved through our work"
+                        description: "15,000+ lives improved through our work",
                       },
                       {
                         icon: Shield,
                         title: "Secure & Safe",
-                        description: "Bank-level security for all transactions"
+                        description: "Bank-level security for all transactions",
                       },
                       {
                         icon: Star,
                         title: "Regular Updates",
-                        description: "See exactly how your donation is used"
-                      }
+                        description: "See exactly how your donation is used",
+                      },
                     ].map((feature, index) => (
                       <div key={index} className="flex items-start space-x-3">
                         <feature.icon className="h-5 w-5 text-charity-green-600 mt-1 flex-shrink-0" />
@@ -510,7 +547,7 @@ const Donate = () => {
                   <h3 className="text-xl font-bold text-charity-neutral-800 mb-6">
                     Other Ways to Help
                   </h3>
-                  
+
                   <div className="space-y-4">
                     <Link
                       to="/sponsor"
@@ -528,7 +565,7 @@ const Donate = () => {
                         <ArrowRight className="h-5 w-5 text-charity-orange-600" />
                       </div>
                     </Link>
-                    
+
                     <Link
                       to="/get-involved/volunteer"
                       className="block p-4 border border-charity-neutral-200 rounded-lg hover:border-charity-green-300 hover:bg-charity-green-50 transition-colors duration-200"
@@ -572,22 +609,28 @@ const Donate = () => {
             {[
               {
                 amount: "$500",
-                impact: "Built new classroom furniture for 30 students at Mwanza Primary School",
+                impact:
+                  "Built new classroom furniture for 30 students at Mwanza Primary School",
                 date: "Last Month",
-                image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png"
+                image:
+                  "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
               },
               {
                 amount: "$1,200",
-                impact: "Funded mobile clinic that served 150 patients in remote villages",
-                date: "This Month", 
-                image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png"
+                impact:
+                  "Funded mobile clinic that served 150 patients in remote villages",
+                date: "This Month",
+                image:
+                  "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
               },
               {
                 amount: "$800",
-                impact: "Provided clean water access to 40 families through new well installation",
+                impact:
+                  "Provided clean water access to 40 families through new well installation",
                 date: "Last Week",
-                image: "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png"
-              }
+                image:
+                  "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+              },
             ].map((story, index) => (
               <AnimatedSection
                 key={index}
@@ -609,9 +652,7 @@ const Donate = () => {
                         {story.date}
                       </span>
                     </div>
-                    <p className="text-charity-neutral-700">
-                      {story.impact}
-                    </p>
+                    <p className="text-charity-neutral-700">{story.impact}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -629,12 +670,14 @@ const Donate = () => {
                 Every Dollar Makes a Difference
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Your donation, whether large or small, creates ripples of positive
-                change that extend far beyond what you might imagine.
+                Your donation, whether large or small, creates ripples of
+                positive change that extend far beyond what you might imagine.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                   className="inline-flex items-center px-8 py-3 bg-white text-charity-green-600 hover:bg-charity-neutral-100 rounded-lg font-bold transition-colors duration-200"
                 >
                   <Heart className="mr-2 h-4 w-4" />

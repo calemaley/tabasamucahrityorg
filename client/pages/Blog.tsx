@@ -22,63 +22,70 @@ const Blog = () => {
     {
       id: 1,
       author: "Sarah M.",
-      content: "This is so inspiring! Every child truly deserves a chance to achieve their dreams.",
+      content:
+        "This is so inspiring! Every child truly deserves a chance to achieve their dreams.",
       date: "2 hours ago",
       likes: 12,
       replies: [
         {
           id: 1,
           author: "James K.",
-          content: "Couldn't agree more! Education is the key to breaking the cycle of poverty.",
+          content:
+            "Couldn't agree more! Education is the key to breaking the cycle of poverty.",
           date: "1 hour ago",
-          likes: 5
-        }
-      ]
+          likes: 5,
+        },
+      ],
     },
     {
       id: 2,
       author: "Michael T.",
-      content: "Beautiful article! I've seen firsthand how small acts of kindness can transform lives.",
+      content:
+        "Beautiful article! I've seen firsthand how small acts of kindness can transform lives.",
       date: "5 hours ago",
       likes: 8,
-      replies: []
+      replies: [],
     },
     {
       id: 3,
       author: "Grace N.",
-      content: "This reminds me why I started volunteering. Thank you for sharing this message.",
+      content:
+        "This reminds me why I started volunteering. Thank you for sharing this message.",
       date: "1 day ago",
       likes: 15,
       replies: [
         {
           id: 1,
           author: "Emma W.",
-          content: "Grace, your volunteer work is amazing! Keep making a difference.",
+          content:
+            "Grace, your volunteer work is amazing! Keep making a difference.",
           date: "18 hours ago",
-          likes: 3
-        }
-      ]
-    }
+          likes: 3,
+        },
+      ],
+    },
   ]);
 
   const featuredPost = {
     id: 1,
     title: "Charity: Fueling the Dreams of Children",
-    excerpt: "Every child is born with a dream. Some imagine themselves as doctors saving lives, others see classrooms where they will one day stand as teachers. Discover how charity unlocks possibilities and builds futures.",
+    excerpt:
+      "Every child is born with a dream. Some imagine themselves as doctors saving lives, others see classrooms where they will one day stand as teachers. Discover how charity unlocks possibilities and builds futures.",
     content: [
       "Every child is born with a dream. Some imagine themselves as doctors saving lives, others see classrooms where they will one day stand as teachers, and many envision flying planes, painting canvases, or leading communities. Children dream without fear, without limits. Yet, for millions, these bright hopes are dimmed by realities beyond their control: poverty, lack of access to education, hunger, and limited opportunities.",
-      
+
       "This is where charity becomes powerful. Charity is more than giving money or material things. It is about believing in potential and unlocking possibilities. When you pay school fees for a child, you are not just covering costs: you are giving that child a chance to sit in a classroom and imagine a better tomorrow. When you donate a pair of shoes, you are not just covering tiny feet: you are enabling those feet to walk boldly into the future.",
-      
+
       "Every act of kindness is a push forward. That book you donate may inspire the next author, that scholarship may raise the next leader, that meal may keep a child in school one more day, long enough to discover their hidden talents. The truth is, children need us. They cannot reach their dreams alone. They require our hands, our hearts, and our willingness to believe in them.",
-      
+
       "And the beauty of charity is this: no effort is ever too small. A coin, a smile, a visit to encourage a child—all of these become seeds of hope. Seeds that, when nurtured, grow into towering trees of success and change.",
-      
+
       "When we give, we don't just transform one life, we touch generations. A child whose dream comes true goes on to impact their family, their community, and even the world. That is the power of charity.",
-      
-      "At the end of the day, charity is not just about what we give away; it is about what we build together. When we invest in children's dreams, we invest in the future of humanity itself."
+
+      "At the end of the day, charity is not just about what we give away; it is about what we build together. When we invest in children's dreams, we invest in the future of humanity itself.",
     ],
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     category: "inspiration",
     author: "Tabasamu Team",
     date: "January 15, 2025",
@@ -87,26 +94,35 @@ const Blog = () => {
 
   const handleLike = () => {
     setIsLiked(!isLiked);
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
   };
 
   const handleShare = (platform: string) => {
     const url = window.location.href;
     const text = featuredPost.title;
-    
+
     switch (platform) {
-      case 'facebook':
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+      case "facebook":
+        window.open(
+          `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+          "_blank",
+        );
         break;
-      case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+      case "twitter":
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+          "_blank",
+        );
         break;
-      case 'whatsapp':
-        window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+      case "whatsapp":
+        window.open(
+          `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
+          "_blank",
+        );
         break;
       default:
         navigator.clipboard.writeText(url);
-        alert('Link copied to clipboard!');
+        alert("Link copied to clipboard!");
     }
   };
 
@@ -119,7 +135,7 @@ const Blog = () => {
         content: newComment,
         date: "Just now",
         likes: 0,
-        replies: []
+        replies: [],
       };
       setComments([comment, ...comments]);
       setNewComment("");
@@ -182,31 +198,53 @@ const Blog = () => {
                     </div>
                     <span>{featuredPost.readTime}</span>
                   </div>
-                  
+
                   {/* Engagement Actions */}
                   <div className="flex items-center space-x-4">
                     <button
                       onClick={handleLike}
                       className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                        isLiked 
-                          ? 'bg-red-50 text-red-600 border border-red-200' 
-                          : 'bg-charity-neutral-100 text-charity-neutral-600 hover:bg-charity-neutral-200'
+                        isLiked
+                          ? "bg-red-50 text-red-600 border border-red-200"
+                          : "bg-charity-neutral-100 text-charity-neutral-600 hover:bg-charity-neutral-200"
                       }`}
                     >
-                      <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
+                      <Heart
+                        className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
+                      />
                       <span>{likeCount}</span>
                     </button>
-                    
+
                     <div className="relative group">
                       <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-charity-neutral-100 text-charity-neutral-600 hover:bg-charity-neutral-200 transition-colors duration-200">
                         <Share2 className="h-4 w-4" />
                         <span>Share</span>
                       </button>
                       <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-charity-neutral-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        <button onClick={() => handleShare('facebook')} className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700">Facebook</button>
-                        <button onClick={() => handleShare('twitter')} className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700">Twitter</button>
-                        <button onClick={() => handleShare('whatsapp')} className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700">WhatsApp</button>
-                        <button onClick={() => handleShare('copy')} className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700">Copy Link</button>
+                        <button
+                          onClick={() => handleShare("facebook")}
+                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                        >
+                          Facebook
+                        </button>
+                        <button
+                          onClick={() => handleShare("twitter")}
+                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                        >
+                          Twitter
+                        </button>
+                        <button
+                          onClick={() => handleShare("whatsapp")}
+                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                        >
+                          WhatsApp
+                        </button>
+                        <button
+                          onClick={() => handleShare("copy")}
+                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                        >
+                          Copy Link
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -219,9 +257,12 @@ const Blog = () => {
                   <p className="text-xl text-charity-neutral-700 mb-8 font-medium italic">
                     {featuredPost.excerpt}
                   </p>
-                  
+
                   {featuredPost.content.map((paragraph, index) => (
-                    <p key={index} className="text-charity-neutral-700 leading-relaxed mb-6">
+                    <p
+                      key={index}
+                      className="text-charity-neutral-700 leading-relaxed mb-6"
+                    >
                       {paragraph}
                     </p>
                   ))}
@@ -233,7 +274,8 @@ const Blog = () => {
                     Ready to Make a Difference?
                   </h3>
                   <p className="text-charity-neutral-600 mb-6">
-                    Join us in fueling children's dreams. Every contribution, no matter how small, creates ripples of positive change.
+                    Join us in fueling children's dreams. Every contribution, no
+                    matter how small, creates ripples of positive change.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
@@ -286,40 +328,58 @@ const Blog = () => {
               {/* Comments List */}
               <div className="space-y-6">
                 {comments.map((comment) => (
-                  <div key={comment.id} className="border-b border-charity-neutral-200 pb-6 last:border-b-0">
+                  <div
+                    key={comment.id}
+                    className="border-b border-charity-neutral-200 pb-6 last:border-b-0"
+                  >
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h4 className="font-semibold text-charity-neutral-800">{comment.author}</h4>
-                        <p className="text-sm text-charity-neutral-500">{comment.date}</p>
+                        <h4 className="font-semibold text-charity-neutral-800">
+                          {comment.author}
+                        </h4>
+                        <p className="text-sm text-charity-neutral-500">
+                          {comment.date}
+                        </p>
                       </div>
                       <button className="flex items-center space-x-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200">
                         <ThumbsUp className="h-4 w-4" />
                         <span>{comment.likes}</span>
                       </button>
                     </div>
-                    <p className="text-charity-neutral-700 mb-4">{comment.content}</p>
-                    
+                    <p className="text-charity-neutral-700 mb-4">
+                      {comment.content}
+                    </p>
+
                     {/* Replies */}
                     {comment.replies.length > 0 && (
                       <div className="ml-8 space-y-4 border-l-2 border-charity-neutral-200 pl-4">
                         {comment.replies.map((reply) => (
-                          <div key={reply.id} className="bg-charity-neutral-50 p-4 rounded-lg">
+                          <div
+                            key={reply.id}
+                            className="bg-charity-neutral-50 p-4 rounded-lg"
+                          >
                             <div className="flex items-start justify-between mb-2">
                               <div>
-                                <h5 className="font-medium text-charity-neutral-800">{reply.author}</h5>
-                                <p className="text-xs text-charity-neutral-500">{reply.date}</p>
+                                <h5 className="font-medium text-charity-neutral-800">
+                                  {reply.author}
+                                </h5>
+                                <p className="text-xs text-charity-neutral-500">
+                                  {reply.date}
+                                </p>
                               </div>
                               <button className="flex items-center space-x-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200">
                                 <ThumbsUp className="h-3 w-3" />
                                 <span className="text-sm">{reply.likes}</span>
                               </button>
                             </div>
-                            <p className="text-charity-neutral-700">{reply.content}</p>
+                            <p className="text-charity-neutral-700">
+                              {reply.content}
+                            </p>
                           </div>
                         ))}
                       </div>
                     )}
-                    
+
                     <button className="mt-3 text-charity-orange-600 hover:text-charity-orange-700 text-sm font-medium flex items-center">
                       <Reply className="h-4 w-4 mr-1" />
                       Reply

@@ -25,40 +25,60 @@ const About = () => {
       role: "Executive Director",
       image: "/placeholder.svg",
       bio: "With over 15 years in nonprofit leadership, Sarah drives our mission forward.",
-      fullBio: "Sarah brings over 15 years of nonprofit leadership experience to Tabasamu Charity. She has previously worked with international development organizations across Africa, focusing on sustainable community development and educational initiatives. Her passion for empowering communities through education and healthcare has driven our organization's growth and impact. Sarah holds a Master's in International Development and speaks fluent Swahili and English.",
+      fullBio:
+        "Sarah brings over 15 years of nonprofit leadership experience to Tabasamu Charity. She has previously worked with international development organizations across Africa, focusing on sustainable community development and educational initiatives. Her passion for empowering communities through education and healthcare has driven our organization's growth and impact. Sarah holds a Master's in International Development and speaks fluent Swahili and English.",
       email: "sarah@tabasamu.org",
       phone: "+254-700-123-456",
-      achievements: ["Led 50+ community development projects", "Secured over $2M in funding", "Established partnerships with 25+ local organizations"]
+      achievements: [
+        "Led 50+ community development projects",
+        "Secured over $2M in funding",
+        "Established partnerships with 25+ local organizations",
+      ],
     },
     {
       name: "Dr. Michael Brown",
       role: "Medical Director",
       image: "/placeholder.svg",
       bio: "Leading our healthcare initiatives with expertise in community medicine.",
-      fullBio: "Dr. Michael Brown is a board-certified physician with extensive experience in community health and tropical medicine. He has spent over 12 years working in rural healthcare settings across East Africa, developing innovative approaches to healthcare delivery in resource-limited environments. His work has significantly improved health outcomes in the communities we serve.",
+      fullBio:
+        "Dr. Michael Brown is a board-certified physician with extensive experience in community health and tropical medicine. He has spent over 12 years working in rural healthcare settings across East Africa, developing innovative approaches to healthcare delivery in resource-limited environments. His work has significantly improved health outcomes in the communities we serve.",
       email: "michael@tabasamu.org",
       phone: "+254-700-123-457",
-      achievements: ["Established 5 mobile health clinics", "Trained 100+ community health workers", "Reduced infant mortality by 40% in target areas"]
+      achievements: [
+        "Established 5 mobile health clinics",
+        "Trained 100+ community health workers",
+        "Reduced infant mortality by 40% in target areas",
+      ],
     },
     {
       name: "Emma Wilson",
       role: "Program Coordinator",
       image: "/placeholder.svg",
       bio: "Ensuring our programs reach those who need them most.",
-      fullBio: "Emma Wilson coordinates all our program activities with exceptional attention to detail and community engagement. With a background in social work and project management, she ensures that our initiatives are implemented effectively and reach the most vulnerable populations. Emma's dedication to measurable impact has helped us achieve our program goals consistently.",
+      fullBio:
+        "Emma Wilson coordinates all our program activities with exceptional attention to detail and community engagement. With a background in social work and project management, she ensures that our initiatives are implemented effectively and reach the most vulnerable populations. Emma's dedication to measurable impact has helped us achieve our program goals consistently.",
       email: "emma@tabasamu.org",
       phone: "+254-700-123-458",
-      achievements: ["Coordinated programs reaching 5,000+ beneficiaries", "Achieved 95% program completion rate", "Developed community feedback systems"]
+      achievements: [
+        "Coordinated programs reaching 5,000+ beneficiaries",
+        "Achieved 95% program completion rate",
+        "Developed community feedback systems",
+      ],
     },
     {
       name: "James Mwalimu",
       role: "Community Liaison",
       image: "/placeholder.svg",
       bio: "Connecting communities with sustainable development opportunities.",
-      fullBio: "James Mwalimu serves as our vital link to the communities we serve. Born and raised in rural Kenya, he brings deep cultural understanding and community trust to our work. His ability to build relationships and facilitate meaningful dialogue between our organization and local communities has been instrumental in our success and sustainability.",
+      fullBio:
+        "James Mwalimu serves as our vital link to the communities we serve. Born and raised in rural Kenya, he brings deep cultural understanding and community trust to our work. His ability to build relationships and facilitate meaningful dialogue between our organization and local communities has been instrumental in our success and sustainability.",
       email: "james@tabasamu.org",
       phone: "+254-700-123-459",
-      achievements: ["Built partnerships with 30+ community leaders", "Facilitated 200+ community meetings", "Increased community participation by 70%"]
+      achievements: [
+        "Built partnerships with 30+ community leaders",
+        "Facilitated 200+ community meetings",
+        "Increased community participation by 70%",
+      ],
     },
   ];
 
@@ -176,10 +196,17 @@ const About = () => {
                   </h2>
                   <div className="text-lg text-charity-neutral-600 leading-relaxed space-y-4">
                     <p className="italic text-charity-orange-700 text-xl">
-                      "Every child has a dream, and every smile holds a promise. As I journey through life, my story unfolds with a simple yet profound purpose: to ignite sparks of joy and fuel the dreams of those around me."
+                      "Every child has a dream, and every smile holds a promise.
+                      As I journey through life, my story unfolds with a simple
+                      yet profound purpose: to ignite sparks of joy and fuel the
+                      dreams of those around me."
                     </p>
                     <p>
-                      In nurturing the needy and spreading love, I believe we embody the truest essence of humanity. Every act of kindness creates ripples that extend far beyond what we can see, touching lives and transforming communities in ways we may never fully comprehend.
+                      In nurturing the needy and spreading love, I believe we
+                      embody the truest essence of humanity. Every act of
+                      kindness creates ripples that extend far beyond what we
+                      can see, touching lives and transforming communities in
+                      ways we may never fully comprehend.
                     </p>
                   </div>
                 </div>
@@ -194,9 +221,15 @@ const About = () => {
                         className="h-16 w-auto"
                       />
                       <div className="mt-2">
-                        <p className="font-bold text-charity-neutral-800">A.O.Suleiman Kagwe</p>
-                        <p className="text-charity-orange-600 font-medium">Founder & CEO</p>
-                        <p className="text-sm text-charity-neutral-500">Tabasamu Charity</p>
+                        <p className="font-bold text-charity-neutral-800">
+                          A.O.Suleiman Kagwe
+                        </p>
+                        <p className="text-charity-orange-600 font-medium">
+                          Founder & CEO
+                        </p>
+                        <p className="text-sm text-charity-neutral-500">
+                          Tabasamu Charity
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -204,9 +237,12 @@ const About = () => {
 
                 {/* Call to Action */}
                 <div className="bg-charity-orange-50 p-6 rounded-xl border-l-4 border-charity-orange-500">
-                  <h3 className="font-bold text-charity-neutral-800 mb-2">Join Our Mission</h3>
+                  <h3 className="font-bold text-charity-neutral-800 mb-2">
+                    Join Our Mission
+                  </h3>
                   <p className="text-charity-neutral-600 mb-4">
-                    Together, we can create lasting change in the lives of children and communities.
+                    Together, we can create lasting change in the lives of
+                    children and communities.
                   </p>
                   <Link
                     to="/get-involved"
@@ -222,9 +258,6 @@ const About = () => {
         </div>
       </section>
 
-
-
-
       {/* Mission & Vision */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -235,9 +268,9 @@ const About = () => {
                   Our Mission
                 </h2>
                 <p className="text-lg text-charity-neutral-600 mb-6 leading-relaxed">
-                  To empower children and communities in Kenya through
-                  quality education, accessible healthcare, and sustainable
-                  development programs that create lasting positive change.
+                  To empower children and communities in Kenya through quality
+                  education, accessible healthcare, and sustainable development
+                  programs that create lasting positive change.
                 </p>
                 <p className="text-charity-neutral-600 leading-relaxed">
                   We believe that every child deserves the opportunity to reach
@@ -405,7 +438,9 @@ const About = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 text-white">
-                        <span className="text-sm font-medium">Click to learn more</span>
+                        <span className="text-sm font-medium">
+                          Click to learn more
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -496,34 +531,51 @@ const About = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">About</h3>
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
+                        About
+                      </h3>
                       <p className="text-charity-neutral-600 leading-relaxed">
                         {selectedMember.fullBio}
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">Key Achievements</h3>
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
+                        Key Achievements
+                      </h3>
                       <ul className="space-y-2">
-                        {selectedMember.achievements.map((achievement: string, index: number) => (
-                          <li key={index} className="flex items-start space-x-2">
-                            <div className="w-2 h-2 bg-charity-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-charity-neutral-600">{achievement}</span>
-                          </li>
-                        ))}
+                        {selectedMember.achievements.map(
+                          (achievement: string, index: number) => (
+                            <li
+                              key={index}
+                              className="flex items-start space-x-2"
+                            >
+                              <div className="w-2 h-2 bg-charity-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-charity-neutral-600">
+                                {achievement}
+                              </span>
+                            </li>
+                          ),
+                        )}
                       </ul>
                     </div>
 
                     <div className="bg-charity-neutral-50 p-4 rounded-xl">
-                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">Contact Information</h3>
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
+                        Contact Information
+                      </h3>
                       <div className="space-y-2">
                         <div className="flex items-center space-x-3">
                           <Mail className="h-4 w-4 text-charity-orange-600" />
-                          <span className="text-charity-neutral-600">{selectedMember.email}</span>
+                          <span className="text-charity-neutral-600">
+                            {selectedMember.email}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Phone className="h-4 w-4 text-charity-orange-600" />
-                          <span className="text-charity-neutral-600">{selectedMember.phone}</span>
+                          <span className="text-charity-neutral-600">
+                            {selectedMember.phone}
+                          </span>
                         </div>
                       </div>
                     </div>

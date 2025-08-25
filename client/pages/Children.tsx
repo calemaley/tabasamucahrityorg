@@ -30,15 +30,21 @@ const Children = () => {
       location: "Mwanza Region",
       school: "Mwanza Primary School",
       grade: "Standard 3",
-      story: "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes. Despite the long journey, she never misses a day and always has a bright smile.",
+      story:
+        "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes. Despite the long journey, she never misses a day and always has a bright smile.",
       needs: ["School fees", "Uniforms", "Books", "Lunch program"],
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 45,
       sponsored: false,
       interests: ["Mathematics", "Reading", "Farming"],
       family: "Lives with mother and 2 siblings",
-      achievements: ["Top in class mathematics", "Perfect attendance", "School prefect"],
-      dreamJob: "Teacher"
+      achievements: [
+        "Top in class mathematics",
+        "Perfect attendance",
+        "School prefect",
+      ],
+      dreamJob: "Teacher",
     },
     {
       id: "david-002",
@@ -47,15 +53,26 @@ const Children = () => {
       location: "Arusha Region",
       school: "Arusha Community Secondary",
       grade: "Form 1",
-      story: "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees. David studies by candlelight and helps with farming before school.",
-      needs: ["School fees", "Science books", "Laboratory equipment", "Transport"],
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees. David studies by candlelight and helps with farming before school.",
+      needs: [
+        "School fees",
+        "Science books",
+        "Laboratory equipment",
+        "Transport",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 65,
       sponsored: false,
       interests: ["Biology", "Chemistry", "Football"],
       family: "Lives with father and 3 siblings",
-      achievements: ["Science fair winner", "Football team captain", "Community volunteer"],
-      dreamJob: "Doctor"
+      achievements: [
+        "Science fair winner",
+        "Football team captain",
+        "Community volunteer",
+      ],
+      dreamJob: "Doctor",
     },
     {
       id: "grace-003",
@@ -64,15 +81,21 @@ const Children = () => {
       location: "Dodoma Region",
       school: "Dodoma Girls Education Center",
       grade: "Form 3",
-      story: "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education. She tutors younger students in her free time.",
+      story:
+        "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education. She tutors younger students in her free time.",
       needs: ["School fees", "Textbooks", "Computer training", "Mentorship"],
-      image: "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image:
+        "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 75,
       sponsored: false,
       interests: ["Mathematics", "Physics", "Technology"],
       family: "Lives with grandmother and 1 sibling",
-      achievements: ["Regional math champion", "Peer tutor", "Technology club leader"],
-      dreamJob: "Engineer"
+      achievements: [
+        "Regional math champion",
+        "Peer tutor",
+        "Technology club leader",
+      ],
+      dreamJob: "Engineer",
     },
     {
       id: "john-004",
@@ -81,15 +104,26 @@ const Children = () => {
       location: "Kilimanjaro Region",
       school: "Kilimanjaro Primary School",
       grade: "Standard 5",
-      story: "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently. He has read every book in his small school library twice.",
-      needs: ["School fees", "Reading materials", "Uniform", "Nutritional support"],
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently. He has read every book in his small school library twice.",
+      needs: [
+        "School fees",
+        "Reading materials",
+        "Uniform",
+        "Nutritional support",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 50,
       sponsored: false,
       interests: ["Reading", "Writing", "History"],
       family: "Lives with both parents and 4 siblings",
-      achievements: ["Reading champion", "Story writing contest winner", "Library assistant"],
-      dreamJob: "Writer"
+      achievements: [
+        "Reading champion",
+        "Story writing contest winner",
+        "Library assistant",
+      ],
+      dreamJob: "Writer",
     },
     {
       id: "amina-005",
@@ -98,15 +132,21 @@ const Children = () => {
       location: "Zanzibar",
       school: "Zanzibar Primary School",
       grade: "Standard 4",
-      story: "Amina dreams of becoming a marine biologist to protect the ocean around her island home. She collects shells and studies sea creatures in her spare time. Her family depends on fishing for income.",
+      story:
+        "Amina dreams of becoming a marine biologist to protect the ocean around her island home. She collects shells and studies sea creatures in her spare time. Her family depends on fishing for income.",
       needs: ["School fees", "Science materials", "Transport", "Lunch program"],
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 40,
       sponsored: false,
       interests: ["Marine Biology", "Swimming", "Environmental Science"],
       family: "Lives with parents and 1 sibling",
-      achievements: ["Environmental club member", "Swimming champion", "Shell collection expert"],
-      dreamJob: "Marine Biologist"
+      achievements: [
+        "Environmental club member",
+        "Swimming champion",
+        "Shell collection expert",
+      ],
+      dreamJob: "Marine Biologist",
     },
     {
       id: "peter-006",
@@ -115,15 +155,26 @@ const Children = () => {
       location: "Mbeya Region",
       school: "Mbeya Secondary School",
       grade: "Form 2",
-      story: "Peter wants to become a pilot and explore the world. He builds model airplanes from recycled materials and dreams of flying. His mother is a single parent working as a seamstress.",
-      needs: ["School fees", "Technical books", "Transport", "Materials for projects"],
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "Peter wants to become a pilot and explore the world. He builds model airplanes from recycled materials and dreams of flying. His mother is a single parent working as a seamstress.",
+      needs: [
+        "School fees",
+        "Technical books",
+        "Transport",
+        "Materials for projects",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 60,
       sponsored: false,
       interests: ["Aviation", "Engineering", "Art"],
       family: "Lives with mother and 2 siblings",
-      achievements: ["Model building champion", "Art competition winner", "Science project leader"],
-      dreamJob: "Pilot"
+      achievements: [
+        "Model building champion",
+        "Art competition winner",
+        "Science project leader",
+      ],
+      dreamJob: "Pilot",
     },
     {
       id: "fatuma-007",
@@ -132,15 +183,21 @@ const Children = () => {
       location: "Dar es Salaam",
       school: "Dar es Salaam Community School",
       grade: "Standard 6",
-      story: "Fatuma loves music and wants to become a music teacher. She sings in the church choir and has taught herself to play several traditional instruments. Her family lives in a crowded neighborhood.",
+      story:
+        "Fatuma loves music and wants to become a music teacher. She sings in the church choir and has taught herself to play several traditional instruments. Her family lives in a crowded neighborhood.",
       needs: ["School fees", "Music lessons", "Instruments", "Uniform"],
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 55,
       sponsored: false,
       interests: ["Music", "Singing", "Traditional Dance"],
       family: "Lives with parents and 3 siblings",
-      achievements: ["Choir leader", "Traditional dance champion", "Music composition winner"],
-      dreamJob: "Music Teacher"
+      achievements: [
+        "Choir leader",
+        "Traditional dance champion",
+        "Music composition winner",
+      ],
+      dreamJob: "Music Teacher",
     },
     {
       id: "emmanuel-008",
@@ -149,46 +206,64 @@ const Children = () => {
       location: "Moshi",
       school: "Moshi High School",
       grade: "Form 1",
-      story: "Emmanuel dreams of becoming a veterinarian to help animals in his community. He has rescued and cared for many stray animals. His father works as a tour guide near Mount Kilimanjaro.",
-      needs: ["School fees", "Veterinary books", "Science equipment", "Transport"],
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      story:
+        "Emmanuel dreams of becoming a veterinarian to help animals in his community. He has rescued and cared for many stray animals. His father works as a tour guide near Mount Kilimanjaro.",
+      needs: [
+        "School fees",
+        "Veterinary books",
+        "Science equipment",
+        "Transport",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       monthlyNeed: 70,
       sponsored: false,
       interests: ["Animal Care", "Biology", "Conservation"],
       family: "Lives with father and grandmother",
-      achievements: ["Animal rescue volunteer", "Biology excellence", "Conservation project leader"],
-      dreamJob: "Veterinarian"
-    }
+      achievements: [
+        "Animal rescue volunteer",
+        "Biology excellence",
+        "Conservation project leader",
+      ],
+      dreamJob: "Veterinarian",
+    },
   ];
 
   // Filter and sort children
-  const filteredChildren = allChildren.filter(child => {
-    const matchesSearch = child.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         child.dreamJob.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         child.location.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesAge = selectedAge === "all" || 
-                      (selectedAge === "young" && child.age <= 10) ||
-                      (selectedAge === "teen" && child.age > 10);
-    
-    const matchesLocation = selectedLocation === "all" || 
-                           child.location.toLowerCase().includes(selectedLocation.toLowerCase());
-    
-    return matchesSearch && matchesAge && matchesLocation;
-  }).sort((a, b) => {
-    switch (sortBy) {
-      case "age":
-        return a.age - b.age;
-      case "need":
-        return a.monthlyNeed - b.monthlyNeed;
-      case "location":
-        return a.location.localeCompare(b.location);
-      default:
-        return a.name.localeCompare(b.name);
-    }
-  });
+  const filteredChildren = allChildren
+    .filter((child) => {
+      const matchesSearch =
+        child.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        child.dreamJob.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        child.location.toLowerCase().includes(searchTerm.toLowerCase());
 
-  const uniqueLocations = [...new Set(allChildren.map(child => child.location))];
+      const matchesAge =
+        selectedAge === "all" ||
+        (selectedAge === "young" && child.age <= 10) ||
+        (selectedAge === "teen" && child.age > 10);
+
+      const matchesLocation =
+        selectedLocation === "all" ||
+        child.location.toLowerCase().includes(selectedLocation.toLowerCase());
+
+      return matchesSearch && matchesAge && matchesLocation;
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "age":
+          return a.age - b.age;
+        case "need":
+          return a.monthlyNeed - b.monthlyNeed;
+        case "location":
+          return a.location.localeCompare(b.location);
+        default:
+          return a.name.localeCompare(b.name);
+      }
+    });
+
+  const uniqueLocations = [
+    ...new Set(allChildren.map((child) => child.location)),
+  ];
 
   return (
     <>
@@ -203,8 +278,9 @@ const Children = () => {
                 Meet Our Children
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-                Every child has a unique story, dream, and potential waiting to be unlocked. 
-                Discover the amazing children who need your support to achieve their goals.
+                Every child has a unique story, dream, and potential waiting to
+                be unlocked. Discover the amazing children who need your support
+                to achieve their goals.
               </p>
             </div>
           </AnimatedSection>
@@ -214,7 +290,7 @@ const Children = () => {
       {/* Back to Home */}
       <section className="py-8 bg-white border-b border-charity-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
+          <Link
             to="/"
             className="inline-flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium transition-colors duration-200"
           >
@@ -265,8 +341,10 @@ const Children = () => {
                     className="w-full pl-10 pr-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent appearance-none"
                   >
                     <option value="all">All Locations</option>
-                    {uniqueLocations.map(location => (
-                      <option key={location} value={location}>{location}</option>
+                    {uniqueLocations.map((location) => (
+                      <option key={location} value={location}>
+                        {location}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -321,7 +399,9 @@ const Children = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 text-white">
-                        <p className="text-sm font-medium">Dreams of being a {child.dreamJob}</p>
+                        <p className="text-sm font-medium">
+                          Dreams of being a {child.dreamJob}
+                        </p>
                       </div>
                     </div>
                     <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
@@ -331,12 +411,12 @@ const Children = () => {
                       <Star className="h-6 w-6 text-yellow-400 fill-current" />
                     </div>
                   </div>
-                  
+
                   <div className="p-6 flex-grow flex flex-col">
                     <h3 className="text-xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
                       {child.name}
                     </h3>
-                    
+
                     <div className="space-y-2 mb-4 text-sm text-charity-neutral-600">
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-2 text-charity-orange-500" />
@@ -351,7 +431,7 @@ const Children = () => {
                         <span className="truncate">{child.grade}</span>
                       </div>
                     </div>
-                    
+
                     <p className="text-charity-neutral-600 text-sm mb-4 line-clamp-3 flex-grow">
                       {child.story}
                     </p>
@@ -362,15 +442,20 @@ const Children = () => {
                         Recent Achievements:
                       </div>
                       <div className="space-y-1">
-                        {child.achievements.slice(0, 2).map((achievement, i) => (
-                          <div key={i} className="flex items-center text-xs text-charity-green-700">
-                            <Star className="h-3 w-3 mr-1 fill-current" />
-                            {achievement}
-                          </div>
-                        ))}
+                        {child.achievements
+                          .slice(0, 2)
+                          .map((achievement, i) => (
+                            <div
+                              key={i}
+                              className="flex items-center text-xs text-charity-green-700"
+                            >
+                              <Star className="h-3 w-3 mr-1 fill-current" />
+                              {achievement}
+                            </div>
+                          ))}
                       </div>
                     </div>
-                    
+
                     <div className="mb-4">
                       <div className="text-sm font-medium text-charity-neutral-700 mb-2">
                         Interests:
@@ -386,20 +471,22 @@ const Children = () => {
                         ))}
                       </div>
                     </div>
-                    
+
                     <div className="border-t border-charity-neutral-200 pt-4 mt-auto">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-charity-neutral-600">Monthly Need:</span>
+                        <span className="text-sm text-charity-neutral-600">
+                          Monthly Need:
+                        </span>
                         <span className="text-xl font-bold text-charity-orange-600">
                           ${child.monthlyNeed}
                         </span>
                       </div>
-                      
+
                       <Link
                         to="/sponsor"
                         className="block w-full px-4 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg text-center"
                       >
-                        💝 Sponsor {child.name.split(' ')[0]}
+                        💝 Sponsor {child.name.split(" ")[0]}
                       </Link>
                     </div>
                   </div>
@@ -417,7 +504,8 @@ const Children = () => {
                   No children found
                 </h3>
                 <p className="text-charity-neutral-600 mb-6">
-                  Try adjusting your search criteria to find children who match your preferences.
+                  Try adjusting your search criteria to find children who match
+                  your preferences.
                 </p>
                 <button
                   onClick={() => {
@@ -446,7 +534,9 @@ const Children = () => {
                 Ready to Change a Life?
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Your sponsorship doesn't just change a child's life – it transforms their entire family and community. Start your sponsorship journey today.
+                Your sponsorship doesn't just change a child's life – it
+                transforms their entire family and community. Start your
+                sponsorship journey today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

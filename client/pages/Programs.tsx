@@ -126,20 +126,23 @@ const Programs = () => {
     subtitle: "Creating smiles, one coin at a time😊",
     date: "19TH OCT 2025",
     venue: "BLESSINGS CHILDREN'S HOME - RUAI",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
     theme: "Global harmony begins with kindness",
-    message: "Hi there😊\n\nIn pursuit of my course of making the world a better place, I can't do it alone, I need more hands🥹... Shall we?\nCreating smiles, one coin at a time😊",
+    message:
+      "Hi there😊\n\nIn pursuit of my course of making the world a better place, I can't do it alone, I need more hands🥹... Shall we?\nCreating smiles, one coin at a time😊",
     itemsNeeded: [
       "Dry Foodstuffs",
       "Water",
       "Detergent",
       "Sanitary Towels",
       "Beddings",
-      "Monetary support"
+      "Monetary support",
     ],
     contact: "+254112459483",
     paymentLink: "https://zenlipa.co.ke/c/uKowYx",
-    fullDescription: "Join us for an unforgettable day of giving and community spirit at the NAIROBI Edition event. This special gathering brings together hearts and hands united in a common mission: to spread joy and create lasting smiles in the lives of children who need it most.\n\nLocated at the beautiful Blessings Children's Home in Ruai, this event represents more than just a donation drive - it's a celebration of humanity, kindness, and the power we have when we come together for a noble cause.\n\nWhat makes this event special:\n• Direct impact on children's lives\n• Community building and networking\n• Hands-on volunteer opportunities\n• Stories of transformation and hope\n• Cultural performances and activities\n\nEvery contribution, whether big or small, creates ripples of positive change that extend far beyond the event day. Together, we're not just giving items - we're giving hope, dignity, and the promise of a brighter tomorrow.",
+    fullDescription:
+      "Join us for an unforgettable day of giving and community spirit at the NAIROBI Edition event. This special gathering brings together hearts and hands united in a common mission: to spread joy and create lasting smiles in the lives of children who need it most.\n\nLocated at the beautiful Blessings Children's Home in Ruai, this event represents more than just a donation drive - it's a celebration of humanity, kindness, and the power we have when we come together for a noble cause.\n\nWhat makes this event special:\n• Direct impact on children's lives\n• Community building and networking\n• Hands-on volunteer opportunities\n• Stories of transformation and hope\n• Cultural performances and activities\n\nEvery contribution, whether big or small, creates ripples of positive change that extend far beyond the event day. Together, we're not just giving items - we're giving hope, dignity, and the promise of a brighter tomorrow.",
     schedule: [
       { time: "9:00 AM", activity: "Registration & Welcome Coffee" },
       { time: "10:00 AM", activity: "Opening Ceremony & Speeches" },
@@ -147,50 +150,50 @@ const Programs = () => {
       { time: "12:30 PM", activity: "Cultural Performances by Children" },
       { time: "1:00 PM", activity: "Lunch & Networking" },
       { time: "2:30 PM", activity: "Volunteer Activities & Games" },
-      { time: "4:00 PM", activity: "Closing Ceremony & Group Photos" }
+      { time: "4:00 PM", activity: "Closing Ceremony & Group Photos" },
     ],
     impactGoals: [
       "Provide essential supplies to 200+ children",
       "Fund educational materials for 50 students",
       "Support nutritional programs for 3 months",
-      "Create sustainable partnerships with local community"
-    ]
+      "Create sustainable partnerships with local community",
+    ],
   };
 
   return (
     <>
       {/* Hero Section */}
       <section className="pt-0 relative overflow-hidden">
-  {/* Animated Gradient Background */}
-  <div className="absolute inset-0 bg-gradient-to-br from-green-500 via-orange-400 to-orange-600 animate-gradient"></div>
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-500 via-orange-400 to-orange-600 animate-gradient"></div>
 
-  {/* Pattern Overlay */}
-  <div
-    className="absolute inset-0 opacity-20"
-    style={{
-      backgroundImage:
-        "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"2\" fill=\"white\"/></svg>')",
-      backgroundSize: "40px 40px",
-    }}
-  ></div>
+        {/* Pattern Overlay */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white"/></svg>\')',
+            backgroundSize: "40px 40px",
+          }}
+        ></div>
 
-  <Navigation />
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <AnimatedSection animation="slideUp">
-      <div className="text-center text-white">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">
-          Our Programs
-        </h1>
-        <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-          Comprehensive initiatives designed to create lasting positive change
-          in education, healthcare, and community development
-        </p>
-      </div>
-    </AnimatedSection>
-  </div>
+        <Navigation />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <AnimatedSection animation="slideUp">
+            <div className="text-center text-white">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Our Programs
+              </h1>
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+                Comprehensive initiatives designed to create lasting positive
+                change in education, healthcare, and community development
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
 
-  {/* Gradient Animation Keyframes */}
-  <style>{`
+        {/* Gradient Animation Keyframes */}
+        <style>{`
     @keyframes gradient {
       0% {
         background-position: 0% 50%;
@@ -207,7 +210,7 @@ const Programs = () => {
       animation: gradient 8s ease infinite;
     }
   `}</style>
-</section>
+      </section>
 
       {/* Featured Event */}
       <section className="py-20 bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
@@ -218,7 +221,8 @@ const Programs = () => {
                 Featured Event
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Join us for our upcoming special event and be part of creating positive change in our community.
+                Join us for our upcoming special event and be part of creating
+                positive change in our community.
               </p>
             </div>
           </AnimatedSection>
@@ -283,9 +287,14 @@ const Programs = () => {
                         </h3>
                         <div className="grid grid-cols-2 gap-3">
                           {featuredEvent.itemsNeeded.map((item, index) => (
-                            <div key={index} className="flex items-center space-x-2">
+                            <div
+                              key={index}
+                              className="flex items-center space-x-2"
+                            >
                               <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                              <span className="text-charity-neutral-700 text-sm">{item}</span>
+                              <span className="text-charity-neutral-700 text-sm">
+                                {item}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -293,10 +302,14 @@ const Programs = () => {
 
                       <div className="text-center space-y-4">
                         <div className="bg-charity-neutral-100 p-4 rounded-xl">
-                          <p className="text-charity-neutral-600 mb-2">For more info contact us:</p>
+                          <p className="text-charity-neutral-600 mb-2">
+                            For more info contact us:
+                          </p>
                           <div className="flex items-center justify-center space-x-2">
                             <Phone className="h-4 w-4 text-charity-orange-600" />
-                            <span className="font-bold text-charity-neutral-800">{featuredEvent.contact}</span>
+                            <span className="font-bold text-charity-neutral-800">
+                              {featuredEvent.contact}
+                            </span>
                           </div>
                         </div>
 
@@ -574,12 +587,17 @@ const Programs = () => {
                   </h2>
                   <div className="bg-charity-neutral-50 rounded-xl p-6">
                     {featuredEvent.schedule.map((item, index) => (
-                      <div key={index} className="flex items-start space-x-4 mb-4 last:mb-0">
+                      <div
+                        key={index}
+                        className="flex items-start space-x-4 mb-4 last:mb-0"
+                      >
                         <div className="bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold min-w-20 text-center">
                           {item.time}
                         </div>
                         <div className="flex-1">
-                          <p className="text-charity-neutral-700 font-medium">{item.activity}</p>
+                          <p className="text-charity-neutral-700 font-medium">
+                            {item.activity}
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -594,7 +612,10 @@ const Programs = () => {
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {featuredEvent.impactGoals.map((goal, index) => (
-                      <div key={index} className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg">
+                      <div
+                        key={index}
+                        className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg"
+                      >
                         <CheckCircle className="h-5 w-5 text-charity-green-600 mt-0.5 flex-shrink-0" />
                         <span className="text-charity-neutral-700">{goal}</span>
                       </div>
@@ -610,10 +631,14 @@ const Programs = () => {
                       <MapPin className="h-5 w-5 text-charity-orange-600 mr-2" />
                       Event Location
                     </h3>
-                    <p className="text-charity-neutral-700 mb-4">{featuredEvent.venue}</p>
+                    <p className="text-charity-neutral-700 mb-4">
+                      {featuredEvent.venue}
+                    </p>
                     <div className="flex items-center space-x-2">
                       <Phone className="h-4 w-4 text-charity-orange-600" />
-                      <span className="text-charity-neutral-700">{featuredEvent.contact}</span>
+                      <span className="text-charity-neutral-700">
+                        {featuredEvent.contact}
+                      </span>
                     </div>
                   </div>
 
@@ -625,9 +650,14 @@ const Programs = () => {
                     </h3>
                     <div className="grid grid-cols-2 gap-2">
                       {featuredEvent.itemsNeeded.map((item, index) => (
-                        <div key={index} className="flex items-center space-x-2">
+                        <div
+                          key={index}
+                          className="flex items-center space-x-2"
+                        >
                           <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                          <span className="text-charity-neutral-700 text-sm">{item}</span>
+                          <span className="text-charity-neutral-700 text-sm">
+                            {item}
+                          </span>
                         </div>
                       ))}
                     </div>

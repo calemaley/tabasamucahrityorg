@@ -21,7 +21,9 @@ const Footer = () => {
       attributionControl: false,
     });
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+      map,
+    );
 
     L.marker([-1.2921, 36.8219])
       .addTo(map)
