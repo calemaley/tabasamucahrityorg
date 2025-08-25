@@ -115,7 +115,7 @@ const Navigation = () => {
                           className={cn(
                             "h-3.5 w-3.5 transition-all duration-200",
                             activeDropdown === item.label
-                              ? "rotate-180 text-charity-orange-200"
+                              ? "rotate-180" + (isScrolled || isMenuOpen ? " text-charity-orange-600" : " text-charity-orange-200")
                               : "group-hover:rotate-12",
                           )}
                         />
