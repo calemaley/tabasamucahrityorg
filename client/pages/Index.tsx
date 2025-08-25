@@ -13,6 +13,8 @@ import {
   User,
   ChevronLeft,
   ChevronRight,
+  MapPin,
+  Star,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
