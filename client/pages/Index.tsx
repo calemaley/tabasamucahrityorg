@@ -331,12 +331,15 @@ const Index = () => {
                 >
                   Join Us Today
                 </Link>
-                <Link
-                  to="/get-involved/donate"
+                <button
+                  onClick={() => redirectToPayment('donationUrl', {
+                    source: CAMPAIGN_SOURCES.hero,
+                    campaign: 'hero-donate'
+                  })}
                   className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-charity-neutral-800 rounded-lg transition-colors duration-200 font-medium"
                 >
                   Donate Now
-                </Link>
+                </button>
               </div>
             </div>
           </div>
