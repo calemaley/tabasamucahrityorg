@@ -466,13 +466,16 @@ const Index = () => {
                 <p className="text-xl mb-6 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                   Every donation creates lasting impact
                 </p>
-                <Link
-                  to="/get-involved/donate"
+                <button
+                  onClick={() => redirectToPayment('donationUrl', {
+                    source: CAMPAIGN_SOURCES.cta,
+                    campaign: 'donate-section'
+                  })}
                   className="inline-block px-8 py-3 bg-white text-charity-green-700 hover:bg-green-100 hover:scale-105 hover:shadow-lg rounded-lg font-bold transition-all duration-300 group-hover:animate-pulse"
                 >
                   DONATE NOW
                   <ArrowRight className="inline ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </Link>
+                </button>
               </div>
             </div>
           </div>
