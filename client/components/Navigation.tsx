@@ -14,6 +14,13 @@ import {
 import { cn } from "@/lib/utils";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
+interface SubMenuItem {
+  label: string;
+  href: string;
+  isPayment?: boolean;
+  paymentType?: 'donationUrl' | 'sponsorshipUrl' | 'generalUrl' | 'volunteerUrl';
+}
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
