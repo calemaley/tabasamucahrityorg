@@ -180,16 +180,22 @@ const Contact = () => {
           >
             {/* Simplified Kenya map outline with gradient */}
             <defs>
-              <linearGradient id="kenyaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient
+                id="kenyaGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="#F97316" stopOpacity="0.3" />
                 <stop offset="50%" stopColor="#16A34A" stopOpacity="0.3" />
                 <stop offset="100%" stopColor="#F97316" stopOpacity="0.3" />
               </linearGradient>
               <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                 <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
             </defs>
@@ -213,9 +219,22 @@ const Contact = () => {
                 style={{ animationDelay: "0s", animationDuration: "3s" }}
                 opacity="0.8"
               >
-                <animate attributeName="r" values="8;12;8" dur="4s" repeatCount="indefinite" />
+                <animate
+                  attributeName="r"
+                  values="8;12;8"
+                  dur="4s"
+                  repeatCount="indefinite"
+                />
               </circle>
-              <text x="325" y="275" fill="#F97316" fontSize="12" className="font-bold opacity-70">Nairobi</text>
+              <text
+                x="325"
+                y="275"
+                fill="#F97316"
+                fontSize="12"
+                className="font-bold opacity-70"
+              >
+                Nairobi
+              </text>
 
               <circle
                 cx="450"
@@ -226,9 +245,22 @@ const Contact = () => {
                 style={{ animationDelay: "1s", animationDuration: "3s" }}
                 opacity="0.8"
               >
-                <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite" />
+                <animate
+                  attributeName="r"
+                  values="6;10;6"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
               </circle>
-              <text x="455" y="315" fill="#16A34A" fontSize="10" className="font-medium opacity-70">Mombasa</text>
+              <text
+                x="455"
+                y="315"
+                fill="#16A34A"
+                fontSize="10"
+                className="font-medium opacity-70"
+              >
+                Mombasa
+              </text>
 
               <circle
                 cx="380"
@@ -239,9 +271,22 @@ const Contact = () => {
                 style={{ animationDelay: "2s", animationDuration: "3s" }}
                 opacity="0.8"
               >
-                <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" />
+                <animate
+                  attributeName="r"
+                  values="5;8;5"
+                  dur="2.5s"
+                  repeatCount="indefinite"
+                />
               </circle>
-              <text x="385" y="195" fill="#F59E0B" fontSize="10" className="font-medium opacity-70">Nakuru</text>
+              <text
+                x="385"
+                y="195"
+                fill="#F59E0B"
+                fontSize="10"
+                className="font-medium opacity-70"
+              >
+                Nakuru
+              </text>
             </g>
 
             {/* Enhanced connecting lines with animation */}
@@ -256,7 +301,12 @@ const Contact = () => {
                 className="opacity-40"
                 strokeDasharray="5,5"
               >
-                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite" />
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;10"
+                  dur="2s"
+                  repeatCount="indefinite"
+                />
               </line>
               <line
                 x1="320"
@@ -268,7 +318,12 @@ const Contact = () => {
                 className="opacity-40"
                 strokeDasharray="5,5"
               >
-                <animate attributeName="stroke-dashoffset" values="0;10" dur="2.5s" repeatCount="indefinite" />
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;10"
+                  dur="2.5s"
+                  repeatCount="indefinite"
+                />
               </line>
             </g>
 
@@ -285,7 +340,7 @@ const Contact = () => {
                   className="animate-ping"
                   style={{
                     animationDelay: `${i * 0.5}s`,
-                    animationDuration: "4s"
+                    animationDuration: "4s",
                   }}
                 />
               ))}
@@ -398,7 +453,7 @@ const Contact = () => {
                               left: `${20 + i * 15}%`,
                               top: `${20 + (i % 3) * 20}%`,
                               animationDelay: `${i * 0.2}s`,
-                              animationDuration: "2s"
+                              animationDuration: "2s",
                             }}
                           />
                         ))}
@@ -421,7 +476,9 @@ const Contact = () => {
                             <p
                               key={detailIndex}
                               className="text-charity-neutral-600 group-hover:text-charity-neutral-700 transition-all duration-300 transform group-hover:translate-x-1"
-                              style={{ transitionDelay: `${detailIndex * 50}ms` }}
+                              style={{
+                                transitionDelay: `${detailIndex * 50}ms`,
+                              }}
                             >
                               {detail}
                             </p>
@@ -550,7 +607,9 @@ const Contact = () => {
                           <option value="general">💬 General Inquiry</option>
                           <option value="volunteer">👥 Volunteering</option>
                           <option value="donation">💝 Donations</option>
-                          <option value="sponsorship">🧒 Child Sponsorship</option>
+                          <option value="sponsorship">
+                            🧒 Child Sponsorship
+                          </option>
                           <option value="partnership">🤝 Partnerships</option>
                           <option value="media">📰 Media & Press</option>
                         </select>
@@ -607,7 +666,9 @@ const Contact = () => {
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                         <Send className="h-5 w-5 mr-3 group-hover:translate-x-1 group-hover:rotate-12 transition-all duration-200 relative z-10" />
-                        <span className="relative z-10">Submit Professional Inquiry</span>
+                        <span className="relative z-10">
+                          Submit Professional Inquiry
+                        </span>
                         <div className="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                       </button>
 
@@ -616,10 +677,12 @@ const Contact = () => {
                           Want to make an immediate impact?
                         </p>
                         <button
-                          onClick={() => redirectToPayment('donationUrl', {
-                            source: CAMPAIGN_SOURCES.contact,
-                            campaign: 'contact-form-cta'
-                          })}
+                          onClick={() =>
+                            redirectToPayment("donationUrl", {
+                              source: CAMPAIGN_SOURCES.contact,
+                              campaign: "contact-form-cta",
+                            })
+                          }
                           className="inline-flex items-center px-6 py-2 bg-charity-green-600 hover:bg-charity-green-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg"
                         >
                           <Heart className="h-4 w-4 mr-2" />

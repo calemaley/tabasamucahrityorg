@@ -487,10 +487,12 @@ const About = () => {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
                 <button
-                  onClick={() => redirectToPayment('donationUrl', {
-                    source: CAMPAIGN_SOURCES.about,
-                    campaign: 'about-cta'
-                  })}
+                  onClick={() =>
+                    redirectToPayment("donationUrl", {
+                      source: CAMPAIGN_SOURCES.about,
+                      campaign: "about-cta",
+                    })
+                  }
                   className="inline-flex items-center px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-charity-green-700 rounded-lg font-bold transition-colors duration-200"
                 >
                   Make a Donation

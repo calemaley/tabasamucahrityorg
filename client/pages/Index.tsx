@@ -332,10 +332,12 @@ const Index = () => {
                   Join Us Today
                 </Link>
                 <button
-                  onClick={() => redirectToPayment('donationUrl', {
-                    source: CAMPAIGN_SOURCES.hero,
-                    campaign: 'hero-donate'
-                  })}
+                  onClick={() =>
+                    redirectToPayment("donationUrl", {
+                      source: CAMPAIGN_SOURCES.hero,
+                      campaign: "hero-donate",
+                    })
+                  }
                   className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-charity-neutral-800 rounded-lg transition-colors duration-200 font-medium"
                 >
                   Donate Now
@@ -467,10 +469,12 @@ const Index = () => {
                   Every donation creates lasting impact
                 </p>
                 <button
-                  onClick={() => redirectToPayment('donationUrl', {
-                    source: CAMPAIGN_SOURCES.cta,
-                    campaign: 'donate-section'
-                  })}
+                  onClick={() =>
+                    redirectToPayment("donationUrl", {
+                      source: CAMPAIGN_SOURCES.cta,
+                      campaign: "donate-section",
+                    })
+                  }
                   className="inline-block px-8 py-3 bg-white text-charity-green-700 hover:bg-green-100 hover:scale-105 hover:shadow-lg rounded-lg font-bold transition-all duration-300 group-hover:animate-pulse"
                 >
                   DONATE NOW
@@ -525,20 +529,24 @@ const Index = () => {
                     <div className="mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                       {project.title === "Make a Donation" ? (
                         <button
-                          onClick={() => redirectToPayment('donationUrl', {
-                            source: CAMPAIGN_SOURCES.hero,
-                            campaign: 'popular-projects-donate'
-                          })}
+                          onClick={() =>
+                            redirectToPayment("donationUrl", {
+                              source: CAMPAIGN_SOURCES.hero,
+                              campaign: "popular-projects-donate",
+                            })
+                          }
                           className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
                         >
                           Donate Now
                         </button>
                       ) : project.title === "Sponsor a Child" ? (
                         <button
-                          onClick={() => redirectToPayment('sponsorshipUrl', {
-                            source: CAMPAIGN_SOURCES.hero,
-                            campaign: 'popular-projects-sponsor'
-                          })}
+                          onClick={() =>
+                            redirectToPayment("sponsorshipUrl", {
+                              source: CAMPAIGN_SOURCES.hero,
+                              campaign: "popular-projects-sponsor",
+                            })
+                          }
                           className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
                         >
                           Sponsor Now
@@ -653,12 +661,14 @@ const Index = () => {
                       </div>
 
                       <button
-                        onClick={() => redirectToPayment('sponsorshipUrl', {
-                          childId: child.id,
-                          amount: child.monthlyNeed,
-                          source: CAMPAIGN_SOURCES.children,
-                          campaign: `sponsor-${child.name.split(" ")[0].toLowerCase()}`
-                        })}
+                        onClick={() =>
+                          redirectToPayment("sponsorshipUrl", {
+                            childId: child.id,
+                            amount: child.monthlyNeed,
+                            source: CAMPAIGN_SOURCES.children,
+                            campaign: `sponsor-${child.name.split(" ")[0].toLowerCase()}`,
+                          })
+                        }
                         className="block w-full px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg text-center"
                       >
                         💝 Sponsor {child.name.split(" ")[0]}

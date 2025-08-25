@@ -280,10 +280,12 @@ const Blog = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
-                      onClick={() => redirectToPayment('donationUrl', {
-                        source: CAMPAIGN_SOURCES.blog,
-                        campaign: 'blog-cta'
-                      })}
+                      onClick={() =>
+                        redirectToPayment("donationUrl", {
+                          source: CAMPAIGN_SOURCES.blog,
+                          campaign: "blog-cta",
+                        })
+                      }
                       className="inline-flex items-center justify-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg font-medium transition-colors duration-200"
                     >
                       Donate Now

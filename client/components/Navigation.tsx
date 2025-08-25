@@ -19,7 +19,11 @@ interface SubMenuItem {
   label: string;
   href: string;
   isPayment?: boolean;
-  paymentType?: 'donationUrl' | 'sponsorshipUrl' | 'generalUrl' | 'volunteerUrl';
+  paymentType?:
+    | "donationUrl"
+    | "sponsorshipUrl"
+    | "generalUrl"
+    | "volunteerUrl";
 }
 
 const Navigation = () => {
@@ -33,8 +37,8 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleDropdown = (menu: string) => {
@@ -62,8 +66,18 @@ const Navigation = () => {
       href: "/get-involved",
       icon: Heart,
       subItems: [
-        { label: "Sponsor a Child", href: "/get-involved/sponsor", isPayment: true, paymentType: "sponsorshipUrl" },
-        { label: "Donate Now", href: "/get-involved/donate", isPayment: true, paymentType: "donationUrl" },
+        {
+          label: "Sponsor a Child",
+          href: "/get-involved/sponsor",
+          isPayment: true,
+          paymentType: "sponsorshipUrl",
+        },
+        {
+          label: "Donate Now",
+          href: "/get-involved/donate",
+          isPayment: true,
+          paymentType: "donationUrl",
+        },
         { label: "Volunteer", href: "/get-involved/volunteer" },
       ],
     },
@@ -72,12 +86,14 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled || isMenuOpen
-        ? "bg-white/95 backdrop-blur-md shadow-lg"
-        : "bg-transparent"
-    )}>
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled || isMenuOpen
+          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent",
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -104,7 +120,7 @@ const Navigation = () => {
                           "flex items-center space-x-1.5 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg group",
                           isScrolled || isMenuOpen
                             ? "text-charity-neutral-800 hover:text-charity-orange-600 hover:bg-charity-orange-50"
-                            : "text-white hover:text-charity-orange-200 hover:bg-white/10"
+                            : "text-white hover:text-charity-orange-200 hover:bg-white/10",
                         )}
                         onClick={() => toggleDropdown(item.label)}
                       >
@@ -116,21 +132,26 @@ const Navigation = () => {
                           className={cn(
                             "h-3.5 w-3.5 transition-all duration-200",
                             activeDropdown === item.label
-                              ? "rotate-180" + (isScrolled || isMenuOpen ? " text-charity-orange-600" : " text-charity-orange-200")
+                              ? "rotate-180" +
+                                  (isScrolled || isMenuOpen
+                                    ? " text-charity-orange-600"
+                                    : " text-charity-orange-200")
                               : "group-hover:rotate-12",
                           )}
                         />
                       </button>
                       {activeDropdown === item.label && (
                         <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-in slide-in-from-top-2 duration-200">
-                          {item.subItems.map((subItem) => (
+                          {item.subItems.map((subItem) =>
                             subItem.isPayment ? (
                               <button
                                 key={subItem.label}
                                 onClick={() => {
                                   redirectToPayment(subItem.paymentType, {
                                     source: CAMPAIGN_SOURCES.navigation,
-                                    campaign: subItem.label.toLowerCase().replace(' ', '-')
+                                    campaign: subItem.label
+                                      .toLowerCase()
+                                      .replace(" ", "-"),
                                   });
                                   setActiveDropdown(null);
                                 }}
@@ -147,8 +168,8 @@ const Navigation = () => {
                               >
                                 {subItem.label}
                               </Link>
-                            )
-                          ))}
+                            ),
+                          )}
                         </div>
                       )}
                     </>
@@ -159,7 +180,7 @@ const Navigation = () => {
                         "flex items-center space-x-1.5 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg group",
                         isScrolled || isMenuOpen
                           ? "text-charity-neutral-800 hover:text-charity-orange-600 hover:bg-charity-orange-50"
-                          : "text-white hover:text-charity-orange-200 hover:bg-white/10"
+                          : "text-white hover:text-charity-orange-200 hover:bg-white/10",
                       )}
                     >
                       <IconComponent className="h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
@@ -181,7 +202,7 @@ const Navigation = () => {
                 "p-2 rounded-md transition-colors duration-200",
                 isScrolled || isMenuOpen
                   ? "text-charity-neutral-800 hover:text-charity-orange-600 hover:bg-charity-orange-50"
-                  : "text-white hover:text-charity-orange-200 hover:bg-white/10"
+                  : "text-white hover:text-charity-orange-200 hover:bg-white/10",
               )}
             >
               {isMenuOpen ? (
@@ -206,7 +227,9 @@ const Navigation = () => {
             <div className="md:hidden fixed top-20 left-0 h-[calc(100vh-5rem)] w-64 bg-white shadow-2xl z-50 transform transition-all duration-300 ease-out animate-in slide-in-from-left-full rounded-tr-2xl rounded-br-2xl border-r border-charity-neutral-200">
               {/* Sidebar Header */}
               <div className="flex items-center justify-between p-4 border-b border-charity-neutral-100 bg-charity-orange-50/30">
-                <h3 className="font-bold text-charity-neutral-800 text-lg">Menu</h3>
+                <h3 className="font-bold text-charity-neutral-800 text-lg">
+                  Menu
+                </h3>
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="p-2 hover:bg-charity-orange-100 rounded-full transition-colors duration-200"
@@ -240,14 +263,16 @@ const Navigation = () => {
                           </button>
                           {activeDropdown === item.label && (
                             <div className="mt-2 pl-8 space-y-1">
-                              {item.subItems.map((subItem) => (
+                              {item.subItems.map((subItem) =>
                                 subItem.isPayment ? (
                                   <button
                                     key={subItem.label}
                                     onClick={() => {
                                       redirectToPayment(subItem.paymentType, {
                                         source: CAMPAIGN_SOURCES.navigation,
-                                        campaign: subItem.label.toLowerCase().replace(' ', '-')
+                                        campaign: subItem.label
+                                          .toLowerCase()
+                                          .replace(" ", "-"),
                                       });
                                       setIsMenuOpen(false);
                                       setActiveDropdown(null);
@@ -268,8 +293,8 @@ const Navigation = () => {
                                   >
                                     {subItem.label}
                                   </Link>
-                                )
-                              ))}
+                                ),
+                              )}
                             </div>
                           )}
                         </>
