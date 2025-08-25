@@ -550,17 +550,23 @@ const Sponsor = () => {
                 </ul>
               </div>
               
+              <div className="bg-charity-orange-50 p-4 rounded-xl border-l-4 border-charity-orange-500 mb-6">
+                <p className="text-sm text-charity-orange-700">
+                  <strong>Next:</strong> You'll be redirected to our secure payment portal to complete your sponsorship setup.
+                </p>
+              </div>
+
               <div className="flex gap-4">
                 <button
                   type="submit"
-                  className="flex-1 px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium"
+                  className="flex-1 px-6 py-4 bg-gradient-to-r from-charity-orange-600 to-charity-orange-700 hover:from-charity-orange-700 hover:to-charity-orange-800 text-white rounded-lg transition-all duration-200 font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
-                  Start Sponsorship
+                  💝 Proceed to Payment
                 </button>
                 <button
                   type="button"
                   onClick={() => setSelectedChild(null)}
-                  className="px-6 py-3 bg-charity-neutral-200 hover:bg-charity-neutral-300 text-charity-neutral-700 rounded-lg transition-colors duration-200 font-medium"
+                  className="px-6 py-4 bg-charity-neutral-200 hover:bg-charity-neutral-300 text-charity-neutral-700 rounded-lg transition-colors duration-200 font-medium"
                 >
                   Cancel
                 </button>
