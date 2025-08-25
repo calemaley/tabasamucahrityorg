@@ -216,7 +216,7 @@ const Navigation = () => {
               </div>
 
               {/* Navigation items */}
-              <nav className="px-4 space-y-2">
+              <nav className="flex-1 overflow-y-auto px-4 py-4 space-y-2">
                 {menuItems.map((item) => {
                   const IconComponent = item.icon;
                   return (
