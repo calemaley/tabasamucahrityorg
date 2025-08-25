@@ -351,48 +351,52 @@ const Sponsor = () => {
                 animation="scaleIn"
                 delay={index * 100}
               >
-                <div className="bg-white border border-charity-neutral-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative">
+                <div className="bg-white border border-charity-neutral-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
+                  <div className="relative overflow-hidden">
                     <img
                       src={child.image}
                       alt={child.name}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
                       Available
                     </div>
+                    <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
+                    </div>
                   </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-2">
+
+                  <div className="p-6 flex-grow flex flex-col">
+                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
                       {child.name}
                     </h3>
-                    
-                    <div className="space-y-1 mb-4 text-sm text-charity-neutral-600">
+
+                    <div className="space-y-2 mb-4 text-sm text-charity-neutral-600">
                       <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2" />
+                        <Calendar className="h-4 w-4 mr-2 text-charity-orange-500" />
                         {child.age} years old
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-2" />
+                        <MapPin className="h-4 w-4 mr-2 text-charity-green-500" />
                         {child.location}
                       </div>
                       <div className="flex items-center">
-                        <GraduationCap className="h-4 w-4 mr-2" />
-                        {child.grade} at {child.school}
+                        <GraduationCap className="h-4 w-4 mr-2 text-charity-orange-500" />
+                        <span className="truncate">{child.grade} at {child.school}</span>
                       </div>
                     </div>
-                    
-                    <p className="text-charity-neutral-600 text-sm mb-4 line-clamp-3">
+
+                    <p className="text-charity-neutral-600 text-sm mb-4 line-clamp-3 flex-grow">
                       {child.story}
                     </p>
-                    
+
                     <div className="mb-4">
                       <div className="text-sm font-medium text-charity-neutral-700 mb-2">
                         Interests:
                       </div>
                       <div className="flex flex-wrap gap-1">
-                        {child.interests.map((interest, i) => (
+                        {child.interests.slice(0, 3).map((interest, i) => (
                           <span
                             key={i}
                             className="px-2 py-1 bg-charity-green-100 text-charity-green-700 text-xs rounded-full"
@@ -402,20 +406,20 @@ const Sponsor = () => {
                         ))}
                       </div>
                     </div>
-                    
-                    <div className="border-t border-charity-neutral-200 pt-4">
+
+                    <div className="border-t border-charity-neutral-200 pt-4 mt-auto">
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-sm text-charity-neutral-600">Monthly Need:</span>
-                        <span className="text-lg font-bold text-charity-orange-600">
+                        <span className="text-xl font-bold text-charity-orange-600">
                           ${child.monthlyNeed}
                         </span>
                       </div>
-                      
+
                       <button
                         onClick={() => setSelectedChild(child.id)}
-                        className="w-full px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium"
+                        className="w-full px-4 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg"
                       >
-                        Sponsor {child.name.split(' ')[0]}
+                        💝 Sponsor {child.name.split(' ')[0]}
                       </button>
                     </div>
                   </div>
