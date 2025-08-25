@@ -203,7 +203,7 @@ const Navigation = () => {
             />
 
             {/* Sidebar */}
-            <div className="relative flex flex-col w-80 h-full bg-white shadow-2xl transform transition-transform duration-300 ease-out translate-x-0">
+            <div className="relative flex flex-col w-80 max-w-[85vw] h-full bg-white shadow-2xl transform transition-transform duration-300 ease-out animate-in slide-in-from-left-full">
               {/* Sidebar Header */}
               <div className="flex items-center justify-between p-6 border-b border-charity-neutral-200 bg-gradient-to-r from-charity-orange-50 to-charity-green-50">
                 <div className="flex items-center space-x-3">
