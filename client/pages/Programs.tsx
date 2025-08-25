@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   GraduationCap,
@@ -11,12 +12,17 @@ import {
   MapPin,
   Clock,
   Phone,
+  X,
+  Heart,
+  Gift,
+  CheckCircle,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const Programs = () => {
+  const [showEventModal, setShowEventModal] = useState(false);
   const mainPrograms = [
     {
       icon: GraduationCap,
@@ -132,7 +138,23 @@ const Programs = () => {
       "Monetary support"
     ],
     contact: "+254112459483",
-    paymentLink: "https://zenlipa.co.ke/c/uKowYx"
+    paymentLink: "https://zenlipa.co.ke/c/uKowYx",
+    fullDescription: "Join us for an unforgettable day of giving and community spirit at the NAIROBI Edition event. This special gathering brings together hearts and hands united in a common mission: to spread joy and create lasting smiles in the lives of children who need it most.\n\nLocated at the beautiful Blessings Children's Home in Ruai, this event represents more than just a donation drive - it's a celebration of humanity, kindness, and the power we have when we come together for a noble cause.\n\nWhat makes this event special:\n• Direct impact on children's lives\n• Community building and networking\n• Hands-on volunteer opportunities\n• Stories of transformation and hope\n• Cultural performances and activities\n\nEvery contribution, whether big or small, creates ripples of positive change that extend far beyond the event day. Together, we're not just giving items - we're giving hope, dignity, and the promise of a brighter tomorrow.",
+    schedule: [
+      { time: "9:00 AM", activity: "Registration & Welcome Coffee" },
+      { time: "10:00 AM", activity: "Opening Ceremony & Speeches" },
+      { time: "11:00 AM", activity: "Donation Distribution Begins" },
+      { time: "12:30 PM", activity: "Cultural Performances by Children" },
+      { time: "1:00 PM", activity: "Lunch & Networking" },
+      { time: "2:30 PM", activity: "Volunteer Activities & Games" },
+      { time: "4:00 PM", activity: "Closing Ceremony & Group Photos" }
+    ],
+    impactGoals: [
+      "Provide essential supplies to 200+ children",
+      "Fund educational materials for 50 students",
+      "Support nutritional programs for 3 months",
+      "Create sustainable partnerships with local community"
+    ]
   };
 
   return (
@@ -449,7 +471,10 @@ const Programs = () => {
                             💝 Make a Contribution
                           </a>
 
-                          <button className="w-full border-2 border-charity-green-600 text-charity-green-600 hover:bg-charity-green-600 hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group">
+                          <button
+                            onClick={() => setShowEventModal(true)}
+                            className="w-full border-2 border-charity-green-600 text-charity-green-600 hover:bg-charity-green-600 hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group"
+                          >
                             Learn More Details
                             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                           </button>
