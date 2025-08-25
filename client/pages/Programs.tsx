@@ -522,6 +522,153 @@ const Programs = () => {
         </div>
       </section>
 
+      {/* Event Details Modal */}
+      {showEventModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="relative">
+              <button
+                onClick={() => setShowEventModal(false)}
+                className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              {/* Modal Header */}
+              <div className="relative">
+                <img
+                  src={featuredEvent.image}
+                  alt={featuredEvent.title}
+                  className="w-full h-64 object-cover rounded-t-2xl"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 rounded-t-2xl"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold inline-block mb-4">
+                    {featuredEvent.date}
+                  </div>
+                  <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    {featuredEvent.title}
+                  </h1>
+                  <p className="text-xl text-white/90 italic">
+                    {featuredEvent.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-8">
+                {/* Event Description */}
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                    <Heart className="h-6 w-6 text-charity-orange-600 mr-2" />
+                    About This Event
+                  </h2>
+                  <p className="text-charity-neutral-700 leading-relaxed whitespace-pre-line">
+                    {featuredEvent.fullDescription}
+                  </p>
+                </div>
+
+                {/* Event Schedule */}
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                    <Calendar className="h-6 w-6 text-charity-green-600 mr-2" />
+                    Event Schedule
+                  </h2>
+                  <div className="bg-charity-neutral-50 rounded-xl p-6">
+                    {featuredEvent.schedule.map((item, index) => (
+                      <div key={index} className="flex items-start space-x-4 mb-4 last:mb-0">
+                        <div className="bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold min-w-20 text-center">
+                          {item.time}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-charity-neutral-700 font-medium">{item.activity}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Impact Goals */}
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                    <CheckCircle className="h-6 w-6 text-charity-green-600 mr-2" />
+                    Expected Impact
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {featuredEvent.impactGoals.map((goal, index) => (
+                      <div key={index} className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg">
+                        <CheckCircle className="h-5 w-5 text-charity-green-600 mt-0.5 flex-shrink-0" />
+                        <span className="text-charity-neutral-700">{goal}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Event Details Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  {/* Venue & Contact */}
+                  <div className="bg-charity-orange-50 p-6 rounded-xl">
+                    <h3 className="text-lg font-bold text-charity-neutral-800 mb-4 flex items-center">
+                      <MapPin className="h-5 w-5 text-charity-orange-600 mr-2" />
+                      Event Location
+                    </h3>
+                    <p className="text-charity-neutral-700 mb-4">{featuredEvent.venue}</p>
+                    <div className="flex items-center space-x-2">
+                      <Phone className="h-4 w-4 text-charity-orange-600" />
+                      <span className="text-charity-neutral-700">{featuredEvent.contact}</span>
+                    </div>
+                  </div>
+
+                  {/* Items Needed */}
+                  <div className="bg-red-50 p-6 rounded-xl">
+                    <h3 className="text-lg font-bold text-charity-neutral-800 mb-4 flex items-center">
+                      <Gift className="h-5 w-5 text-red-600 mr-2" />
+                      Items Needed
+                    </h3>
+                    <div className="grid grid-cols-2 gap-2">
+                      {featuredEvent.itemsNeeded.map((item, index) => (
+                        <div key={index} className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                          <span className="text-charity-neutral-700 text-sm">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Theme Section */}
+                <div className="bg-charity-green-50 p-6 rounded-xl mb-8 border-l-4 border-charity-green-500">
+                  <h3 className="text-lg font-bold text-charity-neutral-800 mb-2">
+                    This Year's Theme:
+                  </h3>
+                  <p className="text-xl text-charity-green-700 italic font-medium">
+                    "{featuredEvent.theme}"
+                  </p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href={featuredEvent.paymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-charity-orange-600 hover:bg-charity-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 transform hover:scale-105 text-center"
+                  >
+                    💝 Make a Contribution
+                  </a>
+
+                  <Link
+                    to="/contact"
+                    className="flex-1 border-2 border-charity-green-600 text-charity-green-600 hover:bg-charity-green-600 hover:text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 text-center"
+                  >
+                    Contact Us for More Info
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );
