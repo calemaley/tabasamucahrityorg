@@ -167,8 +167,8 @@ const Contact = () => {
           }}
         />
 
-        {/* Kenya Map SVG Background */}
-        <div className="absolute inset-0 opacity-10">
+        {/* Enhanced Kenya Map SVG Background */}
+        <div className="absolute inset-0 opacity-15">
           <svg
             viewBox="0 0 800 600"
             className="w-full h-full object-cover"
@@ -177,58 +177,118 @@ const Contact = () => {
               transition: "transform 0.1s ease-out",
             }}
           >
-            {/* Simplified Kenya map outline */}
+            {/* Simplified Kenya map outline with gradient */}
+            <defs>
+              <linearGradient id="kenyaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#F97316" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#16A34A" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#F97316" stopOpacity="0.3" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
             <path
               d="M200,150 L300,120 L400,140 L500,160 L580,180 L600,220 L580,280 L560,350 L520,420 L480,450 L420,460 L360,450 L300,430 L250,400 L200,350 L180,300 L170,250 L180,200 Z"
-              fill="currentColor"
-              className="text-charity-green-300 animate-pulse"
-              style={{ animationDuration: "4s" }}
-            />
-            {/* Major cities markers */}
-            <circle
-              cx="320"
-              cy="280"
-              r="8"
-              fill="currentColor"
-              className="text-charity-orange-500 animate-bounce"
-              style={{ animationDelay: "0s", animationDuration: "2s" }}
-            />
-            <circle
-              cx="450"
-              cy="320"
-              r="6"
-              fill="currentColor"
-              className="text-charity-green-500 animate-bounce"
-              style={{ animationDelay: "0.5s", animationDuration: "2s" }}
-            />
-            <circle
-              cx="380"
-              cy="200"
-              r="5"
-              fill="currentColor"
-              className="text-charity-orange-400 animate-bounce"
-              style={{ animationDelay: "1s", animationDuration: "2s" }}
+              fill="url(#kenyaGradient)"
+              className="animate-pulse"
+              style={{ animationDuration: "6s" }}
+              filter="url(#glow)"
             />
 
-            {/* Connecting lines */}
-            <line
-              x1="320"
-              y1="280"
-              x2="450"
-              y2="320"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="text-charity-neutral-300 opacity-50"
-            />
-            <line
-              x1="320"
-              y1="280"
-              x2="380"
-              y2="200"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="text-charity-neutral-300 opacity-50"
-            />
+            {/* Major cities markers with enhanced animations */}
+            <g className="cities">
+              <circle
+                cx="320"
+                cy="280"
+                r="8"
+                fill="#F97316"
+                className="animate-bounce cursor-pointer"
+                style={{ animationDelay: "0s", animationDuration: "3s" }}
+                opacity="0.8"
+              >
+                <animate attributeName="r" values="8;12;8" dur="4s" repeatCount="indefinite" />
+              </circle>
+              <text x="325" y="275" fill="#F97316" fontSize="12" className="font-bold opacity-70">Nairobi</text>
+
+              <circle
+                cx="450"
+                cy="320"
+                r="6"
+                fill="#16A34A"
+                className="animate-bounce cursor-pointer"
+                style={{ animationDelay: "1s", animationDuration: "3s" }}
+                opacity="0.8"
+              >
+                <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <text x="455" y="315" fill="#16A34A" fontSize="10" className="font-medium opacity-70">Mombasa</text>
+
+              <circle
+                cx="380"
+                cy="200"
+                r="5"
+                fill="#F59E0B"
+                className="animate-bounce cursor-pointer"
+                style={{ animationDelay: "2s", animationDuration: "3s" }}
+                opacity="0.8"
+              >
+                <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" />
+              </circle>
+              <text x="385" y="195" fill="#F59E0B" fontSize="10" className="font-medium opacity-70">Nakuru</text>
+            </g>
+
+            {/* Enhanced connecting lines with animation */}
+            <g className="connections">
+              <line
+                x1="320"
+                y1="280"
+                x2="450"
+                y2="320"
+                stroke="#16A34A"
+                strokeWidth="2"
+                className="opacity-40"
+                strokeDasharray="5,5"
+              >
+                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite" />
+              </line>
+              <line
+                x1="320"
+                y1="280"
+                x2="380"
+                y2="200"
+                stroke="#F97316"
+                strokeWidth="2"
+                className="opacity-40"
+                strokeDasharray="5,5"
+              >
+                <animate attributeName="stroke-dashoffset" values="0;10" dur="2.5s" repeatCount="indefinite" />
+              </line>
+            </g>
+
+            {/* Decorative elements */}
+            <g className="decorations">
+              {[...Array(8)].map((_, i) => (
+                <circle
+                  key={i}
+                  cx={200 + i * 70}
+                  cy={100 + Math.sin(i) * 50}
+                  r="2"
+                  fill="#F97316"
+                  opacity="0.3"
+                  className="animate-ping"
+                  style={{
+                    animationDelay: `${i * 0.5}s`,
+                    animationDuration: "4s"
+                  }}
+                />
+              ))}
+            </g>
           </svg>
         </div>
 
