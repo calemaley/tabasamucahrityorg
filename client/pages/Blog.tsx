@@ -13,6 +13,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
 const Blog = () => {
   const [isLiked, setIsLiked] = useState(false);
@@ -278,12 +279,15 @@ const Blog = () => {
                     matter how small, creates ripples of positive change.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Link
-                      to="/donate"
+                    <button
+                      onClick={() => redirectToPayment('donationUrl', {
+                        source: CAMPAIGN_SOURCES.blog,
+                        campaign: 'blog-cta'
+                      })}
                       className="inline-flex items-center justify-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg font-medium transition-colors duration-200"
                     >
                       Donate Now
-                    </Link>
+                    </button>
                     <Link
                       to="/get-involved"
                       className="inline-flex items-center justify-center px-6 py-3 border-2 border-charity-orange-600 text-charity-orange-600 hover:bg-charity-orange-600 hover:text-white rounded-lg font-medium transition-colors duration-200"
