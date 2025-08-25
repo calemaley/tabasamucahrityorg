@@ -508,6 +508,118 @@ const Index = () => {
         </section>
       </SectionReveal>
 
+      {/* Meet Our Children */}
+      <SectionReveal>
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                Meet Our Children
+              </h2>
+              <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
+                Every child has a unique story and dreams waiting to be fulfilled.
+                Meet some of the amazing children who need your support to achieve their goals.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+              {featuredChildren.map((child, index) => (
+                <div
+                  key={child.id}
+                  className="bg-white border border-charity-neutral-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={child.image}
+                      alt={child.name}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <p className="text-sm font-medium">Dreams of being a {child.dreamJob}</p>
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
+                      Available
+                    </div>
+                    <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
+                      {child.name}
+                    </h3>
+
+                    <div className="space-y-1 mb-4 text-sm text-charity-neutral-600">
+                      <div className="flex items-center">
+                        <Calendar className="h-4 w-4 mr-2 text-charity-orange-500" />
+                        {child.age} years old
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-2 text-charity-green-500" />
+                        {child.location}
+                      </div>
+                      <div className="flex items-center">
+                        <GraduationCap className="h-4 w-4 mr-2 text-charity-orange-500" />
+                        <span className="truncate">{child.grade}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-charity-neutral-600 text-sm mb-4 line-clamp-3">
+                      {child.story}
+                    </p>
+
+                    <div className="mb-4">
+                      <div className="text-sm font-medium text-charity-neutral-700 mb-2">
+                        Interests:
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {child.interests.slice(0, 3).map((interest, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-1 bg-charity-green-100 text-charity-green-700 text-xs rounded-full"
+                          >
+                            {interest}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="border-t border-charity-neutral-200 pt-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm text-charity-neutral-600">Monthly Need:</span>
+                        <span className="text-lg font-bold text-charity-orange-600">
+                          ${child.monthlyNeed}
+                        </span>
+                      </div>
+
+                      <Link
+                        to="/sponsor"
+                        className="block w-full px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg text-center"
+                      >
+                        💝 Sponsor {child.name.split(' ')[0]}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Link
+                to="/children"
+                className="inline-flex items-center px-8 py-4 bg-charity-green-600 hover:bg-charity-green-700 text-white rounded-xl font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg"
+              >
+                View All Children
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </SectionReveal>
+
       {/* How You Can Help Us */}
       <SectionReveal>
         <section className="py-20 bg-charity-orange-600">
