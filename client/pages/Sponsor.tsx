@@ -21,6 +21,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 
 const Sponsor = () => {
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
+  const [selectedSponsorshipType, setSelectedSponsorshipType] = useState<string>("full");
   const [sponsorshipData, setSponsorshipData] = useState({
     name: "",
     email: "",
@@ -245,8 +246,10 @@ const Sponsor = () => {
                 animation="scaleIn"
                 delay={index * 100}
               >
-                <div className={`bg-white p-8 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:shadow-xl ${
-                  type.id === 'full' ? 'border-charity-orange-500 ring-2 ring-charity-orange-200' : 'border-charity-neutral-200 hover:border-charity-orange-300'
+                <div className={`bg-white p-8 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:shadow-xl h-full flex flex-col ${
+                  selectedSponsorshipType === type.id
+                    ? 'border-charity-orange-500 ring-2 ring-charity-orange-200 transform scale-105'
+                    : 'border-charity-neutral-200 hover:border-charity-orange-300'
                 }`}>
                   {type.id === 'full' && (
                     <div className="flex items-center justify-center mb-4">
@@ -273,7 +276,7 @@ const Sponsor = () => {
                     </div>
                   </div>
                   
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-8 flex-grow">
                     {type.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start space-x-3">
                         <Check className="h-5 w-5 text-charity-green-500 mt-0.5 flex-shrink-0" />
@@ -283,14 +286,24 @@ const Sponsor = () => {
                   </ul>
                   
                   <button
-                    onClick={() => setSponsorshipData(prev => ({...prev, sponsorshipType: type.id}))}
-                    className={`w-full py-3 rounded-lg font-medium transition-colors duration-200 ${
-                      type.id === 'full'
-                        ? 'bg-charity-orange-600 hover:bg-charity-orange-700 text-white'
-                        : 'bg-charity-neutral-100 hover:bg-charity-orange-100 text-charity-neutral-800'
+                    onClick={() => {
+                      setSelectedSponsorshipType(type.id);
+                      setSponsorshipData(prev => ({...prev, sponsorshipType: type.id}));
+                    }}
+                    className={`w-full py-3 rounded-lg font-medium transition-all duration-200 ${
+                      selectedSponsorshipType === type.id
+                        ? 'bg-charity-orange-600 hover:bg-charity-orange-700 text-white shadow-lg'
+                        : 'bg-charity-neutral-100 hover:bg-charity-orange-100 text-charity-neutral-800 hover:shadow-md'
                     }`}
                   >
-                    Choose This Option
+                    {selectedSponsorshipType === type.id ? (
+                      <span className="flex items-center justify-center">
+                        <Check className="h-4 w-4 mr-2" />
+                        Selected
+                      </span>
+                    ) : (
+                      'Choose This Option'
+                    )}
                   </button>
                 </div>
               </AnimatedSection>
