@@ -109,9 +109,27 @@ const Donate = () => {
 
   const handleDonation = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would process the payment through Stripe/PayPal
-    alert(`Thank you for your ${donationType === 'monthly' ? 'monthly' : 'one-time'} donation of $${donationAmount}! Your contribution will make a real difference.`);
-    
+
+    // Store donation data (in a real app, this would submit to an API)
+    const donationData = {
+      ...donorInfo,
+      amount: donationAmount,
+      type: donationType,
+      cause: donationCause,
+      paymentMethod,
+      timestamp: new Date().toISOString()
+    };
+
+    // Save to localStorage for tracking (temporary solution)
+    localStorage.setItem('donationData', JSON.stringify(donationData));
+
+    // Redirect to payment portal
+    const paymentUrl = 'https://zenlipa.co.ke/c/uKowYx';
+    window.open(paymentUrl, '_blank');
+
+    // Show success message and reset form
+    alert(`Redirecting to secure payment portal for your ${donationType === 'monthly' ? 'monthly' : 'one-time'} donation of $${donationAmount}! Thank you for your generosity.`);
+
     // Reset form
     setDonorInfo({
       name: "",
