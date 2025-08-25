@@ -384,35 +384,53 @@ const Contact = () => {
                 >
                   <div className="group relative">
                     {/* Card */}
-                    <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105">
-                      {/* Gradient border effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 to-charity-green-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
+                    <div className="relative bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-white/30 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 overflow-hidden">
+                      {/* Animated gradient border effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 via-charity-green-400 to-charity-orange-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm animate-pulse"></div>
 
-                      <div className="text-center">
+                      {/* Floating particles on hover */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {[...Array(6)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute w-1 h-1 bg-charity-orange-400 rounded-full animate-bounce"
+                            style={{
+                              left: `${20 + i * 15}%`,
+                              top: `${20 + (i % 3) * 20}%`,
+                              animationDelay: `${i * 0.2}s`,
+                              animationDuration: "2s"
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      <div className="text-center relative z-10">
                         <div
-                          className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-charity-${info.color}-400 to-charity-${info.color}-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}
+                          className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-charity-${info.color}-400 to-charity-${info.color}-600 flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl relative overflow-hidden`}
                         >
-                          <IconComponent className="h-8 w-8 text-white" />
+                          <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          <IconComponent className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
                         </div>
 
-                        <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-300 group-hover:scale-105">
                           {info.title}
                         </h3>
 
-                        <div className="space-y-2 mb-6">
+                        <div className="space-y-3 mb-6">
                           {info.details.map((detail, detailIndex) => (
                             <p
                               key={detailIndex}
-                              className="text-charity-neutral-600 group-hover:text-charity-neutral-700 transition-colors duration-300"
+                              className="text-charity-neutral-600 group-hover:text-charity-neutral-700 transition-all duration-300 transform group-hover:translate-x-1"
+                              style={{ transitionDelay: `${detailIndex * 50}ms` }}
                             >
                               {detail}
                             </p>
                           ))}
                         </div>
 
-                        <button className="inline-flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium transition-all duration-300 group-hover:scale-105">
+                        <button className="inline-flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium transition-all duration-300 group-hover:scale-110 group-hover:translate-y-1 px-4 py-2 rounded-lg group-hover:bg-charity-orange-50">
                           <span>{info.action}</span>
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 group-hover:scale-125 transition-all duration-300" />
                         </button>
                       </div>
                     </div>
