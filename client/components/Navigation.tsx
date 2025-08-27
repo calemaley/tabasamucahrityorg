@@ -68,9 +68,7 @@ const Navigation = () => {
       subItems: [
         {
           label: "Sponsor a Child",
-          href: "/get-involved/sponsor",
-          isPayment: true,
-          paymentType: "sponsorshipUrl",
+          href: "/sponsor",
         },
         {
           label: "Donate Now",
