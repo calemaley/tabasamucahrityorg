@@ -383,80 +383,145 @@ const Sponsor = () => {
                 animation="scaleIn"
                 delay={index * 100}
               >
-                <div className="bg-white border border-charity-neutral-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={child.image}
-                      alt={child.name}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-                      Available
-                    </div>
-                    <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                    </div>
+                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 h-full flex flex-col group transform hover:-translate-y-4 hover:scale-105 cursor-pointer">
+                  {/* Animated border gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 via-charity-green-400 to-charity-orange-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
+                  <div className="absolute inset-[2px] bg-white rounded-3xl z-10"></div>
+
+                  {/* Floating particles */}
+                  <div className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-2 h-2 bg-charity-orange-400 rounded-full animate-bounce"
+                        style={{
+                          left: `${15 + i * 15}%`,
+                          top: `${10 + (i % 3) * 20}%`,
+                          animationDelay: `${i * 0.3}s`,
+                          animationDuration: "2s",
+                        }}
+                      />
+                    ))}
                   </div>
 
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
-                      {child.name}
-                    </h3>
+                  <div className="relative z-20 h-full flex flex-col">
+                    {/* Enhanced Image Section */}
+                    <div className="relative overflow-hidden rounded-t-3xl">
+                      <img
+                        src={child.image}
+                        alt={child.name}
+                        className="w-full h-56 object-cover group-hover:scale-125 transition-transform duration-1000"
+                      />
 
-                    <div className="space-y-2 mb-4 text-sm text-charity-neutral-600">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2 text-charity-orange-500" />
-                        {child.age} years old
+                      {/* Multiple overlays for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-500/20 to-charity-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                      {/* Floating badges */}
+                      <div className="absolute top-4 right-4 bg-gradient-to-r from-charity-green-500 to-charity-green-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        ✨ Available
                       </div>
-                      <div className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-2 text-charity-green-500" />
-                        {child.location}
+
+                      {/* Heart animation on hover */}
+                      <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125">
+                        <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                          <Heart className="h-4 w-4 text-white fill-current" />
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        <GraduationCap className="h-4 w-4 mr-2 text-charity-orange-500" />
-                        <span className="truncate">
-                          {child.grade} at {child.school}
-                        </span>
+
+                      {/* Hover info overlay */}
+                      <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">
+                        <div className="bg-white/95 backdrop-blur-sm rounded-xl p-3 shadow-xl">
+                          <p className="text-charity-neutral-800 text-sm font-medium">
+                            "✨ {child.story.slice(0, 60)}..."
+                          </p>
+                        </div>
                       </div>
                     </div>
 
-                    <p className="text-charity-neutral-600 text-sm mb-4 line-clamp-3 flex-grow">
-                      {child.story}
-                    </p>
-
-                    <div className="mb-4">
-                      <div className="text-sm font-medium text-charity-neutral-700 mb-2">
-                        Interests:
+                    {/* Enhanced Content Section */}
+                    <div className="p-6 flex-grow flex flex-col relative">
+                      {/* Name with special styling */}
+                      <div className="mb-4">
+                        <h3 className="text-2xl font-bold text-charity-neutral-800 mb-1 group-hover:text-charity-orange-600 transition-colors duration-300 transform group-hover:scale-105">
+                          {child.name}
+                        </h3>
+                        <div className="w-12 h-1 bg-gradient-to-r from-charity-orange-500 to-charity-green-500 rounded-full transform origin-left group-hover:scale-x-150 transition-transform duration-500"></div>
                       </div>
-                      <div className="flex flex-wrap gap-1">
-                        {child.interests.slice(0, 3).map((interest, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-1 bg-charity-green-100 text-charity-green-700 text-xs rounded-full"
-                          >
-                            {interest}
+
+                      {/* Enhanced info grid */}
+                      <div className="grid grid-cols-1 gap-3 mb-4">
+                        <div className="flex items-center p-2 rounded-lg bg-charity-orange-50 group-hover:bg-charity-orange-100 transition-colors duration-300">
+                          <div className="w-8 h-8 rounded-full bg-charity-orange-500 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-300">
+                            <Calendar className="h-4 w-4 text-white" />
+                          </div>
+                          <span className="text-charity-neutral-700 font-medium">{child.age} years old</span>
+                        </div>
+
+                        <div className="flex items-center p-2 rounded-lg bg-charity-green-50 group-hover:bg-charity-green-100 transition-colors duration-300">
+                          <div className="w-8 h-8 rounded-full bg-charity-green-500 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-300">
+                            <MapPin className="h-4 w-4 text-white" />
+                          </div>
+                          <span className="text-charity-neutral-700 font-medium text-sm">{child.location}</span>
+                        </div>
+
+                        <div className="flex items-center p-2 rounded-lg bg-charity-orange-50 group-hover:bg-charity-orange-100 transition-colors duration-300">
+                          <div className="w-8 h-8 rounded-full bg-charity-orange-500 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-300">
+                            <GraduationCap className="h-4 w-4 text-white" />
+                          </div>
+                          <span className="text-charity-neutral-700 font-medium text-sm truncate">
+                            {child.grade}
                           </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="border-t border-charity-neutral-200 pt-4 mt-auto">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-charity-neutral-600">
-                          Monthly Need:
-                        </span>
-                        <span className="text-xl font-bold text-charity-orange-600">
-                          ${child.monthlyNeed}
-                        </span>
+                        </div>
                       </div>
 
-                      <button
-                        onClick={() => setSelectedChild(child.id)}
-                        className="w-full px-4 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg"
-                      >
-                        💝 Sponsor {child.name.split(" ")[0]}
-                      </button>
+                      {/* Interests with enhanced styling */}
+                      <div className="mb-6">
+                        <div className="text-sm font-bold text-charity-neutral-700 mb-3 flex items-center">
+                          <Star className="h-4 w-4 text-charity-orange-500 mr-2" />
+                          Interests:
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {child.interests.map((interest, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1 bg-gradient-to-r from-charity-green-100 to-charity-green-200 text-charity-green-800 text-xs rounded-full font-medium border border-charity-green-300 transform hover:scale-110 transition-all duration-300 shadow-sm"
+                              style={{ animationDelay: `${i * 100}ms` }}
+                            >
+                              {interest}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Enhanced pricing section */}
+                      <div className="border-t-2 border-charity-neutral-100 pt-4 mt-auto">
+                        <div className="bg-gradient-to-r from-charity-orange-50 to-charity-green-50 p-4 rounded-xl mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                          <div className="flex items-center justify-between">
+                            <span className="text-charity-neutral-700 font-medium">Monthly Support:</span>
+                            <div className="text-right">
+                              <span className="text-3xl font-bold text-charity-orange-600 group-hover:scale-110 transition-transform duration-300 inline-block">
+                                ${child.monthlyNeed}
+                              </span>
+                              <div className="text-xs text-charity-neutral-500">per month</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Enhanced button */}
+                        <button
+                          onClick={() => setSelectedChild(child.id)}
+                          className="w-full relative px-6 py-4 bg-gradient-to-r from-charity-orange-600 to-charity-orange-700 hover:from-charity-orange-700 hover:to-charity-orange-800 text-white rounded-2xl transition-all duration-500 font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 group-hover:animate-pulse overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                          <div className="relative z-10 flex items-center justify-center">
+                            <Heart className="h-5 w-5 mr-2 animate-bounce" />
+                            Sponsor {child.name.split(" ")[0]}
+                            <Star className="h-4 w-4 ml-2 text-yellow-300" />
+                          </div>
+                          <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
