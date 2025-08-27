@@ -417,18 +417,18 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-1">
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-charity-neutral-800 mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-charity-orange-600 font-medium mb-3">
+                    <p className="text-charity-orange-600 font-semibold mb-4 text-lg">
                       {member.role}
                     </p>
-                    <p className="text-charity-neutral-600 text-sm">
+                    <p className="text-charity-neutral-600 text-base leading-relaxed">
                       {member.bio}
                     </p>
-                    <div className="mt-4 text-charity-orange-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
-                      Read More <ArrowRight className="ml-1 h-4 w-4" />
+                    <div className="mt-6 text-charity-orange-600 text-base font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
+                      Learn More <ArrowRight className="ml-2 h-5 w-5" />
                     </div>
                   </div>
                 </div>
