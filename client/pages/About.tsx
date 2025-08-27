@@ -400,7 +400,7 @@ const About = () => {
                 delay={index * 100}
               >
                 <div
-                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer"
+                  className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
                   onClick={() => setSelectedMember(member)}
                 >
                   <div className="relative overflow-hidden">
