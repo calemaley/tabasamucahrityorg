@@ -76,7 +76,7 @@ const Navigation = () => {
           isPayment: true,
           paymentType: "donationUrl",
         },
-        { label: "Volunteer", href: "/get-involved/volunteer" },
+        { label: "Volunteer", href: "/volunteer" },
       ],
     },
     { label: "Blog", href: "/blog", icon: BookOpen },
