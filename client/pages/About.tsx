@@ -22,63 +22,35 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      role: "Executive Director",
-      image: "/placeholder.svg",
-      bio: "With over 15 years in nonprofit leadership, Sarah drives our mission forward.",
+      name: "Judith Kwamboka",
+      role: "Operations Manager",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
+      bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
       fullBio:
-        "Sarah brings over 15 years of nonprofit leadership experience to Tabasamu Charity. She has previously worked with international development organizations across Africa, focusing on sustainable community development and educational initiatives. Her passion for empowering communities through education and healthcare has driven our organization's growth and impact. Sarah holds a Master's in International Development and speaks fluent Swahili and English.",
-      email: "sarah@tabasamu.org",
+        "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return. At Tabasamu Charity, we believe every smile we give, every hand we extend, and every act of care we show makes the world a better place. True humanity is found in seeing ourselves in others, uplifting those in need, and choosing love over indifference. In small acts of goodness, we build hope, and in unity, we create change.",
+      email: "judith@tabasamu.org",
       phone: "+254-700-123-456",
       achievements: [
-        "Led 50+ community development projects",
-        "Secured over $2M in funding",
-        "Established partnerships with 25+ local organizations",
+        "Coordinated over 100 community outreach programs",
+        "Established partnerships with 40+ local organizations",
+        "Led initiatives that have touched over 2,000 lives",
+        "Championed women and children empowerment programs",
       ],
     },
     {
-      name: "Dr. Michael Brown",
-      role: "Medical Director",
-      image: "/placeholder.svg",
-      bio: "Leading our healthcare initiatives with expertise in community medicine.",
+      name: "Philip Muga",
+      role: "Program Director",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
+      bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
       fullBio:
-        "Dr. Michael Brown is a board-certified physician with extensive experience in community health and tropical medicine. He has spent over 12 years working in rural healthcare settings across East Africa, developing innovative approaches to healthcare delivery in resource-limited environments. His work has significantly improved health outcomes in the communities we serve.",
-      email: "michael@tabasamu.org",
+        "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose. It is seen in the kindness we show, the justice we uphold, and the hope we nurture for one another. The Bible reminds us of this truth in Micah 6:8: 'He has shown you, O man, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.' In living this way, we embrace the essence of our shared humanity and reflect the heart of God to the world.",
+      email: "philip@tabasamu.org",
       phone: "+254-700-123-457",
       achievements: [
-        "Established 5 mobile health clinics",
-        "Trained 100+ community health workers",
-        "Reduced infant mortality by 40% in target areas",
-      ],
-    },
-    {
-      name: "Emma Wilson",
-      role: "Program Coordinator",
-      image: "/placeholder.svg",
-      bio: "Ensuring our programs reach those who need them most.",
-      fullBio:
-        "Emma Wilson coordinates all our program activities with exceptional attention to detail and community engagement. With a background in social work and project management, she ensures that our initiatives are implemented effectively and reach the most vulnerable populations. Emma's dedication to measurable impact has helped us achieve our program goals consistently.",
-      email: "emma@tabasamu.org",
-      phone: "+254-700-123-458",
-      achievements: [
-        "Coordinated programs reaching 5,000+ beneficiaries",
-        "Achieved 95% program completion rate",
-        "Developed community feedback systems",
-      ],
-    },
-    {
-      name: "James Mwalimu",
-      role: "Community Liaison",
-      image: "/placeholder.svg",
-      bio: "Connecting communities with sustainable development opportunities.",
-      fullBio:
-        "James Mwalimu serves as our vital link to the communities we serve. Born and raised in rural Kenya, he brings deep cultural understanding and community trust to our work. His ability to build relationships and facilitate meaningful dialogue between our organization and local communities has been instrumental in our success and sustainability.",
-      email: "james@tabasamu.org",
-      phone: "+254-700-123-459",
-      achievements: [
-        "Built partnerships with 30+ community leaders",
-        "Facilitated 200+ community meetings",
-        "Increased community participation by 70%",
+        "Developed comprehensive education support programs",
+        "Led faith-based community development initiatives",
+        "Mentored over 500 young people in leadership",
+        "Established sustainable livelihood programs in 15 communities",
       ],
     },
   ];
