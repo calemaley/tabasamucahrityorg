@@ -386,8 +386,8 @@ const About = () => {
                 Meet Our Team
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Our dedicated team works tirelessly to make our mission a
-                reality. Get to know the people behind our impact.
+                Meet our dedicated leadership team who work tirelessly to make our mission a
+                reality. Get to know the passionate individuals behind our impact.
               </p>
             </div>
           </AnimatedSection>
