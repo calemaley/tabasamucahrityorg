@@ -17,11 +17,24 @@ import {
   Award,
   Users,
   Globe,
+  Download,
+  Calendar,
 } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
+
+// Fix Leaflet default markers
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -75,6 +88,66 @@ const Contact = () => {
     });
   };
 
+  // Working button functions
+  const handleSendEmail = () => {
+    const subject = encodeURIComponent("Inquiry from Tabasamu Website");
+    const body = encodeURIComponent("Hello Tabasamu Team,\n\nI would like to get in touch regarding...");
+    window.location.href = `mailto:hello@tabasamu.org?subject=${subject}&body=${body}`;
+  };
+
+  const handleCallNow = () => {
+    window.location.href = "tel:+254123456789";
+  };
+
+  const handleGetDirections = () => {
+    const address = encodeURIComponent("123 Charity St, Nairobi, Kenya");
+    window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+  };
+
+  const handleBookCall = () => {
+    // Open Calendly or similar booking service
+    window.open("https://calendly.com/tabasamu-charity/15min", '_blank');
+  };
+
+  const handleQuickDonation = () => {
+    redirectToPayment("donationUrl", {
+      source: CAMPAIGN_SOURCES.contact,
+      campaign: "quick-action",
+    });
+  };
+
+  const handleDownloadBrochure = () => {
+    // Create a downloadable PDF link
+    const link = document.createElement('a');
+    link.href = '/assets/tabasamu-brochure.pdf'; // You would need to add this file
+    link.download = 'Tabasamu-Charity-Brochure.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleSocialShare = (platform: string) => {
+    const url = window.location.href;
+    const text = "Check out Tabasamu Charity - Making a difference in children's lives";
+    
+    switch (platform) {
+      case "facebook":
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        break;
+      case "twitter":
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+        break;
+      case "instagram":
+        // Instagram doesn't have direct sharing, so copy link
+        navigator.clipboard.writeText(url);
+        alert("Link copied! You can now paste it in your Instagram bio or story.");
+        break;
+      case "linkedin":
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        break;
+    }
+  };
+
   const contactMethods = [
     {
       icon: Mail,
@@ -82,6 +155,7 @@ const Contact = () => {
       subtitle: "Drop us a line anytime",
       info: "hello@tabasamu.org",
       action: "Send Email",
+      handler: handleSendEmail,
       gradient: "from-blue-500 to-cyan-500",
       bgGradient: "from-blue-50 to-cyan-50",
       delay: 0,
@@ -92,6 +166,7 @@ const Contact = () => {
       subtitle: "Speak directly with our team",
       info: "+254 123 456 789",
       action: "Call Now",
+      handler: handleCallNow,
       gradient: "from-green-500 to-emerald-500",
       bgGradient: "from-green-50 to-emerald-50",
       delay: 100,
@@ -102,6 +177,7 @@ const Contact = () => {
       subtitle: "Come see our impact firsthand",
       info: "123 Charity St, Nairobi, Kenya",
       action: "Get Directions",
+      handler: handleGetDirections,
       gradient: "from-purple-500 to-pink-500",
       bgGradient: "from-purple-50 to-pink-50",
       delay: 200,
@@ -109,10 +185,10 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, label: "Facebook", color: "bg-blue-600 hover:bg-blue-700" },
-    { icon: Twitter, label: "Twitter", color: "bg-sky-500 hover:bg-sky-600" },
-    { icon: Instagram, label: "Instagram", color: "bg-pink-600 hover:bg-pink-700" },
-    { icon: Linkedin, label: "LinkedIn", color: "bg-blue-800 hover:bg-blue-900" },
+    { icon: Facebook, label: "Facebook", color: "bg-blue-600 hover:bg-blue-700", handler: () => handleSocialShare("facebook") },
+    { icon: Twitter, label: "Twitter", color: "bg-sky-500 hover:bg-sky-600", handler: () => handleSocialShare("twitter") },
+    { icon: Instagram, label: "Instagram", color: "bg-pink-600 hover:bg-pink-700", handler: () => handleSocialShare("instagram") },
+    { icon: Linkedin, label: "LinkedIn", color: "bg-blue-800 hover:bg-blue-900", handler: () => handleSocialShare("linkedin") },
   ];
 
   const quickActions = [
@@ -120,18 +196,21 @@ const Contact = () => {
       title: "🎯 Book a Call",
       description: "Schedule a 15-minute chat with our team",
       action: "Schedule Now",
+      handler: handleBookCall,
       gradient: "from-orange-500 to-red-500",
     },
     {
       title: "💝 Quick Donation",
       description: "Make an immediate impact today",
       action: "Donate Now",
+      handler: handleQuickDonation,
       gradient: "from-green-500 to-teal-500",
     },
     {
       title: "📖 Download Brochure",
       description: "Learn more about our programs",
       action: "Download PDF",
+      handler: handleDownloadBrochure,
       gradient: "from-purple-500 to-indigo-500",
     },
   ];
@@ -149,10 +228,41 @@ const Contact = () => {
     minute: "2-digit",
   });
 
+  // Kenya coordinates (Nairobi)
+  const kenyaCenter: [number, number] = [-1.2921, 36.8219];
+
   return (
     <>
-      {/* Dynamic Hero Section */}
-      <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-charity-orange-400 via-charity-green-400 to-charity-orange-600">
+      {/* Interactive Map Hero Section */}
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Leaflet Map Background */}
+        <div className="absolute inset-0">
+          <MapContainer 
+            center={kenyaCenter} 
+            zoom={6} 
+            style={{ height: '100%', width: '100%' }}
+            zoomControl={true}
+            scrollWheelZoom={true}
+            attributionControl={false}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              opacity={0.8}
+            />
+            <Marker position={kenyaCenter}>
+              <Popup>
+                <div className="text-center p-2">
+                  <h3 className="font-bold text-charity-orange-600">Tabasamu Charity</h3>
+                  <p className="text-sm text-charity-neutral-700">Making a difference across Kenya</p>
+                </div>
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
+
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-600/70 via-charity-green-600/60 to-charity-orange-700/70"></div>
+
         {/* Animated background elements */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -194,7 +304,7 @@ const Contact = () => {
                   Let's Connect
                 </h1>
                 <p className="text-2xl md:text-3xl max-w-4xl mx-auto leading-relaxed opacity-95 font-light">
-                  Ready to make a difference? We'd love to hear from you and explore how we can work together to transform lives.
+                  Ready to make a difference? We'd love to hear from you and explore how we can work together to transform lives across Kenya.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center">
                   <button
@@ -224,6 +334,12 @@ const Contact = () => {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+
+        {/* Map Controls Info */}
+        <div className="absolute bottom-20 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 text-charity-neutral-700 text-sm">
+          <p className="font-medium">🗺️ Interactive Map</p>
+          <p>Drag to explore • Scroll to zoom</p>
         </div>
 
         {/* Scroll indicator */}
@@ -278,7 +394,10 @@ const Contact = () => {
                       {method.info}
                     </p>
                     
-                    <button className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${method.gradient} text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}>
+                    <button 
+                      onClick={method.handler}
+                      className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${method.gradient} text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
+                    >
                       <span>{method.action}</span>
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </button>
@@ -478,6 +597,7 @@ const Contact = () => {
                     {quickActions.map((action, index) => (
                       <button
                         key={index}
+                        onClick={action.handler}
                         className={`w-full p-4 rounded-2xl bg-gradient-to-r ${action.gradient} text-white transition-all duration-300 transform hover:scale-105 hover:shadow-xl`}
                       >
                         <div className="text-left">
@@ -497,13 +617,13 @@ const Contact = () => {
                   </h3>
                   <div className="flex justify-center gap-4">
                     {socialLinks.map((social, index) => (
-                      <a
+                      <button
                         key={index}
-                        href="#"
+                        onClick={social.handler}
                         className={`w-14 h-14 ${social.color} text-white rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-125 hover:rotate-12 shadow-lg hover:shadow-xl`}
                       >
                         <social.icon className="h-6 w-6" />
-                      </a>
+                      </button>
                     ))}
                   </div>
                   <p className="text-center text-charity-neutral-600 mt-4">
