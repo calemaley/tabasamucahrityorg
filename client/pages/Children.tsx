@@ -499,7 +499,7 @@ const Children = () => {
 
                       {/* Enhanced sponsor button */}
                       <Link
-                        to="/sponsor"
+                        to={`/sponsor?child=${child.id}`}
                         className="block w-full relative px-6 py-4 bg-gradient-to-r from-charity-orange-600 to-charity-orange-700 hover:from-charity-orange-700 hover:to-charity-orange-800 text-white rounded-2xl transition-all duration-500 font-bold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 group-hover:animate-pulse overflow-hidden text-center"
                         onClick={(e) => e.stopPropagation()}
                       >
