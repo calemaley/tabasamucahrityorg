@@ -136,22 +136,49 @@ const Blog = () => {
 
     switch (platform) {
       case "facebook":
-        window.open(
-          `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-          "_blank",
-        );
+        // Use Facebook's share dialog
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        const facebookWindow = window.open(facebookUrl, 'facebook-share', 'width=626,height=436,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1');
+        if (!facebookWindow) {
+          // Fallback if popup is blocked
+          window.location.href = facebookUrl;
+        }
         break;
       case "twitter":
-        window.open(
-          `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
-          "_blank",
-        );
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+        const twitterWindow = window.open(twitterUrl, 'twitter-share', 'width=550,height=420,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1');
+        if (!twitterWindow) {
+          window.location.href = twitterUrl;
+        }
         break;
       case "whatsapp":
-        window.open(
-          `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
-          "_blank",
-        );
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`;
+        window.open(whatsappUrl, '_blank');
+        break;
+      case "copy":
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(() => {
+            alert("Link copied to clipboard!");
+          }).catch(() => {
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = url;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert("Link copied to clipboard!");
+          });
+        } else {
+          // Fallback for non-secure contexts
+          const textArea = document.createElement("textarea");
+          textArea.value = url;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          alert("Link copied to clipboard!");
+        }
         break;
       default:
         navigator.clipboard.writeText(url);
