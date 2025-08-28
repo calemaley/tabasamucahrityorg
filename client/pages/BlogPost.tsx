@@ -352,17 +352,30 @@ const BlogPost = () => {
                           </p>
                         </div>
                       </div>
-                      <button
-                        onClick={() =>
-                          setReplyingTo(
-                            replyingTo === comment.id ? null : comment.id,
-                          )
-                        }
-                        className="flex items-center gap-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200"
-                      >
-                        <Reply className="h-4 w-4" />
-                        <span className="text-sm">Reply</span>
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button
+                          onClick={() => handleCommentLike(comment.id)}
+                          className={`flex items-center gap-1 transition-colors duration-200 ${
+                            comment.isLiked
+                              ? "text-charity-orange-600"
+                              : "text-charity-neutral-500 hover:text-charity-orange-600"
+                          }`}
+                        >
+                          <Heart className={`h-4 w-4 ${comment.isLiked ? "fill-current" : ""}`} />
+                          <span className="text-sm">{comment.likes}</span>
+                        </button>
+                        <button
+                          onClick={() =>
+                            setReplyingTo(
+                              replyingTo === comment.id ? null : comment.id,
+                            )
+                          }
+                          className="flex items-center gap-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200"
+                        >
+                          <Reply className="h-4 w-4" />
+                          <span className="text-sm">Reply</span>
+                        </button>
+                      </div>
                     </div>
 
                     {/* Comment Content */}
@@ -376,7 +389,7 @@ const BlogPost = () => {
                         <textarea
                           value={newReply}
                           onChange={(e) => setNewReply(e.target.value)}
-                          placeholder="Write a reply..."
+                          placeholder={userName ? "Write a reply..." : "Please enter your name first to reply"}
                           className="w-full px-3 py-2 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
                           rows={3}
                         />
@@ -422,6 +435,19 @@ const BlogPost = () => {
                             <p className="text-charity-neutral-700 text-sm">
                               {reply.content}
                             </p>
+                            <div className="mt-2">
+                              <button
+                                onClick={() => handleCommentLike(comment.id, reply.id)}
+                                className={`flex items-center gap-1 transition-colors duration-200 ${
+                                  reply.isLiked
+                                    ? "text-charity-orange-600"
+                                    : "text-charity-neutral-500 hover:text-charity-orange-600"
+                                }`}
+                              >
+                                <Heart className={`h-3 w-3 ${reply.isLiked ? "fill-current" : ""}`} />
+                                <span className="text-xs">{reply.likes}</span>
+                              </button>
+                            </div>
                           </div>
                         ))}
                       </div>
