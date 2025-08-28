@@ -756,60 +756,107 @@ const Index = () => {
         </section>
       </SectionReveal>
 
-      {/* Recent Blogs */}
+      {/* Featured Blog */}
       <SectionReveal>
-        <section className="py-20 bg-charity-neutral-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-4xl font-bold text-charity-neutral-800">
-                Recent Blogs
+        <section className="py-20 bg-gradient-to-br from-charity-neutral-50 to-charity-orange-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                Latest Story
               </h2>
-              <Link
-                to="/blog"
-                className="flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium group"
-              >
-                View All Posts
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
+              <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
+                Discover inspiring stories of hope, transformation, and the power of community support
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {recentBlogs.map((blog, index) => (
-                <Link
-                  key={index}
-                  to={`/blog/${blog.slug}`}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
-                >
-                  <div className="relative overflow-hidden">
+            {recentBlogs.map((blog, index) => (
+              <Link
+                key={index}
+                to={`/blog/${blog.slug}`}
+                className="block bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 cursor-pointer group transform hover:-translate-y-2 hover:scale-[1.02]"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  {/* Image Section */}
+                  <div className="relative overflow-hidden h-80 lg:h-auto">
                     <img
                       src={blog.image}
                       alt={blog.title}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute top-4 left-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {blog.category}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+
+                    {/* Category Badge */}
+                    <div className="absolute top-6 left-6">
+                      <span className="inline-flex items-center px-4 py-2 bg-charity-orange-600 text-white rounded-full text-sm font-bold shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                        <Star className="h-3 w-3 mr-1 fill-current" />
+                        {blog.category}
+                      </span>
+                    </div>
+
+                    {/* Featured Label */}
+                    <div className="absolute top-6 right-6">
+                      <span className="inline-flex items-center px-3 py-1 bg-charity-green-600 text-white rounded-full text-xs font-bold shadow-lg animate-pulse">
+                        FEATURED
+                      </span>
+                    </div>
+
+                    {/* Floating Elements */}
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="flex items-center justify-between text-white">
+                        <div className="flex items-center space-x-4 text-sm font-medium">
+                          <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+                            <Calendar className="h-3 w-3 mr-1" />
+                            <span>{blog.date}</span>
+                          </div>
+                          <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
+                            <User className="h-3 w-3 mr-1" />
+                            <span>{blog.author}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center text-sm text-charity-neutral-500 mb-3">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      <span className="mr-4">{blog.date}</span>
-                      <User className="h-4 w-4 mr-1" />
-                      <span>{blog.author}</span>
-                    </div>
-                    <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
-                      {blog.title}
-                    </h4>
-                    <p className="text-charity-neutral-600 leading-relaxed mb-4">
-                      {blog.snippet}
-                    </p>
-                    <div className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
-                      Read More <ArrowRight className="ml-2 h-4 w-4" />
+
+                  {/* Content Section */}
+                  <div className="p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden">
+                    {/* Background Pattern */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-charity-orange-100 rounded-full opacity-20 transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-charity-green-100 rounded-full opacity-30 transform -translate-x-12 translate-y-12 group-hover:scale-125 transition-transform duration-700"></div>
+
+                    <div className="relative z-10">
+                      <h3 className="text-3xl lg:text-4xl font-bold text-charity-neutral-800 mb-6 leading-tight group-hover:text-charity-orange-600 transition-colors duration-300">
+                        {blog.title}
+                      </h3>
+
+                      <p className="text-lg text-charity-neutral-600 leading-relaxed mb-8 line-clamp-4">
+                        {blog.snippet}
+                      </p>
+
+                      {/* Call to Action */}
+                      <div className="flex items-center justify-between">
+                        <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-charity-orange-600 to-charity-orange-500 hover:from-charity-orange-700 hover:to-charity-orange-600 text-white rounded-xl font-bold shadow-lg group-hover:shadow-xl transform group-hover:scale-105 transition-all duration-300">
+                          <span className="mr-2">Read Full Story</span>
+                          <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+                        </div>
+
+                        {/* Reading Time */}
+                        <div className="flex items-center text-charity-neutral-500 text-sm font-medium">
+                          <div className="w-2 h-2 bg-charity-green-500 rounded-full mr-2 animate-pulse"></div>
+                          <span>5 min read</span>
+                        </div>
+                      </div>
+
+                      {/* Decorative Quote */}
+                      <div className="mt-8 p-4 bg-charity-orange-50 rounded-xl border-l-4 border-charity-orange-500 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                        <p className="text-charity-orange-700 italic font-medium text-sm">
+                          "Every act of kindness is a push forward towards a brighter future."
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
       </SectionReveal>
