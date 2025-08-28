@@ -18,6 +18,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { allChildren } from "@shared/children-data";
 
 const Sponsor = () => {
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
@@ -38,7 +39,7 @@ const Sponsor = () => {
   // Check for child parameter in URL and auto-select child
   useEffect(() => {
     const childParam = searchParams.get("child");
-    if (childParam && children.find((c) => c.id === childParam)) {
+    if (childParam && allChildren.find((c) => c.id === childParam)) {
       setSelectedChild(childParam);
       // Scroll to the specific child or modal
       setTimeout(() => {
@@ -49,165 +50,6 @@ const Sponsor = () => {
       }, 100);
     }
   }, [searchParams]);
-
-  const children = [
-    {
-      id: "maria-001",
-      name: "Maria Mwangi",
-      age: 8,
-      location: "Nyanza County, Kenya",
-      school: "Mwanza Primary School",
-      grade: "Standard 3",
-      story:
-        "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
-      needs: ["School fees", "Uniforms", "Books", "Lunch program"],
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      monthlyNeed: 45,
-      sponsored: false,
-      interests: ["Mathematics", "Reading", "Farming"],
-      family: "Lives with mother and 2 siblings",
-    },
-    {
-      id: "david-002",
-      name: "David Kimaro",
-      age: 12,
-      location: "Rift Valley, Kenya",
-      school: "Arusha Community Secondary",
-      grade: "Form 1",
-      story:
-        "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
-      needs: [
-        "School fees",
-        "Science books",
-        "Laboratory equipment",
-        "Transport",
-      ],
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      monthlyNeed: 65,
-      sponsored: false,
-      interests: ["Biology", "Chemistry", "Football"],
-      family: "Lives with father and 3 siblings",
-    },
-    {
-      id: "grace-003",
-      name: "Grace Mtema",
-      age: 15,
-      location: "Central Kenya",
-      school: "Dodoma Girls Education Center",
-      grade: "Form 3",
-      story:
-        "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
-      needs: ["School fees", "Textbooks", "Computer training", "Mentorship"],
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      monthlyNeed: 75,
-      sponsored: false,
-      interests: ["Mathematics", "Physics", "Technology"],
-      family: "Lives with grandmother and 1 sibling",
-    },
-    {
-      id: "john-004",
-      name: "John Massawe",
-      age: 10,
-      location: "Eastern Kenya",
-      school: "Kilimanjaro Primary School",
-      grade: "Standard 5",
-      story:
-        "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
-      needs: [
-        "School fees",
-        "Reading materials",
-        "Uniform",
-        "Nutritional support",
-      ],
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      monthlyNeed: 50,
-      sponsored: false,
-      interests: ["Reading", "Writing", "History"],
-      family: "Lives with both parents and 4 siblings",
-    },
-    {
-      id: "amina-005",
-      name: "Amina Hassan",
-      age: 9,
-      location: "Coastal Kenya",
-      school: "Malindi Primary School",
-      grade: "Standard 4",
-      story:
-        "Amina dreams of becoming a marine biologist to protect the ocean around her coastal home. She collects shells and studies sea creatures in her spare time.",
-      needs: ["School fees", "Science materials", "Transport", "Lunch program"],
-      image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      monthlyNeed: 40,
-      sponsored: false,
-      interests: ["Marine Biology", "Swimming", "Environmental Science"],
-      family: "Lives with parents and 1 sibling",
-    },
-    {
-      id: "peter-006",
-      name: "Peter Ngozi",
-      age: 14,
-      location: "Western Kenya",
-      school: "Mbeya Secondary School",
-      grade: "Form 2",
-      story:
-        "Peter wants to become a pilot and explore the world. He builds model airplanes from recycled materials and dreams of flying.",
-      needs: [
-        "School fees",
-        "Technical books",
-        "Transport",
-        "Materials for projects",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      monthlyNeed: 60,
-      sponsored: false,
-      interests: ["Aviation", "Engineering", "Art"],
-      family: "Lives with mother and 2 siblings",
-    },
-    {
-      id: "fatuma-007",
-      name: "Fatuma Ali",
-      age: 11,
-      location: "Nairobi County, Kenya",
-      school: "Nairobi Community School",
-      grade: "Standard 6",
-      story:
-        "Fatuma loves music and wants to become a music teacher. She sings in the church choir and has taught herself to play several traditional instruments.",
-      needs: ["School fees", "Music lessons", "Instruments", "Uniform"],
-      image:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      monthlyNeed: 55,
-      sponsored: false,
-      interests: ["Music", "Singing", "Traditional Dance"],
-      family: "Lives with parents and 3 siblings",
-    },
-    {
-      id: "emmanuel-008",
-      name: "Emmanuel Mushi",
-      age: 13,
-      location: "Mount Kenya Region, Kenya",
-      school: "Moshi High School",
-      grade: "Form 1",
-      story:
-        "Emmanuel dreams of becoming a veterinarian to help animals in his community. He has rescued and cared for many stray animals.",
-      needs: [
-        "School fees",
-        "Veterinary books",
-        "Science equipment",
-        "Transport",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      monthlyNeed: 70,
-      sponsored: false,
-      interests: ["Animal Care", "Biology", "Conservation"],
-      family: "Lives with father and grandmother",
-    },
-  ];
 
   const sponsorshipTypes = [
     {
@@ -471,8 +313,8 @@ const Sponsor = () => {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {children.map((child, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {allChildren.map((child, index) => (
               <AnimatedSection
                 key={child.id}
                 animation="scaleIn"
@@ -604,8 +446,8 @@ const Sponsor = () => {
                               Monthly Support:
                             </span>
                             <div className="text-right">
-                              <span className="text-3xl font-bold text-charity-orange-600 group-hover:scale-110 transition-transform duration-300 inline-block">
-                                ${child.monthlyNeed}
+                              <span className="text-2xl font-bold text-charity-orange-600 group-hover:scale-110 transition-transform duration-300 inline-block">
+                                KES {child.monthlyNeed.toLocaleString()}
                               </span>
                               <div className="text-xs text-charity-neutral-500">
                                 per month
@@ -642,7 +484,7 @@ const Sponsor = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <h3 className="text-2xl font-bold text-charity-neutral-800 mb-6">
-              Sponsor {children.find((c) => c.id === selectedChild)?.name}
+              Sponsor {allChildren.find((c) => c.id === selectedChild)?.name}
             </h3>
 
             <form onSubmit={handleSponsorApplication} className="space-y-6">
