@@ -380,6 +380,57 @@ const BlogPost = () => {
                 Comments ({comments.length})
               </h4>
 
+              {/* Name Form Modal */}
+              {showNameForm && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                  <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+                    <h3 className="text-lg font-semibold text-charity-neutral-800 mb-4">
+                      Please enter your name to comment
+                    </h3>
+                    <form onSubmit={handleNameSubmit}>
+                      <input
+                        type="text"
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        placeholder="Your name"
+                        className="w-full p-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent mb-4"
+                        autoFocus
+                      />
+                      <div className="flex gap-3">
+                        <button
+                          type="submit"
+                          className="flex-1 px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200"
+                        >
+                          Save Name
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setShowNameForm(false)}
+                          className="flex-1 px-4 py-2 bg-charity-neutral-200 hover:bg-charity-neutral-300 text-charity-neutral-700 rounded-lg transition-colors duration-200"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+
+              {/* User Name Display */}
+              {userName && (
+                <div className="mb-4 p-3 bg-charity-green-50 rounded-lg border border-charity-green-200">
+                  <p className="text-charity-green-700">
+                    <strong>Commenting as:</strong> {userName}
+                    <button
+                      onClick={() => setShowNameForm(true)}
+                      className="ml-2 text-charity-green-600 hover:text-charity-green-800 text-sm underline"
+                    >
+                      Change name
+                    </button>
+                  </p>
+                </div>
+              )}
+
               {/* Add Comment Form */}
               <div className="mb-8 p-6 bg-charity-neutral-50 rounded-xl">
                 <h5 className="text-lg font-semibold text-charity-neutral-800 mb-4">
