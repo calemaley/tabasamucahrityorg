@@ -255,7 +255,7 @@ const BlogPost = () => {
               </div>
               <div className="flex items-center text-charity-neutral-500 text-sm">
                 <Clock className="h-4 w-4 mr-1" />
-                {post.readTime}
+                {readTime}
               </div>
             </div>
 
