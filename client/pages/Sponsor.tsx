@@ -298,85 +298,23 @@ const Sponsor = () => {
       </section>
 
       {/* Children Available for Sponsorship */}
-      <section id="children-section" className={`py-20 ${
-        selectedSponsorshipType === "specific" ? "bg-charity-orange-50" : "bg-white"
-      }`}>
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
-                {selectedSponsorshipType === "specific" ? "Choose Your Child to Sponsor" : "Meet the Children"}
+                Meet the Children
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                {selectedSponsorshipType === "specific"
-                  ? "Select the child you'd like to personally sponsor and build a meaningful relationship with."
-                  : "These amazing children are waiting for a sponsor who believes in their potential. Learn about their dreams and choose who you'd like to support."
-                }
+                These amazing children are waiting for a sponsor who believes in
+                their potential. Learn about their dreams and choose who you'd
+                like to support.
               </p>
             </div>
           </AnimatedSection>
 
-          {/* Search and Filters */}
-          <AnimatedSection animation="slideUp" className="mb-12">
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-charity-neutral-200">
-              <div className="flex flex-col md:flex-row gap-4 items-center">
-                <div className="flex-1">
-                  <input
-                    type="text"
-                    placeholder="Search children by name, story, or dream job..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500"
-                  />
-                </div>
-                <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="px-6 py-3 bg-charity-neutral-100 hover:bg-charity-orange-100 text-charity-neutral-700 hover:text-charity-orange-600 rounded-lg transition-colors duration-200 font-medium"
-                >
-                  Filters {showFilters ? "▲" : "▼"}
-                </button>
-              </div>
-
-              {showFilters && (
-                <div className="mt-4 pt-4 border-t border-charity-neutral-200">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-charity-neutral-700 mb-2">
-                        Age Group
-                      </label>
-                      <select
-                        value={ageFilter}
-                        onChange={(e) => setAgeFilter(e.target.value)}
-                        className="w-full px-4 py-2 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500"
-                      >
-                        <option value="">All Ages</option>
-                        <option value="young">Young (5-10 years)</option>
-                        <option value="teen">Teen (11+ years)</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-charity-neutral-700 mb-2">
-                        Location
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Filter by location..."
-                        value={locationFilter}
-                        onChange={(e) => setLocationFilter(e.target.value)}
-                        className="w-full px-4 py-2 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-charity-orange-500"
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-4 text-sm text-charity-neutral-600">
-                    Showing {filteredChildren.length} of {allChildren.filter(c => !c.sponsored).length} available children
-                  </div>
-                </div>
-              )}
-            </div>
-          </AnimatedSection>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {filteredChildren.map((child, index) => (
+            {allChildren.map((child, index) => (
               <AnimatedSection
                 key={child.id}
                 animation="scaleIn"
