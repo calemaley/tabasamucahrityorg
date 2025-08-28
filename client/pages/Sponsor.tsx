@@ -55,7 +55,7 @@ const Sponsor = () => {
       id: "maria-001",
       name: "Maria Mwangi",
       age: 8,
-      location: "Mwanza Region",
+      location: "Nyanza County, Kenya",
       school: "Mwanza Primary School",
       grade: "Standard 3",
       story:
@@ -72,7 +72,7 @@ const Sponsor = () => {
       id: "david-002",
       name: "David Kimaro",
       age: 12,
-      location: "Arusha Region",
+      location: "Rift Valley, Kenya",
       school: "Arusha Community Secondary",
       grade: "Form 1",
       story:
@@ -94,7 +94,7 @@ const Sponsor = () => {
       id: "grace-003",
       name: "Grace Mtema",
       age: 15,
-      location: "Dodoma Region",
+      location: "Central Kenya",
       school: "Dodoma Girls Education Center",
       grade: "Form 3",
       story:
@@ -111,7 +111,7 @@ const Sponsor = () => {
       id: "john-004",
       name: "John Massawe",
       age: 10,
-      location: "Kilimanjaro Region",
+      location: "Eastern Kenya",
       school: "Kilimanjaro Primary School",
       grade: "Standard 5",
       story:
