@@ -20,21 +20,67 @@ import {
   Download,
   Calendar,
 } from "lucide-react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
-// Fix Leaflet default markers
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
+// Lazy load map component to avoid SSR issues
+const LazyMapComponent = () => {
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+  
+  useEffect(() => {
+    // Dynamically import and setup map only on client side
+    const loadMap = async () => {
+      try {
+        if (typeof window !== 'undefined') {
+          const L = await import('leaflet');
+          const { MapContainer, TileLayer, Marker, Popup } = await import('react-leaflet');
+          await import('leaflet/dist/leaflet.css');
+          
+          // Fix Leaflet default markers
+          delete (L.Icon.Default.prototype as any)._getIconUrl;
+          L.Icon.Default.mergeOptions({
+            iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+          });
+          
+          setIsMapLoaded(true);
+        }
+      } catch (error) {
+        console.error('Failed to load map:', error);
+      }
+    };
+    
+    loadMap();
+  }, []);
+
+  if (!isMapLoaded) {
+    return (
+      <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-400 via-charity-green-400 to-charity-orange-600 flex items-center justify-center">
+        <div className="text-white text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-lg font-medium">Loading Interactive Map...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-400 via-charity-green-400 to-charity-orange-600">
+      {/* Fallback Kenya map background */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20,30 L80,30 L80,70 L20,70 Z' fill='%23ffffff' opacity='0.1'/%3E%3Ctext x='50' y='50' text-anchor='middle' fill='%23ffffff' font-size='8'%3EKenya%3C/text%3E%3C/svg%3E")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+    </div>
+  );
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -228,37 +274,12 @@ const Contact = () => {
     minute: "2-digit",
   });
 
-  // Kenya coordinates (Nairobi)
-  const kenyaCenter: [number, number] = [-1.2921, 36.8219];
-
   return (
     <>
       {/* Interactive Map Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
-        {/* Leaflet Map Background */}
-        <div className="absolute inset-0">
-          <MapContainer 
-            center={kenyaCenter} 
-            zoom={6} 
-            style={{ height: '100%', width: '100%' }}
-            zoomControl={true}
-            scrollWheelZoom={true}
-            attributionControl={false}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              opacity={0.8}
-            />
-            <Marker position={kenyaCenter}>
-              <Popup>
-                <div className="text-center p-2">
-                  <h3 className="font-bold text-charity-orange-600">Tabasamu Charity</h3>
-                  <p className="text-sm text-charity-neutral-700">Making a difference across Kenya</p>
-                </div>
-              </Popup>
-            </Marker>
-          </MapContainer>
-        </div>
+        {/* Map Background */}
+        <LazyMapComponent />
 
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-600/70 via-charity-green-600/60 to-charity-orange-700/70"></div>
@@ -336,10 +357,10 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Map Controls Info */}
+        {/* Map Info */}
         <div className="absolute bottom-20 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 text-charity-neutral-700 text-sm">
-          <p className="font-medium">🗺️ Interactive Map</p>
-          <p>Drag to explore • Scroll to zoom</p>
+          <p className="font-medium">🗺️ Kenya Map Background</p>
+          <p>Interactive features loading...</p>
         </div>
 
         {/* Scroll indicator */}
