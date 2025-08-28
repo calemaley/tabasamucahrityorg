@@ -16,6 +16,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { featuredPost } from "@shared/blog-data";
 
 const BlogPost = () => {
   const { slug } = useParams();
