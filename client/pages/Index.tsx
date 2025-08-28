@@ -214,7 +214,7 @@ const Index = () => {
     {
       image:
         "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
-      title: "NAIROBI Edition - Creating smiles, one coin at a time😊",
+      title: "NAIROBI Edition - Creating smiles, one coin at a time��",
       description:
         "Join us for an unforgettable day of giving and community spirit at Blessings Children's Home in Ruai. This special gathering brings together hearts and hands united in creating lasting smiles in the lives of children who need it most.",
       date: "19TH OCT 2025",
@@ -790,20 +790,20 @@ const Index = () => {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="max-w-3xl mx-auto">
               {recentBlogs.map((blog, index) => (
                 <Link
                   key={index}
-                  to={`/blog/${blog.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  to="/blog"
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
                 >
                   <div className="relative overflow-hidden">
                     <img
                       src={blog.image}
                       alt={blog.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 left-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm">
+                    <div className="absolute top-4 left-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                       {blog.category}
                     </div>
                   </div>
@@ -817,7 +817,10 @@ const Index = () => {
                     <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
                       {blog.title}
                     </h4>
-                    <p className="text-charity-neutral-600">{blog.snippet}</p>
+                    <p className="text-charity-neutral-600 leading-relaxed mb-4">{blog.snippet}</p>
+                    <div className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
+                      Read More <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
                   </div>
                 </Link>
               ))}
