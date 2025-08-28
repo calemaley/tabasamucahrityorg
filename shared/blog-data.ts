@@ -39,7 +39,7 @@ export const featuredPost: BlogPost = {
   readTime: "6 min read",
   slug: "charity-fueling-dreams-of-children",
   likes: 42,
-  tags: ["charity", "children", "dreams", "education", "hope", "community"]
+  tags: ["charity", "children", "dreams", "education", "hope", "community"],
 };
 
 // For homepage - recent blogs (showing the main featured post)
