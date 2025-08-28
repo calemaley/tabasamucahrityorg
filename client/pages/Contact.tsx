@@ -264,7 +264,7 @@ const Contact = () => {
                   Let's Connect
                 </h1>
                 <p className="text-2xl md:text-3xl max-w-4xl mx-auto leading-relaxed opacity-95 font-light">
-                  Ready to make a difference? We'd love to hear from you and explore how we can work together to transform lives across Kenya.
+                  Ready to make a difference? We'd love to hear from you and explore how we can work together to transform lives.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center">
                   <button
