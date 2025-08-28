@@ -578,96 +578,130 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              {featuredChildren.map((child, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 max-w-5xl mx-auto">
+              {featuredChildren.slice(0, 2).map((child, index) => (
                 <div
                   key={child.id}
-                  className="bg-white border border-charity-neutral-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-700 group transform hover:-translate-y-4 hover:scale-105 cursor-pointer"
+                  onClick={() => window.location.href = '/sponsor'}
                 >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={child.image}
-                      alt={child.name}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <p className="text-sm font-medium">
-                          Dreams of being a {child.dreamJob}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-                      Available
-                    </div>
-                    <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                    </div>
+                  {/* Animated gradient border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 via-charity-green-400 to-charity-orange-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
+                  <div className="absolute inset-[3px] bg-white rounded-3xl z-10"></div>
+
+                  {/* Floating particles */}
+                  <div className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-2 h-2 bg-charity-orange-400 rounded-full animate-bounce"
+                        style={{
+                          left: `${10 + i * 12}%`,
+                          top: `${15 + (i % 3) * 25}%`,
+                          animationDelay: `${i * 0.2}s`,
+                          animationDuration: "2s",
+                        }}
+                      />
+                    ))}
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
-                      {child.name}
-                    </h3>
+                  <div className="relative z-20">
+                    {/* Enhanced Image Section */}
+                    <div className="relative overflow-hidden rounded-t-3xl">
+                      <img
+                        src={child.image}
+                        alt={child.name}
+                        className="w-full h-80 object-cover group-hover:scale-125 transition-transform duration-1000"
+                      />
 
-                    <div className="space-y-1 mb-4 text-sm text-charity-neutral-600">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2 text-charity-orange-500" />
-                        {child.age} years old
+                      {/* Multiple overlays for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-500/20 to-charity-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                      {/* Floating badges */}
+                      <div className="absolute top-6 right-6 bg-gradient-to-r from-charity-green-500 to-charity-green-600 text-white px-5 py-3 rounded-2xl text-lg font-bold shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        ✨ Available
                       </div>
-                      <div className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-2 text-charity-green-500" />
-                        {child.location}
+
+                      {/* Heart animation on hover */}
+                      <div className="absolute top-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125">
+                        <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                          <Heart className="h-6 w-6 text-white fill-current" />
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        <GraduationCap className="h-4 w-4 mr-2 text-charity-orange-500" />
-                        <span className="truncate">{child.grade}</span>
+
+                      {/* Dream job overlay */}
+                      <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">
+                        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                          <p className="text-charity-neutral-800 text-lg font-bold">
+                            ✨ Dreams of being a {child.dreamJob}
+                          </p>
+                        </div>
                       </div>
                     </div>
 
-                    <p className="text-charity-neutral-600 text-sm mb-4 line-clamp-3">
-                      {child.story}
-                    </p>
-
-                    <div className="mb-4">
-                      <div className="text-sm font-medium text-charity-neutral-700 mb-2">
-                        Interests:
-                      </div>
-                      <div className="flex flex-wrap gap-1">
-                        {child.interests.slice(0, 3).map((interest, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-1 bg-charity-green-100 text-charity-green-700 text-xs rounded-full"
-                          >
-                            {interest}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="border-t border-charity-neutral-200 pt-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-charity-neutral-600">
-                          Monthly Need:
-                        </span>
-                        <span className="text-lg font-bold text-charity-orange-600">
-                          ${child.monthlyNeed}
-                        </span>
+                    {/* Enhanced Content Section */}
+                    <div className="p-8">
+                      {/* Name with special styling */}
+                      <div className="mb-6">
+                        <h3 className="text-3xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-300 transform group-hover:scale-105">
+                          {child.name}
+                        </h3>
+                        <div className="w-20 h-1 bg-gradient-to-r from-charity-orange-500 to-charity-green-500 rounded-full transform origin-left group-hover:scale-x-150 transition-transform duration-500"></div>
                       </div>
 
-                      <button
-                        onClick={() =>
-                          redirectToPayment("sponsorshipUrl", {
-                            childId: child.id,
-                            amount: child.monthlyNeed,
-                            source: CAMPAIGN_SOURCES.children,
-                            campaign: `sponsor-${child.name.split(" ")[0].toLowerCase()}`,
-                          })
-                        }
-                        className="block w-full px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-all duration-200 font-medium group-hover:transform group-hover:scale-105 shadow-md hover:shadow-lg text-center"
+                      {/* Age info */}
+                      <div className="flex items-center mb-6 p-4 rounded-xl bg-charity-orange-50 group-hover:bg-charity-orange-100 transition-colors duration-300">
+                        <div className="w-12 h-12 rounded-full bg-charity-orange-500 flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform duration-300">
+                          <Calendar className="h-6 w-6 text-white" />
+                        </div>
+                        <span className="text-charity-neutral-700 font-bold text-xl">{child.age} years old</span>
+                      </div>
+
+                      {/* Interests with enhanced styling */}
+                      <div className="mb-8">
+                        <div className="text-lg font-bold text-charity-neutral-700 mb-4 flex items-center">
+                          <Star className="h-5 w-5 text-charity-orange-500 mr-2" />
+                          Interests:
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                          {child.interests.map((interest, i) => (
+                            <span
+                              key={i}
+                              className="px-4 py-2 bg-gradient-to-r from-charity-green-100 to-charity-green-200 text-charity-green-800 text-lg rounded-2xl font-semibold border-2 border-charity-green-300 transform hover:scale-110 transition-all duration-300 shadow-lg"
+                              style={{ animationDelay: `${i * 100}ms` }}
+                            >
+                              ✨ {interest}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Enhanced pricing section */}
+                      <div className="bg-gradient-to-r from-charity-orange-50 to-charity-green-50 p-6 rounded-2xl mb-6 group-hover:shadow-lg transition-shadow duration-300">
+                        <div className="text-center">
+                          <span className="text-charity-neutral-700 font-semibold text-lg mb-2 block">Monthly Support Needed:</span>
+                          <div className="text-4xl font-bold text-charity-orange-600 group-hover:scale-110 transition-transform duration-300">
+                            KES {(child.monthlyNeed * 135).toLocaleString()}
+                          </div>
+                          <div className="text-sm text-charity-neutral-500 mt-1">≈ ${child.monthlyNeed} USD</div>
+                        </div>
+                      </div>
+
+                      {/* Enhanced sponsor button */}
+                      <Link
+                        to="/sponsor"
+                        className="block w-full relative px-8 py-5 bg-gradient-to-r from-charity-orange-600 to-charity-orange-700 hover:from-charity-orange-700 hover:to-charity-orange-800 text-white rounded-2xl transition-all duration-500 font-bold text-xl shadow-xl hover:shadow-2xl transform hover:scale-105 group-hover:animate-pulse overflow-hidden text-center"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        💝 Sponsor {child.name.split(" ")[0]}
-                      </button>
+                        <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 to-charity-green-400 opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                        <div className="relative z-10 flex items-center justify-center">
+                          <Heart className="h-6 w-6 mr-3 animate-bounce" />
+                          Sponsor {child.name.split(" ")[0]} Today
+                          <Star className="h-5 w-5 ml-3 text-yellow-300" />
+                        </div>
+                        <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                      </Link>
                     </div>
                   </div>
                 </div>
