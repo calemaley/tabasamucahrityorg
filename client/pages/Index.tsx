@@ -216,24 +216,8 @@ const Index = () => {
         "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
       title: "School Supply Drive 2024",
       description:
-        "Providing essential school supplies to over 500 children across 12 schools.",
+        "Providing essential school supplies to over 500 children across 12 schools in rural Kenya. This comprehensive program ensures every child has the tools they need for education.",
       date: "March 2024",
-    },
-    {
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      title: "Healthcare Initiative",
-      description:
-        "Mobile clinics bringing healthcare services to remote communities.",
-      date: "February 2024",
-    },
-    {
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      title: "Clean Water Project",
-      description:
-        "Installing water wells in 5 villages to provide clean drinking water.",
-      date: "January 2024",
     },
   ];
 
