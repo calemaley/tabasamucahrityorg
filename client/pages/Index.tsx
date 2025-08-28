@@ -684,30 +684,41 @@ const Index = () => {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="max-w-3xl mx-auto">
               {recentPrograms.map((program, index) => (
                 <Link
                   key={index}
-                  to={`/programs/${program.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  to="/programs"
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
                 >
                   <div className="relative overflow-hidden">
                     <img
                       src={program.image}
                       alt={program.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 right-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm">
+                    <div className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg font-bold transform rotate-3">
                       {program.date}
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                      <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-charity-orange-200 transition-colors duration-200">
+                        {program.title}
+                      </h4>
+                      {program.venue && (
+                        <div className="flex items-center text-white/90 text-sm">
+                          <MapPin className="h-4 w-4 mr-1" />
+                          <span>{program.venue}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="p-6">
-                    <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
-                      {program.title}
-                    </h4>
-                    <p className="text-charity-neutral-600">
+                    <p className="text-charity-neutral-600 leading-relaxed">
                       {program.description}
                     </p>
+                    <div className="mt-4 text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
                   </div>
                 </Link>
               ))}
