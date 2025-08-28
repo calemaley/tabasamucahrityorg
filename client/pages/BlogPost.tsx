@@ -224,7 +224,7 @@ const BlogPost = () => {
                     className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
                   />
                   <span className="text-sm">
-                    {post.likes + (isLiked ? 1 : 0)}
+                    {(post.likes || 0) + (isLiked ? 1 : 0)}
                   </span>
                 </button>
                 <div className="flex items-center gap-1 text-charity-neutral-500">
