@@ -27,7 +27,7 @@ const Children = () => {
       id: "maria-001",
       name: "Maria Mwangi",
       age: 8,
-      location: "Mwanza Region",
+      location: "Nyanza County, Kenya",
       school: "Mwanza Primary School",
       grade: "Standard 3",
       story:
@@ -50,7 +50,7 @@ const Children = () => {
       id: "david-002",
       name: "David Kimaro",
       age: 12,
-      location: "Arusha Region",
+      location: "Rift Valley, Kenya",
       school: "Arusha Community Secondary",
       grade: "Form 1",
       story:
@@ -78,7 +78,7 @@ const Children = () => {
       id: "grace-003",
       name: "Grace Mtema",
       age: 15,
-      location: "Dodoma Region",
+      location: "Central Kenya",
       school: "Dodoma Girls Education Center",
       grade: "Form 3",
       story:
@@ -101,7 +101,7 @@ const Children = () => {
       id: "john-004",
       name: "John Massawe",
       age: 10,
-      location: "Kilimanjaro Region",
+      location: "Eastern Kenya",
       school: "Kilimanjaro Primary School",
       grade: "Standard 5",
       story:
@@ -129,11 +129,11 @@ const Children = () => {
       id: "amina-005",
       name: "Amina Hassan",
       age: 9,
-      location: "Zanzibar",
-      school: "Zanzibar Primary School",
+      location: "Coastal Kenya",
+      school: "Malindi Primary School",
       grade: "Standard 4",
       story:
-        "Amina dreams of becoming a marine biologist to protect the ocean around her island home. She collects shells and studies sea creatures in her spare time. Her family depends on fishing for income.",
+        "Amina dreams of becoming a marine biologist to protect the ocean around her coastal home. She collects shells and studies sea creatures in her spare time. Her family depends on fishing for income.",
       needs: ["School fees", "Science materials", "Transport", "Lunch program"],
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
@@ -152,7 +152,7 @@ const Children = () => {
       id: "peter-006",
       name: "Peter Ngozi",
       age: 14,
-      location: "Mbeya Region",
+      location: "Western Kenya",
       school: "Mbeya Secondary School",
       grade: "Form 2",
       story:
@@ -180,8 +180,8 @@ const Children = () => {
       id: "fatuma-007",
       name: "Fatuma Ali",
       age: 11,
-      location: "Dar es Salaam",
-      school: "Dar es Salaam Community School",
+      location: "Nairobi County, Kenya",
+      school: "Nairobi Community School",
       grade: "Standard 6",
       story:
         "Fatuma loves music and wants to become a music teacher. She sings in the church choir and has taught herself to play several traditional instruments. Her family lives in a crowded neighborhood.",
@@ -203,7 +203,7 @@ const Children = () => {
       id: "emmanuel-008",
       name: "Emmanuel Mushi",
       age: 13,
-      location: "Moshi",
+      location: "Mount Kenya Region, Kenya",
       school: "Moshi High School",
       grade: "Form 1",
       story:
