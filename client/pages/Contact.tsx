@@ -25,62 +25,6 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
-// Lazy load map component to avoid SSR issues
-const LazyMapComponent = () => {
-  const [isMapLoaded, setIsMapLoaded] = useState(false);
-  
-  useEffect(() => {
-    // Dynamically import and setup map only on client side
-    const loadMap = async () => {
-      try {
-        if (typeof window !== 'undefined') {
-          const L = await import('leaflet');
-          const { MapContainer, TileLayer, Marker, Popup } = await import('react-leaflet');
-          await import('leaflet/dist/leaflet.css');
-          
-          // Fix Leaflet default markers
-          delete (L.Icon.Default.prototype as any)._getIconUrl;
-          L.Icon.Default.mergeOptions({
-            iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-          });
-          
-          setIsMapLoaded(true);
-        }
-      } catch (error) {
-        console.error('Failed to load map:', error);
-      }
-    };
-    
-    loadMap();
-  }, []);
-
-  if (!isMapLoaded) {
-    return (
-      <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-400 via-charity-green-400 to-charity-orange-600 flex items-center justify-center">
-        <div className="text-white text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-lg font-medium">Loading Interactive Map...</p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-400 via-charity-green-400 to-charity-orange-600">
-      {/* Fallback Kenya map background */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20,30 L80,30 L80,70 L20,70 Z' fill='%23ffffff' opacity='0.1'/%3E%3Ctext x='50' y='50' text-anchor='middle' fill='%23ffffff' font-size='8'%3EKenya%3C/text%3E%3C/svg%3E")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-    </div>
-  );
-};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
