@@ -774,7 +774,7 @@ const Index = () => {
               </Link>
             </div>
 
-            <div className="max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {recentBlogs.map((blog, index) => (
                 <Link
                   key={index}
