@@ -237,10 +237,17 @@ const BlogPost = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="prose prose-lg prose-charity max-w-none">
-              <div 
-                className="text-charity-neutral-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
+              <div className="text-charity-neutral-700 leading-relaxed">
+                {Array.isArray(post.content) ? (
+                  post.content.map((paragraph, index) => (
+                    <p key={index} className="mb-6">
+                      {paragraph}
+                    </p>
+                  ))
+                ) : (
+                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                )}
+              </div>
             </div>
           </AnimatedSection>
 
