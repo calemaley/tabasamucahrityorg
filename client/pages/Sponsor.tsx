@@ -23,20 +23,16 @@ import { allChildren } from "@shared/children-data";
 const Sponsor = () => {
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
   const [selectedSponsorshipType, setSelectedSponsorshipType] =
-    useState<string>("specific");
+    useState<string>("full");
   const [sponsorshipData, setSponsorshipData] = useState({
     name: "",
     email: "",
     phone: "",
     address: "",
-    sponsorshipType: "specific",
+    sponsorshipType: "full",
     paymentMethod: "monthly",
     message: "",
   });
-  const [searchTerm, setSearchTerm] = useState("");
-  const [ageFilter, setAgeFilter] = useState("");
-  const [locationFilter, setLocationFilter] = useState("");
-  const [showFilters, setShowFilters] = useState(false);
 
   const [searchParams] = useSearchParams();
 
@@ -45,8 +41,6 @@ const Sponsor = () => {
     const childParam = searchParams.get("child");
     if (childParam && allChildren.find((c) => c.id === childParam)) {
       setSelectedChild(childParam);
-      setSelectedSponsorshipType("specific");
-      setSponsorshipData(prev => ({ ...prev, sponsorshipType: "specific" }));
       // Scroll to the specific child or modal
       setTimeout(() => {
         const childElement = document.getElementById(`child-${childParam}`);
@@ -57,41 +51,7 @@ const Sponsor = () => {
     }
   }, [searchParams]);
 
-  // Filter children based on search and filters
-  const filteredChildren = allChildren
-    .filter(child => !child.sponsored)
-    .filter(child =>
-      child.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      child.story.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      child.dreamJob.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .filter(child => ageFilter === "" ||
-      (ageFilter === "young" && child.age <= 10) ||
-      (ageFilter === "teen" && child.age > 10)
-    )
-    .filter(child => locationFilter === "" ||
-      child.location.toLowerCase().includes(locationFilter.toLowerCase())
-    );
-
   const sponsorshipTypes = [
-    {
-      id: "specific",
-      name: "Sponsor Specific Child",
-      description: "Choose and personally sponsor a specific child",
-      benefits: [
-        "Choose your sponsored child from profiles",
-        "Personal connection and relationship",
-        "Letters and photos from your child",
-        "Detailed monthly progress updates",
-        "Track educational milestones",
-        "Optional visits (coordinated)",
-        "Direct impact on one life",
-        "Personal thank you cards",
-      ],
-      monthlyAmount: "Based on child needs ($40-$70)",
-      commitment: "Minimum 1 year for stability",
-      highlighted: true,
-    },
     {
       id: "full",
       name: "Full Sponsorship",
@@ -164,14 +124,7 @@ const Sponsor = () => {
     );
 
     // Redirect to payment with sponsorship details
-    const selectedChildData = allChildren.find((c) => c.id === selectedChild);
-    const paymentAmount = selectedChildData ? selectedChildData.monthlyNeed : 6075; // Default amount if no child selected
-    const paymentDescription = selectedChild
-      ? `Monthly sponsorship for ${selectedChildData?.name} - ${sponsorshipData.sponsorshipType} sponsorship`
-      : `${sponsorshipData.sponsorshipType} sponsorship - General donation`;
-
-    // Enhanced payment URL with child-specific information
-    const paymentUrl = `https://zenlipa.co.ke/c/uKowYx?amount=${paymentAmount}&description=${encodeURIComponent(paymentDescription)}&reference=${selectedChild || 'general'}-${Date.now()}`;
+    const paymentUrl = "https://zenlipa.co.ke/c/uKowYx";
     window.open(paymentUrl, "_blank");
 
     // Reset form and close modal
