@@ -20,6 +20,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { featuredEvent } from "@shared/programs-data";
 
 const Programs = () => {
   const [showEventModal, setShowEventModal] = useState(false);
