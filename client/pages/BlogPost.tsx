@@ -440,7 +440,7 @@ const BlogPost = () => {
                   <textarea
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
-                    placeholder="Share your thoughts..."
+                    placeholder={userName ? "Share your thoughts..." : "Please enter your name first to comment"}
                     className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
                     rows={4}
                   />
