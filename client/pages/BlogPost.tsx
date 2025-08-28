@@ -384,65 +384,67 @@ const BlogPost = () => {
       </section>
 
       {/* Related Posts */}
-      <section className="py-16 bg-charity-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="slideUp">
-            <h3 className="text-3xl font-bold text-charity-neutral-800 mb-12 text-center">
-              Related Articles
-            </h3>
-          </AnimatedSection>
+      {relatedPosts.length > 0 && (
+        <section className="py-16 bg-charity-neutral-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="slideUp">
+              <h3 className="text-3xl font-bold text-charity-neutral-800 mb-12 text-center">
+                Related Articles
+              </h3>
+            </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {relatedPosts.map((relatedPost, index) => (
-              <AnimatedSection
-                key={relatedPost.id}
-                animation="scaleIn"
-                delay={index * 100}
-              >
-                <Link
-                  to={`/blog/${relatedPost.slug}`}
-                  className="block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedPosts.map((relatedPost, index) => (
+                <AnimatedSection
+                  key={relatedPost.id}
+                  animation="scaleIn"
+                  delay={index * 100}
                 >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={relatedPost.image}
-                      alt={relatedPost.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 left-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm">
-                      {relatedPost.category}
+                  <Link
+                    to={`/blog/${relatedPost.slug}`}
+                    className="block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group"
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-4 left-4 bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm">
+                        {relatedPost.category}
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center text-sm text-charity-neutral-500 mb-3">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {relatedPost.date}
+                    <div className="p-6">
+                      <div className="flex items-center text-sm text-charity-neutral-500 mb-3">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        {relatedPost.date}
+                      </div>
+                      <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
+                        {relatedPost.title}
+                      </h4>
+                      <p className="text-charity-neutral-600 text-sm">
+                        {(relatedPost.excerpt || relatedPost.subtitle || "").substring(0, 120)}...
+                      </p>
                     </div>
-                    <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
-                      {relatedPost.title}
-                    </h4>
-                    <p className="text-charity-neutral-600 text-sm">
-                      {relatedPost.excerpt.substring(0, 120)}...
-                    </p>
-                  </div>
-                </Link>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          <AnimatedSection animation="slideUp" delay={400}>
-            <div className="text-center mt-12">
-              <Link
-                to="/blog"
-                className="inline-flex items-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200"
-              >
-                View All Articles
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+                  </Link>
+                </AnimatedSection>
+              ))}
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
+
+            <AnimatedSection animation="slideUp" delay={400}>
+              <div className="text-center mt-12">
+                <Link
+                  to="/blog"
+                  className="inline-flex items-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200"
+                >
+                  View All Articles
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </>
