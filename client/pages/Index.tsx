@@ -772,7 +772,7 @@ const Index = () => {
             {recentBlogs.map((blog, index) => (
               <Link
                 key={index}
-                to={`/blog/${blog.slug}`}
+                to="/blog"
                 className="block bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 cursor-pointer group transform hover:-translate-y-2 hover:scale-[1.02]"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
