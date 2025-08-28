@@ -68,8 +68,6 @@ const Blog = () => {
     },
   ]);
 
-import { featuredPost } from "@shared/blog-data";
-
   const handleLike = () => {
     setIsLiked(!isLiked);
     setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
