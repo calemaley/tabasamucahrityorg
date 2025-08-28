@@ -214,7 +214,7 @@ const Index = () => {
     {
       image:
         "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
-      title: "NAIROBI Edition - Creating smiles, one coin at a time����",
+      title: "NAIROBI Edition - Creating smiles, one coin at a time😊",
       description:
         "Join us for an unforgettable day of giving and community spirit at Blessings Children's Home in Ruai. This special gathering brings together hearts and hands united in creating lasting smiles in the lives of children who need it most.",
       date: "19TH OCT 2025",
@@ -548,7 +548,7 @@ const Index = () => {
                 <div
                   key={child.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
-                  onClick={() => window.location.href = '/sponsor'}
+                  onClick={() => window.location.href = `/sponsor?child=${child.id}`}
                 >
                   <div className="relative overflow-hidden">
                     <img
