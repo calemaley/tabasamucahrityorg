@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Calendar,
   User,
@@ -21,6 +21,11 @@ import { featuredPost } from "@shared/blog-data";
 const BlogPost = () => {
   const { slug } = useParams();
   const [isLiked, setIsLiked] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [showNameForm, setShowNameForm] = useState(false);
+  const [readTime, setReadTime] = useState("5 min read");
+  const [startTime] = useState(Date.now());
+  const [maxReadTime, setMaxReadTime] = useState(5);
   const [comments, setComments] = useState([
     {
       id: 1,
@@ -28,6 +33,8 @@ const BlogPost = () => {
       date: "March 16, 2024",
       content:
         "This is such an inspiring story! Maria's journey really shows the power of education.",
+      likes: 8,
+      isLiked: false,
       replies: [
         {
           id: 11,
@@ -35,6 +42,8 @@ const BlogPost = () => {
           date: "March 16, 2024",
           content:
             "Thank you John! We're so proud of Maria and all our students who are making such incredible progress.",
+          likes: 3,
+          isLiked: false,
         },
       ],
     },
@@ -44,6 +53,8 @@ const BlogPost = () => {
       date: "March 15, 2024",
       content:
         "I've been following Tabasamu's work for years and stories like this make me so proud to be a supporter.",
+      likes: 12,
+      isLiked: false,
       replies: [],
     },
   ]);
@@ -58,8 +69,52 @@ const BlogPost = () => {
   // Find the blog post by slug
   const post = blogPosts.find((p) => p.slug === slug);
 
+  // Real-time read tracking
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentTime = (Date.now() - startTime) / 1000 / 60; // minutes
+      const roundedTime = Math.ceil(currentTime);
+      if (roundedTime > maxReadTime) {
+        setMaxReadTime(roundedTime);
+        setReadTime(`${roundedTime} min read`);
+      }
+    }, 10000); // Update every 10 seconds
+
+    return () => clearInterval(interval);
+  }, [startTime, maxReadTime]);
+
   // Handler functions
   const handleLike = () => setIsLiked(!isLiked);
+
+  const handleCommentLike = (commentId: number, replyId?: number) => {
+    setComments(prev => prev.map(comment => {
+      if (comment.id === commentId) {
+        if (replyId) {
+          // Like a reply
+          return {
+            ...comment,
+            replies: comment.replies.map(reply =>
+              reply.id === replyId
+                ? {
+                    ...reply,
+                    likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
+                    isLiked: !reply.isLiked
+                  }
+                : reply
+            )
+          };
+        } else {
+          // Like a comment
+          return {
+            ...comment,
+            likes: comment.isLiked ? comment.likes - 1 : comment.likes + 1,
+            isLiked: !comment.isLiked
+          };
+        }
+      }
+      return comment;
+    }));
+  };
 
   const handleShare = () => {
     if (navigator.share) {
@@ -75,16 +130,22 @@ const BlogPost = () => {
   };
 
   const handleComment = () => {
+    if (!userName.trim()) {
+      setShowNameForm(true);
+      return;
+    }
     if (newComment.trim()) {
       const comment = {
         id: Date.now(),
-        author: "Anonymous User", // In real app, this would be the logged-in user
+        author: userName,
         date: new Date().toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         }),
         content: newComment,
+        likes: 0,
+        isLiked: false,
         replies: [],
       };
       setComments([comment, ...comments]);
@@ -93,16 +154,22 @@ const BlogPost = () => {
   };
 
   const handleReply = (commentId: number) => {
+    if (!userName.trim()) {
+      setShowNameForm(true);
+      return;
+    }
     if (newReply.trim()) {
       const reply = {
         id: Date.now(),
-        author: "Anonymous User", // In real app, this would be the logged-in user
+        author: userName,
         date: new Date().toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         }),
         content: newReply,
+        likes: 0,
+        isLiked: false,
       };
 
       setComments((prev) =>
@@ -114,6 +181,13 @@ const BlogPost = () => {
       );
       setNewReply("");
       setReplyingTo(null);
+    }
+  };
+
+  const handleNameSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userName.trim()) {
+      setShowNameForm(false);
     }
   };
 
