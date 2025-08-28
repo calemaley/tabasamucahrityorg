@@ -101,33 +101,35 @@ const Blog = () => {
   };
 
   const handleCommentLike = (commentId: number, replyId?: number) => {
-    setComments(prev => prev.map(comment => {
-      if (comment.id === commentId) {
-        if (replyId) {
-          // Like a reply
-          return {
-            ...comment,
-            replies: comment.replies.map(reply => 
-              reply.id === replyId 
-                ? { 
-                    ...reply, 
-                    likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
-                    isLiked: !reply.isLiked 
-                  }
-                : reply
-            )
-          };
-        } else {
-          // Like a comment
-          return {
-            ...comment,
-            likes: comment.isLiked ? comment.likes - 1 : comment.likes + 1,
-            isLiked: !comment.isLiked
-          };
+    setComments((prev) =>
+      prev.map((comment) => {
+        if (comment.id === commentId) {
+          if (replyId) {
+            // Like a reply
+            return {
+              ...comment,
+              replies: comment.replies.map((reply) =>
+                reply.id === replyId
+                  ? {
+                      ...reply,
+                      likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
+                      isLiked: !reply.isLiked,
+                    }
+                  : reply,
+              ),
+            };
+          } else {
+            // Like a comment
+            return {
+              ...comment,
+              likes: comment.isLiked ? comment.likes - 1 : comment.likes + 1,
+              isLiked: !comment.isLiked,
+            };
+          }
         }
-      }
-      return comment;
-    }));
+        return comment;
+      }),
+    );
   };
 
   const handleShare = (platform: string) => {
@@ -138,7 +140,11 @@ const Blog = () => {
       case "facebook":
         // Use Facebook's share dialog
         const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-        const facebookWindow = window.open(facebookUrl, 'facebook-share', 'width=626,height=436,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1');
+        const facebookWindow = window.open(
+          facebookUrl,
+          "facebook-share",
+          "width=626,height=436,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1",
+        );
         if (!facebookWindow) {
           // Fallback if popup is blocked
           window.location.href = facebookUrl;
@@ -146,36 +152,43 @@ const Blog = () => {
         break;
       case "twitter":
         const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-        const twitterWindow = window.open(twitterUrl, 'twitter-share', 'width=550,height=420,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1');
+        const twitterWindow = window.open(
+          twitterUrl,
+          "twitter-share",
+          "width=550,height=420,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1",
+        );
         if (!twitterWindow) {
           window.location.href = twitterUrl;
         }
         break;
       case "whatsapp":
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`;
-        window.open(whatsappUrl, '_blank');
+        window.open(whatsappUrl, "_blank");
         break;
       case "copy":
         if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(url).then(() => {
-            alert("Link copied to clipboard!");
-          }).catch(() => {
-            // Fallback for older browsers
-            const textArea = document.createElement("textarea");
-            textArea.value = url;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert("Link copied to clipboard!");
-          });
+          navigator.clipboard
+            .writeText(url)
+            .then(() => {
+              alert("Link copied to clipboard!");
+            })
+            .catch(() => {
+              // Fallback for older browsers
+              const textArea = document.createElement("textarea");
+              textArea.value = url;
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand("copy");
+              document.body.removeChild(textArea);
+              alert("Link copied to clipboard!");
+            });
         } else {
           // Fallback for non-secure contexts
           const textArea = document.createElement("textarea");
           textArea.value = url;
           document.body.appendChild(textArea);
           textArea.select();
-          document.execCommand('copy');
+          document.execCommand("copy");
           document.body.removeChild(textArea);
           alert("Link copied to clipboard!");
         }
@@ -221,11 +234,13 @@ const Blog = () => {
         likes: 0,
         isLiked: false,
       };
-      setComments(prev => prev.map(comment =>
-        comment.id === commentId
-          ? { ...comment, replies: [...comment.replies, reply] }
-          : comment
-      ));
+      setComments((prev) =>
+        prev.map((comment) =>
+          comment.id === commentId
+            ? { ...comment, replies: [...comment.replies, reply] }
+            : comment,
+        ),
+      );
       setNewReply("");
       setReplyingTo(null);
     }
@@ -311,9 +326,7 @@ const Blog = () => {
                   <Heart
                     className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
                   />
-                  <span className="text-sm">
-                    {likeCount}
-                  </span>
+                  <span className="text-sm">{likeCount}</span>
                 </button>
                 <div className="flex items-center gap-1 text-charity-neutral-500">
                   <MessageCircle className="h-4 w-4" />
@@ -508,7 +521,11 @@ const Blog = () => {
                   <textarea
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
-                    placeholder={userName ? "Share your thoughts..." : "Please enter your name first to comment"}
+                    placeholder={
+                      userName
+                        ? "Share your thoughts..."
+                        : "Please enter your name first to comment"
+                    }
                     className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
                     rows={4}
                   />
@@ -549,16 +566,22 @@ const Blog = () => {
                         <button
                           onClick={() => handleCommentLike(comment.id)}
                           className={`flex items-center gap-1 transition-colors duration-200 ${
-                            comment.isLiked 
-                              ? "text-charity-orange-600" 
+                            comment.isLiked
+                              ? "text-charity-orange-600"
                               : "text-charity-neutral-500 hover:text-charity-orange-600"
                           }`}
                         >
-                          <Heart className={`h-4 w-4 ${comment.isLiked ? "fill-current" : ""}`} />
+                          <Heart
+                            className={`h-4 w-4 ${comment.isLiked ? "fill-current" : ""}`}
+                          />
                           <span className="text-sm">{comment.likes}</span>
                         </button>
                         <button
-                          onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
+                          onClick={() =>
+                            setReplyingTo(
+                              replyingTo === comment.id ? null : comment.id,
+                            )
+                          }
                           className="flex items-center gap-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200"
                         >
                           <Reply className="h-4 w-4" />
@@ -578,7 +601,11 @@ const Blog = () => {
                         <textarea
                           value={newReply}
                           onChange={(e) => setNewReply(e.target.value)}
-                          placeholder={userName ? "Write a reply..." : "Please enter your name first to reply"}
+                          placeholder={
+                            userName
+                              ? "Write a reply..."
+                              : "Please enter your name first to reply"
+                          }
                           className="w-full px-3 py-2 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
                           rows={3}
                         />
@@ -625,14 +652,18 @@ const Blog = () => {
                             </p>
                             <div className="mt-2">
                               <button
-                                onClick={() => handleCommentLike(comment.id, reply.id)}
+                                onClick={() =>
+                                  handleCommentLike(comment.id, reply.id)
+                                }
                                 className={`flex items-center gap-1 transition-colors duration-200 ${
-                                  reply.isLiked 
-                                    ? "text-charity-orange-600" 
+                                  reply.isLiked
+                                    ? "text-charity-orange-600"
                                     : "text-charity-neutral-500 hover:text-charity-orange-600"
                                 }`}
                               >
-                                <Heart className={`h-3 w-3 ${reply.isLiked ? "fill-current" : ""}`} />
+                                <Heart
+                                  className={`h-3 w-3 ${reply.isLiked ? "fill-current" : ""}`}
+                                />
                                 <span className="text-xs">{reply.likes}</span>
                               </button>
                             </div>

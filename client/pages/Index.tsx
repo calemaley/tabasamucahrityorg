@@ -765,7 +765,8 @@ const Index = () => {
                 Latest Story
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Discover inspiring stories of hope, transformation, and the power of community support
+                Discover inspiring stories of hope, transformation, and the
+                power of community support
               </p>
             </div>
 
@@ -849,7 +850,8 @@ const Index = () => {
                       {/* Decorative Quote */}
                       <div className="mt-8 p-4 bg-charity-orange-50 rounded-xl border-l-4 border-charity-orange-500 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                         <p className="text-charity-orange-700 italic font-medium text-sm">
-                          "Every act of kindness is a push forward towards a brighter future."
+                          "Every act of kindness is a push forward towards a
+                          brighter future."
                         </p>
                       </div>
                     </div>
