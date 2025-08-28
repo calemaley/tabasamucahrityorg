@@ -56,10 +56,6 @@ const Navigation = () => {
       label: "Programs",
       href: "/programs",
       icon: GraduationCap,
-      subItems: [
-        { label: "Volunteering in Schools", href: "/programs/schools" },
-        { label: "Internship in Hospitals", href: "/programs/hospitals" },
-      ],
     },
     {
       label: "Get Involved",
