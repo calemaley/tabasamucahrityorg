@@ -605,7 +605,7 @@ const Index = () => {
                     </div>
 
                     <Link
-                      to="/sponsor"
+                      to={`/sponsor?child=${child.id}`}
                       className="block w-full text-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium group-hover:transform group-hover:scale-105"
                       onClick={(e) => e.stopPropagation()}
                     >
