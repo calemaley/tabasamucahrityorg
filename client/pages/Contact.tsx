@@ -220,13 +220,8 @@ const Contact = () => {
 
   return (
     <>
-      {/* Interactive Map Hero Section */}
-      <section className="relative min-h-screen overflow-hidden">
-        {/* Map Background */}
-        <LazyMapComponent />
-
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-600/70 via-charity-green-600/60 to-charity-orange-700/70"></div>
+      {/* Dynamic Hero Section */}
+      <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-charity-orange-400 via-charity-green-400 to-charity-orange-600">
 
         {/* Animated background elements */}
         <div className="absolute inset-0">
