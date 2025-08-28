@@ -217,7 +217,7 @@ const Sponsor = () => {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {sponsorshipTypes.map((type, index) => (
               <AnimatedSection
                 key={type.id}
@@ -225,22 +225,13 @@ const Sponsor = () => {
                 delay={index * 100}
               >
                 <div
-                  className={`p-6 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:shadow-xl h-full flex flex-col relative ${
+                  className={`bg-white p-8 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:shadow-xl h-full flex flex-col ${
                     selectedSponsorshipType === type.id
                       ? "border-charity-orange-500 ring-2 ring-charity-orange-200 transform scale-105"
                       : "border-charity-neutral-200 hover:border-charity-orange-300"
-                  } ${
-                    type.highlighted ? "bg-gradient-to-br from-charity-orange-50 to-charity-green-50" : "bg-white"
                   }`}
                 >
-                  {type.highlighted && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-charity-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        💖 MOST PERSONAL
-                      </span>
-                    </div>
-                  )}
-                  {type.id === "full" && !type.highlighted && (
+                  {type.id === "full" && (
                     <div className="flex items-center justify-center mb-4">
                       <span className="bg-charity-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                         Most Popular
@@ -248,9 +239,7 @@ const Sponsor = () => {
                     </div>
                   )}
 
-                  <h3 className={`text-xl font-bold mb-4 text-center ${
-                    type.highlighted ? "text-charity-orange-700" : "text-charity-neutral-800"
-                  }`}>
+                  <h3 className="text-2xl font-bold text-charity-neutral-800 mb-4 text-center">
                     {type.name}
                   </h3>
 
@@ -285,15 +274,6 @@ const Sponsor = () => {
                         ...prev,
                         sponsorshipType: type.id,
                       }));
-                      // If specific sponsorship is selected, scroll to children section
-                      if (type.id === "specific") {
-                        setTimeout(() => {
-                          const childrenSection = document.getElementById("children-section");
-                          if (childrenSection) {
-                            childrenSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                          }
-                        }, 300);
-                      }
                     }}
                     className={`w-full py-3 rounded-lg font-medium transition-all duration-200 ${
                       selectedSponsorshipType === type.id
