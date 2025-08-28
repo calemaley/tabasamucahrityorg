@@ -21,6 +21,7 @@ import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 import { recentBlogs } from "@shared/blog-data";
+import { recentPrograms } from "@shared/programs-data";
 
 /**
  * SectionReveal: simple reveal-on-scroll wrapper using IntersectionObserver.
