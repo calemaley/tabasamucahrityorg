@@ -296,11 +296,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Map Info */}
-        <div className="absolute bottom-20 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 text-charity-neutral-700 text-sm">
-          <p className="font-medium">🗺️ Kenya Map Background</p>
-          <p>Interactive features loading...</p>
-        </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
