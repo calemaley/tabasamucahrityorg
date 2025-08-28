@@ -19,10 +19,12 @@ import { featuredEvent } from "@shared/programs-data";
 
 const Programs = () => {
   const [showEventModal, setShowEventModal] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
   // Mock data for upcoming events (can be moved to shared data later)
   const upcomingEvents = [
     {
+      id: "mombasa-2025",
       title: "MOMBASA Edition",
       subtitle: "Building bridges of hope",
       date: "15TH DEC 2025",
@@ -31,8 +33,26 @@ const Programs = () => {
       theme: "Unity in diversity",
       description: "Join us for our coastal edition as we bring hope and resources to children in Mombasa. This event focuses on educational support and community development.",
       contact: "+254112459484",
+      fullDescription: "The Mombasa Edition represents our commitment to coastal communities, where education and opportunity often face unique challenges. This event will bring together volunteers, educators, and community leaders to create lasting change along Kenya's beautiful coast.\n\nOur coastal edition focuses on maritime education, environmental conservation, and providing essential educational resources to children who dream of futures beyond their current circumstances.",
+      schedule: [
+        { time: "8:00 AM", activity: "Registration & Welcome" },
+        { time: "9:30 AM", activity: "Opening Ceremony" },
+        { time: "11:00 AM", activity: "Educational Resource Distribution" },
+        { time: "1:00 PM", activity: "Community Lunch" },
+        { time: "2:30 PM", activity: "Environmental Conservation Workshop" },
+        { time: "4:00 PM", activity: "Cultural Performances" },
+        { time: "5:30 PM", activity: "Closing & Group Photos" },
+      ],
+      expectedImpact: [
+        "Support 200+ children with educational materials",
+        "Establish 3 new community learning centers",
+        "Train 25 local teachers",
+        "Launch environmental conservation program",
+      ],
+      itemsNeeded: ["Books", "Writing materials", "School uniforms", "Solar lamps", "Environmental education materials"],
     },
     {
+      id: "nakuru-2026",
       title: "NAKURU Edition", 
       subtitle: "Nurturing young minds",
       date: "22ND JAN 2026",
@@ -41,12 +61,30 @@ const Programs = () => {
       theme: "Education is the key to the future",
       description: "Our Nakuru edition emphasizes educational excellence and providing learning materials to underserved communities around Lake Nakuru.",
       contact: "+254112459485",
+      fullDescription: "Set against the stunning backdrop of Lake Nakuru, this edition focuses on creating sustainable educational opportunities for children in the Rift Valley region. We're partnering with local schools and community centers to establish long-term educational support systems.\n\nThis event emphasizes STEM education, literacy programs, and providing technological resources to bridge the digital divide in rural communities.",
+      schedule: [
+        { time: "8:30 AM", activity: "Registration & Breakfast" },
+        { time: "10:00 AM", activity: "Opening Presentations" },
+        { time: "11:30 AM", activity: "STEM Workshop Setup" },
+        { time: "1:00 PM", activity: "Lunch & Networking" },
+        { time: "2:00 PM", activity: "Literacy Program Launch" },
+        { time: "3:30 PM", activity: "Technology Distribution" },
+        { time: "4:30 PM", activity: "Community Celebration" },
+      ],
+      expectedImpact: [
+        "Provide STEM education to 300+ students",
+        "Establish 2 technology labs",
+        "Train 30 teachers in digital literacy",
+        "Create sustainable scholarship program",
+      ],
+      itemsNeeded: ["Computers", "Science equipment", "Mathematics textbooks", "Library books", "Educational software"],
     },
   ];
 
   // Mock data for past events
   const pastEvents = [
     {
+      id: "kisumu-2024",
       title: "KISUMU Edition",
       subtitle: "Seeds of change planted",
       date: "10TH AUG 2024",
@@ -56,8 +94,22 @@ const Programs = () => {
       description: "Our successful Kisumu edition brought together 300+ volunteers and provided essential supplies to 150 children. The impact continues to grow.",
       contact: "+254112459486",
       impact: "150 children supported, 50 families assisted",
+      fullDescription: "The Kisumu Edition marked a turning point in our community outreach efforts. Located near Lake Victoria, this event brought together hearts and hands from across the region to support children whose potential knows no bounds.\n\nThis successful event created lasting partnerships with local organizations and established sustainable programs that continue to benefit the community today.",
+      actualImpact: [
+        "150 children received full educational support packages",
+        "50 families received nutritional assistance for 6 months",
+        "3 new classrooms were built and equipped",
+        "25 teachers received professional development training",
+        "Community garden project launched, now feeding 200+ people",
+      ],
+      testimonials: [
+        { name: "Mary Achieng", role: "Local Teacher", quote: "This event transformed our school. The children now have hope and resources they never had before." },
+        { name: "James Ochieng", role: "Parent", quote: "My daughter received a scholarship that changed her life. She's now in university studying medicine." },
+      ],
+      longTermImpact: "6 months later, 95% of supported children showed improved academic performance, and 3 children received secondary school scholarships.",
     },
     {
+      id: "eldoret-2024",
       title: "ELDORET Edition",
       subtitle: "Champions of tomorrow",
       date: "25TH MAY 2024", 
@@ -67,11 +119,30 @@ const Programs = () => {
       description: "The Eldoret edition focused on sports and recreational activities alongside our traditional support programs, creating lasting memories for the children.",
       contact: "+254112459487",
       impact: "200 children reached, sports equipment provided",
+      fullDescription: "High in the Kenyan highlands, the Eldoret Edition combined our educational mission with sports and recreational programs. This unique approach recognized that children's development requires both academic support and physical activity.\n\nThe event was a celebration of potential, bringing together athletes, educators, and community members to create an unforgettable experience for children who rarely get such opportunities.",
+      actualImpact: [
+        "200 children participated in sports and educational activities",
+        "Complete sports equipment provided to 5 schools",
+        "20 young athletes identified for special training programs",
+        "Health and nutrition workshops reached 100+ families",
+        "Mobile library service established for 8 remote schools",
+      ],
+      testimonials: [
+        { name: "Peter Kiprotich", role: "Former Olympic Runner", quote: "Seeing these children's joy and potential reminded me why sports can change lives." },
+        { name: "Grace Chepkemoi", role: "School Principal", quote: "The sports equipment has transformed our PE program. Children are more engaged in all subjects now." },
+      ],
+      longTermImpact: "The sports program continues with 3 children now training for national competitions and attendance rates improved by 40%.",
     },
   ];
 
   const EventCard = ({ event, type = "upcoming" }: { event: any; type?: "featured" | "upcoming" | "past" }) => (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2">
+    <div 
+      className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
+      onClick={() => {
+        setSelectedEvent(event);
+        setShowEventModal(true);
+      }}
+    >
       <div className="relative overflow-hidden">
         <img
           src={event.image}
@@ -286,7 +357,10 @@ const Programs = () => {
                             </a>
 
                             <button
-                              onClick={() => setShowEventModal(true)}
+                              onClick={() => {
+                                setSelectedEvent(featuredEvent);
+                                setShowEventModal(true);
+                              }}
                               className="w-full border-2 border-charity-green-600 text-charity-green-600 hover:bg-charity-green-600 hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center group"
                             >
                               Learn More Details
@@ -386,12 +460,15 @@ const Programs = () => {
       </section>
 
       {/* Event Details Modal */}
-      {showEventModal && (
+      {showEventModal && selectedEvent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
             <div className="relative">
               <button
-                onClick={() => setShowEventModal(false)}
+                onClick={() => {
+                  setShowEventModal(false);
+                  setSelectedEvent(null);
+                }}
                 className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
               >
                 <X className="h-5 w-5" />
@@ -400,20 +477,20 @@ const Programs = () => {
               {/* Modal Header */}
               <div className="relative">
                 <img
-                  src={featuredEvent.image}
-                  alt={featuredEvent.title}
+                  src={selectedEvent.image}
+                  alt={selectedEvent.title}
                   className="w-full h-64 object-cover rounded-t-2xl"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 rounded-t-2xl"></div>
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold inline-block mb-4">
-                    {featuredEvent.date}
+                    {selectedEvent.date}
                   </div>
                   <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    {featuredEvent.title}
+                    {selectedEvent.title}
                   </h1>
                   <p className="text-xl text-white/90 italic">
-                    {featuredEvent.subtitle}
+                    {selectedEvent.subtitle}
                   </p>
                 </div>
               </div>
@@ -426,47 +503,87 @@ const Programs = () => {
                     About This Event
                   </h2>
                   <p className="text-charity-neutral-700 leading-relaxed whitespace-pre-line">
-                    {featuredEvent.fullDescription}
+                    {selectedEvent.fullDescription}
                   </p>
                 </div>
 
-                {/* Event Schedule */}
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
-                    <Calendar className="h-6 w-6 text-charity-green-600 mr-2" />
-                    Event Schedule
-                  </h2>
-                  <div className="bg-charity-neutral-50 rounded-xl p-6">
-                    {featuredEvent.schedule.map((item, index) => (
-                      <div key={index} className="flex items-start space-x-4 mb-4 last:mb-0">
-                        <div className="bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold min-w-20 text-center">
-                          {item.time}
+                {/* Event Schedule or Impact for past events */}
+                {selectedEvent.schedule && (
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                      <Calendar className="h-6 w-6 text-charity-green-600 mr-2" />
+                      Event Schedule
+                    </h2>
+                    <div className="bg-charity-neutral-50 rounded-xl p-6">
+                      {selectedEvent.schedule.map((item, index) => (
+                        <div key={index} className="flex items-start space-x-4 mb-4 last:mb-0">
+                          <div className="bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold min-w-20 text-center">
+                            {item.time}
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-charity-neutral-700 font-medium">
+                              {item.activity}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <p className="text-charity-neutral-700 font-medium">
-                            {item.activity}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                {/* Impact Goals */}
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
-                    <CheckCircle className="h-6 w-6 text-charity-green-600 mr-2" />
-                    Expected Impact
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {featuredEvent.impactGoals.map((goal, index) => (
-                      <div key={index} className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg">
-                        <CheckCircle className="h-5 w-5 text-charity-green-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-charity-neutral-700">{goal}</span>
-                      </div>
-                    ))}
+                {/* Expected Impact or Actual Impact */}
+                {(selectedEvent.expectedImpact || selectedEvent.actualImpact) && (
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                      <CheckCircle className="h-6 w-6 text-charity-green-600 mr-2" />
+                      {selectedEvent.expectedImpact ? "Expected Impact" : "Actual Impact Achieved"}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {(selectedEvent.expectedImpact || selectedEvent.actualImpact).map((goal, index) => (
+                        <div key={index} className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg">
+                          <CheckCircle className="h-5 w-5 text-charity-green-600 mt-0.5 flex-shrink-0" />
+                          <span className="text-charity-neutral-700">{goal}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Testimonials for past events */}
+                {selectedEvent.testimonials && (
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                      <Heart className="h-6 w-6 text-charity-orange-600 mr-2" />
+                      Community Voices
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {selectedEvent.testimonials.map((testimonial, index) => (
+                        <div key={index} className="bg-charity-orange-50 p-6 rounded-xl">
+                          <p className="text-charity-neutral-700 italic mb-4">"{testimonial.quote}"</p>
+                          <div className="border-t border-charity-orange-200 pt-4">
+                            <p className="font-bold text-charity-neutral-800">{testimonial.name}</p>
+                            <p className="text-sm text-charity-orange-600">{testimonial.role}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Long-term Impact for past events */}
+                {selectedEvent.longTermImpact && (
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
+                      <CheckCircle className="h-6 w-6 text-charity-green-600 mr-2" />
+                      Long-term Impact
+                    </h2>
+                    <div className="bg-charity-green-50 p-6 rounded-xl border-l-4 border-charity-green-500">
+                      <p className="text-charity-neutral-700 leading-relaxed">
+                        {selectedEvent.longTermImpact}
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Event Details Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -476,54 +593,58 @@ const Programs = () => {
                       Event Location
                     </h3>
                     <p className="text-charity-neutral-700 mb-4">
-                      {featuredEvent.venue}
+                      {selectedEvent.venue}
                     </p>
                     <div className="flex items-center space-x-2">
                       <Phone className="h-4 w-4 text-charity-orange-600" />
                       <span className="text-charity-neutral-700">
-                        {featuredEvent.contact}
+                        {selectedEvent.contact}
                       </span>
                     </div>
                   </div>
 
-                  <div className="bg-red-50 p-6 rounded-xl">
-                    <h3 className="text-lg font-bold text-charity-neutral-800 mb-4 flex items-center">
-                      <Gift className="h-5 w-5 text-red-600 mr-2" />
-                      Items Needed
-                    </h3>
-                    <div className="grid grid-cols-2 gap-2">
-                      {featuredEvent.itemsNeeded.map((item, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                          <span className="text-charity-neutral-700 text-sm">
-                            {item}
-                          </span>
-                        </div>
-                      ))}
+                  {selectedEvent.itemsNeeded && (
+                    <div className="bg-red-50 p-6 rounded-xl">
+                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-4 flex items-center">
+                        <Gift className="h-5 w-5 text-red-600 mr-2" />
+                        Items Needed
+                      </h3>
+                      <div className="grid grid-cols-1 gap-2">
+                        {selectedEvent.itemsNeeded.map((item, index) => (
+                          <div key={index} className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                            <span className="text-charity-neutral-700 text-sm">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Theme Section */}
                 <div className="bg-charity-green-50 p-6 rounded-xl mb-8 border-l-4 border-charity-green-500">
                   <h3 className="text-lg font-bold text-charity-neutral-800 mb-2">
-                    This Year's Theme:
+                    Event Theme:
                   </h3>
                   <p className="text-xl text-charity-green-700 italic font-medium">
-                    "{featuredEvent.theme}"
+                    "{selectedEvent.theme}"
                   </p>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href={featuredEvent.paymentLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 bg-charity-orange-600 hover:bg-charity-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 transform hover:scale-105 text-center"
-                  >
-                    💝 Make a Contribution
-                  </a>
+                  {selectedEvent.paymentLink && (
+                    <a
+                      href={selectedEvent.paymentLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-charity-orange-600 hover:bg-charity-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 transform hover:scale-105 text-center"
+                    >
+                      💝 Make a Contribution
+                    </a>
+                  )}
 
                   <Link
                     to="/contact"
