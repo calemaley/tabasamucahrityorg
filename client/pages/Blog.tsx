@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Calendar,
@@ -20,6 +20,13 @@ const Blog = () => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(156);
   const [newComment, setNewComment] = useState("");
+  const [userName, setUserName] = useState("");
+  const [showNameForm, setShowNameForm] = useState(false);
+  const [replyingTo, setReplyingTo] = useState<number | null>(null);
+  const [newReply, setNewReply] = useState("");
+  const [readTime, setReadTime] = useState("5 min read");
+  const [startTime] = useState(Date.now());
+  const [maxReadTime, setMaxReadTime] = useState(5);
   const [comments, setComments] = useState([
     {
       id: 1,
@@ -28,6 +35,7 @@ const Blog = () => {
         "This is so inspiring! Every child truly deserves a chance to achieve their dreams.",
       date: "2 hours ago",
       likes: 12,
+      isLiked: false,
       replies: [
         {
           id: 1,
@@ -36,6 +44,7 @@ const Blog = () => {
             "Couldn't agree more! Education is the key to breaking the cycle of poverty.",
           date: "1 hour ago",
           likes: 5,
+          isLiked: false,
         },
       ],
     },
@@ -46,6 +55,7 @@ const Blog = () => {
         "Beautiful article! I've seen firsthand how small acts of kindness can transform lives.",
       date: "5 hours ago",
       likes: 8,
+      isLiked: false,
       replies: [],
     },
     {
@@ -55,6 +65,7 @@ const Blog = () => {
         "This reminds me why I started volunteering. Thank you for sharing this message.",
       date: "1 day ago",
       likes: 15,
+      isLiked: false,
       replies: [
         {
           id: 1,
@@ -63,14 +74,59 @@ const Blog = () => {
             "Grace, your volunteer work is amazing! Keep making a difference.",
           date: "18 hours ago",
           likes: 3,
+          isLiked: false,
         },
       ],
     },
   ]);
 
+  // Real-time read tracking
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentTime = (Date.now() - startTime) / 1000 / 60; // minutes
+      const roundedTime = Math.ceil(currentTime);
+      if (roundedTime > maxReadTime) {
+        setMaxReadTime(roundedTime);
+        setReadTime(`${roundedTime} min read`);
+      }
+    }, 10000); // Update every 10 seconds
+
+    return () => clearInterval(interval);
+  }, [startTime, maxReadTime]);
+
   const handleLike = () => {
     setIsLiked(!isLiked);
     setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
+  };
+
+  const handleCommentLike = (commentId: number, replyId?: number) => {
+    setComments(prev => prev.map(comment => {
+      if (comment.id === commentId) {
+        if (replyId) {
+          // Like a reply
+          return {
+            ...comment,
+            replies: comment.replies.map(reply =>
+              reply.id === replyId
+                ? {
+                    ...reply,
+                    likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
+                    isLiked: !reply.isLiked
+                  }
+                : reply
+            )
+          };
+        } else {
+          // Like a comment
+          return {
+            ...comment,
+            likes: comment.isLiked ? comment.likes - 1 : comment.likes + 1,
+            isLiked: !comment.isLiked
+          };
+        }
+      }
+      return comment;
+    }));
   };
 
   const handleShare = (platform: string) => {
@@ -104,17 +160,53 @@ const Blog = () => {
 
   const handleCommentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!userName.trim()) {
+      setShowNameForm(true);
+      return;
+    }
     if (newComment.trim()) {
       const comment = {
         id: Date.now(),
-        author: "You",
+        author: userName,
         content: newComment,
         date: "Just now",
         likes: 0,
+        isLiked: false,
         replies: [],
       };
       setComments([comment, ...comments]);
       setNewComment("");
+    }
+  };
+
+  const handleReplySubmit = (commentId: number) => {
+    if (!userName.trim()) {
+      setShowNameForm(true);
+      return;
+    }
+    if (newReply.trim()) {
+      const reply = {
+        id: Date.now(),
+        author: userName,
+        content: newReply,
+        date: "Just now",
+        likes: 0,
+        isLiked: false,
+      };
+      setComments(prev => prev.map(comment =>
+        comment.id === commentId
+          ? { ...comment, replies: [...comment.replies, reply] }
+          : comment
+      ));
+      setNewReply("");
+      setReplyingTo(null);
+    }
+  };
+
+  const handleNameSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userName.trim()) {
+      setShowNameForm(false);
     }
   };
 
@@ -172,7 +264,7 @@ const Blog = () => {
                       <Calendar className="h-4 w-4" />
                       <span>{featuredPost.date}</span>
                     </div>
-                    <span>{featuredPost.readTime}</span>
+                    <span>{readTime}</span>
                   </div>
 
                   {/* Engagement Actions */}
@@ -285,6 +377,57 @@ const Blog = () => {
                 Comments ({comments.length})
               </h3>
 
+              {/* Name Form Modal */}
+              {showNameForm && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                  <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+                    <h3 className="text-lg font-semibold text-charity-neutral-800 mb-4">
+                      Please enter your name to comment
+                    </h3>
+                    <form onSubmit={handleNameSubmit}>
+                      <input
+                        type="text"
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        placeholder="Your name"
+                        className="w-full p-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent mb-4"
+                        autoFocus
+                      />
+                      <div className="flex gap-3">
+                        <button
+                          type="submit"
+                          className="flex-1 px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200"
+                        >
+                          Save Name
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setShowNameForm(false)}
+                          className="flex-1 px-4 py-2 bg-charity-neutral-200 hover:bg-charity-neutral-300 text-charity-neutral-700 rounded-lg transition-colors duration-200"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+
+              {/* User Name Display */}
+              {userName && (
+                <div className="mb-4 p-3 bg-charity-green-50 rounded-lg border border-charity-green-200">
+                  <p className="text-charity-green-700">
+                    <strong>Commenting as:</strong> {userName}
+                    <button
+                      onClick={() => setShowNameForm(true)}
+                      className="ml-2 text-charity-green-600 hover:text-charity-green-800 text-sm underline"
+                    >
+                      Change name
+                    </button>
+                  </p>
+                </div>
+              )}
+
               {/* Comment Form */}
               <form onSubmit={handleCommentSubmit} className="mb-8">
                 <div className="flex gap-4">
@@ -292,7 +435,7 @@ const Blog = () => {
                     <textarea
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
-                      placeholder="Share your thoughts..."
+                      placeholder={userName ? "Share your thoughts..." : "Please enter your name first to comment"}
                       className="w-full p-4 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
                       rows={3}
                     />
@@ -322,8 +465,15 @@ const Blog = () => {
                           {comment.date}
                         </p>
                       </div>
-                      <button className="flex items-center space-x-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200">
-                        <ThumbsUp className="h-4 w-4" />
+                      <button
+                        onClick={() => handleCommentLike(comment.id)}
+                        className={`flex items-center space-x-1 transition-colors duration-200 ${
+                          comment.isLiked
+                            ? "text-charity-orange-600"
+                            : "text-charity-neutral-500 hover:text-charity-orange-600"
+                        }`}
+                      >
+                        <ThumbsUp className={`h-4 w-4 ${comment.isLiked ? "fill-current" : ""}`} />
                         <span>{comment.likes}</span>
                       </button>
                     </div>
@@ -348,8 +498,15 @@ const Blog = () => {
                                   {reply.date}
                                 </p>
                               </div>
-                              <button className="flex items-center space-x-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200">
-                                <ThumbsUp className="h-3 w-3" />
+                              <button
+                                onClick={() => handleCommentLike(comment.id, reply.id)}
+                                className={`flex items-center space-x-1 transition-colors duration-200 ${
+                                  reply.isLiked
+                                    ? "text-charity-orange-600"
+                                    : "text-charity-neutral-500 hover:text-charity-orange-600"
+                                }`}
+                              >
+                                <ThumbsUp className={`h-3 w-3 ${reply.isLiked ? "fill-current" : ""}`} />
                                 <span className="text-sm">{reply.likes}</span>
                               </button>
                             </div>
@@ -361,10 +518,42 @@ const Blog = () => {
                       </div>
                     )}
 
-                    <button className="mt-3 text-charity-orange-600 hover:text-charity-orange-700 text-sm font-medium flex items-center">
-                      <Reply className="h-4 w-4 mr-1" />
-                      Reply
-                    </button>
+                    <div className="mt-3 flex gap-4">
+                      <button
+                        onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
+                        className="text-charity-orange-600 hover:text-charity-orange-700 text-sm font-medium flex items-center"
+                      >
+                        <Reply className="h-4 w-4 mr-1" />
+                        Reply
+                      </button>
+                    </div>
+
+                    {/* Reply Form */}
+                    {replyingTo === comment.id && (
+                      <div className="mt-4 p-4 bg-charity-neutral-50 rounded-lg">
+                        <textarea
+                          value={newReply}
+                          onChange={(e) => setNewReply(e.target.value)}
+                          placeholder={userName ? "Write a reply..." : "Please enter your name first to reply"}
+                          className="w-full p-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
+                          rows={3}
+                        />
+                        <div className="flex gap-2 mt-3">
+                          <button
+                            onClick={() => handleReplySubmit(comment.id)}
+                            className="px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg text-sm transition-colors duration-200"
+                          >
+                            Reply
+                          </button>
+                          <button
+                            onClick={() => setReplyingTo(null)}
+                            className="px-4 py-2 bg-charity-neutral-200 hover:bg-charity-neutral-300 text-charity-neutral-700 rounded-lg text-sm transition-colors duration-200"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
