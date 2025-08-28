@@ -757,6 +757,126 @@ const Index = () => {
         </section>
       </SectionReveal>
 
+      {/* Meet Our Team */}
+      <SectionReveal>
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
+                Meet Our Team
+              </h2>
+              <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
+                The passionate individuals driving positive change in our communities
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Team Member 1 */}
+              <div className="bg-charity-neutral-50 rounded-xl p-8 text-center group hover:shadow-xl hover:scale-105 transition-all duration-500">
+                <div className="relative mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    alt="Sarah Johnson"
+                    className="w-32 h-32 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                  Sarah Johnson
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  Dedicated to empowering communities through education and sustainable development. Believes every child deserves access to quality education.
+                </p>
+              </div>
+
+              {/* Team Member 2 */}
+              <div className="bg-charity-neutral-50 rounded-xl p-8 text-center group hover:shadow-xl hover:scale-105 transition-all duration-500">
+                <div className="relative mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    alt="Michael Brown"
+                    className="w-32 h-32 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                  Michael Brown
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  Passionate about healthcare accessibility and community wellness. Works tirelessly to bring medical services to underserved areas.
+                </p>
+              </div>
+
+              {/* Team Member 3 */}
+              <div className="bg-charity-neutral-50 rounded-xl p-8 text-center group hover:shadow-xl hover:scale-105 transition-all duration-500">
+                <div className="relative mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    alt="David Wilson"
+                    className="w-32 h-32 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                  David Wilson
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  Committed to building stronger communities through collaborative partnerships and innovative solutions for local challenges.
+                </p>
+              </div>
+
+              {/* New Team Member - Lilliane Clarice */}
+              <div className="bg-charity-neutral-50 rounded-xl p-8 text-center group hover:shadow-xl hover:scale-105 transition-all duration-500">
+                <div className="relative mb-6">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2F23e45fb45f384a3b9047951f97574580%2F3c10ad4c37f94f7486cb5a7ec28a4b06?format=webp&width=800"
+                    alt="Lilliane Clarice"
+                    className="w-32 h-32 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                  Lilliane Clarice
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.
+                </p>
+              </div>
+
+              {/* Team Member 5 */}
+              <div className="bg-charity-neutral-50 rounded-xl p-8 text-center group hover:shadow-xl hover:scale-105 transition-all duration-500">
+                <div className="relative mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    alt="Grace Mtema"
+                    className="w-32 h-32 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                  Grace Mtema
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  Focused on women's empowerment and youth development programs. Believes in creating opportunities for the next generation to thrive.
+                </p>
+              </div>
+
+              {/* Team Member 6 */}
+              <div className="bg-charity-neutral-50 rounded-xl p-8 text-center group hover:shadow-xl hover:scale-105 transition-all duration-500">
+                <div className="relative mb-6">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    alt="John Massawe"
+                    className="w-32 h-32 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-charity-neutral-800 mb-4 group-hover:text-charity-orange-600 transition-colors duration-200">
+                  John Massawe
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  Dedicated to environmental conservation and sustainable development initiatives that protect our planet for future generations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </SectionReveal>
+
       {/* Recent Blogs */}
       <SectionReveal>
         <section className="py-20 bg-charity-neutral-50">
