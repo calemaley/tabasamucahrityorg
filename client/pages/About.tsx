@@ -23,7 +23,6 @@ const About = () => {
   const teamMembers = [
     {
       name: "Judith Kwamboka",
-      role: "Operations Manager",
       image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
       bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
       fullBio:
@@ -39,7 +38,6 @@ const About = () => {
     },
     {
       name: "Philip Muga",
-      role: "Program Director",
       image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
       bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
       fullBio:
@@ -51,6 +49,21 @@ const About = () => {
         "Led faith-based community development initiatives",
         "Mentored over 500 young people in leadership",
         "Established sustainable livelihood programs in 15 communities",
+      ],
+    },
+    {
+      name: "Lilliane Clarice",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F31768e4d9d7546fcb9da81d5f6310801%2F116d15409d254e0aa40e04e67699160e?format=webp&width=800",
+      bio: "I believe that true fulfillment in life comes from reaching out and uplifting others.",
+      fullBio:
+        "I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.",
+      email: "lilliane@tabasamu.org",
+      phone: "+254-700-123-458",
+      achievements: [
+        "Championed community outreach and support programs",
+        "Advocated for vulnerable populations and social justice",
+        "Created opportunities for dignified living for those in need",
+        "Fostered hope and compassion through service initiatives",
       ],
     },
   ];
@@ -392,7 +405,7 @@ const About = () => {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
               <AnimatedSection
                 key={index}
@@ -418,12 +431,9 @@ const About = () => {
                     </div>
                   </div>
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-charity-neutral-800 mb-2">
+                    <h3 className="text-2xl font-bold text-charity-neutral-800 mb-6">
                       {member.name}
                     </h3>
-                    <p className="text-charity-orange-600 font-semibold mb-4 text-lg">
-                      {member.role}
-                    </p>
                     <p className="text-charity-neutral-600 text-base leading-relaxed">
                       {member.bio}
                     </p>
@@ -500,12 +510,9 @@ const About = () => {
 
                   <div className="md:w-2/3 space-y-6">
                     <div>
-                      <h2 className="text-3xl font-bold text-charity-neutral-800 mb-2">
+                      <h2 className="text-3xl font-bold text-charity-neutral-800 mb-6">
                         {selectedMember.name}
                       </h2>
-                      <p className="text-xl text-charity-orange-600 font-medium mb-4">
-                        {selectedMember.role}
-                      </p>
                     </div>
 
                     <div>
