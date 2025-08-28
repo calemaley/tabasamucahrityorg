@@ -212,17 +212,6 @@ const Index = () => {
     },
   ];
 
-  const recentPrograms = [
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
-      title: "NAIROBI Edition - Creating smiles, one coin at a time��",
-      description:
-        "Join us for an unforgettable day of giving and community spirit at Blessings Children's Home in Ruai. This special gathering brings together hearts and hands united in creating lasting smiles in the lives of children who need it most.",
-      date: "19TH OCT 2025",
-      venue: "BLESSINGS CHILDREN'S HOME - RUAI",
-    },
-  ];
 
   const stats = [
     { number: "72+", label: "Total Campaigns" },
