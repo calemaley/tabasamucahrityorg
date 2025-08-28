@@ -26,23 +26,26 @@ const BlogPost = () => {
       id: 1,
       author: "John Doe",
       date: "March 16, 2024",
-      content: "This is such an inspiring story! Maria's journey really shows the power of education.",
+      content:
+        "This is such an inspiring story! Maria's journey really shows the power of education.",
       replies: [
         {
           id: 11,
           author: "Sarah Johnson",
           date: "March 16, 2024",
-          content: "Thank you John! We're so proud of Maria and all our students who are making such incredible progress."
-        }
-      ]
+          content:
+            "Thank you John! We're so proud of Maria and all our students who are making such incredible progress.",
+        },
+      ],
     },
     {
       id: 2,
       author: "Emma Wilson",
       date: "March 15, 2024",
-      content: "I've been following Tabasamu's work for years and stories like this make me so proud to be a supporter.",
-      replies: []
-    }
+      content:
+        "I've been following Tabasamu's work for years and stories like this make me so proud to be a supporter.",
+      replies: [],
+    },
   ]);
   const [newComment, setNewComment] = useState("");
   const [replyingTo, setReplyingTo] = useState<number | null>(null);
@@ -63,11 +66,11 @@ const BlogPost = () => {
       navigator.share({
         title: post?.title,
         text: post?.excerpt,
-        url: window.location.href
+        url: window.location.href,
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
+      alert("Link copied to clipboard!");
     }
   };
 
@@ -76,9 +79,13 @@ const BlogPost = () => {
       const comment = {
         id: Date.now(),
         author: "Anonymous User", // In real app, this would be the logged-in user
-        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+        date: new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
         content: newComment,
-        replies: []
+        replies: [],
       };
       setComments([comment, ...comments]);
       setNewComment("");
@@ -90,15 +97,21 @@ const BlogPost = () => {
       const reply = {
         id: Date.now(),
         author: "Anonymous User", // In real app, this would be the logged-in user
-        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-        content: newReply
+        date: new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
+        content: newReply,
       };
 
-      setComments(prev => prev.map(comment =>
-        comment.id === commentId
-          ? { ...comment, replies: [...comment.replies, reply] }
-          : comment
-      ));
+      setComments((prev) =>
+        prev.map((comment) =>
+          comment.id === commentId
+            ? { ...comment, replies: [...comment.replies, reply] }
+            : comment,
+        ),
+      );
       setNewReply("");
       setReplyingTo(null);
     }
@@ -136,7 +149,7 @@ const BlogPost = () => {
   return (
     <>
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -144,9 +157,13 @@ const BlogPost = () => {
             {/* Breadcrumb */}
             <nav className="mb-8">
               <div className="flex items-center space-x-2 text-sm text-charity-neutral-600">
-                <Link to="/" className="hover:text-charity-orange-600">Home</Link>
+                <Link to="/" className="hover:text-charity-orange-600">
+                  Home
+                </Link>
                 <span>/</span>
-                <Link to="/blog" className="hover:text-charity-orange-600">Blog</Link>
+                <Link to="/blog" className="hover:text-charity-orange-600">
+                  Blog
+                </Link>
                 <span>/</span>
                 <span className="text-charity-neutral-800">{post.title}</span>
               </div>
@@ -172,7 +189,7 @@ const BlogPost = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-charity-neutral-800 mb-4 leading-tight">
               {post.title}
             </h1>
-            
+
             {/* Subtitle */}
             <p className="text-xl text-charity-neutral-600 mb-8 leading-relaxed">
               {post.excerpt || post.subtitle}
@@ -185,20 +202,30 @@ const BlogPost = () => {
                   <User className="h-6 w-6 text-charity-orange-600" />
                 </div>
                 <div>
-                  <p className="font-medium text-charity-neutral-800">{post.author}</p>
-                  <p className="text-sm text-charity-neutral-500">Content Writer</p>
+                  <p className="font-medium text-charity-neutral-800">
+                    {post.author}
+                  </p>
+                  <p className="text-sm text-charity-neutral-500">
+                    Content Writer
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <button
                   onClick={handleLike}
                   className={`flex items-center gap-1 cursor-pointer transition-colors duration-200 ${
-                    isLiked ? 'text-red-500 hover:text-red-600' : 'text-charity-neutral-500 hover:text-charity-orange-600'
+                    isLiked
+                      ? "text-red-500 hover:text-red-600"
+                      : "text-charity-neutral-500 hover:text-charity-orange-600"
                   }`}
                 >
-                  <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
-                  <span className="text-sm">{post.likes + (isLiked ? 1 : 0)}</span>
+                  <Heart
+                    className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
+                  />
+                  <span className="text-sm">
+                    {post.likes + (isLiked ? 1 : 0)}
+                  </span>
                 </button>
                 <div className="flex items-center gap-1 text-charity-neutral-500">
                   <MessageCircle className="h-4 w-4" />
@@ -255,7 +282,9 @@ const BlogPost = () => {
           {post.tags && post.tags.length > 0 && (
             <AnimatedSection animation="slideUp" delay={200}>
               <div className="mt-12 pt-8 border-t border-charity-neutral-200">
-                <h4 className="text-lg font-semibold text-charity-neutral-800 mb-4">Tags</h4>
+                <h4 className="text-lg font-semibold text-charity-neutral-800 mb-4">
+                  Tags
+                </h4>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag, index) => (
                     <span
@@ -304,7 +333,10 @@ const BlogPost = () => {
               {/* Comments List */}
               <div className="space-y-6">
                 {comments.map((comment) => (
-                  <div key={comment.id} className="bg-white p-6 rounded-xl border border-charity-neutral-200">
+                  <div
+                    key={comment.id}
+                    className="bg-white p-6 rounded-xl border border-charity-neutral-200"
+                  >
                     {/* Comment Header */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-3">
@@ -312,12 +344,20 @@ const BlogPost = () => {
                           <User className="h-5 w-5 text-charity-orange-600" />
                         </div>
                         <div>
-                          <p className="font-medium text-charity-neutral-800">{comment.author}</p>
-                          <p className="text-sm text-charity-neutral-500">{comment.date}</p>
+                          <p className="font-medium text-charity-neutral-800">
+                            {comment.author}
+                          </p>
+                          <p className="text-sm text-charity-neutral-500">
+                            {comment.date}
+                          </p>
                         </div>
                       </div>
                       <button
-                        onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
+                        onClick={() =>
+                          setReplyingTo(
+                            replyingTo === comment.id ? null : comment.id,
+                          )
+                        }
                         className="flex items-center gap-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200"
                       >
                         <Reply className="h-4 w-4" />
@@ -326,7 +366,9 @@ const BlogPost = () => {
                     </div>
 
                     {/* Comment Content */}
-                    <p className="text-charity-neutral-700 mb-4">{comment.content}</p>
+                    <p className="text-charity-neutral-700 mb-4">
+                      {comment.content}
+                    </p>
 
                     {/* Reply Form */}
                     {replyingTo === comment.id && (
@@ -360,17 +402,26 @@ const BlogPost = () => {
                     {comment.replies.length > 0 && (
                       <div className="mt-6 space-y-4 ml-8">
                         {comment.replies.map((reply) => (
-                          <div key={reply.id} className="p-4 bg-charity-neutral-50 rounded-lg border-l-4 border-charity-orange-200">
+                          <div
+                            key={reply.id}
+                            className="p-4 bg-charity-neutral-50 rounded-lg border-l-4 border-charity-orange-200"
+                          >
                             <div className="flex items-center space-x-3 mb-2">
                               <div className="w-8 h-8 bg-charity-orange-100 rounded-full flex items-center justify-center">
                                 <User className="h-4 w-4 text-charity-orange-600" />
                               </div>
                               <div>
-                                <p className="font-medium text-charity-neutral-800 text-sm">{reply.author}</p>
-                                <p className="text-xs text-charity-neutral-500">{reply.date}</p>
+                                <p className="font-medium text-charity-neutral-800 text-sm">
+                                  {reply.author}
+                                </p>
+                                <p className="text-xs text-charity-neutral-500">
+                                  {reply.date}
+                                </p>
                               </div>
                             </div>
-                            <p className="text-charity-neutral-700 text-sm">{reply.content}</p>
+                            <p className="text-charity-neutral-700 text-sm">
+                              {reply.content}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -423,7 +474,12 @@ const BlogPost = () => {
                         {relatedPost.title}
                       </h4>
                       <p className="text-charity-neutral-600 text-sm">
-                        {(relatedPost.excerpt || relatedPost.subtitle || "").substring(0, 120)}...
+                        {(
+                          relatedPost.excerpt ||
+                          relatedPost.subtitle ||
+                          ""
+                        ).substring(0, 120)}
+                        ...
                       </p>
                     </div>
                   </Link>

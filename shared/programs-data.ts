@@ -58,7 +58,7 @@ export const recentPrograms = [
   {
     image: featuredEvent.image,
     title: `${featuredEvent.title} - ${featuredEvent.subtitle}`,
-    description: featuredEvent.fullDescription.split('\n\n')[0], // First paragraph
+    description: featuredEvent.fullDescription.split("\n\n")[0], // First paragraph
     date: featuredEvent.date,
     venue: featuredEvent.venue,
   },

@@ -212,7 +212,6 @@ const Index = () => {
     },
   ];
 
-
   const stats = [
     { number: "72+", label: "Total Campaigns" },
     { number: "96+", label: "Become Volunteer" },
@@ -766,7 +765,8 @@ const Index = () => {
                 Meet Our Team
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                The passionate individuals driving positive change in our communities
+                The passionate individuals driving positive change in our
+                communities
               </p>
             </div>
 
@@ -784,7 +784,9 @@ const Index = () => {
                   Sarah Johnson
                 </h3>
                 <p className="text-charity-neutral-600 leading-relaxed">
-                  Dedicated to empowering communities through education and sustainable development. Believes every child deserves access to quality education.
+                  Dedicated to empowering communities through education and
+                  sustainable development. Believes every child deserves access
+                  to quality education.
                 </p>
               </div>
 
@@ -801,7 +803,9 @@ const Index = () => {
                   Michael Brown
                 </h3>
                 <p className="text-charity-neutral-600 leading-relaxed">
-                  Passionate about healthcare accessibility and community wellness. Works tirelessly to bring medical services to underserved areas.
+                  Passionate about healthcare accessibility and community
+                  wellness. Works tirelessly to bring medical services to
+                  underserved areas.
                 </p>
               </div>
 
@@ -818,7 +822,9 @@ const Index = () => {
                   David Wilson
                 </h3>
                 <p className="text-charity-neutral-600 leading-relaxed">
-                  Committed to building stronger communities through collaborative partnerships and innovative solutions for local challenges.
+                  Committed to building stronger communities through
+                  collaborative partnerships and innovative solutions for local
+                  challenges.
                 </p>
               </div>
 
@@ -835,7 +841,14 @@ const Index = () => {
                   Lilliane Clarice
                 </h3>
                 <p className="text-charity-neutral-600 leading-relaxed">
-                  I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.
+                  I believe that true fulfillment in life comes from reaching
+                  out and uplifting others. Giving back is not just an act of
+                  kindness, it's a responsibility we all share to ensure no one
+                  is left behind. May we choose always to serve the less
+                  fortunate, stand with the vulnerable, and create opportunities
+                  for those in need to experience dignity, hope, and a brighter
+                  tomorrow. Every small act of compassion can spark change, and
+                  together, we can make a lasting difference in people's lives.
                 </p>
               </div>
 
@@ -852,7 +865,9 @@ const Index = () => {
                   Grace Mtema
                 </h3>
                 <p className="text-charity-neutral-600 leading-relaxed">
-                  Focused on women's empowerment and youth development programs. Believes in creating opportunities for the next generation to thrive.
+                  Focused on women's empowerment and youth development programs.
+                  Believes in creating opportunities for the next generation to
+                  thrive.
                 </p>
               </div>
 
@@ -869,7 +884,9 @@ const Index = () => {
                   John Massawe
                 </h3>
                 <p className="text-charity-neutral-600 leading-relaxed">
-                  Dedicated to environmental conservation and sustainable development initiatives that protect our planet for future generations.
+                  Dedicated to environmental conservation and sustainable
+                  development initiatives that protect our planet for future
+                  generations.
                 </p>
               </div>
             </div>
