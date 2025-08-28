@@ -33,6 +33,23 @@ const Sponsor = () => {
     message: "",
   });
 
+  const [searchParams] = useSearchParams();
+
+  // Check for child parameter in URL and auto-select child
+  useEffect(() => {
+    const childParam = searchParams.get('child');
+    if (childParam && children.find(c => c.id === childParam)) {
+      setSelectedChild(childParam);
+      // Scroll to the specific child or modal
+      setTimeout(() => {
+        const childElement = document.getElementById(`child-${childParam}`);
+        if (childElement) {
+          childElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+  }, [searchParams]);
+
   const children = [
     {
       id: "maria-001",
