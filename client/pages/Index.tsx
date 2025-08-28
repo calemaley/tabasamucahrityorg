@@ -236,28 +236,8 @@ const Index = () => {
       date: "March 15, 2024",
       title: "Transforming Lives Through Education",
       snippet:
-        "See how our education programs are creating lasting change in rural communities.",
+        "See how our education programs are creating lasting change in rural communities across Kenya. From primary school support to university scholarships, education remains our cornerstone.",
       author: "Sarah Johnson",
-    },
-    {
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      category: "Healthcare",
-      date: "March 10, 2024",
-      title: "Mobile Clinics Reach Remote Areas",
-      snippet:
-        "Our healthcare initiative brings medical services to underserved populations.",
-      author: "Dr. Michael Brown",
-    },
-    {
-      image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      category: "Community",
-      date: "March 5, 2024",
-      title: "Building Stronger Communities Together",
-      snippet:
-        "Community-led initiatives are creating sustainable solutions for local challenges.",
-      author: "Emma Wilson",
     },
   ];
 
