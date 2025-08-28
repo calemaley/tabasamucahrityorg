@@ -231,13 +231,13 @@ const Index = () => {
   const recentBlogs = [
     {
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      category: "Education",
-      date: "March 15, 2024",
-      title: "Transforming Lives Through Education",
+        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Inspiration",
+      date: "January 15, 2025",
+      title: "Charity: Fueling the Dreams of Children",
       snippet:
-        "See how our education programs are creating lasting change in rural communities across Kenya. From primary school support to university scholarships, education remains our cornerstone.",
-      author: "Sarah Johnson",
+        "Every child is born with a dream. Some imagine themselves as doctors saving lives, others see classrooms where they will one day stand as teachers. Discover how charity unlocks possibilities and builds futures.",
+      author: "Tabasamu Team",
     },
   ];
 
