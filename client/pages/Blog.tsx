@@ -14,6 +14,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
+import { featuredPost } from "@shared/blog-data";
 
 const Blog = () => {
   const [isLiked, setIsLiked] = useState(false);
