@@ -230,8 +230,6 @@ const Index = () => {
     { number: "87+", label: "Happy Volunteers" },
   ];
 
-import { recentBlogs } from "@shared/blog-data";
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
