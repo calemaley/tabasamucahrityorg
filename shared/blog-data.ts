@@ -9,6 +9,8 @@ export interface BlogPost {
   date: string;
   readTime: string;
   slug: string;
+  likes?: number;
+  tags?: string[];
 }
 
 export const featuredPost: BlogPost = {
@@ -36,6 +38,8 @@ export const featuredPost: BlogPost = {
   date: "January 15, 2025",
   readTime: "6 min read",
   slug: "charity-fueling-dreams-of-children",
+  likes: 42,
+  tags: ["charity", "children", "dreams", "education", "hope", "community"]
 };
 
 // For homepage - recent blogs (showing the main featured post)
