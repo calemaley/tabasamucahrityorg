@@ -176,7 +176,7 @@ const Programs = () => {
       </section>
 
       {/* Featured Event */}
-      <section className="py-20 bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
+      <section id="featured-event" className="py-20 bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
