@@ -15,6 +15,10 @@ export default defineConfig({
       ],
     },
   },
+  build: {
+    outDir: "dist/spa",
+    emptyOutDir: true,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client"), // <-- Updated to point to /client
