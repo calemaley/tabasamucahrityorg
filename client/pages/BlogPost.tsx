@@ -252,21 +252,23 @@ const BlogPost = () => {
           </AnimatedSection>
 
           {/* Tags */}
-          <AnimatedSection animation="slideUp" delay={200}>
-            <div className="mt-12 pt-8 border-t border-charity-neutral-200">
-              <h4 className="text-lg font-semibold text-charity-neutral-800 mb-4">Tags</h4>
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-charity-neutral-100 text-charity-neutral-600 rounded-full text-sm hover:bg-charity-orange-100 cursor-pointer transition-colors duration-200"
-                  >
-                    #{tag}
-                  </span>
-                ))}
+          {post.tags && post.tags.length > 0 && (
+            <AnimatedSection animation="slideUp" delay={200}>
+              <div className="mt-12 pt-8 border-t border-charity-neutral-200">
+                <h4 className="text-lg font-semibold text-charity-neutral-800 mb-4">Tags</h4>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-charity-neutral-100 text-charity-neutral-600 rounded-full text-sm hover:bg-charity-orange-100 cursor-pointer transition-colors duration-200"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          )}
 
           {/* Comments Section */}
           <AnimatedSection animation="slideUp" delay={300}>
