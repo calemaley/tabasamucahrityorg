@@ -540,17 +540,12 @@ const Index = () => {
                           Donate Now
                         </button>
                       ) : project.title === "Sponsor a Child" ? (
-                        <button
-                          onClick={() =>
-                            redirectToPayment("sponsorshipUrl", {
-                              source: CAMPAIGN_SOURCES.hero,
-                              campaign: "popular-projects-sponsor",
-                            })
-                          }
+                        <Link
+                          to="/sponsor"
                           className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
                         >
                           Sponsor Now
-                        </button>
+                        </Link>
                       ) : (
                         <Link
                           to="/get-involved/volunteer"
