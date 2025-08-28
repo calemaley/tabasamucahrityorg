@@ -175,7 +175,7 @@ const BlogPost = () => {
             
             {/* Subtitle */}
             <p className="text-xl text-charity-neutral-600 mb-8 leading-relaxed">
-              {post.subtitle}
+              {post.excerpt || post.subtitle}
             </p>
 
             {/* Author and Social */}
