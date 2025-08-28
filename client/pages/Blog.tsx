@@ -6,9 +6,10 @@ import {
   Heart,
   MessageCircle,
   Share2,
-  ThumbsUp,
   Reply,
   Send,
+  Tag,
+  Clock,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -106,12 +107,12 @@ const Blog = () => {
           // Like a reply
           return {
             ...comment,
-            replies: comment.replies.map(reply =>
-              reply.id === replyId
-                ? {
-                    ...reply,
+            replies: comment.replies.map(reply => 
+              reply.id === replyId 
+                ? { 
+                    ...reply, 
                     likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
-                    isLiked: !reply.isLiked
+                    isLiked: !reply.isLiked 
                   }
                 : reply
             )
@@ -212,170 +213,213 @@ const Blog = () => {
 
   return (
     <>
+      <Navigation />
+
       {/* Hero Section */}
-      <section className="pt-0 relative overflow-hidden bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
-        <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section className="pt-24 pb-12 bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
-            <div className="text-center">
-              <h1 className="text-5xl md:text-6xl font-bold text-charity-neutral-800 mb-6">
-                Our Blog
-              </h1>
-              <p className="text-xl md:text-2xl max-w-3xl mx-auto text-charity-neutral-600">
-                Stories of hope, impact, and transformation from our community
-              </p>
+            {/* Breadcrumb */}
+            <nav className="mb-8">
+              <div className="flex items-center space-x-2 text-sm text-charity-neutral-600">
+                <Link to="/" className="hover:text-charity-orange-600">
+                  Home
+                </Link>
+                <span>/</span>
+                <span className="text-charity-neutral-800">Blog</span>
+              </div>
+            </nav>
+
+            {/* Category and Meta */}
+            <div className="flex items-center gap-4 mb-6">
+              <span className="inline-flex items-center px-3 py-1 bg-charity-orange-600 text-white rounded-full text-sm font-medium">
+                <Tag className="h-3 w-3 mr-1" />
+                {featuredPost.category}
+              </span>
+              <div className="flex items-center text-charity-neutral-500 text-sm">
+                <Calendar className="h-4 w-4 mr-1" />
+                {featuredPost.date}
+              </div>
+              <div className="flex items-center text-charity-neutral-500 text-sm">
+                <Clock className="h-4 w-4 mr-1" />
+                {readTime}
+              </div>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl font-bold text-charity-neutral-800 mb-4 leading-tight">
+              {featuredPost.title}
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-xl text-charity-neutral-600 mb-8 leading-relaxed">
+              {featuredPost.excerpt}
+            </p>
+
+            {/* Author and Social */}
+            <div className="flex items-center justify-between border-b border-charity-neutral-200 pb-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-charity-orange-100 rounded-full flex items-center justify-center">
+                  <User className="h-6 w-6 text-charity-orange-600" />
+                </div>
+                <div>
+                  <p className="font-medium text-charity-neutral-800">
+                    {featuredPost.author}
+                  </p>
+                  <p className="text-sm text-charity-neutral-500">
+                    Content Writer
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleLike}
+                  className={`flex items-center gap-1 cursor-pointer transition-colors duration-200 ${
+                    isLiked
+                      ? "text-red-500 hover:text-red-600"
+                      : "text-charity-neutral-500 hover:text-charity-orange-600"
+                  }`}
+                >
+                  <Heart
+                    className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
+                  />
+                  <span className="text-sm">
+                    {likeCount}
+                  </span>
+                </button>
+                <div className="flex items-center gap-1 text-charity-neutral-500">
+                  <MessageCircle className="h-4 w-4" />
+                  <span className="text-sm">{comments.length}</span>
+                </div>
+                <div className="relative group">
+                  <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-charity-neutral-100 text-charity-neutral-600 hover:bg-charity-neutral-200 transition-colors duration-200">
+                    <Share2 className="h-4 w-4" />
+                    <span>Share</span>
+                  </button>
+                  <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-charity-neutral-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                    <button
+                      onClick={() => handleShare("facebook")}
+                      className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                    >
+                      Facebook
+                    </button>
+                    <button
+                      onClick={() => handleShare("twitter")}
+                      className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                    >
+                      Twitter
+                    </button>
+                    <button
+                      onClick={() => handleShare("whatsapp")}
+                      className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                    >
+                      WhatsApp
+                    </button>
+                    <button
+                      onClick={() => handleShare("copy")}
+                      className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
+                    >
+                      Copy Link
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Featured Article */}
-      <section className="py-20 bg-white">
+      {/* Featured Image */}
+      <section className="py-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="scaleIn">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              <img
+                src={featuredPost.image}
+                alt={featuredPost.title}
+                className="w-full h-96 md:h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Article Content */}
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
-            <article className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              {/* Hero Image */}
-              <div className="relative h-96 overflow-hidden">
-                <img
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <span className="inline-block bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
-                    {featuredPost.category}
-                  </span>
-                  <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                    {featuredPost.title}
-                  </h1>
-                </div>
-              </div>
-
-              {/* Article Meta */}
-              <div className="p-8 border-b border-charity-neutral-200">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center space-x-6 text-charity-neutral-600">
-                    <div className="flex items-center space-x-2">
-                      <User className="h-4 w-4" />
-                      <span>{featuredPost.author}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4" />
-                      <span>{featuredPost.date}</span>
-                    </div>
-                    <span>{readTime}</span>
-                  </div>
-
-                  {/* Engagement Actions */}
-                  <div className="flex items-center space-x-4">
-                    <button
-                      onClick={handleLike}
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                        isLiked
-                          ? "bg-red-50 text-red-600 border border-red-200"
-                          : "bg-charity-neutral-100 text-charity-neutral-600 hover:bg-charity-neutral-200"
-                      }`}
-                    >
-                      <Heart
-                        className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
-                      />
-                      <span>{likeCount}</span>
-                    </button>
-
-                    <div className="relative group">
-                      <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-charity-neutral-100 text-charity-neutral-600 hover:bg-charity-neutral-200 transition-colors duration-200">
-                        <Share2 className="h-4 w-4" />
-                        <span>Share</span>
-                      </button>
-                      <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-charity-neutral-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        <button
-                          onClick={() => handleShare("facebook")}
-                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
-                        >
-                          Facebook
-                        </button>
-                        <button
-                          onClick={() => handleShare("twitter")}
-                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
-                        >
-                          Twitter
-                        </button>
-                        <button
-                          onClick={() => handleShare("whatsapp")}
-                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
-                        >
-                          WhatsApp
-                        </button>
-                        <button
-                          onClick={() => handleShare("copy")}
-                          className="block w-full text-left px-4 py-2 hover:bg-charity-neutral-50 text-charity-neutral-700"
-                        >
-                          Copy Link
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Article Content */}
-              <div className="p-8">
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-xl text-charity-neutral-700 mb-8 font-medium italic">
-                    {featuredPost.excerpt}
+            <div className="prose prose-lg prose-charity max-w-none">
+              <div className="text-charity-neutral-700 leading-relaxed">
+                {featuredPost.content.map((paragraph, index) => (
+                  <p key={index} className="mb-6">
+                    {paragraph}
                   </p>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
 
-                  {featuredPost.content.map((paragraph, index) => (
-                    <p
+          {/* Tags */}
+          {featuredPost.tags && featuredPost.tags.length > 0 && (
+            <AnimatedSection animation="slideUp" delay={200}>
+              <div className="mt-12 pt-8 border-t border-charity-neutral-200">
+                <h4 className="text-lg font-semibold text-charity-neutral-800 mb-4">
+                  Tags
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {featuredPost.tags.map((tag, index) => (
+                    <span
                       key={index}
-                      className="text-charity-neutral-700 leading-relaxed mb-6"
+                      className="px-3 py-1 bg-charity-neutral-100 text-charity-neutral-600 rounded-full text-sm hover:bg-charity-orange-100 cursor-pointer transition-colors duration-200"
                     >
-                      {paragraph}
-                    </p>
+                      #{tag}
+                    </span>
                   ))}
                 </div>
-
-                {/* Call to Action */}
-                <div className="mt-12 bg-charity-orange-50 p-8 rounded-xl border-l-4 border-charity-orange-500">
-                  <h3 className="text-2xl font-bold text-charity-neutral-800 mb-4">
-                    Ready to Make a Difference?
-                  </h3>
-                  <p className="text-charity-neutral-600 mb-6">
-                    Join us in fueling children's dreams. Every contribution, no
-                    matter how small, creates ripples of positive change.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <button
-                      onClick={() =>
-                        redirectToPayment("donationUrl", {
-                          source: CAMPAIGN_SOURCES.blog,
-                          campaign: "blog-cta",
-                        })
-                      }
-                      className="inline-flex items-center justify-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg font-medium transition-colors duration-200"
-                    >
-                      Donate Now
-                    </button>
-                    <Link
-                      to="/get-involved"
-                      className="inline-flex items-center justify-center px-6 py-3 border-2 border-charity-orange-600 text-charity-orange-600 hover:bg-charity-orange-600 hover:text-white rounded-lg font-medium transition-colors duration-200"
-                    >
-                      Get Involved
-                    </Link>
-                  </div>
-                </div>
               </div>
-            </article>
+            </AnimatedSection>
+          )}
+
+          {/* Call to Action */}
+          <AnimatedSection animation="slideUp" delay={300}>
+            <div className="mt-12 bg-charity-orange-50 p-8 rounded-xl border-l-4 border-charity-orange-500">
+              <h3 className="text-2xl font-bold text-charity-neutral-800 mb-4">
+                Ready to Make a Difference?
+              </h3>
+              <p className="text-charity-neutral-600 mb-6">
+                Join us in fueling children's dreams. Every contribution, no
+                matter how small, creates ripples of positive change.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() =>
+                    redirectToPayment("donationUrl", {
+                      source: CAMPAIGN_SOURCES.blog,
+                      campaign: "blog-cta",
+                    })
+                  }
+                  className="inline-flex items-center justify-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg font-medium transition-colors duration-200"
+                >
+                  Donate Now
+                </button>
+                <Link
+                  to="/get-involved"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-charity-orange-600 text-charity-orange-600 hover:bg-charity-orange-600 hover:text-white rounded-lg font-medium transition-colors duration-200"
+                >
+                  Get Involved
+                </Link>
+              </div>
+            </div>
           </AnimatedSection>
 
           {/* Comments Section */}
-          <AnimatedSection animation="slideUp" delay={200}>
-            <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-charity-neutral-800 mb-6 flex items-center">
-                <MessageCircle className="h-6 w-6 mr-3 text-charity-orange-600" />
+          <AnimatedSection animation="slideUp" delay={400}>
+            <div className="mt-16 pt-8 border-t border-charity-neutral-200">
+              <h4 className="text-2xl font-bold text-charity-neutral-800 mb-8">
                 Comments ({comments.length})
-              </h3>
+              </h4>
 
               {/* Name Form Modal */}
               {showNameForm && (
@@ -428,105 +472,78 @@ const Blog = () => {
                 </div>
               )}
 
-              {/* Comment Form */}
-              <form onSubmit={handleCommentSubmit} className="mb-8">
-                <div className="flex gap-4">
-                  <div className="flex-1">
-                    <textarea
-                      value={newComment}
-                      onChange={(e) => setNewComment(e.target.value)}
-                      placeholder={userName ? "Share your thoughts..." : "Please enter your name first to comment"}
-                      className="w-full p-4 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
-                      rows={3}
-                    />
-                  </div>
+              {/* Add Comment Form */}
+              <div className="mb-8 p-6 bg-charity-neutral-50 rounded-xl">
+                <h5 className="text-lg font-semibold text-charity-neutral-800 mb-4">
+                  Leave a Comment
+                </h5>
+                <div className="space-y-4">
+                  <textarea
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                    placeholder={userName ? "Share your thoughts..." : "Please enter your name first to comment"}
+                    className="w-full px-4 py-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
+                    rows={4}
+                  />
                   <button
-                    type="submit"
-                    className="self-end px-6 py-4 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 flex items-center"
+                    onClick={handleCommentSubmit}
+                    disabled={!newComment.trim()}
+                    className="inline-flex items-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 disabled:bg-charity-neutral-300 disabled:cursor-not-allowed text-white rounded-lg transition-colors duration-200"
                   >
-                    <Send className="h-4 w-4" />
+                    <Send className="mr-2 h-4 w-4" />
+                    Post Comment
                   </button>
                 </div>
-              </form>
+              </div>
 
               {/* Comments List */}
               <div className="space-y-6">
                 {comments.map((comment) => (
                   <div
                     key={comment.id}
-                    className="border-b border-charity-neutral-200 pb-6 last:border-b-0"
+                    className="bg-white p-6 rounded-xl border border-charity-neutral-200"
                   >
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h4 className="font-semibold text-charity-neutral-800">
-                          {comment.author}
-                        </h4>
-                        <p className="text-sm text-charity-neutral-500">
-                          {comment.date}
-                        </p>
+                    {/* Comment Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-charity-orange-100 rounded-full flex items-center justify-center">
+                          <User className="h-5 w-5 text-charity-orange-600" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-charity-neutral-800">
+                            {comment.author}
+                          </p>
+                          <p className="text-sm text-charity-neutral-500">
+                            {comment.date}
+                          </p>
+                        </div>
                       </div>
-                      <button
-                        onClick={() => handleCommentLike(comment.id)}
-                        className={`flex items-center space-x-1 transition-colors duration-200 ${
-                          comment.isLiked
-                            ? "text-charity-orange-600"
-                            : "text-charity-neutral-500 hover:text-charity-orange-600"
-                        }`}
-                      >
-                        <ThumbsUp className={`h-4 w-4 ${comment.isLiked ? "fill-current" : ""}`} />
-                        <span>{comment.likes}</span>
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <button
+                          onClick={() => handleCommentLike(comment.id)}
+                          className={`flex items-center gap-1 transition-colors duration-200 ${
+                            comment.isLiked 
+                              ? "text-charity-orange-600" 
+                              : "text-charity-neutral-500 hover:text-charity-orange-600"
+                          }`}
+                        >
+                          <Heart className={`h-4 w-4 ${comment.isLiked ? "fill-current" : ""}`} />
+                          <span className="text-sm">{comment.likes}</span>
+                        </button>
+                        <button
+                          onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
+                          className="flex items-center gap-1 text-charity-neutral-500 hover:text-charity-orange-600 transition-colors duration-200"
+                        >
+                          <Reply className="h-4 w-4" />
+                          <span className="text-sm">Reply</span>
+                        </button>
+                      </div>
                     </div>
+
+                    {/* Comment Content */}
                     <p className="text-charity-neutral-700 mb-4">
                       {comment.content}
                     </p>
-
-                    {/* Replies */}
-                    {comment.replies.length > 0 && (
-                      <div className="ml-8 space-y-4 border-l-2 border-charity-neutral-200 pl-4">
-                        {comment.replies.map((reply) => (
-                          <div
-                            key={reply.id}
-                            className="bg-charity-neutral-50 p-4 rounded-lg"
-                          >
-                            <div className="flex items-start justify-between mb-2">
-                              <div>
-                                <h5 className="font-medium text-charity-neutral-800">
-                                  {reply.author}
-                                </h5>
-                                <p className="text-xs text-charity-neutral-500">
-                                  {reply.date}
-                                </p>
-                              </div>
-                              <button
-                                onClick={() => handleCommentLike(comment.id, reply.id)}
-                                className={`flex items-center space-x-1 transition-colors duration-200 ${
-                                  reply.isLiked
-                                    ? "text-charity-orange-600"
-                                    : "text-charity-neutral-500 hover:text-charity-orange-600"
-                                }`}
-                              >
-                                <ThumbsUp className={`h-3 w-3 ${reply.isLiked ? "fill-current" : ""}`} />
-                                <span className="text-sm">{reply.likes}</span>
-                              </button>
-                            </div>
-                            <p className="text-charity-neutral-700">
-                              {reply.content}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="mt-3 flex gap-4">
-                      <button
-                        onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
-                        className="text-charity-orange-600 hover:text-charity-orange-700 text-sm font-medium flex items-center"
-                      >
-                        <Reply className="h-4 w-4 mr-1" />
-                        Reply
-                      </button>
-                    </div>
 
                     {/* Reply Form */}
                     {replyingTo === comment.id && (
@@ -535,7 +552,7 @@ const Blog = () => {
                           value={newReply}
                           onChange={(e) => setNewReply(e.target.value)}
                           placeholder={userName ? "Write a reply..." : "Please enter your name first to reply"}
-                          className="w-full p-3 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
+                          className="w-full px-3 py-2 border border-charity-neutral-300 rounded-lg focus:ring-2 focus:ring-charity-orange-500 focus:border-transparent resize-none"
                           rows={3}
                         />
                         <div className="flex gap-2 mt-3">
@@ -552,6 +569,48 @@ const Blog = () => {
                             Cancel
                           </button>
                         </div>
+                      </div>
+                    )}
+
+                    {/* Replies */}
+                    {comment.replies.length > 0 && (
+                      <div className="mt-6 space-y-4 ml-8">
+                        {comment.replies.map((reply) => (
+                          <div
+                            key={reply.id}
+                            className="p-4 bg-charity-neutral-50 rounded-lg border-l-4 border-charity-orange-200"
+                          >
+                            <div className="flex items-center space-x-3 mb-2">
+                              <div className="w-8 h-8 bg-charity-orange-100 rounded-full flex items-center justify-center">
+                                <User className="h-4 w-4 text-charity-orange-600" />
+                              </div>
+                              <div>
+                                <p className="font-medium text-charity-neutral-800 text-sm">
+                                  {reply.author}
+                                </p>
+                                <p className="text-xs text-charity-neutral-500">
+                                  {reply.date}
+                                </p>
+                              </div>
+                            </div>
+                            <p className="text-charity-neutral-700 text-sm">
+                              {reply.content}
+                            </p>
+                            <div className="mt-2">
+                              <button
+                                onClick={() => handleCommentLike(comment.id, reply.id)}
+                                className={`flex items-center gap-1 transition-colors duration-200 ${
+                                  reply.isLiked 
+                                    ? "text-charity-orange-600" 
+                                    : "text-charity-neutral-500 hover:text-charity-orange-600"
+                                }`}
+                              >
+                                <Heart className={`h-3 w-3 ${reply.isLiked ? "fill-current" : ""}`} />
+                                <span className="text-xs">{reply.likes}</span>
+                              </button>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
