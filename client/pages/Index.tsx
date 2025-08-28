@@ -213,11 +213,12 @@ const Index = () => {
   const recentPrograms = [
     {
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-      title: "School Supply Drive 2024",
+        "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
+      title: "NAIROBI Edition - Creating smiles, one coin at a time����",
       description:
-        "Providing essential school supplies to over 500 children across 12 schools in rural Kenya. This comprehensive program ensures every child has the tools they need for education.",
-      date: "March 2024",
+        "Join us for an unforgettable day of giving and community spirit at Blessings Children's Home in Ruai. This special gathering brings together hearts and hands united in creating lasting smiles in the lives of children who need it most.",
+      date: "19TH OCT 2025",
+      venue: "BLESSINGS CHILDREN'S HOME - RUAI",
     },
   ];
 
