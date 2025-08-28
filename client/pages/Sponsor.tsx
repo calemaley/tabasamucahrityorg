@@ -129,6 +129,84 @@ const Sponsor = () => {
       interests: ["Reading", "Writing", "History"],
       family: "Lives with both parents and 4 siblings",
     },
+    {
+      id: "amina-005",
+      name: "Amina Hassan",
+      age: 9,
+      location: "Coastal Kenya",
+      school: "Malindi Primary School",
+      grade: "Standard 4",
+      story:
+        "Amina dreams of becoming a marine biologist to protect the ocean around her coastal home. She collects shells and studies sea creatures in her spare time.",
+      needs: ["School fees", "Science materials", "Transport", "Lunch program"],
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 40,
+      sponsored: false,
+      interests: ["Marine Biology", "Swimming", "Environmental Science"],
+      family: "Lives with parents and 1 sibling",
+    },
+    {
+      id: "peter-006",
+      name: "Peter Ngozi",
+      age: 14,
+      location: "Western Kenya",
+      school: "Mbeya Secondary School",
+      grade: "Form 2",
+      story:
+        "Peter wants to become a pilot and explore the world. He builds model airplanes from recycled materials and dreams of flying.",
+      needs: [
+        "School fees",
+        "Technical books",
+        "Transport",
+        "Materials for projects",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 60,
+      sponsored: false,
+      interests: ["Aviation", "Engineering", "Art"],
+      family: "Lives with mother and 2 siblings",
+    },
+    {
+      id: "fatuma-007",
+      name: "Fatuma Ali",
+      age: 11,
+      location: "Nairobi County, Kenya",
+      school: "Nairobi Community School",
+      grade: "Standard 6",
+      story:
+        "Fatuma loves music and wants to become a music teacher. She sings in the church choir and has taught herself to play several traditional instruments.",
+      needs: ["School fees", "Music lessons", "Instruments", "Uniform"],
+      image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 55,
+      sponsored: false,
+      interests: ["Music", "Singing", "Traditional Dance"],
+      family: "Lives with parents and 3 siblings",
+    },
+    {
+      id: "emmanuel-008",
+      name: "Emmanuel Mushi",
+      age: 13,
+      location: "Mount Kenya Region, Kenya",
+      school: "Moshi High School",
+      grade: "Form 1",
+      story:
+        "Emmanuel dreams of becoming a veterinarian to help animals in his community. He has rescued and cared for many stray animals.",
+      needs: [
+        "School fees",
+        "Veterinary books",
+        "Science equipment",
+        "Transport",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      monthlyNeed: 70,
+      sponsored: false,
+      interests: ["Animal Care", "Biology", "Conservation"],
+      family: "Lives with father and grandmother",
+    },
   ];
 
   const sponsorshipTypes = [
