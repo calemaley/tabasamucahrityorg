@@ -548,7 +548,9 @@ const Index = () => {
                 <div
                   key={child.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
-                  onClick={() => window.location.href = `/sponsor?child=${child.id}`}
+                  onClick={() =>
+                    (window.location.href = `/sponsor?child=${child.id}`)
+                  }
                 >
                   <div className="relative overflow-hidden">
                     <img
@@ -596,11 +598,15 @@ const Index = () => {
 
                     <div className="mb-6 p-4 bg-charity-orange-50 rounded-xl">
                       <div className="text-center">
-                        <span className="text-charity-neutral-700 font-medium text-sm block mb-1">Monthly Support:</span>
+                        <span className="text-charity-neutral-700 font-medium text-sm block mb-1">
+                          Monthly Support:
+                        </span>
                         <div className="text-2xl font-bold text-charity-orange-600">
                           KES {(child.monthlyNeed * 135).toLocaleString()}
                         </div>
-                        <div className="text-xs text-charity-neutral-500">≈ ${child.monthlyNeed} USD</div>
+                        <div className="text-xs text-charity-neutral-500">
+                          ≈ ${child.monthlyNeed} USD
+                        </div>
                       </div>
                     </div>
 
@@ -817,7 +823,9 @@ const Index = () => {
                     <h4 className="text-xl font-bold text-charity-neutral-800 mb-3 group-hover:text-charity-orange-600 transition-colors duration-200">
                       {blog.title}
                     </h4>
-                    <p className="text-charity-neutral-600 leading-relaxed mb-4">{blog.snippet}</p>
+                    <p className="text-charity-neutral-600 leading-relaxed mb-4">
+                      {blog.snippet}
+                    </p>
                     <div className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
                       Read More <ArrowRight className="ml-2 h-4 w-4" />
                     </div>

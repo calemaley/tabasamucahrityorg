@@ -392,7 +392,9 @@ const Children = () => {
               >
                 <div
                   className="relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-700 h-full flex flex-col group transform hover:-translate-y-4 hover:scale-105 cursor-pointer"
-                  onClick={() => window.location.href = `/sponsor?child=${child.id}`}
+                  onClick={() =>
+                    (window.location.href = `/sponsor?child=${child.id}`)
+                  }
                 >
                   {/* Animated gradient border */}
                   <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-400 via-charity-green-400 to-charity-orange-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
@@ -464,7 +466,9 @@ const Children = () => {
                         <div className="w-10 h-10 rounded-full bg-charity-orange-500 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-300">
                           <Calendar className="h-5 w-5 text-white" />
                         </div>
-                        <span className="text-charity-neutral-700 font-bold text-lg">{child.age} years old</span>
+                        <span className="text-charity-neutral-700 font-bold text-lg">
+                          {child.age} years old
+                        </span>
                       </div>
 
                       {/* Interests with enhanced styling */}
@@ -489,11 +493,15 @@ const Children = () => {
                       {/* Enhanced pricing section */}
                       <div className="bg-gradient-to-r from-charity-orange-50 to-charity-green-50 p-4 rounded-xl mb-4 group-hover:shadow-lg transition-shadow duration-300">
                         <div className="text-center">
-                          <span className="text-charity-neutral-700 font-medium text-sm mb-1 block">Monthly Support:</span>
+                          <span className="text-charity-neutral-700 font-medium text-sm mb-1 block">
+                            Monthly Support:
+                          </span>
                           <div className="text-2xl font-bold text-charity-orange-600 group-hover:scale-110 transition-transform duration-300">
                             KES {(child.monthlyNeed * 135).toLocaleString()}
                           </div>
-                          <div className="text-xs text-charity-neutral-500">≈ ${child.monthlyNeed} USD</div>
+                          <div className="text-xs text-charity-neutral-500">
+                            ≈ ${child.monthlyNeed} USD
+                          </div>
                         </div>
                       </div>
 

@@ -37,14 +37,14 @@ const Sponsor = () => {
 
   // Check for child parameter in URL and auto-select child
   useEffect(() => {
-    const childParam = searchParams.get('child');
-    if (childParam && children.find(c => c.id === childParam)) {
+    const childParam = searchParams.get("child");
+    if (childParam && children.find((c) => c.id === childParam)) {
       setSelectedChild(childParam);
       // Scroll to the specific child or modal
       setTimeout(() => {
         const childElement = document.getElementById(`child-${childParam}`);
         if (childElement) {
-          childElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          childElement.scrollIntoView({ behavior: "smooth", block: "center" });
         }
       }, 100);
     }
@@ -475,14 +475,18 @@ const Sponsor = () => {
                           <div className="w-8 h-8 rounded-full bg-charity-orange-500 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-300">
                             <Calendar className="h-4 w-4 text-white" />
                           </div>
-                          <span className="text-charity-neutral-700 font-medium">{child.age} years old</span>
+                          <span className="text-charity-neutral-700 font-medium">
+                            {child.age} years old
+                          </span>
                         </div>
 
                         <div className="flex items-center p-2 rounded-lg bg-charity-green-50 group-hover:bg-charity-green-100 transition-colors duration-300">
                           <div className="w-8 h-8 rounded-full bg-charity-green-500 flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform duration-300">
                             <MapPin className="h-4 w-4 text-white" />
                           </div>
-                          <span className="text-charity-neutral-700 font-medium text-sm">{child.location}</span>
+                          <span className="text-charity-neutral-700 font-medium text-sm">
+                            {child.location}
+                          </span>
                         </div>
 
                         <div className="flex items-center p-2 rounded-lg bg-charity-orange-50 group-hover:bg-charity-orange-100 transition-colors duration-300">
@@ -518,12 +522,16 @@ const Sponsor = () => {
                       <div className="border-t-2 border-charity-neutral-100 pt-4 mt-auto">
                         <div className="bg-gradient-to-r from-charity-orange-50 to-charity-green-50 p-4 rounded-xl mb-4 group-hover:shadow-lg transition-shadow duration-300">
                           <div className="flex items-center justify-between">
-                            <span className="text-charity-neutral-700 font-medium">Monthly Support:</span>
+                            <span className="text-charity-neutral-700 font-medium">
+                              Monthly Support:
+                            </span>
                             <div className="text-right">
                               <span className="text-3xl font-bold text-charity-orange-600 group-hover:scale-110 transition-transform duration-300 inline-block">
                                 ${child.monthlyNeed}
                               </span>
-                              <div className="text-xs text-charity-neutral-500">per month</div>
+                              <div className="text-xs text-charity-neutral-500">
+                                per month
+                              </div>
                             </div>
                           </div>
                         </div>
