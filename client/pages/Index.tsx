@@ -651,16 +651,16 @@ const Index = () => {
         </section>
       </SectionReveal>
 
-      {/* Recent Programs */}
+      {/* Featured Events */}
       <SectionReveal>
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-4xl font-bold text-charity-neutral-800">
-                Recent Programs
+                Featured Events
               </h2>
               <Link
-                to="/programs"
+                to="/programs#featured-event"
                 className="flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium group"
               >
                 View All Programs
@@ -672,7 +672,7 @@ const Index = () => {
               {recentPrograms.map((program, index) => (
                 <Link
                   key={index}
-                  to="/programs"
+                  to="/programs#featured-event"
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
                 >
                   <div className="relative overflow-hidden">
