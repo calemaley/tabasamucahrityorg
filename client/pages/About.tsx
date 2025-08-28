@@ -23,7 +23,8 @@ const About = () => {
   const teamMembers = [
     {
       name: "Judith Kwamboka",
-      image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
       bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
       fullBio:
         "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return. At Tabasamu Charity, we believe every smile we give, every hand we extend, and every act of care we show makes the world a better place. True humanity is found in seeing ourselves in others, uplifting those in need, and choosing love over indifference. In small acts of goodness, we build hope, and in unity, we create change.",
@@ -38,7 +39,8 @@ const About = () => {
     },
     {
       name: "Philip Muga",
-      image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
       bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
       fullBio:
         "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose. It is seen in the kindness we show, the justice we uphold, and the hope we nurture for one another. The Bible reminds us of this truth in Micah 6:8: 'He has shown you, O man, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.' In living this way, we embrace the essence of our shared humanity and reflect the heart of God to the world.",
@@ -53,7 +55,8 @@ const About = () => {
     },
     {
       name: "Lilliane Clarice",
-      image: "https://cdn.builder.io/api/v1/image/assets%2F31768e4d9d7546fcb9da81d5f6310801%2F116d15409d254e0aa40e04e67699160e?format=webp&width=800",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F31768e4d9d7546fcb9da81d5f6310801%2F116d15409d254e0aa40e04e67699160e?format=webp&width=800",
       bio: "I believe that true fulfillment in life comes from reaching out and uplifting others.",
       fullBio:
         "I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.",
@@ -399,8 +402,9 @@ const About = () => {
                 Meet Our Team
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Meet our dedicated leadership team who work tirelessly to make our mission a
-                reality. Get to know the passionate individuals behind our impact.
+                Meet our dedicated leadership team who work tirelessly to make
+                our mission a reality. Get to know the passionate individuals
+                behind our impact.
               </p>
             </div>
           </AnimatedSection>

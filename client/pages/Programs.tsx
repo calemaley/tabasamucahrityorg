@@ -29,11 +29,14 @@ const Programs = () => {
       subtitle: "Building bridges of hope",
       date: "15TH DEC 2025",
       venue: "COAST CHILDREN'S CENTER - MOMBASA",
-      image: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image:
+        "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       theme: "Unity in diversity",
-      description: "Join us for our coastal edition as we bring hope and resources to children in Mombasa. This event focuses on educational support and community development.",
+      description:
+        "Join us for our coastal edition as we bring hope and resources to children in Mombasa. This event focuses on educational support and community development.",
       contact: "+254112459484",
-      fullDescription: "The Mombasa Edition represents our commitment to coastal communities, where education and opportunity often face unique challenges. This event will bring together volunteers, educators, and community leaders to create lasting change along Kenya's beautiful coast.\n\nOur coastal edition focuses on maritime education, environmental conservation, and providing essential educational resources to children who dream of futures beyond their current circumstances.",
+      fullDescription:
+        "The Mombasa Edition represents our commitment to coastal communities, where education and opportunity often face unique challenges. This event will bring together volunteers, educators, and community leaders to create lasting change along Kenya's beautiful coast.\n\nOur coastal edition focuses on maritime education, environmental conservation, and providing essential educational resources to children who dream of futures beyond their current circumstances.",
       schedule: [
         { time: "8:00 AM", activity: "Registration & Welcome" },
         { time: "9:30 AM", activity: "Opening Ceremony" },
@@ -49,19 +52,28 @@ const Programs = () => {
         "Train 25 local teachers",
         "Launch environmental conservation program",
       ],
-      itemsNeeded: ["Books", "Writing materials", "School uniforms", "Solar lamps", "Environmental education materials"],
+      itemsNeeded: [
+        "Books",
+        "Writing materials",
+        "School uniforms",
+        "Solar lamps",
+        "Environmental education materials",
+      ],
     },
     {
       id: "nakuru-2026",
-      title: "NAKURU Edition", 
+      title: "NAKURU Edition",
       subtitle: "Nurturing young minds",
       date: "22ND JAN 2026",
       venue: "LAKESIDE CHILDREN'S HOME - NAKURU",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image:
+        "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       theme: "Education is the key to the future",
-      description: "Our Nakuru edition emphasizes educational excellence and providing learning materials to underserved communities around Lake Nakuru.",
+      description:
+        "Our Nakuru edition emphasizes educational excellence and providing learning materials to underserved communities around Lake Nakuru.",
       contact: "+254112459485",
-      fullDescription: "Set against the stunning backdrop of Lake Nakuru, this edition focuses on creating sustainable educational opportunities for children in the Rift Valley region. We're partnering with local schools and community centers to establish long-term educational support systems.\n\nThis event emphasizes STEM education, literacy programs, and providing technological resources to bridge the digital divide in rural communities.",
+      fullDescription:
+        "Set against the stunning backdrop of Lake Nakuru, this edition focuses on creating sustainable educational opportunities for children in the Rift Valley region. We're partnering with local schools and community centers to establish long-term educational support systems.\n\nThis event emphasizes STEM education, literacy programs, and providing technological resources to bridge the digital divide in rural communities.",
       schedule: [
         { time: "8:30 AM", activity: "Registration & Breakfast" },
         { time: "10:00 AM", activity: "Opening Presentations" },
@@ -77,7 +89,13 @@ const Programs = () => {
         "Train 30 teachers in digital literacy",
         "Create sustainable scholarship program",
       ],
-      itemsNeeded: ["Computers", "Science equipment", "Mathematics textbooks", "Library books", "Educational software"],
+      itemsNeeded: [
+        "Computers",
+        "Science equipment",
+        "Mathematics textbooks",
+        "Library books",
+        "Educational software",
+      ],
     },
   ];
 
@@ -88,13 +106,16 @@ const Programs = () => {
       title: "KISUMU Edition",
       subtitle: "Seeds of change planted",
       date: "10TH AUG 2024",
-      venue: "VICTORIA CHILDREN'S HOME - KISUMU", 
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      venue: "VICTORIA CHILDREN'S HOME - KISUMU",
+      image:
+        "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       theme: "Planting seeds of transformation",
-      description: "Our successful Kisumu edition brought together 300+ volunteers and provided essential supplies to 150 children. The impact continues to grow.",
+      description:
+        "Our successful Kisumu edition brought together 300+ volunteers and provided essential supplies to 150 children. The impact continues to grow.",
       contact: "+254112459486",
       impact: "150 children supported, 50 families assisted",
-      fullDescription: "The Kisumu Edition marked a turning point in our community outreach efforts. Located near Lake Victoria, this event brought together hearts and hands from across the region to support children whose potential knows no bounds.\n\nThis successful event created lasting partnerships with local organizations and established sustainable programs that continue to benefit the community today.",
+      fullDescription:
+        "The Kisumu Edition marked a turning point in our community outreach efforts. Located near Lake Victoria, this event brought together hearts and hands from across the region to support children whose potential knows no bounds.\n\nThis successful event created lasting partnerships with local organizations and established sustainable programs that continue to benefit the community today.",
       actualImpact: [
         "150 children received full educational support packages",
         "50 families received nutritional assistance for 6 months",
@@ -103,23 +124,37 @@ const Programs = () => {
         "Community garden project launched, now feeding 200+ people",
       ],
       testimonials: [
-        { name: "Mary Achieng", role: "Local Teacher", quote: "This event transformed our school. The children now have hope and resources they never had before." },
-        { name: "James Ochieng", role: "Parent", quote: "My daughter received a scholarship that changed her life. She's now in university studying medicine." },
+        {
+          name: "Mary Achieng",
+          role: "Local Teacher",
+          quote:
+            "This event transformed our school. The children now have hope and resources they never had before.",
+        },
+        {
+          name: "James Ochieng",
+          role: "Parent",
+          quote:
+            "My daughter received a scholarship that changed her life. She's now in university studying medicine.",
+        },
       ],
-      longTermImpact: "6 months later, 95% of supported children showed improved academic performance, and 3 children received secondary school scholarships.",
+      longTermImpact:
+        "6 months later, 95% of supported children showed improved academic performance, and 3 children received secondary school scholarships.",
     },
     {
       id: "eldoret-2024",
       title: "ELDORET Edition",
       subtitle: "Champions of tomorrow",
-      date: "25TH MAY 2024", 
+      date: "25TH MAY 2024",
       venue: "HIGHLANDS ORPHANAGE - ELDORET",
-      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image:
+        "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       theme: "Raising champions",
-      description: "The Eldoret edition focused on sports and recreational activities alongside our traditional support programs, creating lasting memories for the children.",
+      description:
+        "The Eldoret edition focused on sports and recreational activities alongside our traditional support programs, creating lasting memories for the children.",
       contact: "+254112459487",
       impact: "200 children reached, sports equipment provided",
-      fullDescription: "High in the Kenyan highlands, the Eldoret Edition combined our educational mission with sports and recreational programs. This unique approach recognized that children's development requires both academic support and physical activity.\n\nThe event was a celebration of potential, bringing together athletes, educators, and community members to create an unforgettable experience for children who rarely get such opportunities.",
+      fullDescription:
+        "High in the Kenyan highlands, the Eldoret Edition combined our educational mission with sports and recreational programs. This unique approach recognized that children's development requires both academic support and physical activity.\n\nThe event was a celebration of potential, bringing together athletes, educators, and community members to create an unforgettable experience for children who rarely get such opportunities.",
       actualImpact: [
         "200 children participated in sports and educational activities",
         "Complete sports equipment provided to 5 schools",
@@ -128,15 +163,32 @@ const Programs = () => {
         "Mobile library service established for 8 remote schools",
       ],
       testimonials: [
-        { name: "Peter Kiprotich", role: "Former Olympic Runner", quote: "Seeing these children's joy and potential reminded me why sports can change lives." },
-        { name: "Grace Chepkemoi", role: "School Principal", quote: "The sports equipment has transformed our PE program. Children are more engaged in all subjects now." },
+        {
+          name: "Peter Kiprotich",
+          role: "Former Olympic Runner",
+          quote:
+            "Seeing these children's joy and potential reminded me why sports can change lives.",
+        },
+        {
+          name: "Grace Chepkemoi",
+          role: "School Principal",
+          quote:
+            "The sports equipment has transformed our PE program. Children are more engaged in all subjects now.",
+        },
       ],
-      longTermImpact: "The sports program continues with 3 children now training for national competitions and attendance rates improved by 40%.",
+      longTermImpact:
+        "The sports program continues with 3 children now training for national competitions and attendance rates improved by 40%.",
     },
   ];
 
-  const EventCard = ({ event, type = "upcoming" }: { event: any; type?: "featured" | "upcoming" | "past" }) => (
-    <div 
+  const EventCard = ({
+    event,
+    type = "upcoming",
+  }: {
+    event: any;
+    type?: "featured" | "upcoming" | "past";
+  }) => (
+    <div
       className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
       onClick={() => {
         setSelectedEvent(event);
@@ -156,13 +208,19 @@ const Programs = () => {
             </span>
           </div>
         </div>
-        <div className={`absolute top-4 right-4 px-4 py-2 rounded-lg font-bold transform rotate-3 ${
-          type === "past" ? "bg-gray-500" : type === "upcoming" ? "bg-blue-500" : "bg-red-500"
-        } text-white`}>
+        <div
+          className={`absolute top-4 right-4 px-4 py-2 rounded-lg font-bold transform rotate-3 ${
+            type === "past"
+              ? "bg-gray-500"
+              : type === "upcoming"
+                ? "bg-blue-500"
+                : "bg-red-500"
+          } text-white`}
+        >
           {event.date}
         </div>
       </div>
-      
+
       <div className="p-6">
         <h3 className="text-2xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
           {event.title}
@@ -170,7 +228,7 @@ const Programs = () => {
         <p className="text-charity-orange-600 font-semibold mb-3 text-lg italic">
           {event.subtitle}
         </p>
-        
+
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-charity-neutral-600">
             <MapPin className="h-4 w-4 mr-2 text-charity-orange-500" />
@@ -228,7 +286,8 @@ const Programs = () => {
                 Our Programs
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-                Creating lasting change through community events and initiatives across Kenya
+                Creating lasting change through community events and initiatives
+                across Kenya
               </p>
             </div>
           </AnimatedSection>
@@ -248,7 +307,10 @@ const Programs = () => {
       </section>
 
       {/* Featured Events */}
-      <section id="featured-events" className="py-20 bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
+      <section
+        id="featured-events"
+        className="py-20 bg-gradient-to-br from-charity-orange-50 to-charity-green-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
@@ -256,7 +318,8 @@ const Programs = () => {
                 Featured Events
               </h2>
               <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Our spotlight events making the biggest impact in communities across Kenya
+                Our spotlight events making the biggest impact in communities
+                across Kenya
               </p>
             </div>
           </AnimatedSection>
@@ -323,7 +386,10 @@ const Programs = () => {
                           </h3>
                           <div className="grid grid-cols-2 gap-3">
                             {featuredEvent.itemsNeeded.map((item, index) => (
-                              <div key={index} className="flex items-center space-x-2">
+                              <div
+                                key={index}
+                                className="flex items-center space-x-2"
+                              >
                                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                                 <span className="text-charity-neutral-700 text-sm">
                                   {item}
@@ -394,7 +460,11 @@ const Programs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {upcomingEvents.map((event, index) => (
-              <AnimatedSection key={index} animation="scaleIn" delay={index * 100}>
+              <AnimatedSection
+                key={index}
+                animation="scaleIn"
+                delay={index * 100}
+              >
                 <EventCard event={event} type="upcoming" />
               </AnimatedSection>
             ))}
@@ -418,7 +488,11 @@ const Programs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {pastEvents.map((event, index) => (
-              <AnimatedSection key={index} animation="scaleIn" delay={index * 100}>
+              <AnimatedSection
+                key={index}
+                animation="scaleIn"
+                delay={index * 100}
+              >
                 <EventCard event={event} type="past" />
               </AnimatedSection>
             ))}
@@ -516,7 +590,10 @@ const Programs = () => {
                     </h2>
                     <div className="bg-charity-neutral-50 rounded-xl p-6">
                       {selectedEvent.schedule.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-4 mb-4 last:mb-0">
+                        <div
+                          key={index}
+                          className="flex items-start space-x-4 mb-4 last:mb-0"
+                        >
                           <div className="bg-charity-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold min-w-20 text-center">
                             {item.time}
                           </div>
@@ -532,17 +609,28 @@ const Programs = () => {
                 )}
 
                 {/* Expected Impact or Actual Impact */}
-                {(selectedEvent.expectedImpact || selectedEvent.actualImpact) && (
+                {(selectedEvent.expectedImpact ||
+                  selectedEvent.actualImpact) && (
                   <div className="mb-8">
                     <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4 flex items-center">
                       <CheckCircle className="h-6 w-6 text-charity-green-600 mr-2" />
-                      {selectedEvent.expectedImpact ? "Expected Impact" : "Actual Impact Achieved"}
+                      {selectedEvent.expectedImpact
+                        ? "Expected Impact"
+                        : "Actual Impact Achieved"}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {(selectedEvent.expectedImpact || selectedEvent.actualImpact).map((goal, index) => (
-                        <div key={index} className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg">
+                      {(
+                        selectedEvent.expectedImpact ||
+                        selectedEvent.actualImpact
+                      ).map((goal, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start space-x-3 bg-charity-green-50 p-4 rounded-lg"
+                        >
                           <CheckCircle className="h-5 w-5 text-charity-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-charity-neutral-700">{goal}</span>
+                          <span className="text-charity-neutral-700">
+                            {goal}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -558,11 +646,20 @@ const Programs = () => {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {selectedEvent.testimonials.map((testimonial, index) => (
-                        <div key={index} className="bg-charity-orange-50 p-6 rounded-xl">
-                          <p className="text-charity-neutral-700 italic mb-4">"{testimonial.quote}"</p>
+                        <div
+                          key={index}
+                          className="bg-charity-orange-50 p-6 rounded-xl"
+                        >
+                          <p className="text-charity-neutral-700 italic mb-4">
+                            "{testimonial.quote}"
+                          </p>
                           <div className="border-t border-charity-orange-200 pt-4">
-                            <p className="font-bold text-charity-neutral-800">{testimonial.name}</p>
-                            <p className="text-sm text-charity-orange-600">{testimonial.role}</p>
+                            <p className="font-bold text-charity-neutral-800">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-sm text-charity-orange-600">
+                              {testimonial.role}
+                            </p>
                           </div>
                         </div>
                       ))}
@@ -611,7 +708,10 @@ const Programs = () => {
                       </h3>
                       <div className="grid grid-cols-1 gap-2">
                         {selectedEvent.itemsNeeded.map((item, index) => (
-                          <div key={index} className="flex items-center space-x-2">
+                          <div
+                            key={index}
+                            className="flex items-center space-x-2"
+                          >
                             <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                             <span className="text-charity-neutral-700 text-sm">
                               {item}

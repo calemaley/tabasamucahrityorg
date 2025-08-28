@@ -23,7 +23,6 @@ const Children = () => {
   const [selectedLocation, setSelectedLocation] = useState("all");
   const [sortBy, setSortBy] = useState("name");
 
-
   // Filter and sort children
   const filteredChildren = allChildren
     .filter((child) => {

@@ -756,7 +756,6 @@ const Index = () => {
         </section>
       </SectionReveal>
 
-
       {/* Recent Blogs */}
       <SectionReveal>
         <section className="py-20 bg-charity-neutral-50">
