@@ -156,21 +156,19 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-charity-orange-400 mt-0.5 flex-shrink-0" />
                 <p className="text-charity-neutral-300 text-sm">
-                  123 Charity Street
-                  <br />
-                  Nairobi, Kenya
+                  Westlands, Nairobi, Kenya
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-charity-orange-400 flex-shrink-0" />
                 <p className="text-charity-neutral-300 text-sm">
-                  +254 700 123 456
+                  +254 112 459 483
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-charity-orange-400 flex-shrink-0" />
                 <p className="text-charity-neutral-300 text-sm">
-                  info@tabasamu.org
+                  tabasamucharity@gmail.com
                 </p>
               </div>
             </div>

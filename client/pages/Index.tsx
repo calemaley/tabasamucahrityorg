@@ -90,7 +90,7 @@ const Index = () => {
       story:
         "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
       image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=800",
       monthlyNeed: 45,
       interests: ["Mathematics", "Reading", "Farming"],
       dreamJob: "Teacher",
@@ -105,7 +105,7 @@ const Index = () => {
       story:
         "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.pexels.com/photos/160793/child-africa-boy-portrait-160793.jpeg?auto=compress&cs=tinysrgb&w=800",
       monthlyNeed: 65,
       interests: ["Biology", "Chemistry", "Football"],
       dreamJob: "Doctor",
@@ -120,7 +120,7 @@ const Index = () => {
       story:
         "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
       image:
-        "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.pexels.com/photos/955958/pexels-photo-955958.jpeg?auto=compress&cs=tinysrgb&w=800",
       monthlyNeed: 75,
       interests: ["Mathematics", "Physics", "Technology"],
       dreamJob: "Engineer",
@@ -135,7 +135,7 @@ const Index = () => {
       story:
         "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
       image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=800",
       monthlyNeed: 50,
       interests: ["Reading", "Writing", "History"],
       dreamJob: "Writer",
@@ -213,10 +213,8 @@ const Index = () => {
   ];
 
   const stats = [
-    { number: "72+", label: "Total Campaigns" },
-    { number: "96+", label: "Become Volunteer" },
-    { number: "8K+", label: "Quick Fundraise" },
-    { number: "87+", label: "Happy Volunteers" },
+    { number: "15+", label: "Total Campaigns" },
+    { number: "50+", label: "Volunteers" },
   ];
 
   useEffect(() => {

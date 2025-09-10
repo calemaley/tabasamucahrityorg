@@ -101,10 +101,9 @@ const Sponsor = () => {
   ];
 
   const impactStats = [
-    { number: "342", label: "Children Currently Sponsored" },
-    { number: "89%", label: "Graduate to Next Level" },
-    { number: "156", label: "Children Graduated" },
-    { number: "25", label: "Now in University" },
+    { number: "30", label: "Children Currently Sponsored" },
+    { number: "17", label: "Children Graduated" },
+    { number: "7", label: "Now in University" },
   ];
 
   const handleSponsorApplication = (e: React.FormEvent) => {

@@ -28,7 +28,7 @@ export const allChildren: Child[] = [
       "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes. Despite the long journey, she never misses a day and always has a bright smile.",
     needs: ["School fees", "Uniforms", "Books", "Lunch program"],
     image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=800",
     monthlyNeed: 6075, // 45 USD converted to KES (45 * 135)
     sponsored: false,
     interests: ["Mathematics", "Reading", "Farming"],
@@ -56,7 +56,7 @@ export const allChildren: Child[] = [
       "Transport",
     ],
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.pexels.com/photos/160793/child-africa-boy-portrait-160793.jpeg?auto=compress&cs=tinysrgb&w=800",
     monthlyNeed: 8775, // 65 USD converted to KES (65 * 135)
     sponsored: false,
     interests: ["Biology", "Chemistry", "Football"],
@@ -79,7 +79,7 @@ export const allChildren: Child[] = [
       "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education. She tutors younger students in her free time.",
     needs: ["School fees", "Textbooks", "Computer training", "Mentorship"],
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616c6b57a3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.pexels.com/photos/955958/pexels-photo-955958.jpeg?auto=compress&cs=tinysrgb&w=800",
     monthlyNeed: 10125, // 75 USD converted to KES (75 * 135)
     sponsored: false,
     interests: ["Mathematics", "Physics", "Technology"],
@@ -107,7 +107,7 @@ export const allChildren: Child[] = [
       "Nutritional support",
     ],
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=800",
     monthlyNeed: 6750, // 50 USD converted to KES (50 * 135)
     sponsored: false,
     interests: ["Reading", "Writing", "History"],
@@ -130,7 +130,7 @@ export const allChildren: Child[] = [
       "Amina dreams of becoming a marine biologist to protect the ocean around her coastal home. She collects shells and studies sea creatures in her spare time. Her family depends on fishing for income.",
     needs: ["School fees", "Science materials", "Transport", "Lunch program"],
     image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.pexels.com/photos/1001914/pexels-photo-1001914.jpeg?auto=compress&cs=tinysrgb&w=800",
     monthlyNeed: 5400, // 40 USD converted to KES (40 * 135)
     sponsored: false,
     interests: ["Marine Biology", "Swimming", "Environmental Science"],
@@ -209,7 +209,7 @@ export const allChildren: Child[] = [
       "Transport",
     ],
     image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.pexels.com/photos/1374501/pexels-photo-1374501.jpeg?auto=compress&cs=tinysrgb&w=800",
     monthlyNeed: 9450, // 70 USD converted to KES (70 * 135)
     sponsored: false,
     interests: ["Animal Care", "Biology", "Conservation"],

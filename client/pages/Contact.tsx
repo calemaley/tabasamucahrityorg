@@ -83,15 +83,15 @@ const Contact = () => {
     const body = encodeURIComponent(
       "Hello Tabasamu Team,\n\nI would like to get in touch regarding...",
     );
-    window.location.href = `mailto:hello@tabasamu.org?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:tabasamucharity@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleCallNow = () => {
-    window.location.href = "tel:+254123456789";
+    window.open("https://wa.me/254112459483", "_blank");
   };
 
   const handleGetDirections = () => {
-    const address = encodeURIComponent("123 Charity St, Nairobi, Kenya");
+    const address = encodeURIComponent("Westlands, Nairobi, Kenya");
     window.open(
       `https://www.google.com/maps/search/?api=1&query=${address}`,
       "_blank",
@@ -159,7 +159,7 @@ const Contact = () => {
       icon: Mail,
       title: "Email Us",
       subtitle: "Drop us a line anytime",
-      info: "hello@tabasamu.org",
+      info: "tabasamucharity@gmail.com",
       action: "Send Email",
       handler: handleSendEmail,
       gradient: "from-blue-500 to-cyan-500",
@@ -169,9 +169,9 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      subtitle: "Speak directly with our team",
-      info: "+254 123 456 789",
-      action: "Call Now",
+      subtitle: "Chat or call via WhatsApp",
+      info: "+254 112 459 483",
+      action: "WhatsApp Us",
       handler: handleCallNow,
       gradient: "from-green-500 to-emerald-500",
       bgGradient: "from-green-50 to-emerald-50",
@@ -181,7 +181,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Visit Us",
       subtitle: "Come see our impact firsthand",
-      info: "123 Charity St, Nairobi, Kenya",
+      info: "Westlands, Nairobi, Kenya",
       action: "Get Directions",
       handler: handleGetDirections,
       gradient: "from-purple-500 to-pink-500",
@@ -243,8 +243,8 @@ const Contact = () => {
 
   const officeHours = [
     { day: "Mon - Fri", hours: "8:00 AM - 6:00 PM", open: true },
-    { day: "Saturday", hours: "9:00 AM - 2:00 PM", open: true },
-    { day: "Sunday", hours: "Closed", open: false },
+    { day: "Saturday", hours: "Closed", open: false },
+    { day: "Sunday", hours: "9:00 AM - 2:00 PM", open: true },
   ];
 
   const kenyaTime = new Date().toLocaleString("en-US", {

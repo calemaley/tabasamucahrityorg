@@ -230,10 +230,7 @@ const Programs = () => {
         </p>
 
         <div className="space-y-2 mb-4">
-          <div className="flex items-center text-charity-neutral-600">
-            <MapPin className="h-4 w-4 mr-2 text-charity-orange-500" />
-            <span className="text-sm">{event.venue}</span>
-          </div>
+          
           <div className="flex items-center text-charity-neutral-600">
             <Phone className="h-4 w-4 mr-2 text-charity-orange-500" />
             <span className="text-sm">{event.contact}</span>
@@ -685,13 +682,6 @@ const Programs = () => {
                 {/* Event Details Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="bg-charity-orange-50 p-6 rounded-xl">
-                    <h3 className="text-lg font-bold text-charity-neutral-800 mb-4 flex items-center">
-                      <MapPin className="h-5 w-5 text-charity-orange-600 mr-2" />
-                      Event Location
-                    </h3>
-                    <p className="text-charity-neutral-700 mb-4">
-                      {selectedEvent.venue}
-                    </p>
                     <div className="flex items-center space-x-2">
                       <Phone className="h-4 w-4 text-charity-orange-600" />
                       <span className="text-charity-neutral-700">
