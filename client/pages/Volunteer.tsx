@@ -66,7 +66,7 @@ const Volunteer = () => {
       skills: ["Teaching", "Patience", "Creativity", "Communication"],
       impact: "Directly support 20-30 students daily",
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+        "https://images.pexels.com/photos/3059652/pexels-photo-3059652.jpeg?auto=compress&cs=tinysrgb&w=800",
       urgent: false,
       icon: GraduationCap,
     },
@@ -98,7 +98,7 @@ const Volunteer = () => {
       ],
       impact: "Serve 100+ patients monthly",
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+        "https://images.pexels.com/photos/4263200/pexels-photo-4263200.jpeg?auto=compress&cs=tinysrgb&w=800",
       urgent: true,
       icon: Stethoscope,
     },
@@ -129,7 +129,7 @@ const Volunteer = () => {
       ],
       impact: "Support 100+ community members",
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+        "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=800",
       urgent: false,
       icon: Users,
     },
@@ -156,7 +156,7 @@ const Volunteer = () => {
       skills: ["Mentoring", "Communication", "Empathy", "Organization"],
       impact: "Mentor 15-20 young people",
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+        "https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&w=800",
       urgent: false,
       icon: Heart,
     },
@@ -188,7 +188,7 @@ const Volunteer = () => {
       ],
       impact: "Support 10-15 individuals with special needs",
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+        "https://images.pexels.com/photos/7652031/pexels-photo-7652031.jpeg?auto=compress&cs=tinysrgb&w=800",
       urgent: true,
       icon: Heart,
     },
@@ -215,7 +215,7 @@ const Volunteer = () => {
       skills: ["Technology", "Teaching", "Problem-solving", "Patience"],
       impact: "Train 50+ people in digital skills monthly",
       image:
-        "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
+        "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
       urgent: false,
       icon: BookOpen,
     },
