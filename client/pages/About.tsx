@@ -424,7 +424,7 @@ const About = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-80 object-cover object-top group-hover:scale-110 transition-transform duration-700"
+                      className={`w-full h-80 object-cover ${member.name === "Philip Muga" ? "object-center" : "object-top"} group-hover:scale-110 transition-transform duration-700`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 text-white">
@@ -508,7 +508,7 @@ const About = () => {
                     <img
                       src={selectedMember.image}
                       alt={selectedMember.name}
-                      className="w-full h-64 md:h-48 object-cover object-top rounded-xl shadow-lg"
+                      className={`w-full h-64 md:h-48 object-cover ${selectedMember.name === "Philip Muga" ? "object-center" : "object-top"} rounded-xl shadow-lg`}
                     />
                   </div>
 
