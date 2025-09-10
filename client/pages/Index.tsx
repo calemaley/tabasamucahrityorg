@@ -215,6 +215,8 @@ const Index = () => {
   const stats = [
     { number: "15+", label: "Total Campaigns" },
     { number: "50+", label: "Volunteers" },
+    { number: "8K+", label: "Quick Fundraise" },
+    { number: "87+", label: "Happy Volunteers" },
   ];
 
   useEffect(() => {
