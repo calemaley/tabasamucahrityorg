@@ -102,6 +102,7 @@ const Sponsor = () => {
 
   const impactStats = [
     { number: "30", label: "Children Currently Sponsored" },
+    { number: "89%", label: "Graduate to Next Level" },
     { number: "17", label: "Children Graduated" },
     { number: "7", label: "Now in University" },
   ];
