@@ -151,7 +151,7 @@ const Sponsor = () => {
       <section className="pt-0 bg-gradient-to-br from-charity-orange-500 to-charity-green-600 relative overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F9a62f52bea6e463bbae63722453a7c48?alt=media&token=bae9cd15-3309-40bc-a90f-42a3b9357eb5&apiKey=12495c24e4264caea932f0480ae45edc"
+          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F0ac22e1460254066a1ee79945f4be04c?alt=media&token=bbecbe0f-5a74-4d1c-8969-b61382d39178&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
           autoPlay
           muted
           loop
