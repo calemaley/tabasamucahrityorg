@@ -5,31 +5,6 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Programs from "./pages/Programs";
-import SchoolVolunteering from "./pages/SchoolVolunteering";
-import HospitalInternships from "./pages/HospitalInternships";
-import GetInvolved from "./pages/GetInvolved";
-import Sponsor from "./pages/Sponsor";
-import Donate from "./pages/Donate";
-import Volunteer from "./pages/Volunteer";
-import Children from "./pages/Children";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import Admin from "./pages/Admin";
-
-const queryClient = new QueryClient();
-
-import "./global.css";
-
-import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -124,7 +99,5 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
-
-createRoot(document.getElementById("root")!).render(<App />);
 
 createRoot(document.getElementById("root")!).render(<App />);
