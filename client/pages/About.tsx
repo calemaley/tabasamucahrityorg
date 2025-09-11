@@ -130,8 +130,17 @@ const About = () => {
     <>
       {/* Hero Section */}
       <section className="pt-0 relative overflow-hidden bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F1f6c0f523ad54f18a5f52f37dc049f0c?alt=media&token=9e514447-4494-4cd5-9725-09fe72e6d126&apiKey=12495c24e4264caea932f0480ae45edc"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-black/30" />
         <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <AnimatedSection animation="slideUp">
             <div className="text-center mb-16">
               <h1 className="text-5xl md:text-6xl font-bold text-charity-neutral-800 mb-6">
