@@ -235,7 +235,6 @@ const Programs = () => {
         </p>
 
         <div className="space-y-2 mb-4">
-          
           <div className="flex items-center text-charity-neutral-600">
             <Phone className="h-4 w-4 mr-2 text-charity-orange-500" />
             <span className="text-sm">{event.contact}</span>
@@ -616,14 +615,16 @@ const Programs = () => {
                       Photo Gallery
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {selectedEvent.gallery.map((url: string, index: number) => (
-                        <img
-                          key={index}
-                          src={url}
-                          alt={`${selectedEvent.title} photo ${index + 1}`}
-                          className="w-full h-48 object-cover rounded-xl"
-                        />
-                      ))}
+                      {selectedEvent.gallery.map(
+                        (url: string, index: number) => (
+                          <img
+                            key={index}
+                            src={url}
+                            alt={`${selectedEvent.title} photo ${index + 1}`}
+                            className="w-full h-48 object-cover rounded-xl"
+                          />
+                        ),
+                      )}
                     </div>
                   </div>
                 )}
