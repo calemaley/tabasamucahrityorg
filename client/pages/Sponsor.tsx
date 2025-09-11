@@ -107,6 +107,9 @@ const Sponsor = () => {
     { number: "7", label: "Now in University" },
   ];
 
+  // Show only the first 4 children across the site
+  const displayedChildren = allChildren.slice(0, 4);
+
   const handleSponsorApplication = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -324,7 +327,7 @@ const Sponsor = () => {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {allChildren.map((child, index) => (
+            {displayedChildren.map((child, index) => (
               <AnimatedSection
                 key={child.id}
                 animation="scaleIn"
