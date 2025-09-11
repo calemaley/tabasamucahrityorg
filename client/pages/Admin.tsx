@@ -112,7 +112,9 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   // SSE realtime stream
   useEffect(() => {
-    const es = new EventSource("/api/admin/events/stream");
+    const token = localStorage.getItem("samu_token");
+    const url = token ? `/api/admin/events/stream?token=${encodeURIComponent(token)}` : "/api/admin/events/stream";
+    const es = new EventSource(url);
     es.onmessage = (msg) => {
       try {
         const payload = JSON.parse(msg.data);
@@ -132,6 +134,12 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     return () => es.close();
   }, []);
+
+  const doDelete = async (path: string) => {
+    const headers = getAuthHeaders();
+    await fetch(path, { method: "DELETE", headers });
+    reloadAll();
+  };
 
   const total = useMemo(() => events.length, [events]);
 
