@@ -142,29 +142,27 @@ const Index = () => {
     },
   ];
 
-  const heroVideos = [
-    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F1f6c0f523ad54f18a5f52f37dc049f0c?alt=media&token=9e514447-4494-4cd5-9725-09fe72e6d126&apiKey=12495c24e4264caea932f0480ae45edc",
-    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F9a62f52bea6e463bbae63722453a7c48?alt=media&token=bae9cd15-3309-40bc-a90f-42a3b9357eb5&apiKey=12495c24e4264caea932f0480ae45edc",
-    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F923a22f1c680415a9aeefec2fad8a04c?alt=media&token=27781788-7fd4-4088-9027-e6a8fc72cce9&apiKey=12495c24e4264caea932f0480ae45edc",
-    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2Fe8c47f925a6f4688bcf58cde4a4de079?alt=media&token=3932eb45-6e62-45eb-ad95-41c0d85f8a5c&apiKey=12495c24e4264caea932f0480ae45edc",
-  ];
 
   const heroImages = [
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F0417d8d5fa4c4c179a585018273842e1?format=webp&width=800",
-      quote: "Every child deserves a chance to shine",
+      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fcf3963a51367466792ca6dbf43055584?format=webp&width=1600",
+      quote: "We value humanity",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fe188b6ea2bc94b82ae48a0f7509dc12a?format=webp&width=800",
-      quote: "Together, we can build a brighter future",
+      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fee16c7e0b8ce45359bc3469c94b5dd8e?format=webp&width=1600",
+      quote: "Together, we build brighter futures",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F26d9b79fb301411bb6a581aed3db1493?format=webp&width=800",
-      quote: "Hope is the light that guides us forward",
+      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F4b47460764c141f4b485cd1e04cff903?format=webp&width=1600",
+      quote: "Every smile tells a story of hope",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2Fde0dc405e48c4e8a96b2550349dbee45?format=webp&width=800",
-      quote: "Small acts of kindness create lasting change",
+      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F756bbf432a7540c6bfd45df87aa8734b?format=webp&width=1600",
+      quote: "Compassion in action",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fda40ee32fcc744a6b9b61967b1b448ce?format=webp&width=1600",
+      quote: "Community, care, and dignity",
     },
   ];
 
@@ -258,13 +256,10 @@ const Index = () => {
                   index === currentSlide ? "opacity-100" : "opacity-0",
                 )}
               >
-                <video
-                  src={heroVideos[index % heroVideos.length]}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
+                <img
+                  src={heroImages[index].src}
+                  alt="Tabasamu Charity"
+                  className="w-full h-full object-cover object-[center_35%]"
                 />
                 <div className="absolute inset-0 bg-black/40" />
               </div>
