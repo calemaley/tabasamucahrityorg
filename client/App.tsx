@@ -66,34 +66,30 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <PageWrapper>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route
-              path="/programs/school-volunteering"
-              element={<SchoolVolunteering />}
-            />
-            <Route
-              path="/programs/hospital-internships"
-              element={<HospitalInternships />}
-            />
-            <Route path="/programs/*" element={<Programs />} />
-            <Route path="/get-involved" element={<GetInvolved />} />
-            <Route path="/get-involved/sponsor" element={<Sponsor />} />
-            <Route path="/get-involved/donate" element={<Donate />} />
-            <Route path="/get-involved/volunteer" element={<Volunteer />} />
-            <Route path="/sponsor" element={<Sponsor />} />
-            <Route path="/donate" element={<Donate />} />
-            <Route path="/volunteer" element={<Volunteer />} />
-            <Route path="/children" element={<Children />} />
-            <Route path="/get-involved/*" element={<GetInvolved />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/samu" element={<Admin />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/programs/school-volunteering" element={<SchoolVolunteering />} />
+              <Route path="/programs/hospital-internships" element={<HospitalInternships />} />
+              <Route path="/programs/*" element={<Programs />} />
+              <Route path="/get-involved" element={<GetInvolved />} />
+              <Route path="/get-involved/sponsor" element={<Sponsor />} />
+              <Route path="/get-involved/donate" element={<Donate />} />
+              <Route path="/get-involved/volunteer" element={<Volunteer />} />
+              <Route path="/sponsor" element={<Sponsor />} />
+              <Route path="/donate" element={<Donate />} />
+              <Route path="/volunteer" element={<Volunteer />} />
+              <Route path="/children" element={<Children />} />
+              <Route path="/get-involved/*" element={<GetInvolved />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/samu" element={<Admin />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </PageWrapper>
       </BrowserRouter>
     </TooltipProvider>
