@@ -393,4 +393,25 @@ adminRouter.delete("/media/:id", (req, res) => {
   }
 });
 
+// DB backup endpoint
+adminRouter.post('/db/backup', (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const dataDir = path.resolve(process.cwd(), 'server/data');
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+    const backupsDir = path.join(dataDir, 'backups');
+    if (!fs.existsSync(backupsDir)) fs.mkdirSync(backupsDir, { recursive: true });
+    const src = path.join(dataDir, 'db.sqlite');
+    const ts = Date.now();
+    const dst = path.join(backupsDir, `db-${ts}.sqlite`);
+    fs.copyFileSync(src, dst);
+    emitter.emit('resource', { resource: 'db', action: 'backup', file: `db-${ts}.sqlite`, ts });
+    res.json({ ok: true, file: `db-${ts}.sqlite` });
+  } catch (err) {
+    console.error('backup failed', err);
+    res.status(500).json({ error: 'backup failed' });
+  }
+});
+
 export { adminRouter };
