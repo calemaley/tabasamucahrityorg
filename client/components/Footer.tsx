@@ -204,7 +204,10 @@ const Footer = () => {
                   await fetch("/api/admin/track", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ type: "newsletter_subscribe", payload: { email } }),
+                    body: JSON.stringify({
+                      type: "newsletter_subscribe",
+                      payload: { email },
+                    }),
                   });
                   setSubscribed(true);
                   setEmail("");

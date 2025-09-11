@@ -278,7 +278,10 @@ const Volunteer = () => {
       await fetch("/api/admin/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "volunteer_application", payload: volunteerData }),
+        body: JSON.stringify({
+          type: "volunteer_application",
+          payload: volunteerData,
+        }),
       });
     } catch {}
     alert(

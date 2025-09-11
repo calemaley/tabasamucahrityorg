@@ -36,7 +36,11 @@ class EventStore {
 
   private persist() {
     try {
-      fs.writeFileSync(this.filePath, JSON.stringify(this.events, null, 2), "utf-8");
+      fs.writeFileSync(
+        this.filePath,
+        JSON.stringify(this.events, null, 2),
+        "utf-8",
+      );
     } catch (err) {
       console.error("Failed to persist events store", err);
     }
@@ -46,7 +50,9 @@ class EventStore {
     return this.events.slice(-1000); // cap
   }
 
-  add(evt: Omit<TrackedEvent, "id" | "ts"> & Partial<Pick<TrackedEvent, "ts">>) {
+  add(
+    evt: Omit<TrackedEvent, "id" | "ts"> & Partial<Pick<TrackedEvent, "ts">>,
+  ) {
     const full: TrackedEvent = {
       id: Math.random().toString(36).slice(2) + Date.now().toString(36),
       ts: evt.ts ?? Date.now(),

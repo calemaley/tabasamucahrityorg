@@ -142,7 +142,6 @@ const Index = () => {
     },
   ];
 
-
   const heroImages = [
     {
       src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fcf3963a51367466792ca6dbf43055584?format=webp&width=1600",

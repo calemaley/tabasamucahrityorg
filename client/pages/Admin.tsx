@@ -31,7 +31,9 @@ const Login = ({ onLogin }: { onLogin: () => void }) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-charity-orange-600 to-charity-green-600 p-6">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-charity-neutral-800">Tabasamu Admin</h1>
+          <h1 className="text-3xl font-bold text-charity-neutral-800">
+            Tabasamu Admin
+          </h1>
           <p className="text-charity-neutral-600">Sign in to /samu dashboard</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -69,8 +71,12 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   // Load initial data
   useEffect(() => {
-    fetch("/api/admin/events").then((r) => r.json()).then((d) => setEvents(d.events || []));
-    fetch("/api/admin/stats").then((r) => r.json()).then((d) => setCounts(d.counts || {}));
+    fetch("/api/admin/events")
+      .then((r) => r.json())
+      .then((d) => setEvents(d.events || []));
+    fetch("/api/admin/stats")
+      .then((r) => r.json())
+      .then((d) => setCounts(d.counts || {}));
   }, []);
 
   // SSE realtime stream
@@ -94,10 +100,16 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold">Tabasamu Admin Dashboard</h1>
           <div className="flex items-center gap-3">
-            <Link to="/" className="text-charity-orange-600 hover:underline flex items-center gap-1">
+            <Link
+              to="/"
+              className="text-charity-orange-600 hover:underline flex items-center gap-1"
+            >
               <Eye className="h-4 w-4" /> View Site
             </Link>
-            <button onClick={onLogout} className="px-3 py-1.5 rounded-lg bg-charity-neutral-200 hover:bg-charity-neutral-300 flex items-center gap-1">
+            <button
+              onClick={onLogout}
+              className="px-3 py-1.5 rounded-lg bg-charity-neutral-200 hover:bg-charity-neutral-300 flex items-center gap-1"
+            >
               <LogOut className="h-4 w-4" /> Logout
             </button>
           </div>
@@ -109,12 +121,26 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {[
             { label: "Total Events", value: total },
-            { label: "Contacts", value: counts["contact_submit"] || 0, icon: Mail },
-            { label: "Newsletter", value: counts["newsletter_subscribe"] || 0, icon: Users },
-            { label: "Volunteers", value: counts["volunteer_application"] || 0, icon: Users },
+            {
+              label: "Contacts",
+              value: counts["contact_submit"] || 0,
+              icon: Mail,
+            },
+            {
+              label: "Newsletter",
+              value: counts["newsletter_subscribe"] || 0,
+              icon: Users,
+            },
+            {
+              label: "Volunteers",
+              value: counts["volunteer_application"] || 0,
+              icon: Users,
+            },
           ].map((card, i) => (
             <div key={i} className="bg-white rounded-xl p-6 shadow border">
-              <div className="text-charity-neutral-500 text-sm">{card.label}</div>
+              <div className="text-charity-neutral-500 text-sm">
+                {card.label}
+              </div>
               <div className="text-3xl font-bold">{card.value}</div>
             </div>
           ))}
@@ -135,10 +161,14 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
               <tbody>
                 {events.map((e) => (
                   <tr key={e.id} className="border-b last:border-0">
-                    <td className="p-3 whitespace-nowrap">{new Date(e.ts).toLocaleString()}</td>
+                    <td className="p-3 whitespace-nowrap">
+                      {new Date(e.ts).toLocaleString()}
+                    </td>
                     <td className="p-3 font-medium">{e.type}</td>
                     <td className="p-3">
-                      <pre className="whitespace-pre-wrap text-xs text-charity-neutral-600">{JSON.stringify(e.payload, null, 2)}</pre>
+                      <pre className="whitespace-pre-wrap text-xs text-charity-neutral-600">
+                        {JSON.stringify(e.payload, null, 2)}
+                      </pre>
                     </td>
                   </tr>
                 ))}
@@ -152,8 +182,19 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
 };
 
 const Admin = () => {
-  const [auth, setAuth] = useState<boolean>(localStorage.getItem("samu_auth") === "1");
-  return auth ? <AdminDashboard onLogout={() => { localStorage.removeItem("samu_auth"); setAuth(false); }} /> : <Login onLogin={() => setAuth(true)} />;
+  const [auth, setAuth] = useState<boolean>(
+    localStorage.getItem("samu_auth") === "1",
+  );
+  return auth ? (
+    <AdminDashboard
+      onLogout={() => {
+        localStorage.removeItem("samu_auth");
+        setAuth(false);
+      }}
+    />
+  ) : (
+    <Login onLogin={() => setAuth(true)} />
+  );
 };
 
 export default Admin;

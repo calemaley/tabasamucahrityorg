@@ -120,7 +120,10 @@ const Sponsor = () => {
       await fetch("/api/admin/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "sponsorship_application", payload: sponsorshipInfo }),
+        body: JSON.stringify({
+          type: "sponsorship_application",
+          payload: sponsorshipInfo,
+        }),
       });
     } catch {}
 
