@@ -272,9 +272,15 @@ const Volunteer = () => {
     }));
   };
 
-  const handleVolunteerApplication = (e: React.FormEvent) => {
+  const handleVolunteerApplication = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would submit to an API
+    try {
+      await fetch("/api/admin/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "volunteer_application", payload: volunteerData }),
+      });
+    } catch {}
     alert(
       "Volunteer application submitted successfully! Our volunteer coordinator will contact you within 3-5 business days.",
     );
