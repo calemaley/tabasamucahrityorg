@@ -45,6 +45,39 @@ const Navigation = () => {
     setActiveDropdown(activeDropdown === menu ? null : menu);
   };
 
+  // Prefetch page code on hover to speed navigation
+  const prefetch = (href: string) => {
+    // map href -> dynamic import
+    switch (href) {
+      case "/about":
+        import("@/pages/About");
+        break;
+      case "/programs":
+        import("@/pages/Programs");
+        break;
+      case "/get-involved":
+        import("@/pages/GetInvolved");
+        break;
+      case "/blog":
+        import("@/pages/Blog");
+        break;
+      case "/contact":
+        import("@/pages/Contact");
+        break;
+      case "/children":
+        import("@/pages/Children");
+        break;
+      case "/donate":
+        import("@/pages/Donate");
+        break;
+      case "/volunteer":
+        import("@/pages/Volunteer");
+        break;
+      default:
+        break;
+    }
+  };
+
   const menuItems = [
     { label: "Home", href: "/", icon: Home },
     {
