@@ -51,8 +51,15 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch("/api/admin/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "contact_submit", payload: formData }),
+      });
+    } catch {}
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -258,15 +265,16 @@ const Contact = () => {
     <>
       {/* Dynamic Hero Section */}
       <section className="relative min-h-screen overflow-hidden">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F56ef23c8683e4b1d97e971a02d05aed6?alt=media&token=dd9137c2-d37e-4957-b879-77f0f74b266d&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
-          autoPlay
-          muted
-          loop
-          playsInline
+        {/* Google Maps background */}
+        <iframe
+          title="Map"
+          className="absolute inset-0 w-full h-full"
+          style={{ filter: "grayscale(50%) brightness(0.7)" }}
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.857930370166!2d36.80649407504936!3d-1.268155035602021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10f8d9e1f3a5%3A0x9b1a4d3f4f1bbf0!2sWestlands%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-400/70 via-charity-green-400/70 to-charity-orange-600/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-charity-orange-400/60 via-charity-green-400/60 to-charity-orange-600/60" />
         {/* Animated background elements */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
