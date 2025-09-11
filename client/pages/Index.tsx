@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 import { recentBlogs } from "@shared/blog-data";
 import { recentPrograms } from "@shared/programs-data";
+import { allChildren } from "@shared/children-data";
 import Carousel from "@/components/Carousel";
 
 /**
@@ -79,69 +80,8 @@ const SectionReveal = ({
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Featured children for homepage (first 4)
-  const featuredChildren = [
-    {
-      id: "kevin-001",
-      name: "Kevin Gitonga",
-      age: 8,
-      location: "Mwanza Region",
-      school: "Mwanza Primary School",
-      grade: "Grade 3",
-      story:
-        "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fb8b21871733e41299357e2253b20e98f?format=webp&width=800",
-      monthlyNeed: 45,
-      interests: ["Mathematics", "Reading", "Farming"],
-      dreamJob: "Teacher",
-    },
-    {
-      id: "david-002",
-      name: "David Kimaro",
-      age: 12,
-      location: "Arusha Region",
-      school: "Arusha Community Secondary",
-      grade: "Grade 9",
-      story:
-        "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F950583433afd4f3aa883c9d1cc87031d?format=webp&width=800",
-      monthlyNeed: 65,
-      interests: ["Biology", "Chemistry", "Football"],
-      dreamJob: "Doctor",
-    },
-    {
-      id: "grace-003",
-      name: "Grace Mtema",
-      age: 15,
-      location: "Dodoma Region",
-      school: "Dodoma Girls Education Center",
-      grade: "Form 3",
-      story:
-        "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F4938be7564894703871587a39102255b?format=webp&width=800",
-      monthlyNeed: 75,
-      interests: ["Mathematics", "Physics", "Technology"],
-      dreamJob: "Engineer",
-    },
-    {
-      id: "john-004",
-      name: "John Massawe",
-      age: 10,
-      location: "Kilimanjaro Region",
-      school: "Kilimanjaro Primary School",
-      grade: "Grade 5",
-      story:
-        "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F5de7bd1782db4332a9ee345b7cc61f01?format=webp&width=800",
-      monthlyNeed: 50,
-      interests: ["Reading", "Writing", "History"],
-      dreamJob: "Writer",
-    },
-  ];
+  // Featured children for homepage (use first 4 from shared data)
+  const featuredChildren = allChildren.slice(0, 4);
 
   const heroImages = [
     {
@@ -584,10 +524,10 @@ const Index = () => {
                           Monthly Support:
                         </span>
                         <div className="text-2xl font-bold text-charity-orange-600">
-                          KES {(child.monthlyNeed * 135).toLocaleString()}
+                          KES {child.monthlyNeed.toLocaleString()}
                         </div>
                         <div className="text-xs text-charity-neutral-500">
-                          ≈ ${child.monthlyNeed} USD
+                          ≈ ${Math.round(child.monthlyNeed / 135)} USD
                         </div>
                       </div>
                     </div>
