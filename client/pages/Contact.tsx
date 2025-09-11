@@ -675,16 +675,7 @@ const Contact = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-24 relative overflow-hidden">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F5823524-hd_1920_1080_25fps.mp4?alt=media&token=f2613d03-f653-4607-beea-0efeb30bb327&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-charity-orange-600/85 to-charity-green-600/85" />
+      <section className="py-24 bg-gradient-to-r from-charity-orange-600 to-charity-green-600 relative overflow-hidden">
         {/* Animated background patterns */}
         <div className="absolute inset-0">
           {[...Array(15)].map((_, i) => (
