@@ -61,7 +61,7 @@ const About = () => {
       fullBio:
         "I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.",
       email: "lilliane@tabasamu.org",
-      phone: "+254-700-123-458",
+      phone: "+254717999672",
       achievements: [
         "Championed community outreach and support programs",
         "Advocated for vulnerable populations and social justice",
