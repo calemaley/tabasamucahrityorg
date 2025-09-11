@@ -88,6 +88,10 @@ const AdminDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const [showMediaForm, setShowMediaForm] = useState(false);
   const [newMedia, setNewMedia] = useState({ name: "", url: "", meta: "{}" });
 
+  const [editingProgramId, setEditingProgramId] = useState<string>('');
+  const [editingPostId, setEditingPostId] = useState<string>('');
+  const [editingMediaId, setEditingMediaId] = useState<string>('');
+
   const getAuthHeaders = () => {
     const token = localStorage.getItem("samu_token");
     return token ? { Authorization: `Bearer ${token}` } : {};
