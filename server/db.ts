@@ -95,4 +95,20 @@ CREATE TABLE IF NOT EXISTS media (
 );
 `);
 
+// Seed default admin if none exists
+import bcrypt from "bcrypt";
+const DEFAULT_ADMIN = process.env.DEFAULT_ADMIN || "teamtabasamu";
+const DEFAULT_PASS = process.env.DEFAULT_ADMIN_PASS || "teamtabasamu908Q@2025";
+try {
+  const row: any = sqlite.prepare("SELECT id FROM admins WHERE username = ?").get(DEFAULT_ADMIN);
+  if (!row) {
+    const id = require("crypto").randomUUID();
+    const hash = bcrypt.hashSync(DEFAULT_PASS, 10);
+    sqlite.prepare("INSERT INTO admins (id, username, password_hash, created_at) VALUES (?, ?, ?, ?)").run(id, DEFAULT_ADMIN, hash, Date.now());
+    console.log("Seeded default admin user", DEFAULT_ADMIN);
+  }
+} catch (err) {
+  console.error("Failed to seed admin", err);
+}
+
 export { sqlite };
