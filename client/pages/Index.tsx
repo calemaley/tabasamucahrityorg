@@ -142,6 +142,13 @@ const Index = () => {
     },
   ];
 
+  const heroVideos = [
+    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F1f6c0f523ad54f18a5f52f37dc049f0c?alt=media&token=9e514447-4494-4cd5-9725-09fe72e6d126&apiKey=12495c24e4264caea932f0480ae45edc",
+    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F9a62f52bea6e463bbae63722453a7c48?alt=media&token=bae9cd15-3309-40bc-a90f-42a3b9357eb5&apiKey=12495c24e4264caea932f0480ae45edc",
+    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F923a22f1c680415a9aeefec2fad8a04c?alt=media&token=27781788-7fd4-4088-9027-e6a8fc72cce9&apiKey=12495c24e4264caea932f0480ae45edc",
+    "https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2Fe8c47f925a6f4688bcf58cde4a4de079?alt=media&token=3932eb45-6e62-45eb-ad95-41c0d85f8a5c&apiKey=12495c24e4264caea932f0480ae45edc",
+  ];
+
   const heroImages = [
     {
       src: "https://cdn.builder.io/api/v1/image/assets%2Fde779a14d1ab4ec09cf8fa4e9c38ad5e%2F0417d8d5fa4c4c179a585018273842e1?format=webp&width=800",
@@ -251,9 +258,12 @@ const Index = () => {
                   index === currentSlide ? "opacity-100" : "opacity-0",
                 )}
               >
-                <img
-                  src={image.src}
-                  alt=""
+                <video
+                  src={heroVideos[index % heroVideos.length]}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40" />
