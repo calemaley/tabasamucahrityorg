@@ -105,32 +105,32 @@ const About = () => {
       achievement: "First Charity",
     },
     {
-      year: "2017",
-      event: "Launched our education support program",
-      achievement: "Built first school library",
-    },
-    {
-      year: "2019",
-      event: "Expanded healthcare services",
-      achievement: "Mobile clinic program started",
-    },
-    {
-      year: "2021",
-      event: "COVID-19 emergency response",
-      achievement: "Provided aid to 500+ families",
+      year: "2022",
+      event: "- Football tournaments ",
+      achievement: "Mens mental health awareness",
     },
     {
       year: "2023",
-      event: "Reached milestone of 1000 children helped",
-      achievement: "Opened community center",
+      event: "free medical camp",
+      achievement: "Mobile clinic program started",
     },
     {
       year: "2024",
+      event: "Charity Work",
+      achievement: "visited Rwai childrens home ",
+    },
+    {
+      year: "2025",
+      event: "Free Medical Camp",
+      achievement: "More smiles were created ",
+    },
+    {
+      year: "2025",
       event: "Digital learning initiative launched",
       achievement: "Technology labs in 5 schools",
     },
-  ];
-
+ ];
+  
   return (
     <>
       {/* Hero Section */}
