@@ -23,7 +23,6 @@ import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 import { recentBlogs } from "@shared/blog-data";
 import { recentPrograms } from "@shared/programs-data";
 import Carousel from "@/components/Carousel";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /**
  * SectionReveal: simple reveal-on-scroll wrapper using IntersectionObserver.
