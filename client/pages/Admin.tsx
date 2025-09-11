@@ -88,16 +88,22 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [activeTab, setActiveTab] = useState<string>("events");
 
   // Fetch helpers
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem("samu_token");
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  };
+
   const reloadAll = () => {
-    fetch("/api/admin/events").then((r) => r.json()).then((d) => setEvents(d.events || []));
-    fetch("/api/admin/stats").then((r) => r.json()).then((d) => setCounts(d.counts || {}));
-    fetch("/api/admin/contacts").then((r) => r.json()).then((d) => setContacts(d.contacts || d));
-    fetch("/api/admin/newsletter").then((r) => r.json()).then((d) => setSubscribers(d.subscribers || d));
-    fetch("/api/admin/volunteers").then((r) => r.json()).then((d) => setVolunteers(d.volunteers || d));
-    fetch("/api/admin/programs").then((r) => r.json()).then((d) => setPrograms(d.programs || d.programs || []));
-    fetch("/api/admin/blog").then((r) => r.json()).then((d) => setPosts(d.posts || d));
-    fetch("/api/admin/donations").then((r) => r.json()).then((d) => setDonations(d.donations || d));
-    fetch("/api/admin/media").then((r) => r.json()).then((d) => setMedia(d.media || d));
+    const headers = getAuthHeaders();
+    fetch("/api/admin/events", { headers }).then((r) => r.json()).then((d) => setEvents(d.events || []));
+    fetch("/api/admin/stats", { headers }).then((r) => r.json()).then((d) => setCounts(d.counts || {}));
+    fetch("/api/admin/contacts", { headers }).then((r) => r.json()).then((d) => setContacts(d.contacts || d));
+    fetch("/api/admin/newsletter", { headers }).then((r) => r.json()).then((d) => setSubscribers(d.subscribers || d));
+    fetch("/api/admin/volunteers", { headers }).then((r) => r.json()).then((d) => setVolunteers(d.volunteers || d));
+    fetch("/api/admin/programs", { headers }).then((r) => r.json()).then((d) => setPrograms(d.programs || d.programs || []));
+    fetch("/api/admin/blog", { headers }).then((r) => r.json()).then((d) => setPosts(d.posts || d));
+    fetch("/api/admin/donations", { headers }).then((r) => r.json()).then((d) => setDonations(d.donations || d));
+    fetch("/api/admin/media", { headers }).then((r) => r.json()).then((d) => setMedia(d.media || d));
   };
 
   useEffect(() => {
