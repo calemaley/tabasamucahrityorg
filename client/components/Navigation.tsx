@@ -203,6 +203,7 @@ const Navigation = () => {
                   ) : (
                     <Link
                       to={item.href}
+                      onMouseEnter={() => prefetch(item.href)}
                       className={cn(
                         "flex items-center space-x-1.5 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg group",
                         isScrolled || isMenuOpen
