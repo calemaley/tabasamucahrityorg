@@ -143,12 +143,6 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const total = useMemo(() => events.length, [events]);
 
-  // Deletion helpers
-  const doDelete = async (path: string) => {
-    await fetch(path, { method: "DELETE" });
-    reloadAll();
-  };
-
   return (
     <div className="min-h-screen bg-charity-neutral-50">
       <div className="bg-white border-b sticky top-0 z-10">
