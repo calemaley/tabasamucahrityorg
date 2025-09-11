@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { adminRouter } from "./routes/samu-admin";
+import authRouter from "./routes/auth";
 
 export function createServer() {
   const app = express();
