@@ -21,8 +21,11 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
-  // Admin tracking API
-  app.use("/api/admin", adminRouter);
+  // Auth
+  app.use("/api/auth", authRouter);
+
+  // Admin tracking API (protected)
+  app.use("/api/admin", requireAuth, adminRouter);
 
   return app;
 }
