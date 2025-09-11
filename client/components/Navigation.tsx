@@ -50,6 +50,8 @@ const Navigation = () => {
     setActiveDropdown(activeDropdown === menu ? null : menu);
   };
 
+  const navigate = useNavigate();
+
   // Prefetch page code on hover to speed navigation
   const prefetch = (href: string) => {
     // map href -> dynamic import
@@ -81,6 +83,14 @@ const Navigation = () => {
       default:
         break;
     }
+  };
+
+  // Programmatic navigate that waits for prefetch to start
+  const navigateOnClick = async (href: string) => {
+    try {
+      prefetch(href);
+    } catch {}
+    navigate(href);
   };
 
   const menuItems = [
