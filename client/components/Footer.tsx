@@ -7,11 +7,14 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
   useEffect(() => {
     // Only initialize once
     const map = L.map("kenyaMiniMap", {
@@ -194,16 +197,33 @@ const Footer = () => {
               Subscribe to our newsletter to receive the latest updates about
               our programs and impact.
             </p>
-            <div className="max-w-md mx-auto flex space-x-3">
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                try {
+                  await fetch("/api/admin/track", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ type: "newsletter_subscribe", payload: { email } }),
+                  });
+                  setSubscribed(true);
+                  setEmail("");
+                } catch {}
+              }}
+              className="max-w-md mx-auto flex space-x-3"
+            >
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-2 bg-charity-neutral-700 border border-charity-neutral-600 rounded-lg text-white placeholder-charity-neutral-400 focus:outline-none focus:ring-2 focus:ring-charity-orange-500"
               />
               <button className="px-6 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium">
-                Subscribe
+                {subscribed ? "Subscribed" : "Subscribe"}
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
