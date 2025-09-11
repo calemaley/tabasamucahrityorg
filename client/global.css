@@ -1,3 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Tabasamu Charity Colors */
+    --charity-orange-50: 39 100% 97%;
+    --charity-orange-100: 37 100% 93%;
+    --charity-orange-200: 36 100% 87%;
+    --charity-orange-300: 33 100% 78%;
+    --charity-orange-400: 29 100% 67%;
+    --charity-orange-500: 25 95% 57%;
+    --charity-orange-600: 21 90% 48%;
+    --charity-orange-700: 17 88% 40%;
+    --charity-orange-800: 15 79% 34%;
+    --charity-orange-900: 15 75% 28%;
+
+    --charity-green-50: 120 60% 97%;
+    --charity-green-100: 120 60% 93%;
+    --charity-green-200: 122 55% 84%;
+    --charity-green-300: 124 52% 72%;
+    --charity-green-400: 125 48% 58%;
+    --charity-green-500: 125 44% 45%;
+    --charity-green-600: 125 43% 36%;
+    --charity-green-700: 125 45% 29%;
+    --charity-green-800: 125 44% 24%;
+    --charity-green-900: 125 43% 20%;
+
+    --charity-neutral-50: 60 9% 98%;
+    --charity-neutral-100: 30 9% 95%;
+    --charity-neutral-200: 24 6% 90%;
+    --charity-neutral-300: 24 5% 82%;
+    --charity-neutral-400: 24 5% 64%;
+    --charity-neutral-500: 25 5% 45%;
+    --charity-neutral-600: 33 5% 32%;
+    --charity-neutral-700: 30 6% 25%;
+    --charity-neutral-800: 12 6% 15%;
+    --charity-neutral-900: 24 10% 10%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Prose styling for blog content */
+.prose-charity h3 {
+  @apply text-2xl font-bold text-charity-neutral-800 mt-8 mb-4;
+}
+
+.prose-charity p {
+  @apply mb-6 leading-relaxed;
+}
+
+.prose-charity ul {
+  @apply mb-6 pl-6;
+}
+
+.prose-charity li {
+  @apply mb-2 list-disc;
+}
+
 /* Global section animations: elements get the .is-visible class when in viewport */
 section {
   opacity: 0;
