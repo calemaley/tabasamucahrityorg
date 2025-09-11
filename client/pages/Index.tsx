@@ -81,12 +81,12 @@ const Index = () => {
   // Featured children for homepage (first 4)
   const featuredChildren = [
     {
-      id: "maria-001",
-      name: "Maria Mwangi",
+      id: "kevin-001",
+      name: "Kevin Gitonga",
       age: 8,
       location: "Mwanza Region",
       school: "Mwanza Primary School",
-      grade: "Standard 3",
+      grade: "Grade 3",
       story:
         "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
       image:
@@ -101,7 +101,7 @@ const Index = () => {
       age: 12,
       location: "Arusha Region",
       school: "Arusha Community Secondary",
-      grade: "Form 1",
+      grade: "Grade 9",
       story:
         "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
       image:
@@ -131,7 +131,7 @@ const Index = () => {
       age: 10,
       location: "Kilimanjaro Region",
       school: "Kilimanjaro Primary School",
-      grade: "Standard 5",
+      grade: "Grade 5",
       story:
         "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
       image:
