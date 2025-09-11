@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ChevronDown,
   Menu,
@@ -14,11 +14,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
-
-// Simple ErrorBoundary to surface lazy-load errors
-class ErrorBoundary extends (Error as any) {
-  // placeholder to satisfy TS - not used directly
-}
 
 interface SubMenuItem {
   label: string;
@@ -48,49 +43,6 @@ const Navigation = () => {
 
   const toggleDropdown = (menu: string) => {
     setActiveDropdown(activeDropdown === menu ? null : menu);
-  };
-
-  const navigate = useNavigate();
-
-  // Prefetch page code on hover to speed navigation
-  const prefetch = (href: string) => {
-    // map href -> dynamic import
-    switch (href) {
-      case "/about":
-        import("@/pages/About");
-        break;
-      case "/programs":
-        import("@/pages/Programs");
-        break;
-      case "/get-involved":
-        import("@/pages/GetInvolved");
-        break;
-      case "/blog":
-        import("@/pages/Blog");
-        break;
-      case "/contact":
-        import("@/pages/Contact");
-        break;
-      case "/children":
-        import("@/pages/Children");
-        break;
-      case "/donate":
-        import("@/pages/Donate");
-        break;
-      case "/volunteer":
-        import("@/pages/Volunteer");
-        break;
-      default:
-        break;
-    }
-  };
-
-  // Programmatic navigate that waits for prefetch to start
-  const navigateOnClick = async (href: string) => {
-    try {
-      prefetch(href);
-    } catch {}
-    navigate(href);
   };
 
   const menuItems = [
@@ -202,28 +154,22 @@ const Navigation = () => {
                                 {subItem.label}
                               </button>
                             ) : (
-                              <a
+                              <Link
                                 key={subItem.label}
-                                href={subItem.href}
-                                onMouseEnter={() => prefetch(subItem.href)}
-                                onClick={(e) => { e.preventDefault(); setActiveDropdown(null); navigateOnClick(subItem.href); }}
+                                to={subItem.href}
                                 className="block px-4 py-3 text-charity-neutral-600 hover:text-charity-orange-600 hover:bg-charity-orange-50 hover:translate-x-1 transition-all duration-200 mx-2 rounded-lg"
+                                onClick={() => setActiveDropdown(null)}
                               >
                                 {subItem.label}
-                              </a>
+                              </Link>
                             ),
                           )}
                         </div>
                       )}
                     </>
                   ) : (
-                    <a
-                      href={item.href}
-                      onMouseEnter={() => prefetch(item.href)}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigateOnClick(item.href);
-                      }}
+                    <Link
+                      to={item.href}
                       className={cn(
                         "flex items-center space-x-1.5 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg group",
                         isScrolled || isMenuOpen
@@ -235,7 +181,7 @@ const Navigation = () => {
                       <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">
                         {item.label}
                       </span>
-                    </a>
+                    </Link>
                   )}
                 </div>
               );
@@ -330,15 +276,17 @@ const Navigation = () => {
                                     {subItem.label}
                                   </button>
                                 ) : (
-                                  <a
+                                  <Link
                                     key={subItem.label}
-                                    href={subItem.href}
-                                    onMouseEnter={() => prefetch(subItem.href)}
-                                    onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveDropdown(null); navigateOnClick(subItem.href); }}
+                                    to={subItem.href}
                                     className="block text-charity-neutral-600 hover:text-charity-orange-600 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-charity-orange-50"
+                                    onClick={() => {
+                                      setIsMenuOpen(false);
+                                      setActiveDropdown(null);
+                                    }}
                                   >
                                     {subItem.label}
-                                  </a>
+                                  </Link>
                                 ),
                               )}
                             </div>
