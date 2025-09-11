@@ -28,8 +28,8 @@ const About = () => {
       bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
       fullBio:
         "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return. At Tabasamu Charity, we believe every smile we give, every hand we extend, and every act of care we show makes the world a better place. True humanity is found in seeing ourselves in others, uplifting those in need, and choosing love over indifference. In small acts of goodness, we build hope, and in unity, we create change.",
-      email: "judith@tabasamu.org",
-      phone: "+254-700-123-456",
+      email: "silajudith2019@gmail.com",
+      phone: "+254 714 367286",
       achievements: [
         "Coordinated over 100 community outreach programs",
         "Established partnerships with 40+ local organizations",
@@ -44,8 +44,8 @@ const About = () => {
       bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
       fullBio:
         "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose. It is seen in the kindness we show, the justice we uphold, and the hope we nurture for one another. The Bible reminds us of this truth in Micah 6:8: 'He has shown you, O man, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.' In living this way, we embrace the essence of our shared humanity and reflect the heart of God to the world.",
-      email: "philip@tabasamu.org",
-      phone: "+254-700-123-457",
+      email: "omondimuga175@gmail.com",
+      phone: "+254 794 107724",
       achievements: [
         "Developed comprehensive education support programs",
         "Led faith-based community development initiatives",
