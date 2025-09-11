@@ -114,6 +114,11 @@ const Programs = () => {
         "A free medical camp serving Ndia Constituency in Kirinyaga County. Hundreds received checkups, medication, and referrals.",
       contact: "+254112459486",
       impact: "150 children supported, 50 families assisted",
+      gallery: [
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F72939ea3440543368bc0ebbfc320b894?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fc30a66eb6e534bc2957dc40b4a930493?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fcf5e5110d5d1468ea1497a5989a33d23?format=webp&width=800",
+      ],
       fullDescription:
         "The Kisumu Edition marked a turning point in our community outreach efforts. Located near Lake Victoria, this event brought together hearts and hands from across the region to support children whose potential knows no bounds.\n\nThis successful event created lasting partnerships with local organizations and established sustainable programs that continue to benefit the community today.",
       actualImpact: [
