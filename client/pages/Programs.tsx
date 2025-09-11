@@ -34,7 +34,7 @@ const Programs = () => {
       theme: "Unity in diversity",
       description:
         "Join us for our coastal edition as we bring hope and resources to children in Mombasa. This event focuses on educational support and community development.",
-      contact: "+254112459484",
+      contact: "+254794107724",
       fullDescription:
         "The Mombasa Edition represents our commitment to coastal communities, where education and opportunity often face unique challenges. This event will bring together volunteers, educators, and community leaders to create lasting change along Kenya's beautiful coast.\n\nOur coastal edition focuses on maritime education, environmental conservation, and providing essential educational resources to children who dream of futures beyond their current circumstances.",
       schedule: [
@@ -71,7 +71,7 @@ const Programs = () => {
       theme: "Education is the key to the future",
       description:
         "Our Nakuru edition emphasizes educational excellence and providing learning materials to underserved communities around Lake Nakuru.",
-      contact: "+254112459485",
+      contact: "+254794107724",
       fullDescription:
         "Set against the stunning backdrop of Lake Nakuru, this edition focuses on creating sustainable educational opportunities for children in the Rift Valley region. We're partnering with local schools and community centers to establish long-term educational support systems.\n\nThis event emphasizes STEM education, literacy programs, and providing technological resources to bridge the digital divide in rural communities.",
       schedule: [
@@ -112,7 +112,7 @@ const Programs = () => {
       theme: "Community health and wellness",
       description:
         "A free medical camp serving Ndia Constituency in Kirinyaga County. Hundreds received checkups, medication, and referrals.",
-      contact: "+254112459486",
+      contact: "+254794107724",
       impact: "150 children supported, 50 families assisted",
       gallery: [
         "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F72939ea3440543368bc0ebbfc320b894?format=webp&width=800",
@@ -161,7 +161,7 @@ const Programs = () => {
       theme: "Raising champions",
       description:
         "A community football tournament bringing together schools and youth teams, promoting sportsmanship and talent development.",
-      contact: "+254112459487",
+      contact: "+254794107724",
       impact: "200 children reached, sports equipment provided",
       fullDescription:
         "High in the Kenyan highlands, the Eldoret Edition combined our educational mission with sports and recreational programs. This unique approach recognized that children's development requires both academic support and physical activity.\n\nThe event was a celebration of potential, bringing together athletes, educators, and community members to create an unforgettable experience for children who rarely get such opportunities.",
