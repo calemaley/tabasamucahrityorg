@@ -231,6 +231,19 @@ adminRouter.get("/programs", (_req, res) => {
   }
 });
 
+// get single program
+adminRouter.get('/programs/:id', (req, res) => {
+  const { id } = req.params;
+  try {
+    const row: any = sqlite.prepare('SELECT * FROM programs WHERE id = ?').get(id);
+    if (!row) return res.status(404).json({ error: 'not found' });
+    res.json({ program: row });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'failed' });
+  }
+});
+
 adminRouter.post("/programs", (req, res) => {
   const { title, slug, summary, content, image } = req.body || {};
   if (!title || !slug) return res.status(400).json({ error: "title and slug required" });
@@ -257,7 +270,8 @@ adminRouter.put("/programs/:id", (req, res) => {
       .run(title, slug, summary || "", content || "", image || "", id);
     emitter.emit("resource", { resource: "programs", action: "update", id });
     res.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "failed" });
   }
 });
@@ -268,7 +282,8 @@ adminRouter.delete("/programs/:id", (req, res) => {
     sqlite.prepare("DELETE FROM programs WHERE id = ?").run(id);
     emitter.emit("resource", { resource: "programs", action: "delete", id });
     res.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "failed" });
   }
 });
@@ -280,6 +295,19 @@ adminRouter.get("/blog", (_req, res) => {
     res.json({ posts: rows });
   } catch {
     res.status(500).json({ posts: [] });
+  }
+});
+
+// get single post
+adminRouter.get('/blog/:id', (req, res) => {
+  const { id } = req.params;
+  try {
+    const row: any = sqlite.prepare('SELECT * FROM blog_posts WHERE id = ?').get(id);
+    if (!row) return res.status(404).json({ error: 'not found' });
+    res.json({ post: row });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'failed' });
   }
 });
 
@@ -309,7 +337,8 @@ adminRouter.put("/blog/:id", (req, res) => {
       .run(title, slug, excerpt || "", content || "", cover || "", id);
     emitter.emit("resource", { resource: "blog", action: "update", id });
     res.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "failed" });
   }
 });
@@ -320,7 +349,8 @@ adminRouter.delete("/blog/:id", (req, res) => {
     sqlite.prepare("DELETE FROM blog_posts WHERE id = ?").run(id);
     emitter.emit("resource", { resource: "blog", action: "delete", id });
     res.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "failed" });
   }
 });
@@ -360,12 +390,50 @@ adminRouter.delete("/donations/:id", (req, res) => {
 });
 
 // Media
+import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
+
 adminRouter.get("/media", (_req, res) => {
   try {
     const rows = listAll("media");
     res.json({ media: rows });
   } catch {
     res.status(500).json({ media: [] });
+  }
+});
+
+// get single media
+adminRouter.get('/media/:id', (req, res) => {
+  const { id } = req.params;
+  try {
+    const row: any = sqlite.prepare('SELECT * FROM media WHERE id = ?').get(id);
+    if (!row) return res.status(404).json({ error: 'not found' });
+    res.json({ media: row });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'failed' });
+  }
+});
+
+// setup multer storage to public/uploads
+const uploadsDir = path.resolve(process.cwd(), 'public', 'uploads');
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => cb(null, uploadsDir),
+  filename: (_req, file, cb) => cb(null, `${Date.now()}-${file.originalname.replace(/[^a-zA-Z0-9.\-]/g, '_')}`),
+});
+const upload = multer({ storage });
+
+// file upload endpoint
+adminRouter.post('/media/upload', upload.single('file'), (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: 'no file' });
+    const url = `/uploads/${req.file.filename}`;
+    res.json({ ok: true, url, filename: req.file.filename });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'upload failed' });
   }
 });
 
@@ -377,8 +445,23 @@ adminRouter.post("/media", (req, res) => {
     sqlite.prepare("INSERT INTO media (id, name, url, meta, ts) VALUES (?, ?, ?, ?, ?)").run(id, name || "", url || "", JSON.stringify(meta || {}), ts);
     emitter.emit("resource", { resource: "media", action: "create", id });
     res.json({ ok: true, id });
-  } catch {
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "failed" });
+  }
+});
+
+// update media
+adminRouter.put('/media/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, url, meta } = req.body || {};
+  try {
+    sqlite.prepare('UPDATE media SET name = ?, url = ?, meta = ? WHERE id = ?').run(name || '', url || '', JSON.stringify(meta || {}), id);
+    emitter.emit('resource', { resource: 'media', action: 'update', id });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'failed' });
   }
 });
 
@@ -388,7 +471,8 @@ adminRouter.delete("/media/:id", (req, res) => {
     sqlite.prepare("DELETE FROM media WHERE id = ?").run(id);
     emitter.emit("resource", { resource: "media", action: "delete", id });
     res.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "failed" });
   }
 });
