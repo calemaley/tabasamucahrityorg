@@ -10,7 +10,7 @@ const dbFile = path.join(dataDir, "db.sqlite");
 const sqlite = new Database(dbFile);
 
 // Run SQL migrations if present
-import { runMigrations } from "../migrate";
+import { runMigrations } from "./migrate";
 
 (async () => {
   try {
