@@ -28,7 +28,7 @@ export const allChildren: Child[] = [
       "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes. Despite the long journey, she never misses a day and always has a bright smile.",
     needs: ["School fees", "Uniforms", "Books", "Lunch program"],
     image:
-      "https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fb8b21871733e41299357e2253b20e98f?format=webp&width=800",
     monthlyNeed: 6075, // 45 USD converted to KES (45 * 135)
     sponsored: false,
     interests: ["Mathematics", "Reading", "Farming"],
@@ -56,7 +56,7 @@ export const allChildren: Child[] = [
       "Transport",
     ],
     image:
-      "https://images.pexels.com/photos/160793/child-africa-boy-portrait-160793.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F950583433afd4f3aa883c9d1cc87031d?format=webp&width=800",
     monthlyNeed: 8775, // 65 USD converted to KES (65 * 135)
     sponsored: false,
     interests: ["Biology", "Chemistry", "Football"],
@@ -79,7 +79,7 @@ export const allChildren: Child[] = [
       "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education. She tutors younger students in her free time.",
     needs: ["School fees", "Textbooks", "Computer training", "Mentorship"],
     image:
-      "https://images.pexels.com/photos/955958/pexels-photo-955958.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F4938be7564894703871587a39102255b?format=webp&width=800",
     monthlyNeed: 10125, // 75 USD converted to KES (75 * 135)
     sponsored: false,
     interests: ["Mathematics", "Physics", "Technology"],
@@ -107,7 +107,7 @@ export const allChildren: Child[] = [
       "Nutritional support",
     ],
     image:
-      "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F5de7bd1782db4332a9ee345b7cc61f01?format=webp&width=800",
     monthlyNeed: 6750, // 50 USD converted to KES (50 * 135)
     sponsored: false,
     interests: ["Reading", "Writing", "History"],
@@ -130,7 +130,7 @@ export const allChildren: Child[] = [
       "Amina dreams of becoming a marine biologist to protect the ocean around her coastal home. She collects shells and studies sea creatures in her spare time. Her family depends on fishing for income.",
     needs: ["School fees", "Science materials", "Transport", "Lunch program"],
     image:
-      "https://images.pexels.com/photos/1001914/pexels-photo-1001914.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fe0e42988cde841cf86827b0fb3413e04?format=webp&width=800",
     monthlyNeed: 5400, // 40 USD converted to KES (40 * 135)
     sponsored: false,
     interests: ["Marine Biology", "Swimming", "Environmental Science"],
@@ -158,7 +158,7 @@ export const allChildren: Child[] = [
       "Materials for projects",
     ],
     image:
-      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fe698096ec6de4661bd3eb56e4eb84bdf?format=webp&width=800",
     monthlyNeed: 8100, // 60 USD converted to KES (60 * 135)
     sponsored: false,
     interests: ["Aviation", "Engineering", "Art"],
@@ -181,7 +181,7 @@ export const allChildren: Child[] = [
       "Fatuma loves music and wants to become a music teacher. She sings in the church choir and has taught herself to play several traditional instruments. Her family lives in a crowded neighborhood.",
     needs: ["School fees", "Music lessons", "Instruments", "Uniform"],
     image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F96502dc2997a4f8aa1b83f8fbd627103?format=webp&width=800",
     monthlyNeed: 7425, // 55 USD converted to KES (55 * 135)
     sponsored: false,
     interests: ["Music", "Singing", "Traditional Dance"],
@@ -209,7 +209,7 @@ export const allChildren: Child[] = [
       "Transport",
     ],
     image:
-      "https://images.pexels.com/photos/1374501/pexels-photo-1374501.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F8fac22e1b48547ebb3029d955ecdf4b1?format=webp&width=800",
     monthlyNeed: 9450, // 70 USD converted to KES (70 * 135)
     sponsored: false,
     interests: ["Animal Care", "Biology", "Conservation"],
