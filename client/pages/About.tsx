@@ -458,8 +458,17 @@ const About = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-charity-green-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F826bd7ba94cd48cdaf77d52398dbec6c?alt=media&token=86a392a8-40c2-4e0b-abbe-8d53a9454655&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-charity-green-700/85" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
               <h2 className="text-4xl font-bold mb-6">
