@@ -330,17 +330,15 @@ const Navigation = () => {
                                     {subItem.label}
                                   </button>
                                 ) : (
-                                  <Link
+                                  <a
                                     key={subItem.label}
-                                    to={subItem.href}
+                                    href={subItem.href}
+                                    onMouseEnter={() => prefetch(subItem.href)}
+                                    onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveDropdown(null); navigateOnClick(subItem.href); }}
                                     className="block text-charity-neutral-600 hover:text-charity-orange-600 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-charity-orange-50"
-                                    onClick={() => {
-                                      setIsMenuOpen(false);
-                                      setActiveDropdown(null);
-                                    }}
                                   >
                                     {subItem.label}
-                                  </Link>
+                                  </a>
                                 ),
                               )}
                             </div>
