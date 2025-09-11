@@ -23,8 +23,11 @@ const Children = () => {
   const [selectedLocation, setSelectedLocation] = useState("all");
   const [sortBy, setSortBy] = useState("name");
 
+  // Show only the first 4 children across the site
+  const baseChildren = allChildren.slice(0, 4);
+
   // Filter and sort children
-  const filteredChildren = allChildren
+  const filteredChildren = baseChildren
     .filter((child) => {
       const matchesSearch =
         child.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -56,7 +59,7 @@ const Children = () => {
     });
 
   const uniqueLocations = [
-    ...new Set(allChildren.map((child) => child.location)),
+    ...new Set(baseChildren.map((child) => child.location)),
   ];
 
   return (
