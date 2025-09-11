@@ -12,6 +12,13 @@ export type TrackedEvent = {
 
 const adminRouter = Router();
 
+// Require auth for all admin routes
+import { requireAuth } from "./auth";
+adminRouter.use((req, res, next) => {
+  // allow GET /events/stream without header if token query provided; requireAuth will check both
+  return requireAuth(req, res, next);
+});
+
 function safeJSONParse(s: string | null) {
   try {
     return s ? JSON.parse(s) : null;
