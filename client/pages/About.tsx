@@ -101,8 +101,8 @@ const About = () => {
   const milestones = [
     {
       year: "2021",
-      event: "Tabasamu Charity was founded with a mission to transform lives",
-      achievement: "First Charity",
+      event: "First Charity",
+      achievement: "Tabasamu Charity was founded with a mission to transform lives",
     },
     {
       year: "2022",
@@ -111,7 +111,7 @@ const About = () => {
     },
     {
       year: "2023",
-      event: "free medical camp",
+      event: "Free Medical Camp",
       achievement: "Mobile clinic program started",
     },
     {
