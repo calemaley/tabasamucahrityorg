@@ -516,8 +516,17 @@ const Programs = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-charity-orange-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F6e6cd1f699bd474291819d0e39e4b2f7?alt=media&token=048d505d-fefc-43f7-b7e2-23a554802fa6&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-charity-orange-600/85" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
               <h2 className="text-4xl font-bold mb-6">
