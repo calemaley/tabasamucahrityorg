@@ -149,7 +149,7 @@ const About = () => {
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto text-charity-neutral-600">
                 Building brighter futures through education, healthcare, and
-                community development since 2015
+                community development since 2021
               </p>
             </div>
           </AnimatedSection>
