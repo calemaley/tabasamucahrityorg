@@ -23,7 +23,9 @@ function safeJSONParse(s: string | null) {
 
 // Helpers
 function listAll(table: string, orderBy = "ts") {
-  return sqlite.prepare(`SELECT * FROM ${table} ORDER BY ${orderBy} DESC`).all();
+  return sqlite
+    .prepare(`SELECT * FROM ${table} ORDER BY ${orderBy} DESC`)
+    .all();
 }
 
 // Track an event
@@ -37,7 +39,11 @@ adminRouter.post("/track", (req, res) => {
       .prepare("INSERT INTO events (id, type, payload, ts) VALUES (?, ?, ?, ?)")
       .run(id, type, JSON.stringify(payload ?? {}), ts);
     const event = { id, type, payload: payload ?? {}, ts };
-    emitter.emit("resource", { resource: "events", action: "create", data: event });
+    emitter.emit("resource", {
+      resource: "events",
+      action: "create",
+      data: event,
+    });
     res.json({ ok: true, event });
   } catch (err) {
     console.error(err);
@@ -48,8 +54,15 @@ adminRouter.post("/track", (req, res) => {
 // List events
 adminRouter.get("/events", (_req, res) => {
   try {
-    const rows = sqlite.prepare("SELECT id, type, payload, ts FROM events ORDER BY ts DESC LIMIT 1000").all();
-    const events = rows.map((r: any) => ({ ...r, payload: safeJSONParse(r.payload) }));
+    const rows = sqlite
+      .prepare(
+        "SELECT id, type, payload, ts FROM events ORDER BY ts DESC LIMIT 1000",
+      )
+      .all();
+    const events = rows.map((r: any) => ({
+      ...r,
+      payload: safeJSONParse(r.payload),
+    }));
     res.json({ events });
   } catch (err) {
     console.error(err);
@@ -60,12 +73,18 @@ adminRouter.get("/events", (_req, res) => {
 // Stats
 adminRouter.get("/stats", (_req, res) => {
   try {
-    const rows: { type: string; cnt: number }[] = sqlite.prepare("SELECT type, COUNT(*) as cnt FROM events GROUP BY type").all();
+    const rows: { type: string; cnt: number }[] = sqlite
+      .prepare("SELECT type, COUNT(*) as cnt FROM events GROUP BY type")
+      .all();
     const counts: Record<string, number> = {};
     for (const r of rows) counts[r.type] = r.cnt;
-    const totalRow: any = sqlite.prepare("SELECT COUNT(*) as total FROM events").get();
+    const totalRow: any = sqlite
+      .prepare("SELECT COUNT(*) as total FROM events")
+      .get();
     const last10 = sqlite
-      .prepare("SELECT id, type, payload, ts FROM events ORDER BY ts DESC LIMIT 10")
+      .prepare(
+        "SELECT id, type, payload, ts FROM events ORDER BY ts DESC LIMIT 10",
+      )
       .all()
       .map((r: any) => ({ ...r, payload: safeJSONParse(r.payload) }));
     res.json({ total: totalRow?.total ?? 0, counts, last10 });
@@ -92,10 +111,14 @@ adminRouter.get("/events/stream", (req, res) => {
   // send initial last10
   try {
     const last10 = sqlite
-      .prepare("SELECT id, type, payload, ts FROM events ORDER BY ts DESC LIMIT 10")
+      .prepare(
+        "SELECT id, type, payload, ts FROM events ORDER BY ts DESC LIMIT 10",
+      )
       .all()
       .map((r: any) => ({ ...r, payload: safeJSONParse(r.payload) }));
-    res.write(`data: ${JSON.stringify({ type: "initial_events", data: last10 })}\n\n`);
+    res.write(
+      `data: ${JSON.stringify({ type: "initial_events", data: last10 })}\n\n`,
+    );
   } catch {}
 
   emitter.on("resource", onResource);
@@ -131,8 +154,16 @@ adminRouter.post("/contacts", (req, res) => {
   const id = randomUUID();
   const ts = Date.now();
   try {
-    sqlite.prepare("INSERT INTO contacts (id, name, email, message, ts) VALUES (?, ?, ?, ?, ?)").run(id, name || "", email || "", message || "", ts);
-    emitter.emit("resource", { resource: "contacts", action: "create", data: { id, name, email, message, ts } });
+    sqlite
+      .prepare(
+        "INSERT INTO contacts (id, name, email, message, ts) VALUES (?, ?, ?, ?, ?)",
+      )
+      .run(id, name || "", email || "", message || "", ts);
+    emitter.emit("resource", {
+      resource: "contacts",
+      action: "create",
+      data: { id, name, email, message, ts },
+    });
     res.json({ ok: true, id });
   } catch (err) {
     console.error(err);
@@ -167,8 +198,16 @@ adminRouter.post("/newsletter", (req, res) => {
   const id = randomUUID();
   const ts = Date.now();
   try {
-    sqlite.prepare("INSERT INTO newsletter_subscribers (id, email, name, ts) VALUES (?, ?, ?, ?)").run(id, email || "", name || "", ts);
-    emitter.emit("resource", { resource: "newsletter", action: "create", data: { id, email, name, ts } });
+    sqlite
+      .prepare(
+        "INSERT INTO newsletter_subscribers (id, email, name, ts) VALUES (?, ?, ?, ?)",
+      )
+      .run(id, email || "", name || "", ts);
+    emitter.emit("resource", {
+      resource: "newsletter",
+      action: "create",
+      data: { id, email, name, ts },
+    });
     res.json({ ok: true, id });
   } catch (err) {
     console.error(err);
@@ -202,8 +241,16 @@ adminRouter.post("/volunteers", (req, res) => {
   const id = randomUUID();
   const ts = Date.now();
   try {
-    sqlite.prepare("INSERT INTO volunteers (id, name, email, details, ts) VALUES (?, ?, ?, ?, ?)").run(id, name || "", email || "", details || "", ts);
-    emitter.emit("resource", { resource: "volunteers", action: "create", data: { id, name, email, details, ts } });
+    sqlite
+      .prepare(
+        "INSERT INTO volunteers (id, name, email, details, ts) VALUES (?, ?, ?, ?, ?)",
+      )
+      .run(id, name || "", email || "", details || "", ts);
+    emitter.emit("resource", {
+      resource: "volunteers",
+      action: "create",
+      data: { id, name, email, details, ts },
+    });
     res.json({ ok: true, id });
   } catch {
     res.status(500).json({ error: "failed" });
@@ -232,28 +279,37 @@ adminRouter.get("/programs", (_req, res) => {
 });
 
 // get single program
-adminRouter.get('/programs/:id', (req, res) => {
+adminRouter.get("/programs/:id", (req, res) => {
   const { id } = req.params;
   try {
-    const row: any = sqlite.prepare('SELECT * FROM programs WHERE id = ?').get(id);
-    if (!row) return res.status(404).json({ error: 'not found' });
+    const row: any = sqlite
+      .prepare("SELECT * FROM programs WHERE id = ?")
+      .get(id);
+    if (!row) return res.status(404).json({ error: "not found" });
     res.json({ program: row });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'failed' });
+    res.status(500).json({ error: "failed" });
   }
 });
 
 adminRouter.post("/programs", (req, res) => {
   const { title, slug, summary, content, image } = req.body || {};
-  if (!title || !slug) return res.status(400).json({ error: "title and slug required" });
+  if (!title || !slug)
+    return res.status(400).json({ error: "title and slug required" });
   const id = randomUUID();
   const ts = Date.now();
   try {
     sqlite
-      .prepare("INSERT INTO programs (id, title, slug, summary, content, image, ts) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .prepare(
+        "INSERT INTO programs (id, title, slug, summary, content, image, ts) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      )
       .run(id, title, slug, summary || "", content || "", image || "", ts);
-    emitter.emit("resource", { resource: "programs", action: "create", data: { id, title, slug, ts } });
+    emitter.emit("resource", {
+      resource: "programs",
+      action: "create",
+      data: { id, title, slug, ts },
+    });
     res.json({ ok: true, id });
   } catch (err) {
     console.error(err);
@@ -266,7 +322,9 @@ adminRouter.put("/programs/:id", (req, res) => {
   const { title, slug, summary, content, image } = req.body || {};
   try {
     sqlite
-      .prepare("UPDATE programs SET title = ?, slug = ?, summary = ?, content = ?, image = ? WHERE id = ?")
+      .prepare(
+        "UPDATE programs SET title = ?, slug = ?, summary = ?, content = ?, image = ? WHERE id = ?",
+      )
       .run(title, slug, summary || "", content || "", image || "", id);
     emitter.emit("resource", { resource: "programs", action: "update", id });
     res.json({ ok: true });
@@ -299,26 +357,31 @@ adminRouter.get("/blog", (_req, res) => {
 });
 
 // get single post
-adminRouter.get('/blog/:id', (req, res) => {
+adminRouter.get("/blog/:id", (req, res) => {
   const { id } = req.params;
   try {
-    const row: any = sqlite.prepare('SELECT * FROM blog_posts WHERE id = ?').get(id);
-    if (!row) return res.status(404).json({ error: 'not found' });
+    const row: any = sqlite
+      .prepare("SELECT * FROM blog_posts WHERE id = ?")
+      .get(id);
+    if (!row) return res.status(404).json({ error: "not found" });
     res.json({ post: row });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'failed' });
+    res.status(500).json({ error: "failed" });
   }
 });
 
 adminRouter.post("/blog", (req, res) => {
   const { title, slug, excerpt, content, cover } = req.body || {};
-  if (!title || !slug) return res.status(400).json({ error: "title and slug required" });
+  if (!title || !slug)
+    return res.status(400).json({ error: "title and slug required" });
   const id = randomUUID();
   const ts = Date.now();
   try {
     sqlite
-      .prepare("INSERT INTO blog_posts (id, title, slug, excerpt, content, cover, ts) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .prepare(
+        "INSERT INTO blog_posts (id, title, slug, excerpt, content, cover, ts) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      )
       .run(id, title, slug, excerpt || "", content || "", cover || "", ts);
     emitter.emit("resource", { resource: "blog", action: "create", id });
     res.json({ ok: true, id });
@@ -333,7 +396,9 @@ adminRouter.put("/blog/:id", (req, res) => {
   const { title, slug, excerpt, content, cover } = req.body || {};
   try {
     sqlite
-      .prepare("UPDATE blog_posts SET title=?, slug=?, excerpt=?, content=?, cover=? WHERE id = ?")
+      .prepare(
+        "UPDATE blog_posts SET title=?, slug=?, excerpt=?, content=?, cover=? WHERE id = ?",
+      )
       .run(title, slug, excerpt || "", content || "", cover || "", id);
     emitter.emit("resource", { resource: "blog", action: "update", id });
     res.json({ ok: true });
@@ -370,7 +435,18 @@ adminRouter.post("/donations", (req, res) => {
   const id = randomUUID();
   const ts = Date.now();
   try {
-    sqlite.prepare("INSERT INTO donations (id, donor_name, amount, currency, message, ts) VALUES (?, ?, ?, ?, ?, ?)").run(id, donor_name || "", amount || 0, currency || "", message || "", ts);
+    sqlite
+      .prepare(
+        "INSERT INTO donations (id, donor_name, amount, currency, message, ts) VALUES (?, ?, ?, ?, ?, ?)",
+      )
+      .run(
+        id,
+        donor_name || "",
+        amount || 0,
+        currency || "",
+        message || "",
+        ts,
+      );
     emitter.emit("resource", { resource: "donations", action: "create", id });
     res.json({ ok: true, id });
   } catch {
@@ -390,9 +466,9 @@ adminRouter.delete("/donations/:id", (req, res) => {
 });
 
 // Media
-import multer from 'multer';
-import fs from 'fs';
-import path from 'path';
+import multer from "multer";
+import fs from "fs";
+import path from "path";
 
 adminRouter.get("/media", (_req, res) => {
   try {
@@ -404,36 +480,40 @@ adminRouter.get("/media", (_req, res) => {
 });
 
 // get single media
-adminRouter.get('/media/:id', (req, res) => {
+adminRouter.get("/media/:id", (req, res) => {
   const { id } = req.params;
   try {
-    const row: any = sqlite.prepare('SELECT * FROM media WHERE id = ?').get(id);
-    if (!row) return res.status(404).json({ error: 'not found' });
+    const row: any = sqlite.prepare("SELECT * FROM media WHERE id = ?").get(id);
+    if (!row) return res.status(404).json({ error: "not found" });
     res.json({ media: row });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'failed' });
+    res.status(500).json({ error: "failed" });
   }
 });
 
 // setup multer storage to public/uploads
-const uploadsDir = path.resolve(process.cwd(), 'public', 'uploads');
+const uploadsDir = path.resolve(process.cwd(), "public", "uploads");
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, uploadsDir),
-  filename: (_req, file, cb) => cb(null, `${Date.now()}-${file.originalname.replace(/[^a-zA-Z0-9.\-]/g, '_')}`),
+  filename: (_req, file, cb) =>
+    cb(
+      null,
+      `${Date.now()}-${file.originalname.replace(/[^a-zA-Z0-9.\-]/g, "_")}`,
+    ),
 });
 const upload = multer({ storage });
 
 // file upload endpoint
-adminRouter.post('/media/upload', upload.single('file'), (req, res) => {
+adminRouter.post("/media/upload", upload.single("file"), (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ error: 'no file' });
+    if (!req.file) return res.status(400).json({ error: "no file" });
     const url = `/uploads/${req.file.filename}`;
     res.json({ ok: true, url, filename: req.file.filename });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'upload failed' });
+    res.status(500).json({ error: "upload failed" });
   }
 });
 
@@ -442,7 +522,11 @@ adminRouter.post("/media", (req, res) => {
   const id = randomUUID();
   const ts = Date.now();
   try {
-    sqlite.prepare("INSERT INTO media (id, name, url, meta, ts) VALUES (?, ?, ?, ?, ?)").run(id, name || "", url || "", JSON.stringify(meta || {}), ts);
+    sqlite
+      .prepare(
+        "INSERT INTO media (id, name, url, meta, ts) VALUES (?, ?, ?, ?, ?)",
+      )
+      .run(id, name || "", url || "", JSON.stringify(meta || {}), ts);
     emitter.emit("resource", { resource: "media", action: "create", id });
     res.json({ ok: true, id });
   } catch (err) {
@@ -452,16 +536,18 @@ adminRouter.post("/media", (req, res) => {
 });
 
 // update media
-adminRouter.put('/media/:id', (req, res) => {
+adminRouter.put("/media/:id", (req, res) => {
   const { id } = req.params;
   const { name, url, meta } = req.body || {};
   try {
-    sqlite.prepare('UPDATE media SET name = ?, url = ?, meta = ? WHERE id = ?').run(name || '', url || '', JSON.stringify(meta || {}), id);
-    emitter.emit('resource', { resource: 'media', action: 'update', id });
+    sqlite
+      .prepare("UPDATE media SET name = ?, url = ?, meta = ? WHERE id = ?")
+      .run(name || "", url || "", JSON.stringify(meta || {}), id);
+    emitter.emit("resource", { resource: "media", action: "update", id });
     res.json({ ok: true });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'failed' });
+    res.status(500).json({ error: "failed" });
   }
 });
 
@@ -478,23 +564,29 @@ adminRouter.delete("/media/:id", (req, res) => {
 });
 
 // DB backup endpoint
-adminRouter.post('/db/backup', (req, res) => {
+adminRouter.post("/db/backup", (req, res) => {
   try {
-    const fs = require('fs');
-    const path = require('path');
-    const dataDir = path.resolve(process.cwd(), 'server/data');
+    const fs = require("fs");
+    const path = require("path");
+    const dataDir = path.resolve(process.cwd(), "server/data");
     if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-    const backupsDir = path.join(dataDir, 'backups');
-    if (!fs.existsSync(backupsDir)) fs.mkdirSync(backupsDir, { recursive: true });
-    const src = path.join(dataDir, 'db.sqlite');
+    const backupsDir = path.join(dataDir, "backups");
+    if (!fs.existsSync(backupsDir))
+      fs.mkdirSync(backupsDir, { recursive: true });
+    const src = path.join(dataDir, "db.sqlite");
     const ts = Date.now();
     const dst = path.join(backupsDir, `db-${ts}.sqlite`);
     fs.copyFileSync(src, dst);
-    emitter.emit('resource', { resource: 'db', action: 'backup', file: `db-${ts}.sqlite`, ts });
+    emitter.emit("resource", {
+      resource: "db",
+      action: "backup",
+      file: `db-${ts}.sqlite`,
+      ts,
+    });
     res.json({ ok: true, file: `db-${ts}.sqlite` });
   } catch (err) {
-    console.error('backup failed', err);
-    res.status(500).json({ error: 'backup failed' });
+    console.error("backup failed", err);
+    res.status(500).json({ error: "backup failed" });
   }
 });
 

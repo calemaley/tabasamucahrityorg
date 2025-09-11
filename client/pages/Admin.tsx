@@ -44,21 +44,43 @@ const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-charity-orange-600 to-charity-green-600 p-6">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-charity-neutral-800">Tabasamu Admin</h1>
+          <h1 className="text-3xl font-bold text-charity-neutral-800">
+            Tabasamu Admin
+          </h1>
           <p className="text-charity-neutral-600">Sign in to /samu dashboard</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-1">Username</label>
-            <input value={username} onChange={(e) => setUsername(e.target.value)} className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-charity-orange-500" autoFocus />
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-charity-orange-500"
+              autoFocus
+            />
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-charity-orange-500" />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-charity-orange-500"
+            />
           </div>
           {error && <div className="text-red-600 text-sm">{error}</div>}
-          <button type="submit" disabled={loading} className="w-full px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg font-bold flex items-center justify-center gap-2">
-            {loading ? "Signing in..." : (<>Login <ArrowRight className="h-4 w-4" /></>)}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg font-bold flex items-center justify-center gap-2"
+          >
+            {loading ? (
+              "Signing in..."
+            ) : (
+              <>
+                Login <ArrowRight className="h-4 w-4" />
+              </>
+            )}
           </button>
         </form>
       </div>
@@ -80,17 +102,29 @@ const AdminDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const [activeTab, setActiveTab] = useState<string>("events");
 
   const [showProgramForm, setShowProgramForm] = useState(false);
-  const [newProgram, setNewProgram] = useState({ title: "", slug: "", summary: "", content: "", image: "" });
+  const [newProgram, setNewProgram] = useState({
+    title: "",
+    slug: "",
+    summary: "",
+    content: "",
+    image: "",
+  });
 
   const [showPostForm, setShowPostForm] = useState(false);
-  const [newPost, setNewPost] = useState({ title: "", slug: "", excerpt: "", content: "", cover: "" });
+  const [newPost, setNewPost] = useState({
+    title: "",
+    slug: "",
+    excerpt: "",
+    content: "",
+    cover: "",
+  });
 
   const [showMediaForm, setShowMediaForm] = useState(false);
   const [newMedia, setNewMedia] = useState({ name: "", url: "", meta: "{}" });
 
-  const [editingProgramId, setEditingProgramId] = useState<string>('');
-  const [editingPostId, setEditingPostId] = useState<string>('');
-  const [editingMediaId, setEditingMediaId] = useState<string>('');
+  const [editingProgramId, setEditingProgramId] = useState<string>("");
+  const [editingPostId, setEditingPostId] = useState<string>("");
+  const [editingMediaId, setEditingMediaId] = useState<string>("");
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem("samu_token");
@@ -99,22 +133,44 @@ const AdminDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
 
   const reloadAll = () => {
     const headers = getAuthHeaders();
-    fetch("/api/admin/events", { headers }).then((r) => r.json()).then((d) => setEvents(d.events || []));
-    fetch("/api/admin/stats", { headers }).then((r) => r.json()).then((d) => setCounts(d.counts || {}));
-    fetch("/api/admin/contacts", { headers }).then((r) => r.json()).then((d) => setContacts(d.contacts || d));
-    fetch("/api/admin/newsletter", { headers }).then((r) => r.json()).then((d) => setSubscribers(d.subscribers || d));
-    fetch("/api/admin/volunteers", { headers }).then((r) => r.json()).then((d) => setVolunteers(d.volunteers || d));
-    fetch("/api/admin/programs", { headers }).then((r) => r.json()).then((d) => setPrograms(d.programs || d));
-    fetch("/api/admin/blog", { headers }).then((r) => r.json()).then((d) => setPosts(d.posts || d));
-    fetch("/api/admin/donations", { headers }).then((r) => r.json()).then((d) => setDonations(d.donations || d));
-    fetch("/api/admin/media", { headers }).then((r) => r.json()).then((d) => setMedia(d.media || d));
+    fetch("/api/admin/events", { headers })
+      .then((r) => r.json())
+      .then((d) => setEvents(d.events || []));
+    fetch("/api/admin/stats", { headers })
+      .then((r) => r.json())
+      .then((d) => setCounts(d.counts || {}));
+    fetch("/api/admin/contacts", { headers })
+      .then((r) => r.json())
+      .then((d) => setContacts(d.contacts || d));
+    fetch("/api/admin/newsletter", { headers })
+      .then((r) => r.json())
+      .then((d) => setSubscribers(d.subscribers || d));
+    fetch("/api/admin/volunteers", { headers })
+      .then((r) => r.json())
+      .then((d) => setVolunteers(d.volunteers || d));
+    fetch("/api/admin/programs", { headers })
+      .then((r) => r.json())
+      .then((d) => setPrograms(d.programs || d));
+    fetch("/api/admin/blog", { headers })
+      .then((r) => r.json())
+      .then((d) => setPosts(d.posts || d));
+    fetch("/api/admin/donations", { headers })
+      .then((r) => r.json())
+      .then((d) => setDonations(d.donations || d));
+    fetch("/api/admin/media", { headers })
+      .then((r) => r.json())
+      .then((d) => setMedia(d.media || d));
   };
 
-  useEffect(() => { reloadAll(); }, []);
+  useEffect(() => {
+    reloadAll();
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("samu_token");
-    const url = token ? `/api/admin/events/stream?token=${encodeURIComponent(token)}` : "/api/admin/events/stream";
+    const url = token
+      ? `/api/admin/events/stream?token=${encodeURIComponent(token)}`
+      : "/api/admin/events/stream";
     const es = new EventSource(url);
     es.onmessage = (msg) => {
       try {
@@ -136,26 +192,49 @@ const AdminDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   };
 
   const createProgram = async () => {
-    const headers = { ...getAuthHeaders(), "Content-Type": "application/json" } as any;
-    await fetch("/api/admin/programs", { method: "POST", headers, body: JSON.stringify(newProgram) });
+    const headers = {
+      ...getAuthHeaders(),
+      "Content-Type": "application/json",
+    } as any;
+    await fetch("/api/admin/programs", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(newProgram),
+    });
     setShowProgramForm(false);
     setNewProgram({ title: "", slug: "", summary: "", content: "", image: "" });
     reloadAll();
   };
 
   const createPost = async () => {
-    const headers = { ...getAuthHeaders(), "Content-Type": "application/json" } as any;
-    await fetch("/api/admin/blog", { method: "POST", headers, body: JSON.stringify(newPost) });
+    const headers = {
+      ...getAuthHeaders(),
+      "Content-Type": "application/json",
+    } as any;
+    await fetch("/api/admin/blog", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(newPost),
+    });
     setShowPostForm(false);
     setNewPost({ title: "", slug: "", excerpt: "", content: "", cover: "" });
     reloadAll();
   };
 
   const createMedia = async () => {
-    const headers = { ...getAuthHeaders(), "Content-Type": "application/json" } as any;
+    const headers = {
+      ...getAuthHeaders(),
+      "Content-Type": "application/json",
+    } as any;
     let metaObj = {};
-    try { metaObj = JSON.parse(newMedia.meta); } catch {}
-    await fetch("/api/admin/media", { method: "POST", headers, body: JSON.stringify({ ...newMedia, meta: metaObj }) });
+    try {
+      metaObj = JSON.parse(newMedia.meta);
+    } catch {}
+    await fetch("/api/admin/media", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ ...newMedia, meta: metaObj }),
+    });
     setShowMediaForm(false);
     setNewMedia({ name: "", url: "", meta: "{}" });
     reloadAll();
@@ -163,10 +242,13 @@ const AdminDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
 
   const backupDb = async () => {
     const headers = getAuthHeaders();
-    const res = await fetch('/api/admin/db/backup', { method: 'POST', headers });
+    const res = await fetch("/api/admin/db/backup", {
+      method: "POST",
+      headers,
+    });
     const data = await res.json();
     if (res.ok) alert(`Backup created: ${data.file}`);
-    else alert('Backup failed');
+    else alert("Backup failed");
   };
 
   return (
@@ -175,209 +257,802 @@ const AdminDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold">Tabasamu Admin Dashboard</h1>
           <div className="flex items-center gap-3">
-            <Link to="/" className="text-charity-orange-600 hover:underline flex items-center gap-1"><Eye className="h-4 w-4" /> View Site</Link>
-            <button onClick={() => { localStorage.removeItem('samu_token'); onLogout(); }} className="px-3 py-1.5 rounded-lg bg-charity-neutral-200 hover:bg-charity-neutral-300 flex items-center gap-1"><LogOut className="h-4 w-4" /> Logout</button>
+            <Link
+              to="/"
+              className="text-charity-orange-600 hover:underline flex items-center gap-1"
+            >
+              <Eye className="h-4 w-4" /> View Site
+            </Link>
+            <button
+              onClick={() => {
+                localStorage.removeItem("samu_token");
+                onLogout();
+              }}
+              className="px-3 py-1.5 rounded-lg bg-charity-neutral-200 hover:bg-charity-neutral-300 flex items-center gap-1"
+            >
+              <LogOut className="h-4 w-4" /> Logout
+            </button>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto p-4 space-y-6">
         <div className="flex gap-2 flex-wrap">
-          {[["events","Recent Activity"],["contacts","Contacts"],["newsletter","Subscribers"],["volunteers","Volunteers"],["programs","Programs"],["blog","Blog Posts"],["donations","Donations"],["media","Media"]].map((t) => (
-            <button key={t[0]} onClick={() => setActiveTab(t[0] as string)} className={`px-3 py-1 rounded ${activeTab===t[0]?"bg-charity-orange-600 text-white":"bg-charity-neutral-100"}`}>{t[1]}</button>
+          {[
+            ["events", "Recent Activity"],
+            ["contacts", "Contacts"],
+            ["newsletter", "Subscribers"],
+            ["volunteers", "Volunteers"],
+            ["programs", "Programs"],
+            ["blog", "Blog Posts"],
+            ["donations", "Donations"],
+            ["media", "Media"],
+          ].map((t) => (
+            <button
+              key={t[0]}
+              onClick={() => setActiveTab(t[0] as string)}
+              className={`px-3 py-1 rounded ${activeTab === t[0] ? "bg-charity-orange-600 text-white" : "bg-charity-neutral-100"}`}
+            >
+              {t[1]}
+            </button>
           ))}
         </div>
 
         <div className="bg-white rounded-xl shadow border overflow-hidden">
-          <div className="p-4 font-bold border-b">{activeTab.toUpperCase()}</div>
+          <div className="p-4 font-bold border-b">
+            {activeTab.toUpperCase()}
+          </div>
           <div className="p-4">
-            {activeTab === 'events' && (
+            {activeTab === "events" && (
               <div className="max-h-[520px] overflow-auto">
-                <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Type</th><th className="text-left p-3">Details</th></tr></thead><tbody>{events.map(e => (<tr key={e.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(e.ts).toLocaleString()}</td><td className="p-3 font-medium">{e.type}</td><td className="p-3"><pre className="whitespace-pre-wrap text-xs text-charity-neutral-600">{JSON.stringify(e.payload,null,2)}</pre></td></tr>))}</tbody></table>
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Type</th>
+                      <th className="text-left p-3">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {events.map((e) => (
+                      <tr key={e.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">
+                          {new Date(e.ts).toLocaleString()}
+                        </td>
+                        <td className="p-3 font-medium">{e.type}</td>
+                        <td className="p-3">
+                          <pre className="whitespace-pre-wrap text-xs text-charity-neutral-600">
+                            {JSON.stringify(e.payload, null, 2)}
+                          </pre>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
 
-            {activeTab === 'programs' && (
+            {activeTab === "programs" && (
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <h3 className="font-bold">Programs</h3>
                   <div className="flex gap-2">
-                    <button onClick={() => { setShowProgramForm(s => !s); setEditingProgramId(''); if (!showProgramForm) setNewProgram({ title: '', slug: '', summary: '', content: '', image: '' }); }} className="px-3 py-1 bg-charity-orange-600 text-white rounded">{showProgramForm? 'Close':'New Program'}</button>
-                    <button onClick={() => backupDb()} className="px-3 py-1 bg-charity-neutral-200 rounded">Backup DB</button>
+                    <button
+                      onClick={() => {
+                        setShowProgramForm((s) => !s);
+                        setEditingProgramId("");
+                        if (!showProgramForm)
+                          setNewProgram({
+                            title: "",
+                            slug: "",
+                            summary: "",
+                            content: "",
+                            image: "",
+                          });
+                      }}
+                      className="px-3 py-1 bg-charity-orange-600 text-white rounded"
+                    >
+                      {showProgramForm ? "Close" : "New Program"}
+                    </button>
+                    <button
+                      onClick={() => backupDb()}
+                      className="px-3 py-1 bg-charity-neutral-200 rounded"
+                    >
+                      Backup DB
+                    </button>
                   </div>
                 </div>
                 {showProgramForm && (
                   <div className="p-4 border rounded mb-4">
-                    <input className="w-full mb-2 p-2 border" placeholder="Title" value={newProgram.title} onChange={e => setNewProgram(p => ({...p, title:e.target.value}))} />
-                    <input className="w-full mb-2 p-2 border" placeholder="Slug" value={newProgram.slug} onChange={e => setNewProgram(p => ({...p, slug:e.target.value}))} />
-                    <input className="w-full mb-2 p-2 border" placeholder="Image URL" value={newProgram.image} onChange={e => setNewProgram(p => ({...p, image:e.target.value}))} />
-                    <textarea className="w-full mb-2 p-2 border" placeholder="Summary" value={newProgram.summary} onChange={e => setNewProgram(p => ({...p, summary:e.target.value}))} />
-                    <textarea className="w-full mb-2 p-2 border" placeholder="Content" value={newProgram.content} onChange={e => setNewProgram(p => ({...p, content:e.target.value}))} />
-                    <div className="flex gap-2"><button onClick={async () => {
-                      const headers = { ...getAuthHeaders(), 'Content-Type': 'application/json' } as any;
-                      if (editingProgramId) {
-                        await fetch(`/api/admin/programs/${editingProgramId}`, { method: 'PUT', headers, body: JSON.stringify(newProgram) });
-                      } else {
-                        await fetch('/api/admin/programs', { method: 'POST', headers, body: JSON.stringify(newProgram) });
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Title"
+                      value={newProgram.title}
+                      onChange={(e) =>
+                        setNewProgram((p) => ({ ...p, title: e.target.value }))
                       }
-                      setShowProgramForm(false); setNewProgram({ title: '', slug: '', summary: '', content: '', image: '' }); setEditingProgramId(''); reloadAll();
-                    }} className="px-4 py-2 bg-charity-orange-600 text-white rounded">{editingProgramId? 'Update':'Create'}</button><button onClick={() => { setShowProgramForm(false); setEditingProgramId(''); setNewProgram({ title: '', slug: '', summary: '', content: '', image: '' }); }} className="px-4 py-2 rounded border">Cancel</button></div>
+                    />
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Slug"
+                      value={newProgram.slug}
+                      onChange={(e) =>
+                        setNewProgram((p) => ({ ...p, slug: e.target.value }))
+                      }
+                    />
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Image URL"
+                      value={newProgram.image}
+                      onChange={(e) =>
+                        setNewProgram((p) => ({ ...p, image: e.target.value }))
+                      }
+                    />
+                    <textarea
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Summary"
+                      value={newProgram.summary}
+                      onChange={(e) =>
+                        setNewProgram((p) => ({
+                          ...p,
+                          summary: e.target.value,
+                        }))
+                      }
+                    />
+                    <textarea
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Content"
+                      value={newProgram.content}
+                      onChange={(e) =>
+                        setNewProgram((p) => ({
+                          ...p,
+                          content: e.target.value,
+                        }))
+                      }
+                    />
+                    <div className="flex gap-2">
+                      <button
+                        onClick={async () => {
+                          const headers = {
+                            ...getAuthHeaders(),
+                            "Content-Type": "application/json",
+                          } as any;
+                          if (editingProgramId) {
+                            await fetch(
+                              `/api/admin/programs/${editingProgramId}`,
+                              {
+                                method: "PUT",
+                                headers,
+                                body: JSON.stringify(newProgram),
+                              },
+                            );
+                          } else {
+                            await fetch("/api/admin/programs", {
+                              method: "POST",
+                              headers,
+                              body: JSON.stringify(newProgram),
+                            });
+                          }
+                          setShowProgramForm(false);
+                          setNewProgram({
+                            title: "",
+                            slug: "",
+                            summary: "",
+                            content: "",
+                            image: "",
+                          });
+                          setEditingProgramId("");
+                          reloadAll();
+                        }}
+                        className="px-4 py-2 bg-charity-orange-600 text-white rounded"
+                      >
+                        {editingProgramId ? "Update" : "Create"}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowProgramForm(false);
+                          setEditingProgramId("");
+                          setNewProgram({
+                            title: "",
+                            slug: "",
+                            summary: "",
+                            content: "",
+                            image: "",
+                          });
+                        }}
+                        className="px-4 py-2 rounded border"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 <div className="max-h-[520px] overflow-auto">
-                  <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Title</th><th className="text-left p-3">Slug</th><th className="p-3">Actions</th></tr></thead><tbody>{programs.map(p => (<tr key={p.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(p.ts).toLocaleString()}</td><td className="p-3">{p.title}</td><td className="p-3">{p.slug}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/programs/${p.id}`)} className="text-red-600 mr-3">Delete</button><button onClick={async () => {
-                        const headers = getAuthHeaders();
-                        const res = await fetch(`/api/admin/programs/${p.id}`, { headers });
-                        const data = await res.json();
-                        if (res.ok && data.program) {
-                          setNewProgram({ title: data.program.title || '', slug: data.program.slug || '', summary: data.program.summary || '', content: data.program.content || '', image: data.program.image || '' });
-                          setEditingProgramId(p.id);
-                          setShowProgramForm(true);
-                        } else {
-                          alert('Failed to load program');
-                        }
-                      }} className="text-charity-orange-600">Edit</button></td></tr>))}</tbody></table>
+                  <table className="w-full text-sm">
+                    <thead className="bg-charity-neutral-100">
+                      <tr>
+                        <th className="text-left p-3">Time</th>
+                        <th className="text-left p-3">Title</th>
+                        <th className="text-left p-3">Slug</th>
+                        <th className="p-3">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {programs.map((p) => (
+                        <tr key={p.id} className="border-b last:border-0">
+                          <td className="p-3 whitespace-nowrap">
+                            {new Date(p.ts).toLocaleString()}
+                          </td>
+                          <td className="p-3">{p.title}</td>
+                          <td className="p-3">{p.slug}</td>
+                          <td className="p-3">
+                            <button
+                              onClick={() =>
+                                doDelete(`/api/admin/programs/${p.id}`)
+                              }
+                              className="text-red-600 mr-3"
+                            >
+                              Delete
+                            </button>
+                            <button
+                              onClick={async () => {
+                                const headers = getAuthHeaders();
+                                const res = await fetch(
+                                  `/api/admin/programs/${p.id}`,
+                                  { headers },
+                                );
+                                const data = await res.json();
+                                if (res.ok && data.program) {
+                                  setNewProgram({
+                                    title: data.program.title || "",
+                                    slug: data.program.slug || "",
+                                    summary: data.program.summary || "",
+                                    content: data.program.content || "",
+                                    image: data.program.image || "",
+                                  });
+                                  setEditingProgramId(p.id);
+                                  setShowProgramForm(true);
+                                } else {
+                                  alert("Failed to load program");
+                                }
+                              }}
+                              className="text-charity-orange-600"
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             )}
 
-            {activeTab === 'blog' && (
+            {activeTab === "blog" && (
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <h3 className="font-bold">Blog Posts</h3>
                   <div className="flex gap-2">
-                    <button onClick={() => { setShowPostForm(s => !s); setEditingPostId(''); if (!showPostForm) setNewPost({ title: '', slug: '', excerpt: '', content: '', cover: '' }); }} className="px-3 py-1 bg-charity-orange-600 text-white rounded">{showPostForm? 'Close':'New Post'}</button>
+                    <button
+                      onClick={() => {
+                        setShowPostForm((s) => !s);
+                        setEditingPostId("");
+                        if (!showPostForm)
+                          setNewPost({
+                            title: "",
+                            slug: "",
+                            excerpt: "",
+                            content: "",
+                            cover: "",
+                          });
+                      }}
+                      className="px-3 py-1 bg-charity-orange-600 text-white rounded"
+                    >
+                      {showPostForm ? "Close" : "New Post"}
+                    </button>
                   </div>
                 </div>
                 {showPostForm && (
                   <div className="p-4 border rounded mb-4">
-                    <input className="w-full mb-2 p-2 border" placeholder="Title" value={newPost.title} onChange={e => setNewPost(p => ({...p, title: e.target.value}))} />
-                    <input className="w-full mb-2 p-2 border" placeholder="Slug" value={newPost.slug} onChange={e => setNewPost(p => ({...p, slug: e.target.value}))} />
-                    <input className="w-full mb-2 p-2 border" placeholder="Cover URL" value={newPost.cover} onChange={e => setNewPost(p => ({...p, cover: e.target.value}))} />
-                    <textarea className="w-full mb-2 p-2 border" placeholder="Excerpt" value={newPost.excerpt} onChange={e => setNewPost(p => ({...p, excerpt: e.target.value}))} />
-                    <textarea className="w-full mb-2 p-2 border" placeholder="Content" value={newPost.content} onChange={e => setNewPost(p => ({...p, content: e.target.value}))} />
-                    <div className="flex gap-2"><button onClick={async () => {
-                      const headers = { ...getAuthHeaders(), 'Content-Type': 'application/json' } as any;
-                      if (editingPostId) {
-                        await fetch(`/api/admin/blog/${editingPostId}`, { method: 'PUT', headers, body: JSON.stringify(newPost) });
-                      } else {
-                        await fetch('/api/admin/blog', { method: 'POST', headers, body: JSON.stringify(newPost) });
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Title"
+                      value={newPost.title}
+                      onChange={(e) =>
+                        setNewPost((p) => ({ ...p, title: e.target.value }))
                       }
-                      setShowPostForm(false); setNewPost({ title: '', slug: '', excerpt: '', content: '', cover: '' }); setEditingPostId(''); reloadAll();
-                    }} className="px-4 py-2 bg-charity-orange-600 text-white rounded">{editingPostId? 'Update':'Create'}</button><button onClick={() => { setShowPostForm(false); setEditingPostId(''); setNewPost({ title: '', slug: '', excerpt: '', content: '', cover: '' }); }} className="px-4 py-2 rounded border">Cancel</button></div>
+                    />
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Slug"
+                      value={newPost.slug}
+                      onChange={(e) =>
+                        setNewPost((p) => ({ ...p, slug: e.target.value }))
+                      }
+                    />
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Cover URL"
+                      value={newPost.cover}
+                      onChange={(e) =>
+                        setNewPost((p) => ({ ...p, cover: e.target.value }))
+                      }
+                    />
+                    <textarea
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Excerpt"
+                      value={newPost.excerpt}
+                      onChange={(e) =>
+                        setNewPost((p) => ({ ...p, excerpt: e.target.value }))
+                      }
+                    />
+                    <textarea
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Content"
+                      value={newPost.content}
+                      onChange={(e) =>
+                        setNewPost((p) => ({ ...p, content: e.target.value }))
+                      }
+                    />
+                    <div className="flex gap-2">
+                      <button
+                        onClick={async () => {
+                          const headers = {
+                            ...getAuthHeaders(),
+                            "Content-Type": "application/json",
+                          } as any;
+                          if (editingPostId) {
+                            await fetch(`/api/admin/blog/${editingPostId}`, {
+                              method: "PUT",
+                              headers,
+                              body: JSON.stringify(newPost),
+                            });
+                          } else {
+                            await fetch("/api/admin/blog", {
+                              method: "POST",
+                              headers,
+                              body: JSON.stringify(newPost),
+                            });
+                          }
+                          setShowPostForm(false);
+                          setNewPost({
+                            title: "",
+                            slug: "",
+                            excerpt: "",
+                            content: "",
+                            cover: "",
+                          });
+                          setEditingPostId("");
+                          reloadAll();
+                        }}
+                        className="px-4 py-2 bg-charity-orange-600 text-white rounded"
+                      >
+                        {editingPostId ? "Update" : "Create"}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowPostForm(false);
+                          setEditingPostId("");
+                          setNewPost({
+                            title: "",
+                            slug: "",
+                            excerpt: "",
+                            content: "",
+                            cover: "",
+                          });
+                        }}
+                        className="px-4 py-2 rounded border"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 <div className="max-h-[520px] overflow-auto">
-                  <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Title</th><th className="text-left p-3">Slug</th><th className="p-3">Actions</th></tr></thead><tbody>{posts.map(b => (<tr key={b.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(b.ts).toLocaleString()}</td><td className="p-3">{b.title}</td><td className="p-3">{b.slug}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/blog/${b.id}`)} className="text-red-600 mr-3">Delete</button><button onClick={async () => {
-                        const headers = getAuthHeaders();
-                        const res = await fetch(`/api/admin/blog/${b.id}`, { headers });
-                        const data = await res.json();
-                        if (res.ok && data.post) {
-                          setNewPost({ title: data.post.title || '', slug: data.post.slug || '', excerpt: data.post.excerpt || '', content: data.post.content || '', cover: data.post.cover || '' });
-                          setEditingPostId(b.id);
-                          setShowPostForm(true);
-                        } else {
-                          alert('Failed to load post');
-                        }
-                      }} className="text-charity-orange-600">Edit</button></td></tr>))}</tbody></table>
+                  <table className="w-full text-sm">
+                    <thead className="bg-charity-neutral-100">
+                      <tr>
+                        <th className="text-left p-3">Time</th>
+                        <th className="text-left p-3">Title</th>
+                        <th className="text-left p-3">Slug</th>
+                        <th className="p-3">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {posts.map((b) => (
+                        <tr key={b.id} className="border-b last:border-0">
+                          <td className="p-3 whitespace-nowrap">
+                            {new Date(b.ts).toLocaleString()}
+                          </td>
+                          <td className="p-3">{b.title}</td>
+                          <td className="p-3">{b.slug}</td>
+                          <td className="p-3">
+                            <button
+                              onClick={() =>
+                                doDelete(`/api/admin/blog/${b.id}`)
+                              }
+                              className="text-red-600 mr-3"
+                            >
+                              Delete
+                            </button>
+                            <button
+                              onClick={async () => {
+                                const headers = getAuthHeaders();
+                                const res = await fetch(
+                                  `/api/admin/blog/${b.id}`,
+                                  { headers },
+                                );
+                                const data = await res.json();
+                                if (res.ok && data.post) {
+                                  setNewPost({
+                                    title: data.post.title || "",
+                                    slug: data.post.slug || "",
+                                    excerpt: data.post.excerpt || "",
+                                    content: data.post.content || "",
+                                    cover: data.post.cover || "",
+                                  });
+                                  setEditingPostId(b.id);
+                                  setShowPostForm(true);
+                                } else {
+                                  alert("Failed to load post");
+                                }
+                              }}
+                              className="text-charity-orange-600"
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             )}
 
-            {activeTab === 'media' && (
+            {activeTab === "media" && (
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <h3 className="font-bold">Media</h3>
                   <div className="flex gap-2">
-                    <button onClick={() => { setShowMediaForm(s => !s); setEditingMediaId(''); if (!showMediaForm) setNewMedia({ name: '', url: '', meta: '{}' }); }} className="px-3 py-1 bg-charity-orange-600 text-white rounded">{showMediaForm? 'Close':'New Media'}</button>
+                    <button
+                      onClick={() => {
+                        setShowMediaForm((s) => !s);
+                        setEditingMediaId("");
+                        if (!showMediaForm)
+                          setNewMedia({ name: "", url: "", meta: "{}" });
+                      }}
+                      className="px-3 py-1 bg-charity-orange-600 text-white rounded"
+                    >
+                      {showMediaForm ? "Close" : "New Media"}
+                    </button>
                   </div>
                 </div>
                 {showMediaForm && (
                   <div className="p-4 border rounded mb-4">
-                    <input className="w-full mb-2 p-2 border" placeholder="Name" value={newMedia.name} onChange={e => setNewMedia(m => ({...m, name: e.target.value}))} />
+                    <input
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Name"
+                      value={newMedia.name}
+                      onChange={(e) =>
+                        setNewMedia((m) => ({ ...m, name: e.target.value }))
+                      }
+                    />
                     <div className="mb-2">
-                      <input className="w-full p-2 border" placeholder="Or paste URL" value={newMedia.url} onChange={e => setNewMedia(m => ({...m, url: e.target.value}))} />
+                      <input
+                        className="w-full p-2 border"
+                        placeholder="Or paste URL"
+                        value={newMedia.url}
+                        onChange={(e) =>
+                          setNewMedia((m) => ({ ...m, url: e.target.value }))
+                        }
+                      />
                     </div>
                     <div className="mb-2">
                       <label className="block text-sm mb-1">Upload file</label>
-                      <input type="file" onChange={async (e) => {
-                        const f = e.target.files?.[0];
-                        if (!f) return;
-                        const fd = new FormData();
-                        fd.append('file', f);
-                        const headers = getAuthHeaders();
-                        const res = await fetch('/api/admin/media/upload', { method: 'POST', body: fd, headers });
-                        const data = await res.json();
-                        if (res.ok) {
-                          setNewMedia(m => ({...m, url: data.url}));
-                        } else {
-                          alert('Upload failed');
-                        }
-                      }} />
+                      <input
+                        type="file"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (!f) return;
+                          const fd = new FormData();
+                          fd.append("file", f);
+                          const headers = getAuthHeaders();
+                          const res = await fetch("/api/admin/media/upload", {
+                            method: "POST",
+                            body: fd,
+                            headers,
+                          });
+                          const data = await res.json();
+                          if (res.ok) {
+                            setNewMedia((m) => ({ ...m, url: data.url }));
+                          } else {
+                            alert("Upload failed");
+                          }
+                        }}
+                      />
                     </div>
-                    <textarea className="w-full mb-2 p-2 border" placeholder='Meta JSON' value={newMedia.meta} onChange={e => setNewMedia(m => ({...m, meta: e.target.value}))} />
-                    <div className="flex gap-2"><button onClick={async () => {
-                      const headers = { ...getAuthHeaders(), 'Content-Type': 'application/json' } as any;
-                      let metaObj = {} as any;
-                      try { metaObj = JSON.parse(newMedia.meta); } catch {}
-                      if (editingMediaId) {
-                        await fetch(`/api/admin/media/${editingMediaId}`, { method: 'PUT', headers, body: JSON.stringify({ name: newMedia.name, url: newMedia.url, meta: metaObj }) });
-                      } else {
-                        await fetch('/api/admin/media', { method: 'POST', headers, body: JSON.stringify({ name: newMedia.name, url: newMedia.url, meta: metaObj }) });
+                    <textarea
+                      className="w-full mb-2 p-2 border"
+                      placeholder="Meta JSON"
+                      value={newMedia.meta}
+                      onChange={(e) =>
+                        setNewMedia((m) => ({ ...m, meta: e.target.value }))
                       }
-                      setShowMediaForm(false); setNewMedia({ name: '', url: '', meta: '{}' }); setEditingMediaId(''); reloadAll();
-                    }} className="px-4 py-2 bg-charity-orange-600 text-white rounded">{editingMediaId? 'Update':'Create'}</button><button onClick={() => { setShowMediaForm(false); setEditingMediaId(''); setNewMedia({ name: '', url: '', meta: '{}' }); }} className="px-4 py-2 rounded border">Cancel</button></div>
+                    />
+                    <div className="flex gap-2">
+                      <button
+                        onClick={async () => {
+                          const headers = {
+                            ...getAuthHeaders(),
+                            "Content-Type": "application/json",
+                          } as any;
+                          let metaObj = {} as any;
+                          try {
+                            metaObj = JSON.parse(newMedia.meta);
+                          } catch {}
+                          if (editingMediaId) {
+                            await fetch(`/api/admin/media/${editingMediaId}`, {
+                              method: "PUT",
+                              headers,
+                              body: JSON.stringify({
+                                name: newMedia.name,
+                                url: newMedia.url,
+                                meta: metaObj,
+                              }),
+                            });
+                          } else {
+                            await fetch("/api/admin/media", {
+                              method: "POST",
+                              headers,
+                              body: JSON.stringify({
+                                name: newMedia.name,
+                                url: newMedia.url,
+                                meta: metaObj,
+                              }),
+                            });
+                          }
+                          setShowMediaForm(false);
+                          setNewMedia({ name: "", url: "", meta: "{}" });
+                          setEditingMediaId("");
+                          reloadAll();
+                        }}
+                        className="px-4 py-2 bg-charity-orange-600 text-white rounded"
+                      >
+                        {editingMediaId ? "Update" : "Create"}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowMediaForm(false);
+                          setEditingMediaId("");
+                          setNewMedia({ name: "", url: "", meta: "{}" });
+                        }}
+                        className="px-4 py-2 rounded border"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 <div className="max-h-[520px] overflow-auto">
-                  <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Name</th><th className="text-left p-3">URL</th><th className="p-3">Actions</th></tr></thead><tbody>{media.map(m => (<tr key={m.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(m.ts).toLocaleString()}</td><td className="p-3">{m.name}</td><td className="p-3">{m.url}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/media/${m.id}`)} className="text-red-600 mr-3">Delete</button><button onClick={async () => {
-                        const headers = getAuthHeaders();
-                        const res = await fetch(`/api/admin/media/${m.id}`, { headers });
-                        const data = await res.json();
-                        if (res.ok && data.media) {
-                          setNewMedia({ name: data.media.name || '', url: data.media.url || '', meta: data.media.meta ? JSON.stringify(data.media.meta) : '{}' });
-                          setEditingMediaId(m.id);
-                          setShowMediaForm(true);
-                        } else {
-                          alert('Failed to load media');
-                        }
-                      }} className="text-charity-orange-600">Edit</button></td></tr>))}</tbody></table>
+                  <table className="w-full text-sm">
+                    <thead className="bg-charity-neutral-100">
+                      <tr>
+                        <th className="text-left p-3">Time</th>
+                        <th className="text-left p-3">Name</th>
+                        <th className="text-left p-3">URL</th>
+                        <th className="p-3">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {media.map((m) => (
+                        <tr key={m.id} className="border-b last:border-0">
+                          <td className="p-3 whitespace-nowrap">
+                            {new Date(m.ts).toLocaleString()}
+                          </td>
+                          <td className="p-3">{m.name}</td>
+                          <td className="p-3">{m.url}</td>
+                          <td className="p-3">
+                            <button
+                              onClick={() =>
+                                doDelete(`/api/admin/media/${m.id}`)
+                              }
+                              className="text-red-600 mr-3"
+                            >
+                              Delete
+                            </button>
+                            <button
+                              onClick={async () => {
+                                const headers = getAuthHeaders();
+                                const res = await fetch(
+                                  `/api/admin/media/${m.id}`,
+                                  { headers },
+                                );
+                                const data = await res.json();
+                                if (res.ok && data.media) {
+                                  setNewMedia({
+                                    name: data.media.name || "",
+                                    url: data.media.url || "",
+                                    meta: data.media.meta
+                                      ? JSON.stringify(data.media.meta)
+                                      : "{}",
+                                  });
+                                  setEditingMediaId(m.id);
+                                  setShowMediaForm(true);
+                                } else {
+                                  alert("Failed to load media");
+                                }
+                              }}
+                              className="text-charity-orange-600"
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             )}
 
             {/* fallback sections for contacts, newsletter, volunteers, donations use original listing + delete */}
 
-            {activeTab === 'contacts' && (
+            {activeTab === "contacts" && (
               <div className="max-h-[520px] overflow-auto">
-                <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Name</th><th className="text-left p-3">Email</th><th className="text-left p-3">Message</th><th className="p-3">Actions</th></tr></thead><tbody>{contacts.map(c => (<tr key={c.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(c.ts).toLocaleString()}</td><td className="p-3">{c.name}</td><td className="p-3">{c.email}</td><td className="p-3">{c.message}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/contacts/${c.id}`)} className="text-red-600">Delete</button></td></tr>))}</tbody></table>
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="text-left p-3">Email</th>
+                      <th className="text-left p-3">Message</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.map((c) => (
+                      <tr key={c.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">
+                          {new Date(c.ts).toLocaleString()}
+                        </td>
+                        <td className="p-3">{c.name}</td>
+                        <td className="p-3">{c.email}</td>
+                        <td className="p-3">{c.message}</td>
+                        <td className="p-3">
+                          <button
+                            onClick={() =>
+                              doDelete(`/api/admin/contacts/${c.id}`)
+                            }
+                            className="text-red-600"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
 
-            {activeTab === 'newsletter' && (
+            {activeTab === "newsletter" && (
               <div className="max-h-[520px] overflow-auto">
-                <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Email</th><th className="text-left p-3">Name</th><th className="p-3">Actions</th></tr></thead><tbody>{subscribers.map(s => (<tr key={s.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(s.ts).toLocaleString()}</td><td className="p-3">{s.email}</td><td className="p-3">{s.name}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/newsletter/${s.id}`)} className="text-red-600">Delete</button></td></tr>))}</tbody></table>
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Email</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {subscribers.map((s) => (
+                      <tr key={s.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">
+                          {new Date(s.ts).toLocaleString()}
+                        </td>
+                        <td className="p-3">{s.email}</td>
+                        <td className="p-3">{s.name}</td>
+                        <td className="p-3">
+                          <button
+                            onClick={() =>
+                              doDelete(`/api/admin/newsletter/${s.id}`)
+                            }
+                            className="text-red-600"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
 
-            {activeTab === 'volunteers' && (
+            {activeTab === "volunteers" && (
               <div className="max-h-[520px] overflow-auto">
-                <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Name</th><th className="text-left p-3">Email</th><th className="text-left p-3">Details</th><th className="p-3">Actions</th></tr></thead><tbody>{volunteers.map(v => (<tr key={v.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(v.ts).toLocaleString()}</td><td className="p-3">{v.name}</td><td className="p-3">{v.email}</td><td className="p-3">{v.details}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/volunteers/${v.id}`)} className="text-red-600">Delete</button></td></tr>))}</tbody></table>
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="text-left p-3">Email</th>
+                      <th className="text-left p-3">Details</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {volunteers.map((v) => (
+                      <tr key={v.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">
+                          {new Date(v.ts).toLocaleString()}
+                        </td>
+                        <td className="p-3">{v.name}</td>
+                        <td className="p-3">{v.email}</td>
+                        <td className="p-3">{v.details}</td>
+                        <td className="p-3">
+                          <button
+                            onClick={() =>
+                              doDelete(`/api/admin/volunteers/${v.id}`)
+                            }
+                            className="text-red-600"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
 
-            {activeTab === 'donations' && (
+            {activeTab === "donations" && (
               <div className="max-h-[520px] overflow-auto">
-                <table className="w-full text-sm"><thead className="bg-charity-neutral-100"><tr><th className="text-left p-3">Time</th><th className="text-left p-3">Donor</th><th className="text-left p-3">Amount</th><th className="p-3">Actions</th></tr></thead><tbody>{donations.map(d => (<tr key={d.id} className="border-b last:border-0"><td className="p-3 whitespace-nowrap">{new Date(d.ts).toLocaleString()}</td><td className="p-3">{d.donor_name}</td><td className="p-3">{d.amount} {d.currency}</td><td className="p-3"><button onClick={() => doDelete(`/api/admin/donations/${d.id}`)} className="text-red-600">Delete</button></td></tr>))}</tbody></table>
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Donor</th>
+                      <th className="text-left p-3">Amount</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {donations.map((d) => (
+                      <tr key={d.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">
+                          {new Date(d.ts).toLocaleString()}
+                        </td>
+                        <td className="p-3">{d.donor_name}</td>
+                        <td className="p-3">
+                          {d.amount} {d.currency}
+                        </td>
+                        <td className="p-3">
+                          <button
+                            onClick={() =>
+                              doDelete(`/api/admin/donations/${d.id}`)
+                            }
+                            className="text-red-600"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
-
           </div>
         </div>
-
       </div>
     </div>
   );
