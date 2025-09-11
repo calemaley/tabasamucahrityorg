@@ -104,14 +104,14 @@ const Programs = () => {
     {
       id: "kisumu-2024",
       title: "KISUMU Edition",
-      subtitle: "Seeds of change planted",
-      date: "10TH AUG 2024",
+      subtitle: "Free Medical Camp — Ndia Constituency (Kirinyaga County)",
+      date: "14TH JUL 2023",
       venue: "VICTORIA CHILDREN'S HOME - KISUMU",
       image:
-        "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      theme: "Planting seeds of transformation",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F72939ea3440543368bc0ebbfc320b894?format=webp&width=800",
+      theme: "Community health and wellness",
       description:
-        "Our successful Kisumu edition brought together 300+ volunteers and provided essential supplies to 150 children. The impact continues to grow.",
+        "A free medical camp serving Ndia Constituency in Kirinyaga County. Hundreds received checkups, medication, and referrals.",
       contact: "+254112459486",
       impact: "150 children supported, 50 families assisted",
       fullDescription:
@@ -143,14 +143,14 @@ const Programs = () => {
     {
       id: "eldoret-2024",
       title: "ELDORET Edition",
-      subtitle: "Champions of tomorrow",
+      subtitle: "Football Tournaments",
       date: "25TH MAY 2024",
       venue: "HIGHLANDS ORPHANAGE - ELDORET",
       image:
         "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       theme: "Raising champions",
       description:
-        "The Eldoret edition focused on sports and recreational activities alongside our traditional support programs, creating lasting memories for the children.",
+        "A community football tournament bringing together schools and youth teams, promoting sportsmanship and talent development.",
       contact: "+254112459487",
       impact: "200 children reached, sports equipment provided",
       fullDescription:
