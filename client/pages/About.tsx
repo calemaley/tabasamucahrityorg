@@ -100,9 +100,9 @@ const About = () => {
 
   const milestones = [
     {
-      year: "2015",
+      year: "2021",
       event: "Tabasamu Charity was founded with a mission to transform lives",
-      achievement: "First 50 children sponsored",
+      achievement: "First Charity",
     },
     {
       year: "2017",
