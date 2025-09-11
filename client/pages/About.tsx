@@ -124,11 +124,6 @@ const About = () => {
       event: "Free Medical Camp",
       achievement: "More smiles were created ",
     },
-    {
-      year: "2025",
-      event: "Digital learning initiative launched",
-      achievement: "Technology labs in 5 schools",
-    },
  ];
   
   return (
