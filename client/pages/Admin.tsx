@@ -17,13 +17,23 @@ const Login = ({ onLogin }: { onLogin: () => void }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === ADMIN_USER && password === ADMIN_PASS) {
-      localStorage.setItem("samu_auth", "1");
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data?.error || "Login failed");
+        return;
+      }
+      localStorage.setItem("samu_token", data.token);
       onLogin();
-    } else {
-      setError("Invalid credentials");
+    } catch (err) {
+      setError("Login failed");
     }
   };
 
@@ -31,9 +41,7 @@ const Login = ({ onLogin }: { onLogin: () => void }) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-charity-orange-600 to-charity-green-600 p-6">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-charity-neutral-800">
-            Tabasamu Admin
-          </h1>
+          <h1 className="text-3xl font-bold text-charity-neutral-800">Tabasamu Admin</h1>
           <p className="text-charity-neutral-600">Sign in to /samu dashboard</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
