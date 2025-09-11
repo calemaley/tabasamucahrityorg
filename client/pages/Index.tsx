@@ -90,7 +90,7 @@ const Index = () => {
       story:
         "Maria loves mathematics and dreams of becoming a teacher. She walks 5km to school daily and helps her mother with farming after classes.",
       image:
-        "https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2Fb8b21871733e41299357e2253b20e98f?format=webp&width=800",
       monthlyNeed: 45,
       interests: ["Mathematics", "Reading", "Farming"],
       dreamJob: "Teacher",
@@ -105,7 +105,7 @@ const Index = () => {
       story:
         "David is passionate about science and wants to become a doctor. His father is a subsistence farmer and struggles to pay school fees.",
       image:
-        "https://images.pexels.com/photos/160793/child-africa-boy-portrait-160793.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F950583433afd4f3aa883c9d1cc87031d?format=webp&width=800",
       monthlyNeed: 65,
       interests: ["Biology", "Chemistry", "Football"],
       dreamJob: "Doctor",
@@ -120,7 +120,7 @@ const Index = () => {
       story:
         "Grace excels in her studies and wants to become an engineer. She comes from a single-parent household and needs support to continue her education.",
       image:
-        "https://images.pexels.com/photos/955958/pexels-photo-955958.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F4938be7564894703871587a39102255b?format=webp&width=800",
       monthlyNeed: 75,
       interests: ["Mathematics", "Physics", "Technology"],
       dreamJob: "Engineer",
@@ -135,7 +135,7 @@ const Index = () => {
       story:
         "John is a bright student who loves to read. His parents work as casual laborers and cannot afford his educational expenses consistently.",
       image:
-        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F12495c24e4264caea932f0480ae45edc%2F5de7bd1782db4332a9ee345b7cc61f01?format=webp&width=800",
       monthlyNeed: 50,
       interests: ["Reading", "Writing", "History"],
       dreamJob: "Writer",
