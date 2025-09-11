@@ -32,7 +32,7 @@ export const featuredEvent: FeaturedEvent = {
     "Beddings",
     "Monetary support",
   ],
-  contact: "+254112459483",
+  contact: "+254794107724",
   paymentLink: "https://zenlipa.co.ke/c/uKowYx",
   fullDescription:
     "Join us for an unforgettable day of giving and community spirit at the NAIROBI Edition event. This special gathering brings together hearts and hands united in a common mission: to spread joy and create lasting smiles in the lives of children who need it most.\n\nLocated at the beautiful Blessings Children's Home in Ruai, this event represents more than just a donation drive - it's a celebration of humanity, kindness, and the power we have when we come together for a noble cause.\n\nWhat makes this event special:\n• Direct impact on children's lives\n• Community building and networking\n• Hands-on volunteer opportunities\n• Stories of transformation and hope\n• Cultural performances and activities\n\nEvery contribution, whether big or small, creates ripples of positive change that extend far beyond the event day. Together, we're not just giving items - we're giving hope, dignity, and the promise of a brighter tomorrow.",
