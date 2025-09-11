@@ -133,7 +133,7 @@ const About = () => {
       <section className="pt-0 relative overflow-hidden bg-gradient-to-br from-charity-orange-50 to-charity-green-50">
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2F1f6c0f523ad54f18a5f52f37dc049f0c?alt=media&token=9e514447-4494-4cd5-9725-09fe72e6d126&apiKey=12495c24e4264caea932f0480ae45edc"
+          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F8e424a7266c54eedaca8ca2ed8bd1bc3?alt=media&token=6df04b8b-d8fe-4334-903e-49f0c58d8860&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
           autoPlay
           muted
           loop
