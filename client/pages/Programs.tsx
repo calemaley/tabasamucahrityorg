@@ -274,7 +274,16 @@ const Programs = () => {
     <>
       {/* Hero Section */}
       <section className="pt-0 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-500 via-orange-400 to-orange-600 animate-gradient"></div>
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F153245ad30eb4b7e8c5599a0eca08317?alt=media&token=0664e38d-660f-485a-9b9e-d42392e23699&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-green-500/40 via-orange-400/40 to-orange-600/40 animate-gradient"></div>
         <div
           className="absolute inset-0 opacity-20"
           style={{
