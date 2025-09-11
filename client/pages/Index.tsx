@@ -619,8 +619,17 @@ const Index = () => {
 
       {/* How You Can Help Us */}
       <SectionReveal>
-        <section className="py-20 bg-charity-orange-600">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 relative overflow-hidden">
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F8d975f746acc4941bfe12ec3f1c5138a?alt=media&token=2e1e0384-83fc-4b15-ae49-a302f7da8126&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-charity-orange-600/85" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-white mb-4">
                 How You Can Help Us?
@@ -717,8 +726,17 @@ const Index = () => {
 
       {/* Impact Statistics */}
       <SectionReveal>
-        <section className="py-20 bg-charity-green-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 relative overflow-hidden">
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="https://cdn.builder.io/o/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F5ab93ce551fe442ba1ad6d5cb267b689?alt=media&token=6c7413b8-90dc-43b0-94ba-f01de3392756&apiKey=80b74e3fdcaa4c0ca29f792322dc0e5f"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-charity-green-700/85" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-white mb-4">
                 LET'S SUPPORT US TO HELP THEM
