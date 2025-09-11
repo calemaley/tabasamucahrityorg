@@ -19,7 +19,7 @@ export interface Child {
 export const allChildren: Child[] = [
   {
     id: "maria-001",
-    name: "Maria Mwangi",
+    name: "Kevin Gitonga",
     age: 8,
     location: "Nyanza County, Kenya",
     school: "Mwanza Primary School",
@@ -121,7 +121,7 @@ export const allChildren: Child[] = [
   },
   {
     id: "amina-005",
-    name: "Amina Hassan",
+    name: "George Kang'ethe",
     age: 9,
     location: "Coastal Kenya",
     school: "Malindi Primary School",
