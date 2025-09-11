@@ -69,14 +69,31 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [events, setEvents] = useState<TrackedEvent[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
 
-  // Load initial data
+  const [contacts, setContacts] = useState<any[]>([]);
+  const [subscribers, setSubscribers] = useState<any[]>([]);
+  const [volunteers, setVolunteers] = useState<any[]>([]);
+  const [programs, setPrograms] = useState<any[]>([]);
+  const [posts, setPosts] = useState<any[]>([]);
+  const [donations, setDonations] = useState<any[]>([]);
+  const [media, setMedia] = useState<any[]>([]);
+
+  const [activeTab, setActiveTab] = useState<string>("events");
+
+  // Fetch helpers
+  const reloadAll = () => {
+    fetch("/api/admin/events").then((r) => r.json()).then((d) => setEvents(d.events || []));
+    fetch("/api/admin/stats").then((r) => r.json()).then((d) => setCounts(d.counts || {}));
+    fetch("/api/admin/contacts").then((r) => r.json()).then((d) => setContacts(d.contacts || d));
+    fetch("/api/admin/newsletter").then((r) => r.json()).then((d) => setSubscribers(d.subscribers || d));
+    fetch("/api/admin/volunteers").then((r) => r.json()).then((d) => setVolunteers(d.volunteers || d));
+    fetch("/api/admin/programs").then((r) => r.json()).then((d) => setPrograms(d.programs || d.programs || []));
+    fetch("/api/admin/blog").then((r) => r.json()).then((d) => setPosts(d.posts || d));
+    fetch("/api/admin/donations").then((r) => r.json()).then((d) => setDonations(d.donations || d));
+    fetch("/api/admin/media").then((r) => r.json()).then((d) => setMedia(d.media || d));
+  };
+
   useEffect(() => {
-    fetch("/api/admin/events")
-      .then((r) => r.json())
-      .then((d) => setEvents(d.events || []));
-    fetch("/api/admin/stats")
-      .then((r) => r.json())
-      .then((d) => setCounts(d.counts || {}));
+    reloadAll();
   }, []);
 
   // SSE realtime stream
@@ -84,15 +101,31 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
     const es = new EventSource("/api/admin/events/stream");
     es.onmessage = (msg) => {
       try {
-        const evt: TrackedEvent = JSON.parse(msg.data);
-        setEvents((prev) => [evt, ...prev].slice(0, 500));
-        setCounts((c) => ({ ...c, [evt.type]: (c[evt.type] || 0) + 1 }));
-      } catch {}
+        const payload = JSON.parse(msg.data);
+        if (payload?.type === "initial_events") {
+          setEvents(payload.data || []);
+        } else if (payload?.resource) {
+          const { resource, action, data, id } = payload;
+          // Simple handling: refresh lists on change
+          if (["contacts", "newsletter", "volunteers", "programs", "blog", "donations", "media", "events"].includes(resource)) {
+            reloadAll();
+          }
+        } else {
+          // fallback: push into events
+          setEvents((prev) => [payload, ...prev].slice(0, 500));
+        }
+      } catch (e) {}
     };
     return () => es.close();
   }, []);
 
   const total = useMemo(() => events.length, [events]);
+
+  // Deletion helpers
+  const doDelete = async (path: string) => {
+    await fetch(path, { method: "DELETE" });
+    reloadAll();
+  };
 
   return (
     <div className="min-h-screen bg-charity-neutral-50">
@@ -117,65 +150,260 @@ const AdminDashboard = ({ onLogout }: { onLogout: () => void }) => {
       </div>
 
       <div className="max-w-7xl mx-auto p-4 space-y-6">
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Tabs */}
+        <div className="flex gap-2 flex-wrap">
           {[
-            { label: "Total Events", value: total },
-            {
-              label: "Contacts",
-              value: counts["contact_submit"] || 0,
-              icon: Mail,
-            },
-            {
-              label: "Newsletter",
-              value: counts["newsletter_subscribe"] || 0,
-              icon: Users,
-            },
-            {
-              label: "Volunteers",
-              value: counts["volunteer_application"] || 0,
-              icon: Users,
-            },
-          ].map((card, i) => (
-            <div key={i} className="bg-white rounded-xl p-6 shadow border">
-              <div className="text-charity-neutral-500 text-sm">
-                {card.label}
-              </div>
-              <div className="text-3xl font-bold">{card.value}</div>
-            </div>
+            ["events", "Recent Activity"],
+            ["contacts", "Contacts"],
+            ["newsletter", "Subscribers"],
+            ["volunteers", "Volunteers"],
+            ["programs", "Programs"],
+            ["blog", "Blog Posts"],
+            ["donations", "Donations"],
+            ["media", "Media"],
+          ].map((t) => (
+            <button
+              key={t[0]}
+              onClick={() => setActiveTab(t[0] as string)}
+              className={`px-3 py-1 rounded ${activeTab === t[0] ? "bg-charity-orange-600 text-white" : "bg-charity-neutral-100"}`}
+            >
+              {t[1]}
+            </button>
           ))}
         </div>
 
-        {/* Recent events */}
+        {/* Content area */}
         <div className="bg-white rounded-xl shadow border overflow-hidden">
-          <div className="p-4 font-bold border-b">Recent Activity</div>
-          <div className="max-h-[560px] overflow-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-charity-neutral-100">
-                <tr>
-                  <th className="text-left p-3">Time</th>
-                  <th className="text-left p-3">Type</th>
-                  <th className="text-left p-3">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {events.map((e) => (
-                  <tr key={e.id} className="border-b last:border-0">
-                    <td className="p-3 whitespace-nowrap">
-                      {new Date(e.ts).toLocaleString()}
-                    </td>
-                    <td className="p-3 font-medium">{e.type}</td>
-                    <td className="p-3">
-                      <pre className="whitespace-pre-wrap text-xs text-charity-neutral-600">
-                        {JSON.stringify(e.payload, null, 2)}
-                      </pre>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="p-4 font-bold border-b">{activeTab.toUpperCase()}</div>
+          <div className="p-4">
+            {activeTab === "events" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Type</th>
+                      <th className="text-left p-3">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {events.map((e) => (
+                      <tr key={e.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(e.ts).toLocaleString()}</td>
+                        <td className="p-3 font-medium">{e.type}</td>
+                        <td className="p-3">
+                          <pre className="whitespace-pre-wrap text-xs text-charity-neutral-600">{JSON.stringify(e.payload, null, 2)}</pre>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "contacts" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="text-left p-3">Email</th>
+                      <th className="text-left p-3">Message</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.map((c) => (
+                      <tr key={c.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(c.ts).toLocaleString()}</td>
+                        <td className="p-3">{c.name}</td>
+                        <td className="p-3">{c.email}</td>
+                        <td className="p-3">{c.message}</td>
+                        <td className="p-3">
+                          <button onClick={() => doDelete(`/api/admin/contacts/${c.id}`)} className="text-red-600">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "newsletter" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Email</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {subscribers.map((s) => (
+                      <tr key={s.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(s.ts).toLocaleString()}</td>
+                        <td className="p-3">{s.email}</td>
+                        <td className="p-3">{s.name}</td>
+                        <td className="p-3">
+                          <button onClick={() => doDelete(`/api/admin/newsletter/${s.id}`)} className="text-red-600">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "volunteers" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="text-left p-3">Email</th>
+                      <th className="text-left p-3">Details</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {volunteers.map((v) => (
+                      <tr key={v.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(v.ts).toLocaleString()}</td>
+                        <td className="p-3">{v.name}</td>
+                        <td className="p-3">{v.email}</td>
+                        <td className="p-3">{v.details}</td>
+                        <td className="p-3">
+                          <button onClick={() => doDelete(`/api/admin/volunteers/${v.id}`)} className="text-red-600">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "programs" && (
+              <div>
+                <div className="mb-4">
+                  <h3 className="font-bold mb-2">Programs</h3>
+                </div>
+                <div className="max-h-[520px] overflow-auto">
+                  <table className="w-full text-sm">
+                    <thead className="bg-charity-neutral-100">
+                      <tr>
+                        <th className="text-left p-3">Time</th>
+                        <th className="text-left p-3">Title</th>
+                        <th className="text-left p-3">Slug</th>
+                        <th className="text-left p-3">Summary</th>
+                        <th className="p-3">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {programs.map((p) => (
+                        <tr key={p.id} className="border-b last:border-0">
+                          <td className="p-3 whitespace-nowrap">{new Date(p.ts).toLocaleString()}</td>
+                          <td className="p-3">{p.title}</td>
+                          <td className="p-3">{p.slug}</td>
+                          <td className="p-3">{p.summary}</td>
+                          <td className="p-3">
+                            <button onClick={() => doDelete(`/api/admin/programs/${p.id}`)} className="text-red-600">Delete</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "blog" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Title</th>
+                      <th className="text-left p-3">Slug</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {posts.map((b) => (
+                      <tr key={b.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(b.ts).toLocaleString()}</td>
+                        <td className="p-3">{b.title}</td>
+                        <td className="p-3">{b.slug}</td>
+                        <td className="p-3">
+                          <button onClick={() => doDelete(`/api/admin/blog/${b.id}`)} className="text-red-600">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "donations" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Donor</th>
+                      <th className="text-left p-3">Amount</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {donations.map((d) => (
+                      <tr key={d.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(d.ts).toLocaleString()}</td>
+                        <td className="p-3">{d.donor_name}</td>
+                        <td className="p-3">{d.amount} {d.currency}</td>
+                        <td className="p-3">
+                          <button onClick={() => doDelete(`/api/admin/donations/${d.id}`)} className="text-red-600">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "media" && (
+              <div className="max-h-[520px] overflow-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-charity-neutral-100">
+                    <tr>
+                      <th className="text-left p-3">Time</th>
+                      <th className="text-left p-3">Name</th>
+                      <th className="text-left p-3">URL</th>
+                      <th className="p-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {media.map((m) => (
+                      <tr key={m.id} className="border-b last:border-0">
+                        <td className="p-3 whitespace-nowrap">{new Date(m.ts).toLocaleString()}</td>
+                        <td className="p-3">{m.name}</td>
+                        <td className="p-3">{m.url}</td>
+                        <td className="p-3">
+                          <button onClick={() => doDelete(`/api/admin/media/${m.id}`)} className="text-red-600">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
           </div>
         </div>
+
       </div>
     </div>
   );
