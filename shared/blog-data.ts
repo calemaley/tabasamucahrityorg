@@ -32,7 +32,7 @@ export const featuredPost: BlogPost = {
     "At the end of the day, charity is not just about what we give away; it is about what we build together. When we invest in children's dreams, we invest in the future of humanity itself.",
   ],
   image:
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://cdn.builder.io/api/v1/image/assets%2Fb84e9a4b35c7429a9cad0d14a2532c7b%2F8d3b260b1280420d84ed09e849db9b9b?format=webp&width=1600",
   category: "Inspiration",
   author: "A.O.Suleiman Kagwe",
   date: "January 15, 2025",
