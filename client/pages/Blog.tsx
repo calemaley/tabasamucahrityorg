@@ -378,7 +378,7 @@ const Blog = () => {
               <img
                 src={featuredPost.image}
                 alt={featuredPost.title}
-                className="w-full h-96 md:h-[500px] object-cover"
+                className="w-full h-[420px] md:h-[560px] lg:h-[720px] object-cover object-[center_30%]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
