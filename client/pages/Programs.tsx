@@ -605,6 +605,24 @@ const Programs = () => {
                   </div>
                 )}
 
+                {selectedEvent.gallery && selectedEvent.gallery.length > 0 && (
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-charity-neutral-800 mb-4">
+                      Photo Gallery
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {selectedEvent.gallery.map((url: string, index: number) => (
+                        <img
+                          key={index}
+                          src={url}
+                          alt={`${selectedEvent.title} photo ${index + 1}`}
+                          className="w-full h-48 object-cover rounded-xl"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Expected Impact or Actual Impact */}
                 {(selectedEvent.expectedImpact ||
                   selectedEvent.actualImpact) && (
