@@ -308,9 +308,18 @@ const Volunteer = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-0 bg-gradient-to-br from-charity-orange-500 to-charity-green-600 relative">
+      <section className="pt-0 bg-gradient-to-br from-charity-orange-500 to-charity-green-600 relative overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://cdn.builder.io/o/assets%2F12495c24e4264caea932f0480ae45edc%2Fe8c47f925a6f4688bcf58cde4a4de079?alt=media&token=3932eb45-6e62-45eb-ad95-41c0d85f8a5c&apiKey=12495c24e4264caea932f0480ae45edc"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-black/30" />
         <Navigation />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <AnimatedSection animation="slideUp">
             <div className="text-center text-white">
               <Users className="h-16 w-16 mx-auto mb-6" />
