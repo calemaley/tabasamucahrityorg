@@ -216,9 +216,13 @@ const Navigation = () => {
                       )}
                     </>
                   ) : (
-                    <Link
-                      to={item.href}
+                    <a
+                      href={item.href}
                       onMouseEnter={() => prefetch(item.href)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateOnClick(item.href);
+                      }}
                       className={cn(
                         "flex items-center space-x-1.5 transition-all duration-300 font-medium px-2 py-1.5 rounded-lg group",
                         isScrolled || isMenuOpen
@@ -230,7 +234,7 @@ const Navigation = () => {
                       <span className="group-hover:translate-x-0.5 transition-transform duration-200 text-sm">
                         {item.label}
                       </span>
-                    </Link>
+                    </a>
                   )}
                 </div>
               );
