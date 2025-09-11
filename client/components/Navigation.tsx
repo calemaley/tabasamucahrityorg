@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ChevronDown,
   Menu,
@@ -14,6 +14,11 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
+
+// Simple ErrorBoundary to surface lazy-load errors
+class ErrorBoundary extends (Error as any) {
+  // placeholder to satisfy TS - not used directly
+}
 
 interface SubMenuItem {
   label: string;
