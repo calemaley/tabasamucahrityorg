@@ -102,8 +102,8 @@ const Programs = () => {
   // Mock data for past events
   const pastEvents = [
     {
-      id: "kisumu-2024",
-      title: "KISUMU Edition",
+      id: "kirinyaga-2024",
+      title: "KIRINYAGA Edition",
       subtitle: "Free Medical Camp — Ndia Constituency (Kirinyaga County)",
       date: "14TH JUL 2023",
       venue: "VICTORIA CHILDREN'S HOME - KISUMU",
@@ -146,13 +146,18 @@ const Programs = () => {
         "6 months later, 95% of supported children showed improved academic performance, and 3 children received secondary school scholarships.",
     },
     {
-      id: "eldoret-2024",
-      title: "ELDORET Edition",
+      id: "embu-2024",
+      title: "EMBU Edition",
       subtitle: "Football Tournaments",
       date: "25TH MAY 2024",
       venue: "HIGHLANDS ORPHANAGE - ELDORET",
       image:
         "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      gallery: [
+        "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F8b4aecfd92534eb3b00f9bac06b116d9?format=webp&width=1200",
+        "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Feaa517097fb04e0a81fe3713b0f66c39?format=webp&width=1200",
+        "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F7caa038804c84176baeaac551a17aa3a?format=webp&width=1200",
+      ],
       theme: "Raising champions",
       description:
         "A community football tournament bringing together schools and youth teams, promoting sportsmanship and talent development.",
