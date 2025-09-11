@@ -246,78 +246,10 @@ const Index = () => {
       <SectionReveal>
         <section className="relative h-screen overflow-hidden">
           <Navigation />
+          {/* Enhanced Carousel */}
           <div className="absolute inset-0">
-            {heroImages.map((image, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "absolute inset-0 transition-opacity duration-1000",
-                  index === currentSlide ? "opacity-100" : "opacity-0",
-                )}
-              >
-                <img
-                  src={heroImages[index].src}
-                  alt="Tabasamu Charity"
-                  className="w-full h-full object-cover object-[center_35%]"
-                />
-                <div className="absolute inset-0 bg-black/40" />
-              </div>
-            ))}
-          </div>
-
-          <div className="relative h-full flex items-center justify-center text-center text-white px-4">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                {heroImages[currentSlide].quote}
-              </h1>
-              <div className="flex justify-center gap-4 mt-8">
-                <Link
-                  to="/get-involved/volunteer"
-                  className="px-8 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium"
-                >
-                  Join Us Today
-                </Link>
-                <button
-                  onClick={() =>
-                    redirectToPayment("donationUrl", {
-                      source: CAMPAIGN_SOURCES.hero,
-                      campaign: "hero-donate",
-                    })
-                  }
-                  className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-charity-neutral-800 rounded-lg transition-colors duration-200 font-medium"
-                >
-                  Donate Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Carousel Controls */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/20 hover:bg-white/30 text-white rounded-full transition-colors duration-200"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/20 hover:bg-white/30 text-white rounded-full transition-colors duration-200"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-
-          {/* Slide Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={cn(
-                  "w-3 h-3 rounded-full transition-colors duration-200",
-                  index === currentSlide ? "bg-white" : "bg-white/50",
-                )}
-              />
-            ))}
+            {/* lazy load carousel component to avoid SSR issues */}
+            <Carousel slides={heroImages} />
           </div>
         </section>
       </SectionReveal>
