@@ -20,56 +20,36 @@ import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 const About = () => {
   const [selectedMember, setSelectedMember] = useState<any>(null);
 
-  const teamMembers = [
-    {
-      name: "Judith Kwamboka",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
-      bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
-      fullBio:
-        "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return. At Tabasamu Charity, we believe every smile we give, every hand we extend, and every act of care we show makes the world a better place. True humanity is found in seeing ourselves in others, uplifting those in need, and choosing love over indifference. In small acts of goodness, we build hope, and in unity, we create change.",
-      email: "silajudith2019@gmail.com",
-      phone: "+254 714 367286",
-      achievements: [
-        "Coordinated over 100 community outreach programs",
-        "Established partnerships with 40+ local organizations",
-        "Led initiatives that have touched over 2,000 lives",
-        "Championed women and children empowerment programs",
-      ],
-    },
-    {
-      name: "Philip Muga",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
-      bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
-      fullBio:
-        "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose. It is seen in the kindness we show, the justice we uphold, and the hope we nurture for one another. The Bible reminds us of this truth in Micah 6:8: 'He has shown you, O man, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.' In living this way, we embrace the essence of our shared humanity and reflect the heart of God to the world.",
-      email: "omondimuga175@gmail.com",
-      phone: "+254 794 107724",
-      achievements: [
-        "Developed comprehensive education support programs",
-        "Led faith-based community development initiatives",
-        "Mentored over 500 young people in leadership",
-        "Established sustainable livelihood programs in 15 communities",
-      ],
-    },
-    {
-      name: "Lilliane Clarice",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F31768e4d9d7546fcb9da81d5f6310801%2F116d15409d254e0aa40e04e67699160e?format=webp&width=800",
-      bio: "I believe that true fulfillment in life comes from reaching out and uplifting others.",
-      fullBio:
-        "I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.",
-      email: "lilliane@tabasamu.org",
-      phone: "+254717999672",
-      achievements: [
-        "Championed community outreach and support programs",
-        "Advocated for vulnerable populations and social justice",
-        "Created opportunities for dignified living for those in need",
-        "Fostered hope and compassion through service initiatives",
-      ],
-    },
-  ];
+ const teamMembers = [
+  {
+    name: "Judith Kwamboka",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
+    bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
+    fullBio:
+      "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return. At Tabasamu Charity, we believe every smile we give, every hand we extend, and every act of care we show makes the world a better place. True humanity is found in seeing ourselves in others, uplifting those in need, and choosing love over indifference. In small acts of goodness, we build hope, and in unity, we create change.",
+    email: "silajudith2019@gmail.com",
+    phone: "+254 714 367286",
+  },
+  {
+    name: "Philip Muga",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
+    bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
+    fullBio:
+      "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose. It is seen in the kindness we show, the justice we uphold, and the hope we nurture for one another. The Bible reminds us of this truth in Micah 6:8: 'He has shown you, O man, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.' In living this way, we embrace the essence of our shared humanity and reflect the heart of God to the world.",
+    email: "omondimuga175@gmail.com",
+    phone: "+254 794 107724",
+  },
+  {
+    name: "Lilliane Clarice",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F31768e4d9d7546fcb9da81d5f6310801%2F116d15409d254e0aa40e04e67699160e?format=webp&width=800",
+    bio: "I believe that true fulfillment in life comes from reaching out and uplifting others.",
+    fullBio:
+      "I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.",
+    email: "lilliane@tabasamu.org",
+    phone: "+254717999672",
+  },
+];
+
 
   const values = [
     {
@@ -504,91 +484,74 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Member Modal */}
-      {selectedMember && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="relative">
-              <button
-                onClick={() => setSelectedMember(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
-              >
-                <X className="h-5 w-5" />
-              </button>
+     {/* Team Member Modal */}
+{selectedMember && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="relative">
+        <button
+          onClick={() => setSelectedMember(null)}
+          className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
+        >
+          <X className="h-5 w-5" />
+        </button>
 
-              <div className="p-8">
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="md:w-1/3">
-                    <img
-                      src={selectedMember.image}
-                      alt={selectedMember.name}
-                      className={`w-full h-64 md:h-48 object-cover ${selectedMember.name === "Philip Muga" ? "object-center" : "object-top"} rounded-xl shadow-lg`}
-                    />
+        <div className="p-8">
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="md:w-1/3">
+              <img
+                src={selectedMember.image}
+                alt={selectedMember.name}
+                className={`w-full h-64 md:h-48 object-cover ${
+                  selectedMember.name === "Philip Muga"
+                    ? "object-center"
+                    : "object-top"
+                } rounded-xl shadow-lg`}
+              />
+            </div>
+
+            <div className="md:w-2/3 space-y-6">
+              <div>
+                <h2 className="text-3xl font-bold text-charity-neutral-800 mb-6">
+                  {selectedMember.name}
+                </h2>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
+                  About
+                </h3>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  {selectedMember.fullBio}
+                </p>
+              </div>
+
+              <div className="bg-charity-neutral-50 p-4 rounded-xl">
+                <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
+                  Contact Information
+                </h3>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <Mail className="h-4 w-4 text-charity-orange-600" />
+                    <span className="text-charity-neutral-600">
+                      {selectedMember.email}
+                    </span>
                   </div>
-
-                  <div className="md:w-2/3 space-y-6">
-                    <div>
-                      <h2 className="text-3xl font-bold text-charity-neutral-800 mb-6">
-                        {selectedMember.name}
-                      </h2>
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
-                        About
-                      </h3>
-                      <p className="text-charity-neutral-600 leading-relaxed">
-                        {selectedMember.fullBio}
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
-                        Key Achievements
-                      </h3>
-                      <ul className="space-y-2">
-                        {selectedMember.achievements.map(
-                          (achievement: string, index: number) => (
-                            <li
-                              key={index}
-                              className="flex items-start space-x-2"
-                            >
-                              <div className="w-2 h-2 bg-charity-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-charity-neutral-600">
-                                {achievement}
-                              </span>
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                    </div>
-
-                    <div className="bg-charity-neutral-50 p-4 rounded-xl">
-                      <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
-                        Contact Information
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center space-x-3">
-                          <Mail className="h-4 w-4 text-charity-orange-600" />
-                          <span className="text-charity-neutral-600">
-                            {selectedMember.email}
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Phone className="h-4 w-4 text-charity-orange-600" />
-                          <span className="text-charity-neutral-600">
-                            {selectedMember.phone}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="flex items-center space-x-3">
+                    <Phone className="h-4 w-4 text-charity-orange-600" />
+                    <span className="text-charity-neutral-600">
+                      {selectedMember.phone}
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
+    </div>
+  </div>
+)}
 
       <Footer />
     </>
