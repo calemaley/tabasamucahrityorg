@@ -65,8 +65,7 @@ const Volunteer = () => {
       ],
       skills: ["Teaching", "Patience", "Creativity", "Communication"],
       impact: "Directly support 20-30 students daily",
-      image:
-        "https://images.pexels.com/photos/3059652/pexels-photo-3059652.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/gallery/photo_005.jpg",
       urgent: false,
       icon: GraduationCap,
     },
@@ -97,8 +96,7 @@ const Volunteer = () => {
         "Physical stamina",
       ],
       impact: "Serve 100+ patients monthly",
-      image:
-        "https://images.pexels.com/photos/4263200/pexels-photo-4263200.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/gallery/photo_012.jpg",
       urgent: true,
       icon: Stethoscope,
     },
@@ -128,8 +126,7 @@ const Volunteer = () => {
         "Adaptability",
       ],
       impact: "Support 100+ community members",
-      image:
-        "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/gallery/photo_019.jpg",
       urgent: false,
       icon: Users,
     },
@@ -155,8 +152,7 @@ const Volunteer = () => {
       ],
       skills: ["Mentoring", "Communication", "Empathy", "Organization"],
       impact: "Mentor 15-20 young people",
-      image:
-        "https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/gallery/photo_028.jpg",
       urgent: false,
       icon: Heart,
     },
@@ -187,8 +183,7 @@ const Volunteer = () => {
         "Emotional support",
       ],
       impact: "Support 10-15 individuals with special needs",
-      image:
-        "https://images.pexels.com/photos/7652031/pexels-photo-7652031.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/gallery/photo_037.jpg",
       urgent: true,
       icon: Heart,
     },
@@ -214,8 +209,7 @@ const Volunteer = () => {
       ],
       skills: ["Technology", "Teaching", "Problem-solving", "Patience"],
       impact: "Train 50+ people in digital skills monthly",
-      image:
-        "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/gallery/photo_044.jpg",
       urgent: false,
       icon: BookOpen,
     },
@@ -948,85 +942,6 @@ const Volunteer = () => {
           </div>
         </div>
       )}
-
-      {/* Volunteer Testimonials */}
-      <section className="py-20 bg-charity-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="slideUp">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
-                Volunteer Stories
-              </h2>
-              <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Hear from our volunteers about their transformative experiences
-                and the impact they've made in Kenya.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Johnson",
-                role: "Education Volunteer",
-                duration: "6 months",
-                quote:
-                  "Teaching in Kenya changed my perspective on education and life. The children's enthusiasm despite limited resources was truly inspiring.",
-                image:
-                  "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-              },
-              {
-                name: "Dr. Mark Rodriguez",
-                role: "Healthcare Volunteer",
-                duration: "1 year",
-                quote:
-                  "Working in rural clinics taught me more about medicine and compassion than any textbook ever could. An unforgettable experience.",
-                image:
-                  "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-              },
-              {
-                name: "Emma Chen",
-                role: "Community Development",
-                duration: "8 months",
-                quote:
-                  "Being part of building a school from the ground up and seeing the community come together was the most rewarding experience of my life.",
-                image:
-                  "https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png",
-              },
-            ].map((testimonial, index) => (
-              <AnimatedSection
-                key={index}
-                animation="scaleIn"
-                delay={index * 100}
-              >
-                <div className="bg-white p-6 rounded-xl shadow-lg">
-                  <div className="flex items-center mb-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h4 className="font-bold text-charity-neutral-800">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-charity-neutral-600">
-                        {testimonial.role}
-                      </p>
-                      <p className="text-xs text-charity-neutral-500">
-                        {testimonial.duration}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-charity-neutral-700 italic">
-                    "{testimonial.quote}"
-                  </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action */}
       <section className="py-20 relative overflow-hidden">

@@ -90,7 +90,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       "Hello Tabasamu Team,\n\nI would like to get in touch regarding...",
     );
-    window.location.href = `mailto:tabasamucharity@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:tabasamu2026@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleCallNow = () => {
@@ -166,7 +166,7 @@ const Contact = () => {
       icon: Mail,
       title: "Email Us",
       subtitle: "Drop us a line anytime",
-      info: "tabasamucharity@gmail.com",
+      info: "tabasamu2026@gmail.com",
       action: "Send Email",
       handler: handleSendEmail,
       gradient: "from-blue-500 to-cyan-500",

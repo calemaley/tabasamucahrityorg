@@ -12,11 +12,12 @@ import Programs from "./pages/Programs";
 import SchoolVolunteering from "./pages/SchoolVolunteering";
 import HospitalInternships from "./pages/HospitalInternships";
 import GetInvolved from "./pages/GetInvolved";
-import Sponsor from "./pages/Sponsor";
 import Donate from "./pages/Donate";
 import Volunteer from "./pages/Volunteer";
-import Children from "./pages/Children";
+import MeetOurFounder from "./pages/MeetOurFounder";
 import Blog from "./pages/Blog";
+import Gallery from "./pages/Gallery";
+import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
@@ -32,6 +33,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/meet-our-founder" element={<MeetOurFounder />} />
           <Route path="/programs" element={<Programs />} />
           <Route
             path="/programs/school-volunteering"
@@ -43,15 +45,14 @@ const App = () => (
           />
           <Route path="/programs/*" element={<Programs />} />
           <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="/get-involved/sponsor" element={<Sponsor />} />
           <Route path="/get-involved/donate" element={<Donate />} />
           <Route path="/get-involved/volunteer" element={<Volunteer />} />
-          <Route path="/sponsor" element={<Sponsor />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/volunteer" element={<Volunteer />} />
-          <Route path="/children" element={<Children />} />
           <Route path="/get-involved/*" element={<GetInvolved />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/samu" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

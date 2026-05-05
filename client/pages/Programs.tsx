@@ -17,90 +17,134 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { featuredEvent } from "@shared/programs-data";
 
+const HumanMosaicBanner = ({ compact = false }: { compact?: boolean }) => (
+  <div
+    className={`w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1a3a0f] via-[#2d5a1b] to-[#6b1111] ${compact ? "h-64" : "h-80"}`}
+  >
+    <p className="text-white/60 text-xs font-semibold tracking-[0.3em] uppercase mb-3">
+      Tabasamu Charity Presents
+    </p>
+    <h2 className={`font-extrabold text-center leading-none mb-2 ${compact ? "text-3xl" : "text-5xl md:text-6xl"}`}>
+      <span className="text-[#e53e3e] italic">The </span>
+      <span className="text-white">HUMAN</span>
+      <br />
+      <span className="text-[#e53e3e] italic">Mo</span>
+      <span className="text-white">SAIC</span>
+    </h2>
+    <div className={`mt-3 border border-[#2d5a1b] bg-[#2d5a1b]/80 rounded-lg px-4 py-2 text-center ${compact ? "text-xs" : "text-sm"}`}>
+      <p className="text-white font-bold tracking-widest">FACES · STORIES · SMILES</p>
+    </div>
+    {!compact && (
+      <div className="mt-4 bg-white/10 rounded-lg px-6 py-2 text-center">
+        <p className="text-white/70 text-xs tracking-widest uppercase">Date</p>
+        <p className="text-white font-bold text-lg">MAY &nbsp;|&nbsp; <span className="text-[#e53e3e] text-2xl">24</span> &nbsp;|&nbsp; 2026</p>
+      </div>
+    )}
+  </div>
+);
+
+const ModalHeader = ({ event }: { event: any }) => {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <div className="relative rounded-t-2xl overflow-hidden">
+      {imgError ? (
+        <HumanMosaicBanner />
+      ) : (
+        <>
+          <img
+            src={event.image}
+            alt={event.title}
+            className="w-full h-64 object-cover"
+            onError={() => setImgError(true)}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40" />
+        </>
+      )}
+      <div className="absolute bottom-6 left-6 right-6">
+        <div className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold inline-block mb-4">
+          {event.date}
+        </div>
+        <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+          {event.title}
+        </h1>
+        <p className="text-xl text-white/90 italic">{event.subtitle}</p>
+      </div>
+    </div>
+  );
+};
+
 const Programs = () => {
   const [showEventModal, setShowEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [featuredImgError, setFeaturedImgError] = useState(false);
 
-  // Mock data for upcoming events (can be moved to shared data later)
   const upcomingEvents = [
     {
-      id: "mombasa-2025",
-      title: "MOMBASA Edition",
-      subtitle: "Building bridges of hope",
-      date: "15TH DEC 2025",
-      venue: "COAST CHILDREN'S CENTER - MOMBASA",
-      image:
-        "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      theme: "Unity in diversity",
+      id: "human-mosaic-2026",
+      title: "THE HUMAN MOSAIC",
+      subtitle: "Faces • Stories • Smiles",
+      date: "24TH MAY 2026",
+      venue: "MAGEUZI HUB, KILIMANI",
+      image: "/events/human-mosaic-flyer.jpg",
+      theme: "Faces, Stories, Smiles",
       description:
-        "Join us for our coastal edition as we bring hope and resources to children in Mombasa. This event focuses on educational support and community development.",
-      contact: "+254794107724",
+        "Piece by piece, story by story… We discover that what felt broken was never the end, it was part of something greater, something whole😊.",
+      contact: "+254 112 459 483",
+      paymentLink: "https://keychele.co.ke/ticket.php?id=26",
+      ticketPrice: "500/=",
       fullDescription:
-        "The Mombasa Edition represents our commitment to coastal communities, where education and opportunity often face unique challenges. This event will bring together volunteers, educators, and community leaders to create lasting change along Kenya's beautiful coast.\n\nOur coastal edition focuses on maritime education, environmental conservation, and providing essential educational resources to children who dream of futures beyond their current circumstances.",
+        "Piece by piece, story by story… We discover that what felt broken was never the end, it was part of something greater, something whole😊.\n\nThe Human Mosaic is a storytelling and community gathering presented by Tabasamu Charity — a space where faces, stories, and smiles come together to celebrate the beautiful complexity of the human experience.\n\nWhether you come with a story to tell or just a heart to listen, you belong here. Every voice adds a piece to the mosaic.",
       schedule: [
-        { time: "8:00 AM", activity: "Registration & Welcome" },
-        { time: "9:30 AM", activity: "Opening Ceremony" },
-        { time: "11:00 AM", activity: "Educational Resource Distribution" },
-        { time: "1:00 PM", activity: "Community Lunch" },
-        { time: "2:30 PM", activity: "Environmental Conservation Workshop" },
-        { time: "4:00 PM", activity: "Cultural Performances" },
-        { time: "5:30 PM", activity: "Closing & Group Photos" },
+        { time: "TBA", activity: "Registration & Welcome" },
+        { time: "TBA", activity: "Open Mic: Faces & Voices" },
+        { time: "TBA", activity: "Connecting Conversations" },
+        { time: "TBA", activity: "Networking & Community Building" },
+        { time: "TBA", activity: "Music & Games" },
+        { time: "TBA", activity: "Closing" },
       ],
       expectedImpact: [
-        "Support 200+ children with educational materials",
-        "Establish 3 new community learning centers",
-        "Train 25 local teachers",
-        "Launch environmental conservation program",
+        "Create a safe space for storytelling",
+        "Build meaningful community connections",
+        "Celebrate shared human experiences",
+        "Promote mental health & emotional wellbeing",
       ],
-      itemsNeeded: [
-        "Books",
-        "Writing materials",
-        "School uniforms",
-        "Solar lamps",
-        "Environmental education materials",
-      ],
-    },
-    {
-      id: "nakuru-2026",
-      title: "NAKURU Edition",
-      subtitle: "Nurturing young minds",
-      date: "22ND JAN 2026",
-      venue: "LAKESIDE CHILDREN'S HOME - NAKURU",
-      image:
-        "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      theme: "Education is the key to the future",
-      description:
-        "Our Nakuru edition emphasizes educational excellence and providing learning materials to underserved communities around Lake Nakuru.",
-      contact: "+254794107724",
-      fullDescription:
-        "Set against the stunning backdrop of Lake Nakuru, this edition focuses on creating sustainable educational opportunities for children in the Rift Valley region. We're partnering with local schools and community centers to establish long-term educational support systems.\n\nThis event emphasizes STEM education, literacy programs, and providing technological resources to bridge the digital divide in rural communities.",
-      schedule: [
-        { time: "8:30 AM", activity: "Registration & Breakfast" },
-        { time: "10:00 AM", activity: "Opening Presentations" },
-        { time: "11:30 AM", activity: "STEM Workshop Setup" },
-        { time: "1:00 PM", activity: "Lunch & Networking" },
-        { time: "2:00 PM", activity: "Literacy Program Launch" },
-        { time: "3:30 PM", activity: "Technology Distribution" },
-        { time: "4:30 PM", activity: "Community Celebration" },
-      ],
-      expectedImpact: [
-        "Provide STEM education to 300+ students",
-        "Establish 2 technology labs",
-        "Train 30 teachers in digital literacy",
-        "Create sustainable scholarship program",
-      ],
-      itemsNeeded: [
-        "Computers",
-        "Science equipment",
-        "Mathematics textbooks",
-        "Library books",
-        "Educational software",
-      ],
+      itemsNeeded: [],
     },
   ];
 
-  // Mock data for past events
   const pastEvents = [
+    {
+      id: "nairobi-2025",
+      title: "NAIROBI Edition",
+      subtitle: "Creating smiles, one coin at a time😊",
+      date: "19TH OCT 2025",
+      venue: "BLESSINGS CHILDREN'S HOME - RUAI",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
+      theme: "Global harmony begins with kindness",
+      description:
+        "An unforgettable day of giving and community spirit at Blessings Children's Home in Ruai — spreading joy and creating lasting smiles.",
+      contact: "+254794107724",
+      impact: "200+ children supported with essential supplies",
+      fullDescription:
+        "Join us for an unforgettable day of giving and community spirit at the NAIROBI Edition. This special gathering brought together hearts and hands united in a common mission: to spread joy and create lasting smiles in the lives of children who needed it most.\n\nLocated at Blessings Children's Home in Ruai, this event was a celebration of humanity, kindness, and the power we have when we come together for a noble cause.",
+      actualImpact: [
+        "Essential supplies delivered to 200+ children",
+        "Dry foodstuffs, water, and sanitary items distributed",
+        "Community volunteers came together in service",
+        "Beddings and detergent provided to families in need",
+      ],
+      testimonials: [
+        {
+          name: "Tabasamu Team",
+          role: "Event Organisers",
+          quote:
+            "Every contribution, big or small, created ripples of positive change that extended far beyond the event day.",
+        },
+      ],
+      longTermImpact:
+        "The NAIROBI Edition established lasting partnerships with Blessings Children's Home and inspired future community-led initiatives across Kenya.",
+    },
     {
       id: "kirinyaga-2024",
       title: "KIRINYAGA Edition",
@@ -197,7 +241,9 @@ const Programs = () => {
   }: {
     event: any;
     type?: "featured" | "upcoming" | "past";
-  }) => (
+  }) => {
+    const [imgError, setImgError] = useState(false);
+    return (
     <div
       className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
       onClick={() => {
@@ -206,11 +252,16 @@ const Programs = () => {
       }}
     >
       <div className="relative overflow-hidden">
-        <img
-          src={event.image}
-          alt={event.title}
-          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-        />
+        {imgError ? (
+          <HumanMosaicBanner compact />
+        ) : (
+          <img
+            src={event.image}
+            alt={event.title}
+            className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+            onError={() => setImgError(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-4 left-4 text-white">
             <span className="text-sm font-medium">
@@ -262,13 +313,27 @@ const Programs = () => {
           </p>
         </div>
 
-        <div className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
-          {type === "past" ? "View Impact Story" : "Learn More"}
-          <ArrowRight className="ml-2 h-4 w-4" />
+        <div className="flex items-center gap-3 flex-wrap">
+          {event.paymentLink && type === "upcoming" && (
+            <a
+              href={event.paymentLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center px-4 py-2 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg text-sm font-bold transition-colors duration-200"
+            >
+              🎟️ {event.ticketPrice ? `Grab a Slot — ${event.ticketPrice}` : "Get Ticket"}
+            </a>
+          )}
+          <span className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
+            {type === "past" ? "View Impact Story" : "Learn More"}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </span>
         </div>
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <>
@@ -345,22 +410,29 @@ const Programs = () => {
               <div className="md:col-span-2">
                 <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300">
                   <div className="relative">
-                    <img
-                      src={featuredEvent.image}
-                      alt={featuredEvent.title}
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute top-6 right-6 bg-red-500 text-white px-4 py-2 rounded-lg font-bold transform rotate-3">
+                    {featuredImgError ? (
+                      <HumanMosaicBanner />
+                    ) : (
+                      <img
+                        src={featuredEvent.image}
+                        alt={featuredEvent.title}
+                        className="w-full h-80 object-cover object-top"
+                        onError={() => setFeaturedImgError(true)}
+                      />
+                    )}
+                    <div className="absolute top-6 right-6 bg-red-600 text-white px-4 py-2 rounded-lg font-bold transform rotate-3 shadow-lg">
                       {featuredEvent.date}
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
-                      <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-                        {featuredEvent.title}
-                      </h1>
-                      <p className="text-xl text-white/90 italic">
-                        {featuredEvent.subtitle}
-                      </p>
-                    </div>
+                    {!featuredImgError && (
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                          {featuredEvent.title}
+                        </h1>
+                        <p className="text-xl text-white/90 italic">
+                          {featuredEvent.subtitle}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-8">
@@ -395,19 +467,25 @@ const Programs = () => {
                       </div>
 
                       <div className="space-y-6">
-                        <div className="bg-red-50 p-6 rounded-xl border-l-4 border-red-500">
-                          <h3 className="text-lg font-bold text-charity-neutral-800 mb-4 text-center">
-                            ITEMS NEEDED
+                        {/* Activities */}
+                        <div className="bg-charity-neutral-800 p-6 rounded-xl">
+                          <h3 className="text-lg font-bold text-white mb-4 text-center tracking-widest uppercase">
+                            Activities
                           </h3>
-                          <div className="grid grid-cols-2 gap-3">
-                            {featuredEvent.itemsNeeded.map((item, index) => (
+                          <div className="space-y-2">
+                            {[
+                              "Open Mic: Faces & Voices",
+                              "Connecting Conversations",
+                              "Networking & Community Building",
+                              "Music & Games",
+                            ].map((activity, i) => (
                               <div
-                                key={index}
-                                className="flex items-center space-x-2"
+                                key={i}
+                                className="flex items-center space-x-3"
                               >
-                                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                                <span className="text-charity-neutral-700 text-sm">
-                                  {item}
+                                <div className="w-2 h-2 bg-charity-orange-400 rounded-full flex-shrink-0" />
+                                <span className="text-white/90 text-sm font-medium">
+                                  {activity}
                                 </span>
                               </div>
                             ))}
@@ -415,15 +493,23 @@ const Programs = () => {
                         </div>
 
                         <div className="text-center space-y-4">
-                          <div className="bg-charity-neutral-100 p-4 rounded-xl">
-                            <p className="text-charity-neutral-600 mb-2">
-                              For more info contact us:
-                            </p>
-                            <div className="flex items-center justify-center space-x-2">
-                              <Phone className="h-4 w-4 text-charity-orange-600" />
-                              <span className="font-bold text-charity-neutral-800">
-                                {featuredEvent.contact}
-                              </span>
+                          {/* Ticket price badge */}
+                          <div className="bg-charity-green-700 p-4 rounded-xl flex items-center justify-center gap-3">
+                            <div className="text-center">
+                              <p className="text-white/80 text-xs font-semibold tracking-widest uppercase">
+                                Grab a Slot
+                              </p>
+                              <p className="text-white font-bold text-2xl">
+                                {featuredEvent.ticketPrice}
+                              </p>
+                            </div>
+                            <div className="border-l border-white/30 pl-3">
+                              <div className="flex items-center space-x-2">
+                                <Phone className="h-4 w-4 text-white/80" />
+                                <span className="font-bold text-white text-sm">
+                                  {featuredEvent.contact}
+                                </span>
+                              </div>
                             </div>
                           </div>
 
@@ -432,9 +518,9 @@ const Programs = () => {
                               href={featuredEvent.paymentLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="block w-full bg-charity-orange-600 hover:bg-charity-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 transform hover:scale-105"
+                              className="block w-full bg-charity-orange-600 hover:bg-charity-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 transform hover:scale-105 text-center"
                             >
-                              💝 Make a Contribution
+                              🎟️ Get Your Ticket
                             </a>
 
                             <button
@@ -573,25 +659,7 @@ const Programs = () => {
               </button>
 
               {/* Modal Header */}
-              <div className="relative">
-                <img
-                  src={selectedEvent.image}
-                  alt={selectedEvent.title}
-                  className="w-full h-64 object-cover rounded-t-2xl"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 rounded-t-2xl"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold inline-block mb-4">
-                    {selectedEvent.date}
-                  </div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    {selectedEvent.title}
-                  </h1>
-                  <p className="text-xl text-white/90 italic">
-                    {selectedEvent.subtitle}
-                  </p>
-                </div>
-              </div>
+              <ModalHeader event={selectedEvent} />
 
               <div className="p-8">
                 {/* Event Description */}
@@ -779,7 +847,9 @@ const Programs = () => {
                       rel="noopener noreferrer"
                       className="flex-1 bg-charity-orange-600 hover:bg-charity-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 transform hover:scale-105 text-center"
                     >
-                      💝 Make a Contribution
+                      {selectedEvent.ticketPrice
+                        ? `🎟️ Grab a Slot — ${selectedEvent.ticketPrice}`
+                        : "💝 Make a Contribution"}
                     </a>
                   )}
 

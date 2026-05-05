@@ -19,11 +19,7 @@ interface SubMenuItem {
   label: string;
   href: string;
   isPayment?: boolean;
-  paymentType?:
-    | "donationUrl"
-    | "sponsorshipUrl"
-    | "generalUrl"
-    | "volunteerUrl";
+  paymentType?: "donationUrl" | "generalUrl" | "volunteerUrl";
 }
 
 const Navigation = () => {
@@ -48,12 +44,16 @@ const Navigation = () => {
   const menuItems = [
     { label: "Home", href: "/", icon: Home },
     {
-      label: "About",
+      label: "Who We Are",
       href: "/about",
       icon: Users,
+      subItems: [
+        { label: "About Us", href: "/about" },
+        { label: "Meet Our Founder", href: "/meet-our-founder" },
+      ],
     },
     {
-      label: "Programs",
+      label: "What We Do",
       href: "/programs",
       icon: GraduationCap,
     },
@@ -63,10 +63,6 @@ const Navigation = () => {
       icon: Heart,
       subItems: [
         {
-          label: "Sponsor a Child",
-          href: "/sponsor",
-        },
-        {
           label: "Donate Now",
           href: "/get-involved/donate",
           isPayment: true,
@@ -75,7 +71,16 @@ const Navigation = () => {
         { label: "Volunteer", href: "/volunteer" },
       ],
     },
-    { label: "Blog", href: "/blog", icon: BookOpen },
+    {
+      label: "Media",
+      href: "/blog",
+      icon: BookOpen,
+      subItems: [
+        { label: "Blog", href: "/blog" },
+        { label: "Gallery", href: "/gallery" },
+        { label: "Resources", href: "/resources" },
+      ],
+    },
     { label: "Contact Us", href: "/contact", icon: Phone },
   ];
 

@@ -16,13 +16,12 @@ import {
   MapPin,
   Star,
 } from "lucide-react";
+// Calendar, User, Star used in blog section
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 import { recentBlogs } from "@shared/blog-data";
-import { recentPrograms } from "@shared/programs-data";
-import { allChildren } from "@shared/children-data";
 import Carousel from "@/components/Carousel";
 
 /**
@@ -80,30 +79,12 @@ const SectionReveal = ({
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Featured children for homepage (use first 4 from shared data)
-  const featuredChildren = allChildren.slice(0, 4);
-
   const heroImages = [
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fcf3963a51367466792ca6dbf43055584?format=webp&width=1600",
-      quote: "We value humanity",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fee16c7e0b8ce45359bc3469c94b5dd8e?format=webp&width=1600",
-      quote: "Together, we build brighter futures",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F4b47460764c141f4b485cd1e04cff903?format=webp&width=1600",
-      quote: "Every smile tells a story of hope",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2F756bbf432a7540c6bfd45df87aa8734b?format=webp&width=1600",
-      quote: "Compassion in action",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F80b74e3fdcaa4c0ca29f792322dc0e5f%2Fda40ee32fcc744a6b9b61967b1b448ce?format=webp&width=1600",
-      quote: "Community, care, and dignity",
-    },
+    { src: "/gallery/photo_008.jpg", quote: "We value humanity" },
+    { src: "/gallery/photo_016.jpg", quote: "Together, we build brighter futures" },
+    { src: "/gallery/photo_024.jpg", quote: "Every smile tells a story of hope" },
+    { src: "/gallery/photo_035.jpg", quote: "Compassion in action" },
+    { src: "/gallery/photo_043.jpg", quote: "Community, care, and dignity" },
   ];
 
   const popularProjects = [
@@ -111,22 +92,22 @@ const Index = () => {
       icon: Heart,
       title: "Make a Donation",
       description:
-        "Your contribution helps us provide essential resources to children in need.",
+        "Your contribution helps us provide essential resources to communities in need.",
       color: "charity-orange-500",
-    },
-    {
-      icon: Users,
-      title: "Sponsor a Child",
-      description:
-        "Create a lasting impact by sponsoring a child's education and development.",
-      color: "charity-green-500",
     },
     {
       icon: GraduationCap,
       title: "Become a Volunteer",
       description:
-        "Join our team and make a direct difference in children's lives.",
+        "Join our team and make a direct difference in people's lives across Kenya.",
       color: "charity-orange-600",
+    },
+    {
+      icon: Users,
+      title: "Partner With Us",
+      description:
+        "Collaborate with Tabasamu Charity to amplify our community impact.",
+      color: "charity-green-500",
     },
   ];
 
@@ -271,8 +252,8 @@ const Index = () => {
               <div className="relative">
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
                   <img
-                    src="https://i.ibb.co/vxjcpZjD/Screenshot-from-2025-08-12-23-27-35.png"
-                    alt="About Us"
+                    src="/gallery/photo_020.jpg"
+                    alt="Our Story"
                     className="w-full h-96 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charity-orange-500/20 to-transparent" />
@@ -280,7 +261,7 @@ const Index = () => {
               </div>
               <div className="space-y-6">
                 <h2 className="text-4xl font-bold text-charity-neutral-800">
-                  About Tabasamu Charity
+                  Our Story
                 </h2>
                 <p className="text-lg text-charity-neutral-600 leading-relaxed">
                   Tabasamu Charity is dedicated to transforming lives and
@@ -426,132 +407,25 @@ const Index = () => {
                         >
                           Donate Now
                         </button>
-                      ) : project.title === "Sponsor a Child" ? (
-                        <Link
-                          to="/sponsor"
-                          className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
-                        >
-                          Sponsor Now
-                        </Link>
-                      ) : (
+                      ) : project.title === "Become a Volunteer" ? (
                         <Link
                           to="/get-involved/volunteer"
                           className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
                         >
-                          Learn More
+                          Join Now
+                        </Link>
+                      ) : (
+                        <Link
+                          to="/contact"
+                          className="inline-block px-6 py-2 bg-charity-orange-600 text-white rounded-lg hover:bg-charity-orange-700 transition-colors duration-200"
+                        >
+                          Get In Touch
                         </Link>
                       )}
                     </div>
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </section>
-      </SectionReveal>
-
-      {/* Meet Our Children */}
-      <SectionReveal>
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
-                Meet Our Children
-              </h2>
-              <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Every child has a unique story and dreams waiting to be
-                fulfilled. Meet some of the amazing children who need your
-                support to achieve their goals.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-              {featuredChildren.slice(0, 2).map((child, index) => (
-                <div
-                  key={child.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
-                  onClick={() =>
-                    (window.location.href = `/sponsor?child=${child.id}`)
-                  }
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={child.image}
-                      alt={child.name}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <span className="text-sm font-medium">
-                          Dreams of being a {child.dreamJob}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-charity-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-                      Available
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-charity-neutral-800 mb-2 group-hover:text-charity-orange-600 transition-colors duration-200">
-                      {child.name}
-                    </h3>
-
-                    <div className="flex items-center text-charity-neutral-600 mb-4">
-                      <Calendar className="h-4 w-4 mr-2 text-charity-orange-500" />
-                      <span className="font-medium">{child.age} years old</span>
-                    </div>
-
-                    <div className="mb-4">
-                      <div className="text-sm font-medium text-charity-neutral-700 mb-2">
-                        Interests:
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {child.interests.map((interest, i) => (
-                          <span
-                            key={i}
-                            className="px-3 py-1 bg-charity-green-100 text-charity-green-700 text-sm rounded-full font-medium"
-                          >
-                            {interest}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mb-6 p-4 bg-charity-orange-50 rounded-xl">
-                      <div className="text-center">
-                        <span className="text-charity-neutral-700 font-medium text-sm block mb-1">
-                          Monthly Support:
-                        </span>
-                        <div className="text-2xl font-bold text-charity-orange-600">
-                          KES {child.monthlyNeed.toLocaleString()}
-                        </div>
-                        <div className="text-xs text-charity-neutral-500">
-                          ≈ ${Math.round(child.monthlyNeed / 135)} USD
-                        </div>
-                      </div>
-                    </div>
-
-                    <Link
-                      to={`/sponsor?child=${child.id}`}
-                      className="block w-full text-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium group-hover:transform group-hover:scale-105"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      💝 Sponsor {child.name.split(" ")[0]}
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <Link
-                to="/children"
-                className="inline-flex items-center px-8 py-4 bg-charity-green-600 hover:bg-charity-green-700 text-white rounded-xl font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg"
-              >
-                View All Children
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
             </div>
           </div>
         </section>
@@ -604,16 +478,16 @@ const Index = () => {
         </section>
       </SectionReveal>
 
-      {/* Featured Events */}
+      {/* Upcoming Events */}
       <SectionReveal>
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-4xl font-bold text-charity-neutral-800">
-                Featured Events
+                Upcoming Events
               </h2>
               <Link
-                to="/programs#featured-event"
+                to="/programs"
                 className="flex items-center text-charity-orange-600 hover:text-charity-orange-700 font-medium group"
               >
                 View All Programs
@@ -621,44 +495,44 @@ const Index = () => {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {recentPrograms.map((program, index) => (
-                <Link
-                  key={index}
-                  to="/programs#featured-event"
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={program.image}
-                      alt={program.title}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg font-bold transform rotate-3">
-                      {program.date}
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                      <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-charity-orange-200 transition-colors duration-200">
-                        {program.title}
-                      </h4>
-                      {program.venue && (
-                        <div className="flex items-center text-white/90 text-sm">
-                          <MapPin className="h-4 w-4 mr-1" />
-                          <span>{program.venue}</span>
-                        </div>
-                      )}
+            <div className="max-w-2xl mx-auto">
+              <Link
+                to="/programs"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src="/gallery/photo_029.jpg"
+                    alt="The Human Mosaic"
+                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg font-bold transform rotate-3 shadow-lg">
+                    24TH MAY 2026
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <h4 className="text-2xl font-bold text-white mb-1 group-hover:text-charity-orange-200 transition-colors duration-200">
+                      THE HUMAN MOSAIC
+                    </h4>
+                    <div className="flex items-center text-white/90 text-sm">
+                      <MapPin className="h-4 w-4 mr-1" />
+                      <span>Mageuzi Hub, Kilimani</span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <p className="text-charity-neutral-600 leading-relaxed">
-                      {program.description}
-                    </p>
-                    <div className="mt-4 text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
+                </div>
+                <div className="p-6">
+                  <p className="text-charity-neutral-600 leading-relaxed mb-3">
+                    Piece by piece, story by story… We discover that what felt broken was never the end, it was part of something greater, something whole😊.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center px-4 py-1.5 bg-charity-green-700 text-white text-sm font-bold rounded-full">
+                      🎟️ Grab a Slot — 500/=
+                    </span>
+                    <span className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
                       Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                    </div>
+                    </span>
                   </div>
-                </Link>
-              ))}
+                </div>
+              </Link>
             </div>
           </div>
         </section>

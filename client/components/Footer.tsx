@@ -141,14 +141,6 @@ const Footer = () => {
                   Hospital Internships
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/get-involved/sponsor"
-                  className="text-charity-neutral-300 hover:text-charity-orange-400 transition-colors duration-200"
-                >
-                  Child Sponsorship
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -171,7 +163,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-charity-orange-400 flex-shrink-0" />
                 <p className="text-charity-neutral-300 text-sm">
-                  tabasamucharity@gmail.com
+                  tabasamu2026@gmail.com
                 </p>
               </div>
             </div>

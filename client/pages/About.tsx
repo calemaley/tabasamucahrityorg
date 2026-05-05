@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   Users,
   Heart,
   Target,
-  Award,
   Globe,
   Lightbulb,
   ArrowRight,
-  X,
-  Mail,
-  Phone,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -18,39 +14,6 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { redirectToPayment, CAMPAIGN_SOURCES } from "@/lib/payment";
 
 const About = () => {
-  const [selectedMember, setSelectedMember] = useState<any>(null);
-
- const teamMembers = [
-  {
-    name: "Judith Kwamboka",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F2d2e887cbea141bba58b3351f1757ea1?format=webp&width=800",
-    bio: "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return.",
-    fullBio:
-      "Humanity is the heartbeat of life, it is kindness, compassion, and love shared without expecting anything in return. At Tabasamu Charity, we believe every smile we give, every hand we extend, and every act of care we show makes the world a better place. True humanity is found in seeing ourselves in others, uplifting those in need, and choosing love over indifference. In small acts of goodness, we build hope, and in unity, we create change.",
-    email: "silajudith2019@gmail.com",
-    phone: "+254 714 367286",
-  },
-  {
-    name: "Philip Muga",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F7037005bc9fd4e528353e7365166a8cf%2F98504928da4841b2b9057264e95a9c80?format=webp&width=800",
-    bio: "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose.",
-    fullBio:
-      "Humanity is a reflection of God's love, a bond that unites us in compassion, dignity, and purpose. It is seen in the kindness we show, the justice we uphold, and the hope we nurture for one another. The Bible reminds us of this truth in Micah 6:8: 'He has shown you, O man, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.' In living this way, we embrace the essence of our shared humanity and reflect the heart of God to the world.",
-    email: "omondimuga175@gmail.com",
-    phone: "+254 794 107724",
-  },
-  {
-    name: "Lilliane Clarice",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F31768e4d9d7546fcb9da81d5f6310801%2F116d15409d254e0aa40e04e67699160e?format=webp&width=800",
-    bio: "I believe that true fulfillment in life comes from reaching out and uplifting others.",
-    fullBio:
-      "I believe that true fulfillment in life comes from reaching out and uplifting others. Giving back is not just an act of kindness, it's a responsibility we all share to ensure no one is left behind. May we choose always to serve the less fortunate, stand with the vulnerable, and create opportunities for those in need to experience dignity, hope, and a brighter tomorrow. Every small act of compassion can spark change, and together, we can make a lasting difference in people's lives.",
-    email: "lilliane@tabasamu.org",
-    phone: "+254717999672",
-  },
-];
-
-
   const values = [
     {
       icon: Heart,
@@ -136,96 +99,34 @@ const About = () => {
         </div>
       </section>
 
-      {/* Founder's Message Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      {/* About Tabasamu Charity */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="slideRight">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              {/* Founder Photo - Stylized Card */}
-              <div className="relative">
-                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <div className="bg-gradient-to-br from-charity-orange-100 to-charity-green-100 p-8 rounded-3xl shadow-2xl">
-                    <div className="transform -rotate-2">
-                      <img
-                        src="https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F44c32d1cc5014f039d98cddadbcab10b?format=webp&width=800"
-                        alt="A.O.Suleiman Kagwe - Founder"
-                        className="w-full h-96 object-cover rounded-2xl shadow-lg"
-                      />
-                    </div>
-                    <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-full shadow-xl">
-                      <Heart className="h-8 w-8 text-charity-orange-600" />
-                    </div>
-                    <div className="absolute -top-4 -left-4 bg-charity-green-500 text-white px-4 py-2 rounded-full text-sm font-bold transform -rotate-12">
-                      Founder
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Founder's Message */}
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-4xl font-bold text-charity-neutral-800 mb-6">
-                    A Message from Our Founder
-                  </h2>
-                  <div className="text-lg text-charity-neutral-600 leading-relaxed space-y-4">
-                    <p className="italic text-charity-orange-700 text-xl">
-                      "Every child has a dream, and every smile holds a promise.
-                      As I journey through life, my story unfolds with a simple
-                      yet profound purpose: to ignite sparks of joy and fuel the
-                      dreams of those around me."
-                    </p>
-                    <p>
-                      In nurturing the needy and spreading love, I believe we
-                      embody the truest essence of humanity. Every act of
-                      kindness creates ripples that extend far beyond what we
-                      can see, touching lives and transforming communities in
-                      ways we may never fully comprehend.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Signature Section */}
-                <div className="border-t border-charity-neutral-200 pt-8">
-                  <div className="flex items-center space-x-6">
-                    <div>
-                      <img
-                        src="https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F7770cebdcca846749404ed197d79d32c?format=webp&width=800"
-                        alt="A.O.Suleiman Kagwe Signature"
-                        className="h-16 w-auto"
-                      />
-                      <div className="mt-2">
-                        <p className="font-bold text-charity-neutral-800">
-                          A.O.Suleiman Kagwe
-                        </p>
-                        <p className="text-charity-orange-600 font-medium">
-                          Founder & CEO
-                        </p>
-                        <p className="text-sm text-charity-neutral-500">
-                          Tabasamu Charity
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Call to Action */}
-                <div className="bg-charity-orange-50 p-6 rounded-xl border-l-4 border-charity-orange-500">
-                  <h3 className="font-bold text-charity-neutral-800 mb-2">
-                    Join Our Mission
-                  </h3>
-                  <p className="text-charity-neutral-600 mb-4">
-                    Together, we can create lasting change in the lives of
-                    children and communities.
-                  </p>
-                  <Link
-                    to="/get-involved"
-                    className="inline-flex items-center px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-lg transition-colors duration-200 font-medium group"
-                  >
-                    Get Involved Today
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                  </Link>
-                </div>
+          <AnimatedSection animation="slideUp">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-8 text-center">
+                About Tabasamu Charity
+              </h2>
+              <div className="space-y-6 text-lg text-charity-neutral-600 leading-relaxed">
+                <p>
+                  Tabasamu Charity is a social impact initiative dedicated to
+                  supporting vulnerable children while building stronger, more
+                  resilient communities. We believe that when a child is
+                  empowered, an entire community is transformed.
+                </p>
+                <p>
+                  Through community outreach, mental health advocacy, and
+                  storytelling platforms like The Human Mosaic, we create safe
+                  spaces where communities feel supported, heard, and empowered.
+                  Our work spans access to basic needs, education support,
+                  emotional wellbeing, and mentorship; ensuring both immediate
+                  relief and long-term impact.
+                </p>
+                <p>
+                  At Tabasamu, we don't just respond to need; we nurture
+                  potential, strengthen communities, and restore hope, one smile
+                  at a time.
+                </p>
               </div>
             </div>
           </AnimatedSection>
@@ -378,65 +279,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20 bg-charity-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection animation="slideUp">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-4">
-                Meet Our Team
-              </h2>
-              <p className="text-lg text-charity-neutral-600 max-w-2xl mx-auto">
-                Meet our dedicated leadership team who work tirelessly to make
-                our mission a reality. Get to know the passionate individuals
-                behind our impact.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <AnimatedSection
-                key={index}
-                animation="scaleIn"
-                delay={index * 100}
-              >
-                <div
-                  className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
-                  onClick={() => setSelectedMember(member)}
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className={`w-full h-80 object-cover ${member.name === "Philip Muga" ? "object-center" : "object-top"} group-hover:scale-110 transition-transform duration-700`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <span className="text-sm font-medium">
-                          Click to learn more
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-charity-neutral-800 mb-6">
-                      {member.name}
-                    </h3>
-                    <p className="text-charity-neutral-600 text-base leading-relaxed">
-                      {member.bio}
-                    </p>
-                    <div className="mt-6 text-charity-orange-600 text-base font-semibold flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                      Learn More <ArrowRight className="ml-2 h-5 w-5" />
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Call to Action */}
       <section className="py-20 relative overflow-hidden">
         <video
@@ -483,75 +325,6 @@ const About = () => {
           </AnimatedSection>
         </div>
       </section>
-
-     {/* Team Member Modal */}
-{selectedMember && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-    <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div className="relative">
-        <button
-          onClick={() => setSelectedMember(null)}
-          className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
-        >
-          <X className="h-5 w-5" />
-        </button>
-
-        <div className="p-8">
-          <div className="flex flex-col md:flex-row gap-8">
-            <div className="md:w-1/3">
-              <img
-                src={selectedMember.image}
-                alt={selectedMember.name}
-                className={`w-full h-64 md:h-48 object-cover ${
-                  selectedMember.name === "Philip Muga"
-                    ? "object-center"
-                    : "object-top"
-                } rounded-xl shadow-lg`}
-              />
-            </div>
-
-            <div className="md:w-2/3 space-y-6">
-              <div>
-                <h2 className="text-3xl font-bold text-charity-neutral-800 mb-6">
-                  {selectedMember.name}
-                </h2>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
-                  About
-                </h3>
-                <p className="text-charity-neutral-600 leading-relaxed">
-                  {selectedMember.fullBio}
-                </p>
-              </div>
-
-              <div className="bg-charity-neutral-50 p-4 rounded-xl">
-                <h3 className="text-lg font-bold text-charity-neutral-800 mb-3">
-                  Contact Information
-                </h3>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="h-4 w-4 text-charity-orange-600" />
-                    <span className="text-charity-neutral-600">
-                      {selectedMember.email}
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="h-4 w-4 text-charity-orange-600" />
-                    <span className="text-charity-neutral-600">
-                      {selectedMember.phone}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
 
       <Footer />
     </>

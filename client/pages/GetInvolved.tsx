@@ -20,7 +20,6 @@ import AnimatedSection from "@/components/AnimatedSection";
 
 const GetInvolved = () => {
   const [donationAmount, setDonationAmount] = useState("50");
-  const [sponsorshipType, setSponsorshipType] = useState("education");
 
   const volunteerOpportunities = [
     {
@@ -64,15 +63,6 @@ const GetInvolved = () => {
       impact: "Supports a mobile clinic visit to a remote village",
     },
     { amount: 500, impact: "Funds a clean water well installation" },
-  ];
-
-  const sponsorshipBenefits = [
-    "Regular updates on your sponsored child's progress",
-    "Annual school and health reports",
-    "Letters and artwork from your sponsored child",
-    "Opportunity to visit and meet your sponsored child",
-    "Tax-deductible contribution receipt",
-    "Join our sponsor community events",
   ];
 
   const volunteerSteps = [
@@ -370,91 +360,6 @@ const GetInvolved = () => {
         </div>
       </section>
 
-      {/* Child Sponsorship */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection animation="slideRight">
-              <div>
-                <h2 className="text-4xl font-bold text-charity-neutral-800 mb-6">
-                  Sponsor a Child
-                </h2>
-                <p className="text-lg text-charity-neutral-600 mb-6 leading-relaxed">
-                  Create a lasting bond and transform a child's life through
-                  education, healthcare, and emotional support. Child
-                  sponsorship is one of the most personal and impactful ways to
-                  make a difference.
-                </p>
-
-                <div className="space-y-3 mb-8">
-                  {sponsorshipBenefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center">
-                      <Check className="h-5 w-5 text-charity-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-charity-neutral-700">
-                        {benefit}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-charity-neutral-700 mb-2">
-                      Sponsorship Type
-                    </label>
-                    <div className="grid grid-cols-2 gap-3">
-                      <button
-                        onClick={() => setSponsorshipType("education")}
-                        className={`p-3 rounded-lg border-2 transition-all duration-200 ${
-                          sponsorshipType === "education"
-                            ? "border-charity-orange-600 bg-charity-orange-50 text-charity-orange-600"
-                            : "border-charity-neutral-300 hover:border-charity-orange-400"
-                        }`}
-                      >
-                        Education ($50/month)
-                      </button>
-                      <button
-                        onClick={() => setSponsorshipType("full")}
-                        className={`p-3 rounded-lg border-2 transition-all duration-200 ${
-                          sponsorshipType === "full"
-                            ? "border-charity-orange-600 bg-charity-orange-50 text-charity-orange-600"
-                            : "border-charity-neutral-300 hover:border-charity-orange-400"
-                        }`}
-                      >
-                        Full Support ($75/month)
-                      </button>
-                    </div>
-                  </div>
-
-                  <button className="w-full px-6 py-4 bg-charity-green-600 hover:bg-charity-green-700 text-white rounded-lg font-bold text-lg transition-colors duration-200">
-                    Start Sponsorship
-                  </button>
-                </div>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection animation="slideLeft" delay={200}>
-              <div className="relative">
-                <img
-                  src="/placeholder.svg"
-                  alt="Children"
-                  className="w-full h-96 object-cover rounded-2xl shadow-xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
-                <div className="absolute bottom-6 left-6 text-white">
-                  <p className="text-lg font-semibold mb-2">
-                    Join 500+ sponsors
-                  </p>
-                  <p className="text-sm opacity-90">
-                    Making dreams come true, one child at a time
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section className="py-20 bg-charity-orange-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -464,8 +369,7 @@ const GetInvolved = () => {
                 Ready to Make a Difference?
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Have questions about volunteering, donating, or sponsoring? Get
-                in touch with our team.
+                Have questions about volunteering or donating? Get in touch with our team.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">

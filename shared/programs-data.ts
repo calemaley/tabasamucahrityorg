@@ -9,47 +9,40 @@ export interface FeaturedEvent {
   itemsNeeded: string[];
   contact: string;
   paymentLink: string;
+  ticketPrice?: string;
   fullDescription: string;
   schedule: Array<{ time: string; activity: string }>;
   impactGoals: string[];
 }
 
 export const featuredEvent: FeaturedEvent = {
-  title: "NAIROBI Edition",
-  subtitle: "Creating smiles, one coin at a time😊",
-  date: "19TH OCT 2025",
-  venue: "BLESSINGS CHILDREN'S HOME - RUAI",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2F1621da4a27844381af3e9ee9867abbdf%2F11507f84a3b5427fafee2b9a7a5b66c7?format=webp&width=800",
-  theme: "Global harmony begins with kindness",
+  title: "THE HUMAN MOSAIC",
+  subtitle: "Presented by Tabasamu Charity",
+  date: "24TH MAY 2026",
+  venue: "MAGEUZI HUB, KILIMANI",
+  image: "/events/human-mosaic-flyer.jpg",
+  theme: "Faces, Stories, Smiles",
+  ticketPrice: "500/=",
   message:
-    "Hi there😊\n\nIn pursuit of my course of making the world a better place, I can't do it alone, I need more hands🥹... Shall we?\nCreating smiles, one coin at a time😊",
-  itemsNeeded: [
-    "Dry Foodstuffs",
-    "Water",
-    "Detergent",
-    "Sanitary Towels",
-    "Beddings",
-    "Monetary support",
-  ],
-  contact: "+254794107724",
-  paymentLink: "https://zenlipa.co.ke/c/uKowYx",
+    "Piece by piece, story by story… We discover that what felt broken was never the end, it was part of something greater, something whole😊.\n\nJoin us for an evening of open mic, connecting conversations, networking, and community building — all wrapped up with music and games.",
+  itemsNeeded: [],
+  contact: "+254 112 459 483",
+  paymentLink: "https://keychele.co.ke/ticket.php?id=26",
   fullDescription:
-    "Join us for an unforgettable day of giving and community spirit at the NAIROBI Edition event. This special gathering brings together hearts and hands united in a common mission: to spread joy and create lasting smiles in the lives of children who need it most.\n\nLocated at the beautiful Blessings Children's Home in Ruai, this event represents more than just a donation drive - it's a celebration of humanity, kindness, and the power we have when we come together for a noble cause.\n\nWhat makes this event special:\n• Direct impact on children's lives\n• Community building and networking\n• Hands-on volunteer opportunities\n• Stories of transformation and hope\n• Cultural performances and activities\n\nEvery contribution, whether big or small, creates ripples of positive change that extend far beyond the event day. Together, we're not just giving items - we're giving hope, dignity, and the promise of a brighter tomorrow.",
+    "Piece by piece, story by story… We discover that what felt broken was never the end, it was part of something greater, something whole😊.\n\nThe Human Mosaic is a storytelling and community gathering presented by Tabasamu Charity — a space where faces, stories, and smiles come together to celebrate the beautiful complexity of the human experience.\n\nWhether you come with a story to tell or just a heart to listen, you belong here. Every voice adds a piece to the mosaic.",
   schedule: [
-    { time: "9:00 AM", activity: "Registration & Welcome Coffee" },
-    { time: "10:00 AM", activity: "Opening Ceremony & Speeches" },
-    { time: "11:00 AM", activity: "Donation Distribution Begins" },
-    { time: "12:30 PM", activity: "Cultural Performances by Children" },
-    { time: "1:00 PM", activity: "Lunch & Networking" },
-    { time: "2:30 PM", activity: "Volunteer Activities & Games" },
-    { time: "4:00 PM", activity: "Closing Ceremony & Group Photos" },
+    { time: "TBA", activity: "Registration & Welcome" },
+    { time: "TBA", activity: "Open Mic: Faces & Voices" },
+    { time: "TBA", activity: "Connecting Conversations" },
+    { time: "TBA", activity: "Networking & Community Building" },
+    { time: "TBA", activity: "Music & Games" },
+    { time: "TBA", activity: "Closing" },
   ],
   impactGoals: [
-    "Provide essential supplies to 200+ children",
-    "Fund educational materials for 50 students",
-    "Support nutritional programs for 3 months",
-    "Create sustainable partnerships with local community",
+    "Create a safe space for storytelling and expression",
+    "Build meaningful community connections",
+    "Celebrate shared human experiences",
+    "Promote mental health and emotional wellbeing",
   ],
 };
 
@@ -57,8 +50,8 @@ export const featuredEvent: FeaturedEvent = {
 export const recentPrograms = [
   {
     image: featuredEvent.image,
-    title: `${featuredEvent.title} - ${featuredEvent.subtitle}`,
-    description: featuredEvent.fullDescription.split("\n\n")[0], // First paragraph
+    title: `${featuredEvent.title} — ${featuredEvent.subtitle}`,
+    description: featuredEvent.fullDescription.split("\n\n")[0],
     date: featuredEvent.date,
     venue: featuredEvent.venue,
   },
