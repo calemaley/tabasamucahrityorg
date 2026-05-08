@@ -142,16 +142,12 @@ const About = () => {
                 <h2 className="text-4xl font-bold text-charity-neutral-800 mb-6">
                   Our Mission
                 </h2>
-                <p className="text-lg text-charity-neutral-600 mb-6 leading-relaxed">
-                  To empower children and communities in Kenya through quality
-                  education, accessible healthcare, and sustainable development
-                  programs that create lasting positive change.
-                </p>
-                <p className="text-charity-neutral-600 leading-relaxed">
-                  We believe that every child deserves the opportunity to reach
-                  their full potential, and every community has the strength to
-                  build a better future when given the right support and
-                  resources.
+                <p className="text-lg text-charity-neutral-600 leading-relaxed">
+                  To drive transformative community outreach across Kenya by
+                  using storytelling, media, and grassroots engagement to
+                  champion mental health, expand access to education, and meet
+                  essential needs; igniting hope, amplifying voices, and
+                  creating lasting impact.
                 </p>
               </div>
             </AnimatedSection>
@@ -161,15 +157,10 @@ const About = () => {
                 <h2 className="text-4xl font-bold text-charity-neutral-800 mb-6">
                   Our Vision
                 </h2>
-                <p className="text-lg text-charity-neutral-600 mb-6 leading-relaxed">
-                  A world where every child has access to quality education and
-                  healthcare, and every community has the tools to thrive
-                  independently and sustainably.
-                </p>
-                <p className="text-charity-neutral-600 leading-relaxed">
-                  We envision communities where children grow up healthy,
-                  educated, and empowered to become leaders who will continue
-                  the cycle of positive change.
+                <p className="text-lg text-charity-neutral-600 leading-relaxed">
+                  To inspire a generation across Kenya that turns compassion
+                  into action; building communities where every story matters,
+                  every voice is heard, and every life has a reason to smile.
                 </p>
               </div>
             </AnimatedSection>

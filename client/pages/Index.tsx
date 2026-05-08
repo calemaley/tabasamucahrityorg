@@ -80,11 +80,11 @@ const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroImages = [
-    { src: "/gallery/photo_008.jpg", quote: "We value humanity" },
-    { src: "/gallery/photo_016.jpg", quote: "Together, we build brighter futures" },
-    { src: "/gallery/photo_024.jpg", quote: "Every smile tells a story of hope" },
-    { src: "/gallery/photo_035.jpg", quote: "Compassion in action" },
-    { src: "/gallery/photo_043.jpg", quote: "Community, care, and dignity" },
+    { src: "/gallery/photo_051.jpg", quote: "We value humanity", pos: "object-[center_25%]" },
+    { src: "/gallery/photo_016.jpg", quote: "Together, we build brighter futures", pos: "object-[center_20%]" },
+    { src: "/gallery/photo_004.jpg", quote: "Every smile tells a story of hope", pos: "object-[center_20%]" },
+    { src: "/gallery/photo_024.jpg", quote: "Compassion in action", pos: "object-[center_15%]" },
+    { src: "/gallery/photo_043.jpg", quote: "Community, care, and dignity", pos: "object-[center_20%]" },
   ];
 
   const popularProjects = [
@@ -180,7 +180,7 @@ const Index = () => {
                 <img
                   src={heroImages[index].src}
                   alt="Tabasamu Charity"
-                  className="w-full h-full object-cover object-[center_35%]"
+                  className={`w-full h-full object-cover ${heroImages[index].pos}`}
                 />
                 <div className="absolute inset-0 bg-black/40" />
               </div>
@@ -254,7 +254,7 @@ const Index = () => {
                   <img
                     src="/gallery/photo_020.jpg"
                     alt="Our Story"
-                    className="w-full h-96 object-cover"
+                    className="w-full h-96 object-cover object-[center_15%]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charity-orange-500/20 to-transparent" />
                 </div>
@@ -264,18 +264,23 @@ const Index = () => {
                   Our Story
                 </h2>
                 <p className="text-lg text-charity-neutral-600 leading-relaxed">
-                  Tabasamu Charity is dedicated to transforming lives and
-                  building stronger communities through education, healthcare,
-                  and sustainable development. Since our founding, we've been
-                  committed to creating lasting positive change for children and
-                  families across Kenya.
+                  Tabasamu Charity is a social impact initiative dedicated to
+                  supporting vulnerable children while building stronger, more
+                  resilient communities. We believe that when a child is
+                  empowered, an entire community is transformed.
                 </p>
-                <p className="text-charity-neutral-600">
-                  Our comprehensive programs focus on providing quality
-                  education, essential healthcare services, and opportunities
-                  for community development. Together with our volunteers and
-                  supporters, we're building a brighter future for the next
-                  generation.
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  Through community outreach, mental health advocacy, and
+                  storytelling platforms like The Human Mosaic, we create safe
+                  spaces where communities feel supported, heard, and empowered.
+                  Our work spans access to basic needs, education support,
+                  emotional wellbeing, and mentorship; ensuring both immediate
+                  relief and long-term impact.
+                </p>
+                <p className="text-charity-neutral-600 leading-relaxed">
+                  At Tabasamu, we don't just respond to need; we nurture
+                  potential, strengthen communities, and restore hope, one smile
+                  at a time.
                 </p>
                 <Link
                   to="/about"
@@ -504,7 +509,7 @@ const Index = () => {
                   <img
                     src="/gallery/photo_029.jpg"
                     alt="The Human Mosaic"
-                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-72 object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg font-bold transform rotate-3 shadow-lg">
                     24TH MAY 2026

@@ -54,7 +54,7 @@ const ModalHeader = ({ event }: { event: any }) => {
           <img
             src={event.image}
             alt={event.title}
-            className="w-full h-64 object-cover"
+            className="w-full h-64 object-cover object-[center_20%]"
             onError={() => setImgError(true)}
           />
           <div className="absolute inset-0 bg-black bg-opacity-40" />
