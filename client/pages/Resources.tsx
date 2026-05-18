@@ -15,6 +15,7 @@ import {
   Clock,
   Mail,
   Phone,
+  Download,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -90,6 +91,25 @@ const thematicAreas = [
     bg: "bg-charity-green-50",
     border: "border-charity-green-200",
   },
+];
+
+const scheduleItems = [
+  { time: "10:00 AM – 10:30 AM", activity: "Registration & Ushering", facilitator: null },
+  { time: "10:30 AM – 10:45 AM", activity: "Opening Ceremony // CEO", facilitator: "June Wekesa · Head of Comms. & Corporate affairs" },
+  { time: "10:45 AM – 11:05 AM", activity: "Featured Artists & Tech. team", facilitator: "June Wekesa · Head of Comms. & Corporate affairs" },
+  { time: "11:05 AM – 11:15 AM", activity: "MCs sets the tone for the conversations", facilitator: null },
+  { time: "10:45 AM – 11:05 AM", activity: "Keynote Addresses: Dr Joe Njagi", facilitator: null },
+  { time: "11:05 AM – 11:30 AM", activity: "Health Break", facilitator: null },
+  { time: "11:30 AM – 11:45 AM", activity: "MC sets the tone for the panel", facilitator: null },
+  { time: "11:45 AM – 12:15 PM", activity: "Panel: Digital Influence & Future of work", facilitator: "Job Adams · Moderator" },
+  { time: "12:15 PM – 1:00 PM", activity: "Creative Interlude: storytelling session (Audience)", facilitator: "Sean & Maureen" },
+  { time: "1:00 PM – 1:45 PM", activity: "Afternoon Break / Networking", facilitator: "MCs & DJ" },
+  { time: "1:45 PM – 2:00 PM", activity: "Mind games / fun", facilitator: "MCs & DJ" },
+  { time: "2:00 PM – 2:40 PM", activity: "Keynote: ........", facilitator: null },
+  { time: "2:40 PM – 3:10 PM", activity: "Creative Interlude", facilitator: "MCs" },
+  { time: "3:10 PM – 4:10 PM", activity: "Panel 2: Mental Health & Identity Crisis", facilitator: "Agnes Orora · Moderator" },
+  { time: "4:10 PM – 5:00 PM", activity: "Human Stories Segment", facilitator: "Panelists & Audience" },
+  { time: "5:00 PM – 5:30 PM", activity: "Partners/sponsors recognition & Closing remarks", facilitator: "MCs & CEO" },
 ];
 
 const Resources = () => {
@@ -388,6 +408,58 @@ const Resources = () => {
                   <p className="font-semibold text-sm leading-tight">
                     {act.label}
                   </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Event Schedule */}
+      <section className="py-20 bg-charity-neutral-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection animation="slideUp">
+            <div className="text-center mb-12">
+              <p className="text-charity-orange-500 font-semibold tracking-widest uppercase text-sm mb-3">
+                Mageuzi Hub Kilimani · May 24, 2026
+              </p>
+              <h2 className="text-4xl font-bold text-charity-neutral-800 mb-6">
+                Event Schedule
+              </h2>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="/event-schedule.pdf"
+                  download="The-Human-Mosaic-Event-Schedule.pdf"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#2d5a1b] hover:bg-[#1a3a0f] text-white rounded-xl font-semibold transition-colors duration-200 shadow-md"
+                >
+                  <Download className="h-5 w-5" />
+                  Download Event Schedule (PDF)
+                </a>
+                <a
+                  href="/concept-note.pdf"
+                  download="The-Human-Mosaic-Concept-Note.pdf"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-xl font-semibold transition-colors duration-200 shadow-md"
+                >
+                  <Download className="h-5 w-5" />
+                  Download Concept Note (PDF)
+                </a>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <div className="space-y-3">
+            {scheduleItems.map((item, index) => (
+              <AnimatedSection key={index} animation="slideRight" delay={index * 40}>
+                <div className="bg-white rounded-xl px-5 py-4 shadow-sm border border-charity-neutral-100 flex flex-col sm:flex-row sm:items-center gap-3 hover:shadow-md transition-shadow duration-200">
+                  <div className="flex-shrink-0 sm:w-52 bg-charity-neutral-800 text-white text-sm font-bold rounded-lg px-4 py-2 text-center">
+                    {item.time}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-charity-neutral-800">{item.activity}</p>
+                    {item.facilitator && (
+                      <p className="text-sm text-charity-orange-600 mt-0.5">{item.facilitator}</p>
+                    )}
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
