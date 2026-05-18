@@ -138,6 +138,16 @@ const Index = () => {
     },
   ];
 
+  const speakers = [
+    { name: "Brian Nyambego", initials: "BN" },
+    { name: "Maureen Ngari",  initials: "MN" },
+    { name: "Sean Wangai",    initials: "SW" },
+    { name: "Dr. Joe Njagi",  initials: "JN" },
+    { name: "Terry Kemunto",  initials: "TK" },
+    { name: "Suleiman Kagwe", initials: "SK" },
+    { name: "Nzula Makosi",   initials: "NM" },
+  ];
+
   const stats = [
     { number: "15+", label: "Total Campaigns" },
     { number: "50+", label: "Volunteers" },
@@ -485,7 +495,7 @@ const Index = () => {
 
       {/* Upcoming Events */}
       <SectionReveal>
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-[#f5f0e8]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-4xl font-bold text-charity-neutral-800">
@@ -500,44 +510,109 @@ const Index = () => {
               </Link>
             </div>
 
+            {/* Poster Card */}
             <div className="max-w-2xl mx-auto">
-              <Link
-                to="/programs"
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer group block"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src="/gallery/photo_029.jpg"
-                    alt="The Human Mosaic"
-                    className="w-full h-72 object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg font-bold transform rotate-3 shadow-lg">
-                    24TH MAY 2026
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <h4 className="text-2xl font-bold text-white mb-1 group-hover:text-charity-orange-200 transition-colors duration-200">
-                      THE HUMAN MOSAIC
-                    </h4>
-                    <div className="flex items-center text-white/90 text-sm">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      <span>Mageuzi Hub, Kilimani</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-charity-neutral-600 leading-relaxed mb-3">
-                    Piece by piece, story by story… We discover that what felt broken was never the end, it was part of something greater, something whole😊.
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+                {/* Header — logo + branding */}
+                <div className="text-center pt-10 pb-6 px-8 bg-white">
+                  {/* Tabasamu wordmark */}
+                  <p className="text-2xl font-black tracking-tight text-charity-neutral-800">
+                    T<span className="text-charity-orange-500">aba</span>samu
+                    <span className="inline-block w-4 h-4 bg-charity-orange-400 rounded-full ml-0.5 align-middle" />
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center px-4 py-1.5 bg-charity-green-700 text-white text-sm font-bold rounded-full">
-                      🎟️ Grab a Slot — 500/=
-                    </span>
-                    <span className="text-charity-orange-600 font-medium flex items-center group-hover:translate-x-1 transition-transform duration-200">
-                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  <p className="text-[10px] font-bold tracking-[0.45em] text-neutral-400 uppercase mt-1 mb-5">
+                    PRESENTS
+                  </p>
+
+                  {/* THEME pill */}
+                  <div className="flex justify-center mb-5">
+                    <span className="bg-red-600 text-white font-black px-8 py-2 rounded-full text-base tracking-widest uppercase">
+                      THEME
                     </span>
                   </div>
+
+                  {/* Human Mosaic box */}
+                  <div className="bg-[#7a6f3a] rounded-2xl mx-auto px-8 py-7 relative overflow-hidden">
+                    <h3 className="text-5xl font-black leading-none">
+                      <span className="text-red-400 italic">The </span>
+                      <span className="text-white">HUMAN</span>
+                    </h3>
+                    <h3 className="text-5xl font-black leading-none mb-4">
+                      <span className="text-red-400 italic">Mo</span>
+                      <span className="text-white">SAIC</span>
+                    </h3>
+                    <p className="text-white font-black tracking-[0.2em] text-sm uppercase">
+                      FACES, SMILES, STORIES
+                    </p>
+                  </div>
                 </div>
-              </Link>
+
+                {/* Guest Speakers */}
+                <div className="px-6 py-6 bg-white">
+                  <div className="grid grid-cols-7 gap-2">
+                    {speakers.map((speaker, i) => (
+                      <div key={i} className="text-center">
+                        <div className="w-11 h-11 mx-auto rounded-full bg-gradient-to-br from-[#7a6f3a] to-[#2d5a1b] flex items-center justify-center text-white font-bold text-xs mb-1.5 shadow-md">
+                          {speaker.initials}
+                        </div>
+                        <p className="text-[8px] text-gray-400 uppercase tracking-wide leading-none mb-0.5">
+                          Guest<br />Speaker
+                        </p>
+                        <p className="text-[9px] font-bold text-gray-700 leading-tight">
+                          {speaker.name}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Event info bar */}
+                <div className="bg-[#2d4a2a] text-white px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-green-300 text-lg">⏰</span>
+                    <span className="font-bold text-sm tracking-wide">10 AM – 5 PM</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-[#f5f0e8] text-[#2d4a2a] px-5 py-2 rounded-full">
+                    <Calendar className="h-4 w-4" />
+                    <span className="font-black text-sm">
+                      24<sup>TH</sup> MAY
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-green-300" />
+                    <span className="font-bold text-sm tracking-wide">MAGEUZI HUB – KILIMANI</span>
+                  </div>
+                </div>
+
+                {/* Ticket section */}
+                <div className="bg-white px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div>
+                    <p className="text-red-600 font-black text-2xl tracking-wide">
+                      TICKET KSH 500/=
+                    </p>
+                    <p className="text-xs text-gray-400 mt-0.5">
+                      keychele.co.ke/ticket.php?id=26
+                    </p>
+                  </div>
+                  <a
+                    href="https://keychele.co.ke/ticket.php?id=26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-xl font-bold transition-colors duration-200 shadow-md"
+                  >
+                    🎟️ Get Ticket
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+
+                {/* Contact footer */}
+                <div className="bg-[#2d4a2a] px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-1 text-white/75 text-[11px]">
+                  <span>📞 Contact Us: 011-245 94 83</span>
+                  <span>🌐 tabasamucharity.org</span>
+                  <span>✉️ info@tabasamu.gmail.com</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
