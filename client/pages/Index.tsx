@@ -514,103 +514,30 @@ const Index = () => {
             <div className="max-w-2xl mx-auto">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
 
-                {/* Header — logo + branding */}
-                <div className="text-center pt-10 pb-6 px-8 bg-white">
-                  {/* Tabasamu wordmark */}
-                  <p className="text-2xl font-black tracking-tight text-charity-neutral-800">
-                    T<span className="text-charity-orange-500">aba</span>samu
-                    <span className="inline-block w-4 h-4 bg-charity-orange-400 rounded-full ml-0.5 align-middle" />
-                  </p>
-                  <p className="text-[10px] font-bold tracking-[0.45em] text-neutral-400 uppercase mt-1 mb-5">
-                    PRESENTS
-                  </p>
+                {/* Poster image */}
+                <img
+                  src="/human-mosaic-poster.jpg.jpeg"
+                  alt="The Human Mosaic – May 24, 2026"
+                  className="w-full object-cover"
+                />
 
-                  {/* THEME pill */}
-                  <div className="flex justify-center mb-5">
-                    <span className="bg-red-600 text-white font-black px-8 py-2 rounded-full text-base tracking-widest uppercase">
-                      THEME
-                    </span>
-                  </div>
-
-                  {/* Human Mosaic box */}
-                  <div className="bg-[#7a6f3a] rounded-2xl mx-auto px-8 py-7 relative overflow-hidden">
-                    <h3 className="text-5xl font-black leading-none">
-                      <span className="text-red-400 italic">The </span>
-                      <span className="text-white">HUMAN</span>
-                    </h3>
-                    <h3 className="text-5xl font-black leading-none mb-4">
-                      <span className="text-red-400 italic">Mo</span>
-                      <span className="text-white">SAIC</span>
-                    </h3>
-                    <p className="text-white font-black tracking-[0.2em] text-sm uppercase">
-                      FACES, SMILES, STORIES
-                    </p>
-                  </div>
-                </div>
-
-                {/* Guest Speakers */}
-                <div className="px-6 py-6 bg-white">
-                  <div className="grid grid-cols-7 gap-2">
-                    {speakers.map((speaker, i) => (
-                      <div key={i} className="text-center">
-                        <div className="w-11 h-11 mx-auto rounded-full bg-gradient-to-br from-[#7a6f3a] to-[#2d5a1b] flex items-center justify-center text-white font-bold text-xs mb-1.5 shadow-md">
-                          {speaker.initials}
-                        </div>
-                        <p className="text-[8px] text-gray-400 uppercase tracking-wide leading-none mb-0.5">
-                          Guest<br />Speaker
-                        </p>
-                        <p className="text-[9px] font-bold text-gray-700 leading-tight">
-                          {speaker.name}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Event info bar */}
-                <div className="bg-[#2d4a2a] text-white px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-green-300 text-lg">⏰</span>
-                    <span className="font-bold text-sm tracking-wide">10 AM – 5 PM</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-[#f5f0e8] text-[#2d4a2a] px-5 py-2 rounded-full">
-                    <Calendar className="h-4 w-4" />
-                    <span className="font-black text-sm">
-                      24<sup>TH</sup> MAY
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-green-300" />
-                    <span className="font-bold text-sm tracking-wide">MAGEUZI HUB – KILIMANI</span>
-                  </div>
-                </div>
-
-                {/* Ticket section */}
-                <div className="bg-white px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div>
-                    <p className="text-red-600 font-black text-2xl tracking-wide">
-                      TICKET KSH 500/=
-                    </p>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      keychele.co.ke/ticket.php?id=26
-                    </p>
-                  </div>
+                {/* Action buttons */}
+                <div className="px-8 py-7 flex flex-col sm:flex-row gap-4 items-center justify-center bg-white">
                   <a
                     href="https://keychele.co.ke/ticket.php?id=26"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-xl font-bold transition-colors duration-200 shadow-md"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-charity-orange-600 hover:bg-charity-orange-700 text-white rounded-xl font-bold text-lg transition-colors duration-200 shadow-lg"
                   >
-                    🎟️ Get Ticket
-                    <ArrowRight className="h-4 w-4" />
+                    🎟️ Get Tickets — KSH 500
+                    <ArrowRight className="h-5 w-5" />
                   </a>
-                </div>
-
-                {/* Contact footer */}
-                <div className="bg-[#2d4a2a] px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-1 text-white/75 text-[11px]">
-                  <span>📞 Contact Us: 011-245 94 83</span>
-                  <span>🌐 tabasamucharity.org</span>
-                  <span>✉️ info@tabasamu.gmail.com</span>
+                  <Link
+                    to="/resources"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#2d5a1b] text-[#2d5a1b] hover:bg-[#2d5a1b] hover:text-white rounded-xl font-bold text-lg transition-colors duration-200"
+                  >
+                    Learn More
+                  </Link>
                 </div>
               </div>
             </div>
